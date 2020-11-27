@@ -1,3 +1,4 @@
 theme: jekyll-theme-cayman
-page.title: SIRIUS Documentation
+title: SIRIUS Documentation
 description: This is the official online documentation for the SIRIUS MS/MS Software
+logo: sirius_logo_4.svg
