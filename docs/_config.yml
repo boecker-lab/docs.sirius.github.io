@@ -1,4 +1,5 @@
 theme: jekyll-theme-cayman
 title: SIRIUS Documentation
-encoding: UTF-8
+description: This is the official online documentation for the SIRIUS MS/MS Software
+#encoding: UTF-8
 #description: Description
