@@ -282,8 +282,6 @@ defaults:
       comments: false  #true
       share: false
       related: false
-
-defaults:
   # _pages
   - scope:
       path: ""
@@ -291,6 +289,7 @@ defaults:
     values:
       sidebar:
         nav: "global"
+        comments: false  #true
 
 #theme: minimal-mistakes-jekyll
 #remote_theme: "mmistakes/minimal-mistakes@4.21.0"
