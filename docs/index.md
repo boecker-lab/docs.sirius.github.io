@@ -1,6 +1,4 @@
 ## Welcome
-* TOC
-{:toc}
 
 SIRIUS is a *Java* software for analyzing metabolites from tandem mass
 spectrometry data. It combines the analysis of isotope patterns in MS
