@@ -1,4 +1,5 @@
 theme: jekyll-theme-cayman
 title: SIRIUS Documentation
 description: This is the official online documentation for the SIRIUS MS/MS Software
+markdown: kramdown
 logo: sirius_logo_4.svg
