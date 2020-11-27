@@ -26,12 +26,17 @@ not contain routines for peak picking from profiled spectra, nor
 routines for merging spectra in an LC/MS run. This is a deliberate
 design decision: We want you to use the best peak picking software out
 there — or alternatively, your favorite software. There are several
-tools specialized for this task, such as OpenMS, MZmine or XCMS. The
-Trinity workflow (see <https://www.youtube.com/watch?v=zDcY7iuvyQY>)
-produces picked peak lists that can directly be imported into SIRIUS.
+tools specialized for this task, such as [OpenMS](https://www.openms.de/), 
+[MZmine](http://mzmine.github.io/) or [XCMS](https://github.com/sneumann/xcms). 
+See our video tutorials on how to preprocess tour data for SIRIUS
+with [OpenMS](https://www.youtube.com/watch?v=ZTEY8_fnuZE) or 
+[MZmine](https://www.youtube.com/watch?v=Q0D6q9xQLSE).
 However, since version 4.4.0 SIRIUS contains a zero parameter
-preprocessing tool to directly import LCMS-Runs from format to help you
-getting started quickly.
+preprocessing tool to directly import LCMS-Runs from format 
+to help you getting started quickly. See how to use 
+[MSconvert/ProteoWizard](http://proteowizard.sourceforge.net/index.html)
+to convert your vendor formats to mzml for SIRIUS in this 
+[video tutorial](https://www.youtube.com/watch?v=xnjvZlSlp40). 
 
 SIRIUS will identify the molecular formula of the measured precursor
 ion, and will also annotates the spectrum by providing a molecular
