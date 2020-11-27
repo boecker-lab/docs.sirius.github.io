@@ -1,4 +1,3 @@
-# SIRIUS Documentation
 ## Welcome
 
 SIRIUS is a *Java* software for analyzing metabolites from tandem mass
