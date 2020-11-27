@@ -6,6 +6,8 @@ global:
         url: /#welcome
       - title: "Literature"
         url: /#literature
+  - title: "Prerequisites"
+    url: /prerequisites
 #  - title: "Installation"
 #        url: /docs/installation/
 #      - title: "Upgrading"
@@ -23,8 +25,7 @@ global:
 #        url: /docs/authors/
 #      - title: "Layouts"
 #        url: /docs/layouts/
-
-  - title: FAQ
+  - title: "FAQ"
     url: /faq/
-  - title: Changelog
+  - title: "Changelog"
     url: /changelog/
