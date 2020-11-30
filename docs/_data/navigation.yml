@@ -20,15 +20,15 @@ global:
     url: /cli
     children:
       - title: "SIRIUS"
-        url: /cli#sirius-identifying-molecular-formulas
+        url: /cli/#sirius-identifying-molecular-formulas
       - title: "ZODIAC"
-        url: /cli#zodiac-improve-molecular-formula-identifications
+        url: /cli/#zodiac-improve-molecular-formula-identifications
       - title: "CSI:FingerID"
-        url: /cli#csifingerid-identifying-molecular-structures
+        url: /cli/#csifingerid-identifying-molecular-structures
       - title: "CANOPUS"
-        url: /cli#canopus-predicting-compound-classes-without-identification
+        url: /cli/#canopus-predicting-compound-classes-without-identification
       - title: "PASSATUTTO"
-        url: /cli#passatutto-decoy-spectra-from-fragmentation-trees
+        url: /cli/#passatutto-decoy-spectra-from-fragmentation-trees
 #  - title: "Installation"
 #        url: /docs/installation/
 #      - title: "Upgrading"
