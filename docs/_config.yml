@@ -223,6 +223,8 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-algolia
+  - jekyll-relative-links
+#  - jekyll-pdf
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -285,14 +287,24 @@ defaults:
       related: false
   # _pages
   - scope:
-#      path: ""
+      path: "_pages"
       type: pages
     values:
       layout: single
       classes: wide
+#      pdf: true
       sidebar:
         nav: "global"
         comments: false  #true
+
+relative_links:
+  enabled:     true
+  collections: false
+
+#pdf:
+#  cache: false | directory | default: .asset-cache
+#  page_size: A4, Letter, etc. | default: A4
+#  layout: pdf #layout | default: pdf
 
 #theme: minimal-mistakes-jekyll
 #remote_theme: "mmistakes/minimal-mistakes@4.21.0"

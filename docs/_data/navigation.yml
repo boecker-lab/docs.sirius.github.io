@@ -2,8 +2,6 @@ global:
   - title: Introduction
     url: /
     children:
-      - title: "Welcome"
-        url: /#welcome
       - title: "Literature"
         url: /#literature
   - title: "Prerequisites"
@@ -14,7 +12,7 @@ global:
       - title: "Windows"
         url: /install/#windows
       - title: "MacOS"
-        url: /install/#macosx
+        url: /install/#mac-osx
       - title: "Linux"
         url: /install/#linux
       - title: "ILP Solver"

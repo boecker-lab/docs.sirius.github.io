@@ -21,10 +21,16 @@ SIRIUS can read CSV files which contain on each line a m/z and an
 intensity value separated by either a whitespace, a comma or a TAB
 character. For example:
 
-85.041199 4034.674316 203.052597 12382.624023 245.063171 50792.085938
-275.073975 124088.046875 305.084106 441539.125 335.094238 4754.061035
-347.09494 13674.210938 365.105103 55487.472656
-
+```
+85.041199 4034.674316 
+203.052597 12382.624023 
+245.063171 50792.085938
+275.073975 124088.046875 
+305.084106 441539.125 
+335.094238 4754.061035
+347.09494 13674.210938 
+365.105103 55487.472656
+```
 The intensity values can be arbitrary floating point values. SIRIUS will
 transform the intensities into relative intensities, so only the ratio
 between the intensity values is important.
@@ -73,7 +79,7 @@ A disadvantage of these data formats is that
 they do not contain all information necessary for SIRIUS to perform the
 computation. Missing meta information have to be provided via the
 commandline. Therefore, SIRIUS supports also an own file format very
-similar to the MGF format above. The file ending of this format is .
+similar to the MGF format above. The file ending of this format is `.ms`.
 Each file contains one measured compound (but arbitrary many spectra).
 Each line may contain a peak (given as m/z and intensity separated by a
 whitespace), meta information (starting with the **\>** symbol followed
@@ -124,6 +130,10 @@ collision 20
 347.09494 13674.210938 
 365.105103 55487.472656
 ```
+Note: The `.ms` file format is SIRIUS' internal format and might change with as same speed as the SIRIUS
+developend went forward. Nevertheless we try to provide backward compatibilty where possible.
+A more detailed and commented but also WIP example of the an `.ms` file can be found [here](ms-file.md)   
+
 
 ### LCMS-Runs
 
@@ -138,6 +148,16 @@ prepossessing tool .
 The SIRIUS project-space is a standardized directory structure that is
 organized in a three hierarchy levels, namely, the *project level*, the
 *compound level* and the *method level* (see Figure below for details).
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/project-space.svg" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Photo from Unsplash.</figcaption>
+</figure>
+
 
 On the *project level*, each compound corresponds to one sub-directory
 (*compound level*) storing the input data, parameters and results of the
@@ -170,12 +190,12 @@ The project-space is a SIRIUS-specific format that allows the user to
 access all results and analysis details, but may not be optimal for
 sharing this data with third party tools or data archives. For this
 purpose, SIRIUS provides an analysis report (`analysis_report.mztab`) in
-the standardized mzTab-M format . All results summarized in this report
+the standardized mzTab-M format. All results summarized in this report
 are linked to the results in the corresponding SIRIUS project-space,
 allowing the user to share summarized results using mzTab-M without
 losing the connection to the detailed results provided in the
-project-space. Furthermore, SIRIUS passes meta information such as scan
-numbers and ids of the input data into this analysis report. This allows
+project-space. Furthermore, SIRIUS passes meta information (if available in the input) 
+such as scan numbers and ids of the input data into this analysis report. This allows
 for an easy combination of the SIRIUS results with the results of other
 analyses such as MS1-based quantification.
 
@@ -186,22 +206,26 @@ analyses such as MS1-based quantification.
 Whenever SIRIUS requires the ion mode, it should be given in the
 following format:
 
-M+ADDUCT\]+ for positive ions \[M+ADDUCT\] for negative ions \[MADDUCT\]
-for losses \[M\]+ for instrinsically charged compounds
+```
+[M+ADDUCT]+ for positive ions
+[M+ADDUCT]- for negative ions
+[M-ADDUCT]+/[M-ADDUCT]- for losses 
+[M]+/[M]- for instrinsically charged compounds
+```
 
-ADDUCT is the molecular formula of the adduct. The most common
-ionization modes are , , , . Currently, SIRIUS supports only
-single-charged compounds, so is not valid. For intrinsic charged
-compounds and should be used.
+*ADDUCT* is the molecular formula of the adduct. The most common
+ionization modes are `[M+H]+, [M+Na]+,[M-H]-, [M+Cl]-`. 
+Currently, SIRIUS supports only single-charged compounds, so `[M+2H]2+` 
+is not valid and will be skipped during import. Further dimers are also not yet
+supported so that everything containing `[2M]` will be skipped during import.
 
 #### Molecular formulas
 
-
-Molecular Formulas in SIRIUS must not contain brackets. Hence, is not a
-valid molecular formula; write instead. Furthermore, all molecular
+Molecular Formulas in SIRIUS must not contain brackets. Hence, `2(C2H2)` is not a
+valid molecular formula; write `C4H4` instead. Furthermore, all molecular
 formulas in SIRIUS are always neutral, and there is no possibility to
 add a charge on a molecular formula (instead, charges are given
-separately). Hence, is not a valid molecular formula. Write instead, and
+separately). Hence, `CH3+` is not a valid molecular formula. Write `CH3` instead, and
 provide the charge separately via commandline option.
 
 #### Chemical alphabets
