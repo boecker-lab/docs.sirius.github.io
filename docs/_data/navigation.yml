@@ -10,6 +10,17 @@ global:
     url: /prerequisites
   - title: "Installation"
     url: /install
+    children:
+      - title: "Windows"
+        url: /install/#windows
+      - title: "MacOS"
+        url: /install/#macosx
+      - title: "Linux"
+        url: /install/#linux
+      - title: "ILP Solver"
+        url: /install/#installing-gurobi-and-cplex
+      - title: "Proxy Setting"
+        url: /install/#proxy-servers
   - title: "Quick Start"
     url: /quick-start
   - title: "Input, Output and Formats"
@@ -34,23 +45,6 @@ global:
         url: /cli/#canopus-predicting-compound-classes-without-identification
       - title: "PASSATUTTO"
         url: /cli/#passatutto-decoy-spectra-from-fragmentation-trees
-#  - title: "Installation"
-#        url: /docs/installation/
-#      - title: "Upgrading"
-#        url: /docs/upgrading/
-
-#  - title: Customization
-#    children:
-#      - title: "Configuration"
-#        url: /docs/configuration/
-#      - title: "Navigation"
-#        url: /docs/navigation/
-#      - title: "UI Text"
-#        url: /docs/ui-text/
-#      - title: "Authors"
-#        url: /docs/authors/
-#      - title: "Layouts"
-#        url: /docs/layouts/
   - title: "Developer information"
     url: /developers/
   - title: "FAQ"
