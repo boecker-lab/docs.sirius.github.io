@@ -120,8 +120,8 @@ instrument. SIRIUS recognizes that these MS/MS spectra belong to the
 same compound because they have the same parent mass. To analyze this
 compound, run:
 
-sirius –input demo-data/mgf/laudanosine.mgf –output \<outputdir\> formula
--p orbitrap
+`sirius --input demo-data/mgf/laudanosine.mgf --output <outputdir> formula
+-p orbitrap`
 
 The in should look like this is:
 
@@ -154,8 +154,8 @@ The directory contains two examples of the format. Each file contains a
 single compound measured with an Orbitrap instrument. To analyze this
 compound run:
 
-sirius -o \<outputdir\> -i demo-data/ms/Bicuculline.ms formula -p
-orbitrap
+`sirius -o <outputdir> -i demo-data/ms/Bicuculline.ms formula -p
+orbitrap`
 
 As the ms file already contains the correct molecular formula, SIRIUS
 will directly compute the fragmentation tree without decomposing the
@@ -166,8 +166,8 @@ If you want to enforce a molecular formula analysis and ranking
 option to ignore molecular the formula in the file. The number of
 formula candidates can be specified via the option:
 
-sirius -o \<outputdir\> -i demo-data/ms/Bicuculline.ms –ignore-formula
-formula -p orbitrap -c 5
+`sirius -o <outputdir> -i demo-data/ms/Bicuculline.ms --ignore-formula
+formula -p orbitrap -c 5`
 
 SIRIUS will now ignore the correct molecular formula in the file and
 output the 5 best candidates.
