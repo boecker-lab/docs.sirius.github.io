@@ -155,7 +155,7 @@ organized in a three hierarchy levels, namely, the *project level*, the
 
 <figure>
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Photo from Unsplash.</figcaption>
+  <figcaption>Schema of the SIRIUS project-space.</figcaption>
 </figure>
 
 
