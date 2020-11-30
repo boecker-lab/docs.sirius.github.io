@@ -25,6 +25,8 @@ global:
 #        url: /docs/authors/
 #      - title: "Layouts"
 #        url: /docs/layouts/
+  - title: "Developer information"
+    url: /developers/
   - title: "FAQ"
     url: /faq/
   - title: "Changelog"
