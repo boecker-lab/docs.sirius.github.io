@@ -12,7 +12,6 @@ computed with an automated workflow using the CLI.
 
 ## Input
 
-
 ### Mass spectra
 
 ##### Peakslists/CSV-Format
@@ -52,17 +51,25 @@ following meta information:
 
 This is an example for a MGF file:
 
-EGIN IONS PEPMASS=438.32382 CHARGE=1+ MSLEVEL=2 185.041199 4034.674316
+```
+BEGIN IONS 
+PEPMASS=438.32382 
+CHARGE=1+ 
+MSLEVEL=2 
+185.041199 4034.674316
 203.052597 12382.624023 245.063171 50792.085938 275.073975 124088.046875
 305.084106 441539.125 335.094238 4754.061035 347.09494 13674.210938
-365.105103 55487.472656 END IONS
-
+365.105103 55487.472656 
+END IONS
+```
 See also the GNPS database for other examples of MGF files.
 
 ##### SIRIUS MS-Format
 
 <span>**<span style="color: red">\[ms file needs
-update\]</span>**</span> A disadvantage of these data formats is that
+update\]</span>**</span> 
+
+A disadvantage of these data formats is that
 they do not contain all information necessary for SIRIUS to perform the
 computation. Missing meta information have to be provided via the
 commandline. Therefore, SIRIUS supports also an own file format very
@@ -73,6 +80,7 @@ whitespace), meta information (starting with the **\>** symbol followed
 by the information type, a whitespace and the value) or comments
 (starting with the **\#** symbol). The following fields are recognized
 by SIRIUS:
+
 
   - \>compound: The name of the measured compound (or any placeholder).
     This field is **mandatory**.
@@ -97,23 +105,31 @@ by SIRIUS:
     provide a collision energy
 
 An example for a .ms file:
+```
+compound Gentiobiose
+formula C12H22O11 
+ionization \[M+Na\]+ 
+parentmass 365.10544
 
-<span> </span>
+ms1 
+365.10543 85.63 366.10887 11.69 367.11041 2.67
 
-<span>‘</span><span>3ex </span><span>‘</span>compound Gentiobiose
-formula C12H22O11 ionization \[M+Na\]+ parentmass 365.10544
-
-ms1 365.10543 85.63 366.10887 11.69 367.11041 2.67
-
-collision 20 185.041199 4034.674316 203.052597 12382.624023 245.063171
-50792.085938 275.073975 124088.046875 305.084106 441539.125 335.094238
-4754.061035 347.09494 13674.210938 365.105103 55487.472656
+collision 20 
+185.041199 4034.674316 
+203.052597 12382.624023 
+245.063171 50792.085938 
+275.073975 124088.046875 
+305.084106 441539.125 
+335.094238 4754.061035 
+347.09494 13674.210938 
+365.105103 55487.472656
+```
 
 ### LCMS-Runs
 
 SIRIUS can import full LCMS-Runs in (mzML/mzXML) format via the
-prepossessing tool . <span>**<span style="color: red">\[todo: describe
-lcms-align\]</span>**</span>
+prepossessing tool . 
+<span>**<span style="color: red">\[todo: describe lcms-align\]</span>**</span>
 
 ## Output
 
@@ -196,6 +212,5 @@ each element. Chemical alphabets are written like molecular formulas.
 The maximum amount of an element is written in square brackets behind
 the element. If no square brackets are given, the element might occur
 arbitrary often. The standard alphabet is
-CHNOP<span>\[</span>5<span>\]</span>S, allowing the elements C, H, N O
-and S as well as up to five times the element P.
+CHNOP\[5\]S, allowing the elements C, H, N O and S as well as up to five times the element P.
 

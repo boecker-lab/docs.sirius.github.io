@@ -2,17 +2,23 @@
 permalink: /install/
 title: "Installation"
 ---
+<span>**<span style="color: red">\[update needed\]</span>**</span>
 
-To install SIRIUS, you only have to extract the archive you have
-downloaded to an arbitrary directory where you have write permissions.
-To run SIRIUS, you need to have a **Java Runtime Environment (JRE)
-version 11 or higher** installed. **If you run a 64-bit operating
-system, you also have to install a 64-bit Java runtime environment!**
+In principle, you just have to extract the archive you have
+downloaded to an arbitrary directory where you have write permissions
+to install SIRIUS. The Java (JRE) needed to run SIRIUS is already included.
+
+For Windows/MacOS we also provide installer packages (msi/pkg) which should be preferred 
+but might require admin permissions. Since we do not pay Microsoft/Apple for certification 
+you might have to confirm that you want to trust software from an unknown source on Windows/MacOS.
+On MacOS the option to confirm the execution of the installer (pkg) might be hidden under 
+`"System Settings" -> "Security & Privacy"`.
+
 If you have trouble installing SIRIUS, please let us 
 [know](mailto:sirius@uni-jena.de) and we will see if we can help.
 If you find that our installation guide is incomplete, or if you have
 some tricks that you want to share with your fellow scientists, please
-let us know so we can include them in this manual.
+let us know so we can include them in this manual, or even better, contribute them yourself.
 
 **Warning** All advice given here on how to get SIRIUS running on your
 system, is given without any warranty! If you are not sure what you are
@@ -21,35 +27,31 @@ Friday in July is System Administrator Appreciation Day!)
 
 ## Windows
 
+##### Zip version
 Extract the archive to an arbitrary directory where you have write
 permissions, such as `C:\SIRIUS`.
 
-To check if you have a 64-bit Windows operating system, open the Windows
-settings, go to “System”, then “Info”. You will see a line “System type”
-that tells you if your operating system is 32- or 64-bit. To check if
-your Java version is 64-bit, open a Command Prompt (press the Windows
-key, then start typing “command prompt”, start the Command Prompt) and
-type . If Windows complains that the java command is unknown, type `cd
-C:\ProgramData\Oracle\Java\javapath`, then . In the last line of the
-output, you will see if you have 64-bit Java installed. If this is not
-the case, but your Windows is 64-bit, you have to install the correct
-Java version from <https://java.com/>. Press “Download”, but *do not use
-the big red button to download Java!* Instead, go to “See all Java
-Downloads”, then choose “Windows 64-bit”.
+##### MSI (Installer) version
+Execute the installer, trust the unknown source and follow the instructions.
+You will have the option to choose an installation location and need to 
+accept the SIRIUS license agreement.
 
-Go to the SIRIUS directory. Run to start the graphical user interface.
+##### Execution 
+Go to the SIRIUS directory. Run `sirius-gui.exe` to start the graphical user interface.
 You might want to create a link on your desktop: Click and drag the file
 to the desktop, keeping the ALT key pressed. You can rename the link on
 your desktop as you like. You start SIRIUS by double-clicking this link.
 
-Run for the SIRIUS command line tool. To execute the SIRIUS command line
+If you have used the Installer you should also have a start menu entry for SIRIUS. 
+
+Run `sirius.exe` for the SIRIUS command line tool. To execute the SIRIUS command line
 tool from every location on your system, you have to add the location of
 the to your PATH environment variable: Open the Windows Setting, type
-“advanced” in the search window, say “yes” if Windows asks you. Press
-the “Environment Variables” button, select the “Path” variable in the
-lower panel, press “Edit…”, press “New”, enter the full directory path
+"advanced" in the search window, say "yes" if Windows asks you. Press
+the "Environment Variables" button, select the "Path" variable in the
+lower panel, press "Edit", press "New", enter the full directory path
 of SIRIUS, press RETURN. Close the Command Prompt, open a new one, type
-.
+`sirius`.
 
 ## Linux and Mac OS X
 
@@ -76,7 +78,7 @@ variable. To do so, open in an editor and add the following line
 
 export PATH=PATH:/sirius/bin/
 
-Note that you have to reopen your ”bash” shell to make the changes
+Note that you have to reopen your "bash" shell to make the changes
 effective.
 
 ## Proxy servers

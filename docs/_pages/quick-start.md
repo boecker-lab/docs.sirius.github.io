@@ -9,7 +9,7 @@ title: "Quick start"
 
 ### Working in single mode
 
-SIRIUS’s “Single mode” corresponds to analyzing a single compound with
+SIRIUS’s "Single mode" corresponds to analyzing a single compound with
 one or more mass spectra.
 
 1.  Move the three files , and from the demo data via Drag and Drop into

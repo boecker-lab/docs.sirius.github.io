@@ -14,6 +14,11 @@ global:
     url: /quick-start
   - title: "Input, Output and Formats"
     url: /io
+    children:
+      - title: "Input"
+        url: /io/#input
+      - title: "Output"
+        url: /io/#output
   - title: "Graphical User Interface"
     url: /gui
   - title: "Commandline interface"
