@@ -6,7 +6,7 @@ title: "Commandline Interface"
 The SIRIUS commandline tool can be called via the "binary/startscript" by
 simply running the command in your commandline:
 
-`sirius –help`
+`sirius --help`
 
 You can always use the option to get a documentation about the available
 commands and options.
@@ -38,7 +38,7 @@ Each subtool can also be called with the option to get a documentation
 about the available options and possible follow up commands in a
 toolchain. For the tool the command would be:
 
-`sirius formula –help`
+`sirius formula --help`
 
 ## SIRIUS: Identifying Molecular Formulas
 
@@ -47,7 +47,7 @@ measured ion. For this task SIRIUS provides the tool. The most basic way
 to use the tool with the generic text/CSV input:
 
 `sirius [OPTIONS] -1 <MS FILE> -2 <MS/MS FILE> -z <PARENTMASS>
-–adduct <adduct> formula`
+--adduct <adduct> formula`
 
 Where *MS FILE* and *MS/MS FILE* are either CSV or MGF files. If MGF
 files are used, you might omit the option. If you omit the option,
@@ -62,7 +62,7 @@ all spectra for a compound together with their meta data. They can also
 contain multiple compounds per file. Further SIRIUS is able to crawl an
 input directory for supported files:
 
-`sirius [OPTIONS] –input demo-data/ms formula [OPTIONS]`
+`sirius [OPTIONS] --input demo-data/ms formula [OPTIONS]`
 
 SIRIUS will pick the meta information (parentmass, ionization etc.) from
 the files in the given directory. This allows SIRIUS to run in batch
@@ -160,7 +160,7 @@ ZODIAC to filter low weight edges on the fly when creating the network.
 network that may decrease performance:**
 
 `sirius -i <input> -o <output> formula -c 50 zodiac
-–minLocalConnections 0 –edge-threshold 0.99`
+--minLocalConnections 0 --edge-threshold 0.99`
 
 ## CSI:FingerID: Identifying Molecular Structures
 
@@ -178,12 +178,12 @@ file is generated containing the top candidates from all compounds
 ordered by their confidence.
 
 `sirius -i demo-data/ms/Bicuculline.ms -o <output>formula -c 10
-structure –database pubchem`
+structure --database pubchem`
 
 When running together with the command could look like this:
 
 `sirius -i <input> -o <output> formula -c 50 zodiac structure
-–database bio`
+--database bio`
 
 ## CANOPUS: Predicting Compound Classes without Identification
 
@@ -192,7 +192,7 @@ molecular fingerprint predicted by CSI:FingerID. So can even provide
 compound class information for unidentified compound with no hit in a
 structure database:
 
-`sirius -i <input> -o <output> formula -c 10 structure –database 
+`sirius -i <input> -o <output> formula -c 10 structure --database 
 pubchem canopus`
 
 ## PASSATUTTO: Decoy Spectra from Fragmentation Trees
