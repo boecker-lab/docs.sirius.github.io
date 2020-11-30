@@ -8,6 +8,27 @@ global:
         url: /#literature
   - title: "Prerequisites"
     url: /prerequisites
+  - title: "Installation"
+    url: /install
+  - title: "Quick Start"
+    url: /quick-start
+  - title: "Input, Output and Formats"
+    url: /io
+  - title: "Graphical User Interface"
+    url: /gui
+  - title: "Commandline interface"
+    url: /cli
+    children:
+      - title: "SIRIUS"
+        url: /cli#sirius-identifying-molecular-formulas
+      - title: "ZODIAC"
+        url: /cli#zodiac-improve-molecular-formula-identifications
+      - title: "CSI:FingerID"
+        url: /cli#csifingerid-identifying-molecular-structures
+      - title: "CANOPUS"
+        url: /cli#canopus-predicting-compound-classes-without-identification
+      - title: "PASSATUTTO"
+        url: /cli#passatutto-decoy-spectra-from-fragmentation-trees
 #  - title: "Installation"
 #        url: /docs/installation/
 #      - title: "Upgrading"
