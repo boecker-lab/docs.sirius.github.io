@@ -55,12 +55,12 @@ reCaptcha:
 atom_feed:
   path                   : # blank (default) uses feed.xml
 search                   : true # true, false (default)
-search_full_content      : # true, false (default)
-search_provider          : lunr # lunr (default), algolia, google
+search_full_content      : true # true, false (default)
+search_provider          : algolia # lunr (default), algolia, google
 algolia:
-  application_id         : # YOUR_APPLICATION_ID
-  index_name             : # YOUR_INDEX_NAME
-  search_only_api_key    : # YOUR_SEARCH_ONLY_API_KEY
+  application_id         : ZU2X2YHUP1 # YOUR_APPLICATION_ID
+  index_name             : sirius_docu # YOUR_INDEX_NAME
+  search_only_api_key    : e313447ce87cd52cfdb984b4194eb7fb # YOUR_SEARCH_ONLY_API_KEY
   powered_by             : # true (default), false
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
@@ -222,6 +222,7 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-algolia
 
 # mimic GitHub Pages with --safe
 whitelist:
