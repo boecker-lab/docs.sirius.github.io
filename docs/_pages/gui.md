@@ -7,20 +7,20 @@ title: "Graphical User Interface"
 
 ## Overview
 
-Starting with version 3.1, our software ships with a Graphical User
-Interface. On top of the screen you find the toolbar (1). On the left
+Starting with version 3.1, our software ships with a Graphical User
+Interface. On top of the screen you find the toolbar (1). On the left
 side is the compound list (2) displaying all imported compounds. Each
 *compound* lists MS and MS/MS spectra corresponding to a single measured
 compound. If a compound has been processed successfully, you will see a
-tick mark on the right (3); if something goes wrong during computation
-you will see a cross symbol (4). The output of a computation is an
+tick mark on the right (3); if something goes wrong during computation
+you will see a cross symbol (4). The output of a computation is an
 ordered list of suggested molecular formula candidates. After selecting
 a compound an overview is displayed. It shows a list of all molecular
-formula candidates (5), sorted by score, the corresponding spectrum (6)
+formula candidates (5), sorted by score, the corresponding spectrum (6)
 and the fragmentation tree of the selected candidate molecular
-formula (7). Explained peaks are highlighted in the spectrum. Nodes in
+formula (7). Explained peaks are highlighted in the spectrum. Nodes in
 the fragmentation tree are colored according to their score. In the
-upper right corner are settings and bug report dialogs (8).
+upper right corner are settings and bug report dialogs (8).
 <span>**<span style="color: red">\[filter options etc\]</span>**</span>
 
 ## Data import
@@ -103,8 +103,8 @@ these three then just select the Q-TOF instrument.
 
 You can change the maximal allowed mass deviation in the *ppm* field.
 SIRIUS will only consider molecular formulas which mass deviations below
-the chosen ppm; for masses below 200 Da, the allowed mass deviation is
-\(200 \cdot \frac{ppm_{max}}{10^6}\).
+the chosen ppm; for masses below 200 Da, the allowed mass deviation is
+$$ (200 \cdot \frac{ppm_{max}}{10^6}) $$.
 
 Finally, you can select the number of molecular formula candidates that
 should be reported in the output, and what molecular formulas are
@@ -181,14 +181,14 @@ by CSI:FingerID.
 The length of the bars for the different score columns (isotope pattern,
 fragmentation pattern, total) as well as the displayed numbers for
 columns *Isotope Score* and *Tree Score*, correspond to *logarithms* of
-maximum likelihoods (probability that this hypothesis, i.e. molecular
+maximum likelihoods (probability that this hypothesis, i.e. molecular
 formula, will generate the observed data). In contrast, the number in
 the *Score* column is the posterior probability of the hypothesis
 (molecular formula), and these probablities sum to one. A higher
 posterior probability of the top hit may indicate that this molecular
 formula has a higher chance of being correct; but we stress that **a
-posterior probability of 90 %, must not be misunderstood as a 90 %
-probability that this molecular formula identification is correct\!**
+posterior probability of 90%, must not be misunderstood as a 90%
+probability that this molecular formula identification is correct! **
 The displayed probabilities are neither q-values nor Posterior Error
 Probabilities.
 

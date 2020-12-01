@@ -13,7 +13,7 @@ successfully process your data:
   - Be reminded that SIRIUS requires **high mass accuracy** data: The
     mass deviation should be within 20 ppm. We are confident that SIRIUS
     can also give useful information for worse mass accuracy (say,
-    50 ppm), but you should know what you are doing if you are
+    50 ppm), but you should know what you are doing if you are
     processing such data.
 
   - It is understood that some molecules generate more fragments,
@@ -21,13 +21,13 @@ successfully process your data:
     important to understand that without sufficient information, it is
     impossible to deduce the structure or even the molecular formula
     from a tandem mass spectrum that contains almost no peaks. For
-    example, three peaks in a fragmentation spectrum measured with 1 ppm
-    mass accuracy contain about 60 bit of information, ignoring
+    example, three peaks in a fragmentation spectrum measured with 1 ppm
+    mass accuracy contain about 60 bit of information, ignoring
     dependencies between fragments and distibution of molecular masses.
     With this information, it is simply not possible to find the correct
-    structure in a database such as PubChem, containing 100 million
-    structures. In comparison, ten peaks measured with 20 ppm mass
-    accuracy contain about 156 bit of information, again ignoring
+    structure in a database such as PubChem, containing 100 million
+    structures. In comparison, ten peaks measured with 20 ppm mass
+    accuracy contain about 156 bit of information, again ignoring
     dependencies and distributions. To this end, we ask you to provide
     **rich fragmentation spectra** to SIRIUS, meaning that you **must
     not noise-filter** these spectra, or let the peak
@@ -92,13 +92,13 @@ This results in notable differences only for molecules that contain
 
 There are different ways of computing the mass of an ionized molecule
 such as or that will result in slightly different results: in
-particular, adding the mass of a proton vs. subtracting the mass of an
+particular, adding the mass of a proton vs. subtracting the mass of an
 electron. Following suggestions by , SIRIUS computes this mass by
 *subtracting the rest mass of an electron*. To this end, the
 monoisotopic mass of is the monoisotopic mass of the molecule
-(95.049690 Da) minus the rest mass of an electron (0.000549 Da), which
-totals as 95.049141 Da. Similarly, the monoisotopic mass of equals
-117.031634 Da - 0.000549 Da = 117.031085 Da.
+(95.049690 Da) minus the rest mass of an electron (0.000549 Da), which
+totals as 95.049141 Da. Similarly, the monoisotopic mass of equals
+117.031634 Da - 0.000549 Da = 117.031085 Da.
 
 | element (symbol) | AN | isotope | abundance (%)                          | mass (Da)       |
 | ---------------: | -: | :-----: | -------------------------------------: | --------------: |
@@ -163,7 +163,7 @@ assumes that **this is the maximum allowed mass deviation**; it will
 **discard** all explanations that require a larger mass deviation. This
 implies that **if in doubt, you should use a larger mass accuracy** to
 ensure that SIRIUS can successfully annotate peaks in the spectrum. For
-masses below 200 Da, we use the absolute mass deviation at 200 Da, as we
+masses below 200 Da, we use the absolute mass deviation at 200 Da, as we
 found that small masses vary according to an absolute rather than a
 relative error.
 
@@ -171,10 +171,10 @@ relative error.
 
 Unless instructed otherwise, SIRIUS will consider all molecular formulas
 that are chemically feasible and explain the precursor mass of the
-molecule/ion: For example, if your query compound is pinensin A (,
-monoisotopic mass (2213.962) Da) then SIRIUS will consider all
+molecule/ion: For example, if your query compound is pinensin A (,
+monoisotopic mass (2213.962) Da) then SIRIUS will consider all
 19 746 670 candidate molecular formulas that explain this
-monoisotopic mass (assuming set of elements , see below, and 10 ppm mass
+monoisotopic mass (assuming set of elements , see below, and 10 ppm mass
 accuracy). SIRIUS penalizes candidate molecular formulas that deviate
 too strongly of what we assume a molecular formula of a biomolecule to
 look like (for example, will receive a penalty), but this penalty is
@@ -196,7 +196,7 @@ be provided from which these molecular formulas are generated. SIRIUS
 includes methods for the auto-detection of elements from the isotope and
 fragmentation pattern of the query compound .
 
-In case you compound is large (above 600 Da) or you have incomplete
+In case you compound is large (above 600 Da) or you have incomplete
 information (no isotope pattern), you can restrict SIRIUS to only
 consider molecular formulas found in PubChem. Doing so, it is not
 possible to ever detect molecules with a novel molecular formula,
@@ -205,7 +205,7 @@ though.
 Recent evaluations (for example, as part of the CASMI contest )
 indicated that one can determine molecular formulas by searching in a
 structure database using tool such as MAGMa, CFM-ID or CSI:FingerID.
-(Somewhat consequently, the CASMI 2016 contest did no longer have a
+(Somewhat consequently, the CASMI 2016 contest did no longer have a
 category for molecular formula identification.) **We strongly advice
 against doing so, as this is apparently a wrong prior problem.**
 Molecular formulas in a structure database are far from being uniformly
@@ -244,7 +244,7 @@ solved optimally, explaining why computations sometimes require
 significant running time for large molecules with rich fragmentation
 spectra.
 
-With SIRIUS 4.0, fragmentation tree computation has again been speeded
+With SIRIUS 4.0, fragmentation tree computation has again been speeded
 up significantly (around 36-fold to the previous version), through
 intricated algorithm engineering . If you think that computations should
 be speeded up even further, we ask you to cite our papers on swiftly
@@ -273,7 +273,7 @@ fragmentation as a tree.
 We have incorporated support for experimental setups (MS<sup>E</sup>,
 MS<sup>all</sup>, All Ion Fragmentation) where isotope peaks and
 fragment peaks are measured together in the same spectrum. For such
-experiments, SIRIUS 4 offers a combined isotope and fragmentation
+experiments, SIRIUS 4 offers a combined isotope and fragmentation
 pattern analysis. For DDA (Data-Dependent Acquisition) fragmentation
 spectra, isotope patterns are disturbed through the mass filter,
 resulting in non-trivial modifications of masses and intensities. At
@@ -290,13 +290,13 @@ each bit describes the presence or absence of a particular, fixed
 *molecular property*, usually the existence of a certain substructure.
 As an example, consider PubChem CACTVS fingerprints with length 881
 bits: Molecular property 121 encodes the presence of at least one
-"unsaturated non-aromatic heteroatom-containing ring size 3". Most
+"unsaturated non-aromatic heteroatom-containing ring size 3". Most
 bits are just explained via their SMARTS (SMiles ARbitrary Target
 Specification) string : For example, molecular property 357 of PubChem
-CACTVS encodes SMARTS string `[#6](\~[#6])(:c)(:n)`, corresponding to a
-central carbon atom connected to a second carbon atom via any bond, to a
-third aromatic carbon atom via an aromatic bond, and to an aromatic
-nitrogen atom via an aromatic bond. See
+CACTVS encodes SMARTS string <span>\[#6\](&#126;\[#6\])(:c)(:n)</span>, 
+corresponding to a central carbon atom connected to a second carbon atom 
+via any bond, to a third aromatic carbon atom via an aromatic bond, and 
+to an aromatic nitrogen atom via an aromatic bond. See
 [here](ftp://ftp.ncbi.nlm.nih.gov/pubchem/specifications/pubchem_fingerprints.pdf)
 for the full description of the CACTVS fingerprint. We ignore all
 molecular properties that can be derived from the molecular formula of
@@ -316,7 +316,7 @@ compound, CSI:FingerID predicts its molecular fingerprint using Machine
 Learning (linear Support Vector Machines), see  and  for the technical
 details. CSI:FingerID does not predict a single fingerprint type but
 instead, five of them: Namely, CDK Substructure fingerprints, PubChem
-CACTVS fingerprints, Klekota-Roth fingerprints , FP3 fingerprints, and
+CACTVS fingerprints, Klekota-Roth fingerprints , FP3 fingerprints, and
 MACCS fingerprints. In addition, CSI:FingerID predicts ECFP2 and ECFP4
 fingerprints  that appear sufficiently often in the training data.
 Different from other fingerprints, ECFP are not encoded via SMARTS
@@ -330,7 +330,7 @@ the same value, due to a hash collision.
 CSI:FingerID predicts only those molecular properties that showed
 reasonable prediction quality in cross validation (F(_1) at least
 (0.25), see below). In total, (3,215) molecular properties are
-predicted by CSI:FingerID 1.1.
+predicted by CSI:FingerID 1.1.
 
 CSI:FingerID does not only predict if some molecular property is zero
 (absent) or one (present); it also provides an **estimate how sure it is
@@ -341,7 +341,7 @@ molecular property is present; similarly, estimates close to zero for an
 absent molecular property; whereas estimates between (0.1) and (0.9)
 hint towards an unsure situation. Posterior probabilities are estimated
 using a method by , so we also refer to these estimates as "Platt
-probabilities". **But even if CSI:FingerID is 99 % sure that a molecular
+probabilities". **But even if CSI:FingerID is 99% sure that a molecular
 property is present, this does not mean that it is indeed present!**
 CSI:FingerID predicts thousands of molecular properties, and 10 out of
 1000 predictions should be incorrect at this level of accuracy.
@@ -359,7 +359,7 @@ with some care, as these measures were estimated from the training data
 using cross validation.
 
 It is important to understand that the predicted molecular fingerprint
-which is returned by the CSI:FingerID web service, has *per se* no
+which is returned by the CSI:FingerID web service, has *per se* no
 connections to any structures in any molecular structure database. That
 means that **even if the correct molecular structure is not contained in
 any structure database, the predicted fingerprint is still valid**
@@ -386,15 +386,13 @@ database".
     structure databases that contain biomolecules (metabolites and other
     compounds of biological relevance; molecules that are products of
     nature, or synthetic products with potential bioactivity).
-    Currently, this biomolecule structure database consists of KNApSAcK
-    , HMDB , ChEBI , KEGG , HSDB , MaConDa , BioCyc , UNPD , a subset of
-    biomolecules from ZINC , all structures from GNPS  and MassBank ,
-    and MeSH-annotated compounds from PubChem .
-
-## COSMIC - COnfidence for Small Molecule IdentifiCations
-
-TODO:Coming soon... Describe the new
-confidence Score!
+    Currently, this biomolecule structure database consists of KNApSAcK, 
+    HMDB, ChEBI, KEGG, HSDB, MaConDa, BioCyc, UNPD, a subset of
+    biomolecules from ZINC, all structures from GNPS and MassBank,
+    and MeSH-annotated compounds from PubChem.
+    
+[//]: <> (## COSMIC - Confidence for Small Molecule IdentifiCations)
+[//]: <> (TODO:Coming soon... Describe the new confidence Score!)
 
 ## Compound classes
 
@@ -416,7 +414,7 @@ estimation appear to work very well for negative ion mode data, too; but
 there is no guarantee for that.
 
 The Machine Learning part of CSI:FingerID, namely the essemble of linear
-Support Vector Machines, is currently (CSI:FingerID version 1.1) trained
+Support Vector Machines, is currently (CSI:FingerID version 1.1) trained
 on (12,108) compounds from  and (2,073) compounds from MassBank .
 In total, CSI:FingerID is trained on (14,181) compounds with
 (8,210) unique structures. Again, all spectra were recorded in

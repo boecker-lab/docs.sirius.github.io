@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 
 gem "github-pages", group: :jekyll_plugins
-gem 'jekyll-relative-links'
 
 group :jekyll_plugins do
   gem "jekyll-feed"
@@ -10,5 +9,7 @@ group :jekyll_plugins do
   gem "jekyll-paginate"
   gem "jekyll-include-cache"
   gem "jekyll-algolia"
+  gem 'jekyll-relative-links'
+  gem 'jekyll-spaceship'
 end
 

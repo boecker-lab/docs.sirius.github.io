@@ -224,6 +224,7 @@ plugins:
   - jekyll-include-cache
   - jekyll-algolia
   - jekyll-relative-links
+  - jekyll-spaceship
 #  - jekyll-pdf
 
 # mimic GitHub Pages with --safe
