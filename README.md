@@ -41,7 +41,26 @@ by this project are already on you system.
 ```bundle update```
 
 5. Serve locally 
+
 ```bundle exec jekyll serve```
+
+Per default the local server is running at <http://127.0.0.1:4000/docs.sirius.github.io/>.   
+The output should look like this:
+```
+Configuration file: ~/docs.sirius.github.io/docs/_config.yml
+            Source: ~/docs.sirius.github.io/docs
+       Destination: ~/docs.sirius.github.io/docs/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+      Remote Theme: Using theme mmistakes/minimal-mistakes
+       Jekyll Feed: Generating feed for posts
+   GitHub Metadata: No GitHub API authentication could be found. Some fields may be missing or have incorrect data.
+                    done in 11.675 seconds.
+~/gems/gems/pathutil-0.16.2/lib/pathutil.rb:502: warning: Using the last argument as keyword parameters is deprecated
+ Auto-regeneration: enabled for '/home/fleisch/workspace/docs.sirius.github.io/docs'
+    Server address: http://127.0.0.1:4000/docs.sirius.github.io/
+  Server running... press ctrl-c to stop.
+```
 
 6. Deploy to github pages by pushing your changes into the `master` branch of this 
 repository. It may take a few minutes until the page is build by GitHub.
