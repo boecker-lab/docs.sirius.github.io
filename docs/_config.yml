@@ -316,24 +316,3 @@ defaults:
 relative_links:
   enabled:     true
   collections: false
-
-#pdf:
-#  cache: false | directory | default: .asset-cache
-#  page_size: A4, Letter, etc. | default: A4
-#  layout: pdf #layout | default: pdf
-
-#theme: minimal-mistakes-jekyll
-#remote_theme: "mmistakes/minimal-mistakes@4.21.0"
-#theme: jekyll-theme-cayman
-#title: SIRIUS Documentation
-#description: This is the official online documentation for the SIRIUS MS/MS Software
-#markdown: kramdown
-#logo: sirius_logo_4.svg
-#plugins:
-#  - jekyll-include-cache
-#  - jekyll-sitemap
-#  - jekyll-mentions
-#  - jemoji
-#  - jekyll-redirect-from
-
-#  - jekyll-feed

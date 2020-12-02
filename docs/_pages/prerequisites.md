@@ -150,7 +150,6 @@ molecular formula in case boron is present.
 |                  |    |<sup>81</sup>Br|                         49.31% |        80.916291 |
 |       iodine (I) | 53 |<sup>127</sup>I|                           100% |       126.904473 |
 
-
 **We suggest to calibrate your instrument with ion masses as calculated
 above.** In any case, you should *be aware of this tiny mass
 difference*, as this can result in unexpected behavior when decomposing
