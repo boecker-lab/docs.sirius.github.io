@@ -104,7 +104,8 @@ these three then just select the Q-TOF instrument.
 You can change the maximal allowed mass deviation in the *ppm* field.
 SIRIUS will only consider molecular formulas which mass deviations below
 the chosen ppm; for masses below 200 Da, the allowed mass deviation is
-$$ (200 \cdot \frac{ppm_{max}}{10^6}) $$.
+$(200 \cdot \frac{ppm_{max}}{10^6})$.
+
 
 Finally, you can select the number of molecular formula candidates that
 should be reported in the output, and what molecular formulas are

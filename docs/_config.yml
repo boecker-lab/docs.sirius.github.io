@@ -200,6 +200,7 @@ kramdown:
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
+  math: mathJax
 
 
 # Sass/SCSS
@@ -224,7 +225,7 @@ plugins:
   - jekyll-include-cache
   - jekyll-algolia
   - jekyll-relative-links
-  - jekyll-spaceship
+#  - jekyll-spaceship
 #  - jekyll-pdf
 
 # mimic GitHub Pages with --safe
