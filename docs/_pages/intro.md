@@ -61,10 +61,10 @@ to identify the structure of the measured compound. For this purpose,
 you can also use the SIRIUS library directly, instead of the command
 line interface. See .
 
-Since version 3.1, our software ships with a **Graphical User
+Since version 3.1, our software ships with a **Graphical User
 Interface** (GUI). The GUI version also includes the commanline tool. A
 slim version without GUI is available as separate download. Since
-version 4.4.0 the GUI and CLI share the same persistence layer, so
+version 4.4.0 the GUI and CLI share the same persistence layer, so
 **all** results and intermediate steps can be exported/imported between
 GUI and CLI
 
@@ -74,7 +74,7 @@ The *scientific development* behind SIRIUS and CSI:FingerID required
 numerous man-years of PhD students, postdocs and principal
 investigators; an educated guess would be roughly 35 man-years. This
 estimate does not include building the shiny Graphical User Interface
-that was introduced in version 3.1. But it is not the user interface or
+that was introduced in version 3.1. But it is not the user interface or
 software development that does the work here; it is our scientific
 research that made SIRIUS and CSI:FingerID possible. It is understood
 that the work of 15 years cannot be described in a single paper.
@@ -83,22 +83,22 @@ Please cite all papers that you feel relevant for your work. Please do
 not cite this manual or the SIRIUS or CSI:FingerID website, but rather
 our scientific papers.
 
-### SIRIUS 4
+### SIRIUS 4
 
-  - Kai Dührkop, Markus Fleischauer, Marcus Ludwig, Alexander A.
-    Aksenov, Alexey V. Melnik, Marvin Meusel, Pieter C. Dorrestein, Juho
-    Rousu, and Sebastian Böcker. **SIRIUS 4: a rapid tool for turning
-    tandem mass spectra into metabolite structure information.** *Nat
-    methods*, 16, 2019. doi: <https://doi.org/10.1038/s41592-019-0344-8>
+ - Kai Dührkop, Markus Fleischauer, Marcus Ludwig, Alexander A. Aksenov, Alexey V. Melnik, Marvin Meusel, Pieter C. Dorrestein, Juho Rousu, and Sebastian Böcker.
+[**Sirius 4: turning tandem mass spectra into metabolite structure information.**](https://doi.org/10.1038/s41592-019-0344-8)
+*Nat Methods*, 2019.
+
+### CANOPUS – Compound Class Prediction 
+ - Kai Dührkop, Louis-Félix Nothias, Markus Fleischauer, Raphael Reher, Marcus Ludwig, Martin A. Hoffmann, Daniel Petras, William H. Gerwick, Juho Rousu, Pieter C. Dorrestein and Sebastian Böcker.
+[**Systematic classification of unknown metabolites using high-resolution fragmentation mass spectra.**](https://doi.org/10.1038/s41587-020-0740-8)
+*Nat Biotechnol*, 2020.
 
 ### ZODIAC – molecular formula annotation
 
-  - Marcus Ludwig, Louis-Félix Nothias, Kai Dührkop, Irina Koester,
-    Markus Fleischauer, Martin A. Hoffmann, Daniel Petras, Fernando
-    Vargas, Mustafa Morsy, Lihini Aluwihare, Pieter C. Dorrestein,
-    Sebastian Böcker **ZODIAC: database-independent molecular formula
-    annotation using Gibbs sampling reveals unknown small molecules.**
-    *bioRxiv*, 842740, 2019. doi: <https://doi.org/10.1101/842740>
+ - Marcus Ludwig, Louis-Félix Nothias, Kai Dührkop, Irina Koester, Markus Fleischauer, Martin A. Hoffmann, Daniel Petras, Fernando Vargas, Mustafa Morsy, Lihini Aluwihare, Pieter C. Dorrestein, Sebastian Böcker.
+[**Database-independent molecular formula annotation using Gibbs sampling through ZODIAC.**](https://doi.org/10.1038/s42256-020-00234-6)
+*Nat Mach Intell*, 2020.
 
 ### Searching in molecular structure databases
 
