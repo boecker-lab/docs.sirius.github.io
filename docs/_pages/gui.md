@@ -3,7 +3,7 @@ permalink: /gui/
 title: "Graphical User Interface"
 ---
 
-<span>**<span style="color: red">\[update needed\]</span>**</span>
+<span>**<span style="color: red">\[update needed!\]</span>**</span>
 
 ## Overview
 
@@ -21,7 +21,9 @@ and the fragmentation tree of the selected candidate molecular
 formula (7). Explained peaks are highlighted in the spectrum. Nodes in
 the fragmentation tree are colored according to their score. In the
 upper right corner are settings and bug report dialogs (8).
-<span>**<span style="color: red">\[filter options etc\]</span>**</span>
+
+
+<span>**<span style="color: red">\[TODO: filter options etc\]</span>**</span>
 
 ## Data import
 
