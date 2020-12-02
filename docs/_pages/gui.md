@@ -2,8 +2,18 @@
 permalink: /gui/
 title: "Graphical User Interface"
 ---
-
 <span>**<span style="color: red">\[update needed!\]</span>**</span>
+
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/gui.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>SIRIUS main application window.</figcaption>
+</figure>
+
 
 ## Overview
 
@@ -35,6 +45,15 @@ belonging to a single compound.) The single import mode is recommended
 if your data consists of several CSV (comma separated values) files,
 such as the data from the CASMI challenges. First press on *Import* to
 start the import dialog.
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/load.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Import dialog.</figcaption>
+</figure>
 
 For each spectrum you have to select the MS level (either MS1 or MS/MS).
 If you have MSn spectra you can just import them as MS/MS spectra. You
@@ -181,6 +200,15 @@ can be filtered using the corresponding text field. A green row
 highlights the molecular formula of the best candidate structure found
 by CSI:FingerID.
 
+{% capture fig_img %}
+![Foo]({{ "/assets/images/overview.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Overview tab.</figcaption>
+</figure>
+
 The length of the bars for the different score columns (isotope pattern,
 fragmentation pattern, total) as well as the displayed numbers for
 columns *Isotope Score* and *Tree Score*, correspond to *logarithms* of
@@ -197,6 +225,15 @@ Probabilities.
 
 ### Tree view tab
 
+{% capture fig_img %}
+![Foo]({{ "/assets/images/tree_view.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Tree view tab.</figcaption>
+</figure>
+
 The *Tree view* tab displays the estimated fragmentation tree. Each node
 in this tree assigns a molecular formula to a peak in the (merged) MS/MS
 spectrum. Each edge is a hypothetical fragmentation reaction. The user
@@ -211,12 +248,29 @@ tree.
 
 ### Spectrum view tab
 
+{% capture fig_img %}
+![Foo]({{ "/assets/images/spectra_view.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Spectrum view tab.</figcaption>
+</figure>
+
 In the *Spectrum view* tab, all peaks that are annotated by the
 fragmentation tree are colored in orange. Peaks that are annotated as
 noise are colored black. Hovering with the mouse over a peak shows its
 detailed annotation.
 
 ### CSI:FingerID view
+{% capture fig_img %}
+![Foo]({{ "/assets/images/fingerprints.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>CSI:FingerID tab.</figcaption>
+</figure>
 
 This tab shows you the candidate structures for the selected molecular
 formula ordered by the CSI:FingerID search score. If you want to filter
@@ -299,6 +353,15 @@ button.
         configuration will be tested if you hit the save button (see
         Figure below).
 
+{% capture fig_img %}
+![Foo]({{ "/assets/images/proxySetting.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Proxy Settings.</figcaption>
+</figure>
+
   - *Error report settings*
     
       - Add an email address which will be sent with a bug report. This
@@ -307,16 +370,3 @@ button.
     
       - Decide whether specific hardware and operating system
         information is send with your bug report.
-
-## Bug Reports
-
-We do our best so that you will not be confronted with errors while
-using SIRIUS. But we cannot test every possible scenario. We encourage
-you to send us a bug report in case you encounter an error. It is very
-helpful if you specify your email address. Often, errors are very
-specific and can only be reproduced and understood with help of the
-input file and knowledge of the used parameter settings. Therefore, we
-might reach out to you. With your help, we will continue to improve
-SIRIUS. You can also contact us at
-[sirius@uni-jena.de](sirius@uni-jena.de).
-
