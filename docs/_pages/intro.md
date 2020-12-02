@@ -15,7 +15,7 @@ instruments such as TOF, Orbitrap and FT-ICR usually provide high mass
 accuracy data, as well as coupled instruments like Q-TOF, IT-TOF or
 IT-Orbitrap. Spectra measured with a quadrupole or linear trap do not
 provide the high mass accuracy that is required for our method. See
-Sec. [3.4](#sec:mass-deviations) on what “mass accuracy” means in
+Section ["Mass deviations"]({{ "/prerequisites/#mass-deviations" | relative_url }}) on what "mass accuracy" means in
 detail for SIRIUS.
 
 SIRIUS expects **MS and MS/MS** spectra as input. It is possible to omit
@@ -33,7 +33,7 @@ tools specialized for this task, such as [OpenMS](https://www.openms.de/),
 See our video tutorials on how to preprocess tour data for SIRIUS
 with [OpenMS](https://www.youtube.com/watch?v=ZTEY8_fnuZE) or 
 [MZmine](https://www.youtube.com/watch?v=Q0D6q9xQLSE).
-However, since version 4.4.0 SIRIUS contains a zero parameter
+However, since version 4.4.0 SIRIUS contains a zero parameter
 preprocessing tool to directly import LCMS-Runs from format 
 to help you getting started quickly. See how to use 
 [MSconvert/ProteoWizard](http://proteowizard.sourceforge.net/index.html)
@@ -49,7 +49,7 @@ leading to the fragment peaks.
 
 SIRIUS uses CSI:FingerID to identify the structure of a compound by
 searching in a molecular structure database. Here and in the following,
-“structure” refers to the identity and connectivity (with bond
+"structure" refers to the identity and connectivity (with bond
 multiplicities) of the atoms, but no stereochemistry information.
 Elucidation of stereochemistry is currently beyond the power of
 automated search engines.
