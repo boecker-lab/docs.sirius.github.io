@@ -71,8 +71,6 @@ we save all images at this location.
 In principle standard markdown syntax can be used to show images. Path resolution can be done
 with the [Liquid templating system](https://jekyllrb.com/docs/datafiles/), e.g. `{{ "/assets/images/project-space.svg" | relative_url }}`
 
-
-
 #### Markdown image
 ```
 ![Schema of the SIRIUS project-space]({{ "/assets/images/project-space.svg" | relative_url }})
@@ -81,7 +79,6 @@ with the [Liquid templating system](https://jekyllrb.com/docs/datafiles/), e.g. 
 ```
 <img src="{{ "/assets/images/project-space.svg" | relative_url }}" alt="Schema of the SIRIUS project-space1" height="24" width="48">
 ```
- 
 
 #### HTML image (responsive)
 This is the preferred method to include images but also a bit lengthy.
@@ -95,6 +92,27 @@ This is the preferred method to include images but also a bit lengthy.
   <figcaption>Schema of the SIRIUS project-space.</figcaption>
 </figure>
 ``` 
-  
+
+### Insert Maths
+You can insert mathematical fomulas using latex math syntax within the Markdown files.
+The rendering is done by [MathJax](https://www.mathjax.org/).
+
+#### Inline Maths
+```
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor 
+invidunt ut labore et dolore magna aliquyam erat $(200 \cdot \frac{ppm_{max}}{10^6})$.
+```
+
+#### Maths Block
+Note the empty line before and after the Maths block!
+```
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
+sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+
+$$(200 \cdot \frac{ppm_{max}}{10^6})$$
+
+At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, 
+no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+```
 
 
