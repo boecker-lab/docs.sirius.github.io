@@ -4,8 +4,6 @@ global:
     children:
       - title: "Literature"
         url: /#literature
-  - title: "Prerequisites"
-    url: /prerequisites
   - title: "Installation"
     url: /install
     children:
@@ -17,10 +15,33 @@ global:
         url: /install/#linux
       - title: "ILP Solver"
         url: /install/#installing-gurobi-and-cplex
-      - title: "Proxy Setting"
-        url: /install/#proxy-servers
+#      - title: "Proxy Setting"
+#        url: /install/#proxy-servers
   - title: "Quick Start"
     url: /quick-start
+  - title: "Prerequisites"
+    url: /prerequisites
+    children:
+      - title: "Spectral quality"
+        url: /prerequisites/#spectral-quality
+      - title: "Monoisotopic massesPermalink"
+        url: /prerequisites/#monoisotopic-masses
+      - title: "Theoretical masses of ions"
+        url: /prerequisites/#theoretical-masses-of-ions
+      - title: "Mass deviations"
+        url: /prerequisites/#mass-deviations
+      - title: "Molecular formulas"
+        url: /prerequisites/#molecular-formulas
+      - title: "Fragmentation trees"
+        url: /prerequisites/#fragmentation-trees
+      - title: "Molecular fingerprints"
+        url: /prerequisites/#molecular-fingerprints
+      - title: "Structure Databases"
+        url: /prerequisites/#molecular-structures
+      - title: "Compound classes"
+        url: /prerequisites/#compound-classes
+      - title: "Training data"
+        url: /prerequisites/#training-data
   - title: "Input, Output and Formats"
     url: /io
     children:
