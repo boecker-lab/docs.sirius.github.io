@@ -25,7 +25,7 @@ url                      : "https://boecker-lab.github.io" # the base hostname &
 baseurl                  : "/docs.sirius.github.io" # the subpath of your site, e.g. "/blog"
 repository               : "boecker-lab/docs.sirius.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "sirius_logo.svg" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo                     : "/assets/images/sirius_logo.svg" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true # true, false (default)
 breadcrumb_home_label : "Welcome"
@@ -142,7 +142,6 @@ footer:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url:
-
 
 # Reading Files
 include:
@@ -292,6 +291,21 @@ defaults:
       path: "_pages"
       type: pages
     values:
+      # site header
+      header:
+#        overlay_image: /assets/images/sirius-screener.png
+        overlay_image: /assets/images/sirius_header.jpg
+#        overlay_filter: 0.5 # same as adding an opacity of 0.5 to a black background
+        #  caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+        actions:
+          - label: "Docu GitHub"
+            url: "https://github.com/boecker-lab/docs.sirius.github.io"
+          - label: "SIRIUS"
+            url: "https://bio.informatik.uni-jena.de/software/sirius/"
+          - label: "SIRIUS GitHub"
+            url: "https://github.com/boecker-lab/sirius"
+          - label: "YouTube"
+            url: "https://www.youtube.com/channel/UCIbW_ZFSADRUQ-T5nmgU4VA"
       layout: single
       classes: wide
 #      pdf: true
