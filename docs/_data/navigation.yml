@@ -51,6 +51,13 @@ global:
         url: /io/#output
   - title: "Graphical User Interface"
     url: /gui
+    children:
+      - title: "Data Import"
+        url: /gui/#data-import
+      - title: "Computing Results"
+        url: /gui/#computing-results
+      - title: "Visualizing Results"
+        url: /gui/#visualization-of-the-results
   - title: "Commandline interface"
     url: /cli
     children:
