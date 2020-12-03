@@ -103,7 +103,7 @@ our scientific papers.
 [**Database-independent molecular formula annotation using Gibbs sampling through ZODIAC.**](https://doi.org/10.1038/s42256-020-00234-6)
 *Nat Mach Intell*, 2020.
 
-### Searching in molecular structure databases
+### CSI:FingerID – Searching in molecular structure databases
 
   - Kai Dührkop, Huibin Shen, Marvin Meusel, Juho Rousu and Sebastian
     Böcker. [**Searching molecular structure databases with tandem mass

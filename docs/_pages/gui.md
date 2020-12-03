@@ -2,11 +2,14 @@
 permalink: /gui/
 title: "Graphical User Interface"
 ---
-<span>**<span style="color: red">\[update needed!\]</span>**</span>
 
+## Overview
+
+Starting with version 3.1, our software ships with a Graphical User
+Interface. 
 
 {% capture fig_img %}
-![Foo]({{ "/assets/images/gui.png" | relative_url }})
+![Foo]({{ "/assets/images/gui_marked.png" | relative_url }})
 {% endcapture %}
 
 <figure>
@@ -14,36 +17,38 @@ title: "Graphical User Interface"
   <figcaption>SIRIUS main application window.</figcaption>
 </figure>
 
+On top of the screen you find the toolbar (1-5). 
+The left most button group (1) is for creating, opening and saving project-spaces.
+The second one (2) is for [importing](#data-import) either a single compound or data containing multiple compounds into
+the project-space. The third button group (3) is for exporting data, e.g. for [GNPS FBMN](https://doi.org/10.1038/s41592-020-0933-6) 
+or writing [project-space summaries]({{ "/io/#sirius-project-space/" | relative_url }}). 
+The fourth button group (4) is for computations, containing "compute button", "job view" and "custom database importer".  
+The right most button group (5) contains "log", "settings", "webservice info" and "bug report" dialogs (8)
 
-## Overview
+On the left side is the compound list (6) displaying all imported compounds. 
+Each *compound* lists MS and MS/MS spectra corresponding to a single measured
+compound. For each compound adduct type, precursor mass and retention time ist shown. 
+On the right side is the active result view (7). You can choose between different result
+views with the tab selector (8). 
 
-Starting with version 3.1, our software ships with a Graphical User
-Interface. On top of the screen you find the toolbar (1). On the left
-side is the compound list (2) displaying all imported compounds. Each
-*compound* lists MS and MS/MS spectra corresponding to a single measured
-compound. If a compound has been processed successfully, you will see a
-tick mark on the right (3); if something goes wrong during computation
-you will see a cross symbol (4). The output of a computation is an
-ordered list of suggested molecular formula candidates. After selecting
-a compound an overview is displayed. It shows a list of all molecular
-formula candidates (5), sorted by score, the corresponding spectrum (6)
-and the fragmentation tree of the selected candidate molecular
-formula (7). Explained peaks are highlighted in the spectrum. Nodes in
-the fragmentation tree are colored according to their score. In the
-upper right corner are settings and bug report dialogs (8).
-
-
-<span>**<span style="color: red">\[TODO: filter options etc\]</span>**</span>
+Here, the "Sirius Overview" is selected. 
+The output of a Sirius computation (de novo formula identification) is an
+ordered list of suggested molecular formula candidates.
+After selecting a compound (dark blue background in the compound list) the results are displayed in the result pane. 
+It shows a list of molecular formula candidates, sorted by score the corresponding spectrum (9)
+and the fragmentation tree (10) of the selected candidate molecular formula. 
+Explained peaks are highlighted (green) in the spectrum. Nodes in
+the fragmentation tree are colored according to their rel intensity.
 
 ## Data import
 
-SIRIUS offers two modes for data import: *Single import* and *Batch
-import*. The single import is triggered when clicking on the *Import*
+SIRIUS offers two modes for data import: *Single compound import* and *Batch
+import*. The single compound import is triggered when clicking on the *"Import Compound"*
 button in the toolbar. It allows you to import **one** compound. (We
-will use the term “compound” as a description of MS and MS/MS spectra
+will use the term "compound" as a description of MS and MS/MS spectra
 belonging to a single compound.) The single import mode is recommended
 if your data consists of several CSV (comma separated values) files,
-such as the data from the CASMI challenges. First press on *Import* to
+such as the data from the CASMI challenges. First press on *"Import Compound"* to
 start the import dialog.
 
 {% capture fig_img %}
@@ -52,7 +57,7 @@ start the import dialog.
 
 <figure>
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Import dialog.</figcaption>
+  <figcaption>Single compound import dialog.</figcaption>
 </figure>
 
 For each spectrum you have to select the MS level (either MS1 or MS/MS).
@@ -61,37 +66,44 @@ can select a name for the compound as well as an ionization mode. The
 collision energy is an optional attribute as it does not affect the
 computation.
 
-You can import and files using the *Batch Import*. In this mode SIRIUS
-will read all attributes (MS level, ionization, parent mass) directly
+You can import `.ms`, `.mgf`, Agilent's `.cef` and `.mzml` (or `.mzxml`) files using the *"Import"* button or Drag'n'Drop. 
+In this mode SIRIUS will read all attributes (MS level, ionization, parent mass) directly
 from the file. You can, however, change these attributes afterward by
 selecting the imported compound and clicking on the *Edit* button.
+When importing multiple `.mzml` (or `.mzxml`) at once, SIRIUS will ask you if it should align them. 
 
-See section *Supported Input Formats* for a description of the file
-formats and .
+See [Input Formats]({{ "/io/#input/" | relative_url }}) for descriptions of file
+formats and further details.
 
-### Drag and drop
 
-SIRIUS supports Drag and Drop: Just move your input files into the
-application window. This is usually the easiest way to import data into
-SIRIUS. Supported file formats for Drag and Drop are , , and .
-
-## Identifying molecular formulas with SIRIUS
-
+## Computing results
 As for importing data SIRIUS offers two computation modes: *Single
 Computation* and *Batch Computation*. The Single Computation allows you
 to setup different parameters for each compound. You can trigger it by
-right-clicking on a compound and choosing *Compute* in the context menu.
-The Batch Computation will compute all compounds in the workspace.
-Besides, you can select multiple compounds and choose *Compute* to only
-compute a subset of your imported compounds.
+right-clicking on a **single** compound and choosing *Compute* in the context menu or by double clicking a compound.
 
-### Parent mass
+Right-clicking **multiple** selected compounds and choosing *Compute* will trigger batch computation for
+the selected compounds.
+Clicking the *"Compute All"* button (toolbar) will compute all compounds in the project-space.
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/compute_marked.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Batch compute dialog.</figcaption>
+</figure>
+
+### Identifying molecular formulas with the SIRIUS tool (1)
+
+#### Parent mass (single compound mode)
 
 The exact m/z of the parent peak. If MS1 data is present, the m/z of the
 monoisotopic peak is presented as default. Otherwise, an autocompletion
 offers a list of high intensive peaks from the MS/MS spectra.
 
-### Elements besides CHNOPS
+#### Elements allowed in the Formula
 
 SIRIUS will use the elements carbon (C), hydrogen (H), nitrogen (N),
 oxygen (O), phosphorus (P) and sulfur (S) by default. Additional
@@ -100,22 +112,15 @@ additional elements will increase running time. Using (too many)
 elements that do not occur in the correct molecular formula of the
 compound might worsen the results.
 
-The automated detection of a set of “uncommon elements” is available if
+The automated detection of a set of "uncommon elements" is available if
 the isotope pattern is provided. These elements are sulfur (S), chlorine
-(Cl), bromine (Br), boron (B), and selenium (Se). Using *Auto detect*
+(Cl), bromine (Br), boron (B), and selenium (Se). Using *Auto detect* (single compound mode)
 will clear your element selection and will set new values based on the
 detection. Autodetection is usually quite sensitive and rather
 overpredicts the actual quantity of an element.
 
-### Other
-
-The ionization mode determines the polarity of the measurement (positive
-or negative) as well as the adduct (e.g. protonation or sodium adduct).
-If you choose *Unknown Positive* or *Unknown Negative* SIRIUS will not
-care about the adduct, but report the molecular formula of the **ion**
-in the candidate list. Otherwise, SIRIUS will subtract the adducts
-formula from the ions formula and report neutral molecular formulas in
-the candidate list as well as in the fragmentation trees.
+#### Other
+<span>**<span style="color: red">\[TODO: description of ionization and adducts.\]</span>**</span>
 
 Choose either *Q-TOF*, *Orbitrap* or *FT-ICR* in the instrument field.
 The chosen instrument affects only very few parameters of the method
@@ -128,75 +133,71 @@ the chosen ppm; for masses below 200 Da, the allowed mass deviation is
 $(200 \cdot \frac{ppm_{max}}{10^6})$.
 
 
-Finally, you can select the number of molecular formula candidates that
+You can select the number of molecular formula candidates that
 should be reported in the output, and what molecular formulas are
-considered as candidates: If you select option *all possible molecular
-formulas* then SIRIUS will enumerate over all molecular formulas that
+considered as candidates: If you do **not** select any database
+then SIRIUS will enumerate over all molecular formulas that
 match the ion mass, filtering out only molecular formulas with negative
-ring double bond equivalent. If you choose *all PubChem formulas* then
-SIRIUS will select all molecular formulas from PubChem. Option *organic
-PubChem formulas* ignores molecular formulas containing elements
+ring double bond equivalent (default). If you select a database for fomrula
+search, SIRIUS will select/score all molecular formulas from the selected databases.
+The Option *organic formulas* ignores molecular formulas containing elements
 untypical for organic compounds such as Si or Mg; molecular formulas
-pass this filter if they are composed solely of . When choosing
-*formulas from biomolecule databases*, SIRIUS will use all formulas
-contained in databases with biological compounds or compounds that could
-be expected in biological experiments (e.g. KEGG, BioCyc, HMDB, but also
-MaConDa).
+pass this filter if they are composed solely of CHNOPSBBrClIF.
 
   - We never search in these databases directly, but rather in our local
     database copies. Although we regularly update our database, it may
     happen that some new compound in, say, ChEBI is not already
     contained in our local copy.
 
-  - When choosing a *molecular fromulas from a database* option, SIRIUS
-    will ignore your element restrictions and instead allow all
+  - When selecting databases, SIRIUS will ignore your element restrictions and instead allow all
     elements.
 
-  - We do not recommend to restrict molecular formula searching to
-    biomolecule databases, but doing so significantly speeds up
+  - We do not recommend restricting molecular formula search to
+    (biomolecule) databases, but doing so significantly speeds up
     computations, as SIRIUS has to consider significantly less molecular
     formulas and download significantly smaller candidate structure
     lists.
 
-## Identifying molecular structure with CSI:FingerID
+### Improve molecular formula ranking with the ZODIAC tool (2)
+<span>**<span style="color: red">\[TODO: ZODIAC description\]</span>**</span>
+
+### Identifying molecular structure with the CSI:FingerID tool  (3)
 
 After computing the fragmentation trees you can search these in a
-structure database. Again we provide a *single mode* and a *batch mode*.
-The single mode is available by clicking on the molecular formula of
-interest, then switching to the *CSI:FingerID* tab and pressing on the
-*Search online with CSI:FingerID* button. The batch mode can be
-triggered by pressing on the *CSI:FingerID* in the toolbar.
+structure database. 
 
-When starting the CSI:FingerID search you are again asked to choose
-between PubChem or biomolecule databases. This is mainly a performance
-issue because you can filter your result lists afterwards by any
-database you want to. Our biomolecule database is several magnitudes
-smaller than PubChem and downloading and searching structure lists from
-biomolecule databases is significantly faster. However, when searching
-in biomolecule databases you might never see if there are structures
+When selecting the CSI:FingerID search (3) you can again select
+multiple structure databases. When searching in biomolecule databases you might never see if there are structures
 with possibly much better score from PubChem. Therefore, we recommend to
 search in PubChem and filter the result list if you expect the result to
-be contained in biomolecule databases.
+be contained in biomolecule databases. Note: Searching in a small database will **not**
+longer speedup computations since SIRIUS has to score whole PubChem to
+compute confidence measures or merge results with customs dbs anyways.
+
+<span>**<span style="color: red">\[TODO: description of filter options etc.\]</span>**</span>
+
+
+### Predicting Compound classes with the CANOPUS tool  (4)
+<span>**<span style="color: red">\[TODO: CANOPUS description\]</span>**</span>
 
 ## Visualization of the results
-
-Each compound has an *Overview* panel to display the most important
-information. The candidate list contains the best candidate molecular
-formulas ordered by score. <span>**<span style="color: red">\[all these
-new ionizations\]</span>**</span> Molecular formulas are always written
-in neutral form, except for compounds with unknown ionization mode. For
-the selected molecular formula candidates the *Spectra view* visualizes
+For each compound different tabs can be shown in the result panel.
+The *"SIRIUS Overview"* panel displays the most important
+information of the molecular formula identification. The candidate list contains the best candidate molecular
+formulas ordered by score. Molecular formulas are always written
+in neutral form. For the selected molecular formula candidates the *Spectra view* visualizes
 which peak is assigned to a fragment. The corresponding fragmentation
 tree is visualized in the *Tree view*. Both views can be displayed in a
-separate panel to have a more detailed look. The *CSI:FingerID* panel
-displays candidates from structure prediction.
+separate panel to have a more detailed look. The *"CSI:FingerID Overview"* and *"CSI:FingerID Details"* panel
+displays results from the CSI:FingerID structure search. The *"Fingerprint"* panel shows information about
+the molecular properties of the molecular fingerprint predicted by CSI:FingerID. The *"CANOPUS"* panel
+shows the [Classyfire](http://classyfire.wishartlab.com/) classes predicted by CANOPUS. 
 
 ### Overview tab
 
-The *Overview* tab displays the candidate list, spectrum and
+The *"SIRIUS Overview"* tab displays the candidate list, spectrum and
 fragmentation tree of the selected candidate. Candidates are ordered by
-total score, but can be sorted by any other column. Moreover, the list
-can be filtered using the corresponding text field. A green row
+total score, but can be sorted by any other column. A green row
 highlights the molecular formula of the best candidate structure found
 by CSI:FingerID.
 
@@ -210,12 +211,12 @@ by CSI:FingerID.
 </figure>
 
 The length of the bars for the different score columns (isotope pattern,
-fragmentation pattern, total) as well as the displayed numbers for
+fragmentation pattern, Sirius (isotope + tree), zodiac) as well as the displayed numbers for
 columns *Isotope Score* and *Tree Score*, correspond to *logarithms* of
 maximum likelihoods (probability that this hypothesis, i.e. molecular
 formula, will generate the observed data). In contrast, the number in
-the *Score* column is the posterior probability of the hypothesis
-(molecular formula), and these probablities sum to one. A higher
+the *Sirius Score* column is the posterior probability of the hypothesis
+(molecular formula), and these probabilities sum to one. A higher
 posterior probability of the top hit may indicate that this molecular
 formula has a higher chance of being correct; but we stress that **a
 posterior probability of 90%, must not be misunderstood as a 90%
@@ -239,11 +240,11 @@ in this tree assigns a molecular formula to a peak in the (merged) MS/MS
 spectrum. Each edge is a hypothetical fragmentation reaction. The user
 has the choice between different node styles and color schemes.
 
-The displayed fragmentation tree can be exported as JPEG, GIF, and PNG.
-Alternatively, the Dot file format contains a text description of the
+The displayed fragmentation tree can be exported as `svg` or `pdf` vector graphics.
+Alternatively, the `Dot` file format contains a text description of the
 tree. It can be used to render the tree externally. The command-line
 tool Graphviz can transform dot files into image formats (PDF, SVG, PNG
-etc). The JSON format yields a machine-readable representation of the
+etc). The `JSON` format yields a machine-readable representation of the
 tree.
 
 ### Spectrum view tab
@@ -258,13 +259,13 @@ tree.
 </figure>
 
 In the *Spectrum view* tab, all peaks that are annotated by the
-fragmentation tree are colored in orange. Peaks that are annotated as
+fragmentation tree are colored in green. Peaks that are annotated as
 noise are colored black. Hovering with the mouse over a peak shows its
 detailed annotation.
 
-### CSI:FingerID view
+### CSI:FingerID Detail view
 {% capture fig_img %}
-![Foo]({{ "/assets/images/fingerprints.png" | relative_url }})
+![Foo]({{ "/assets/images/fingerid_details.png" | relative_url }})
 {% endcapture %}
 
 <figure>
@@ -277,16 +278,14 @@ formula ordered by the CSI:FingerID search score. If you want to filter
 the candidate list by a certain database (e.g. only compounds from KEGG
 and BioCyc) you can press the filter button. A menu will open displaying
 all available databases. Only candidates will be displayed that are
-enabled in this filter menu. Note that PubChem is enabled by default
-and, therefore, always the complete list is shown. If you want to see
-only compounds from KEGG and BioCyc you have to disable PubChem and
-enable KEGG and BioCyc.
+enabled in this filter menu. If you want to see
+only compounds from KEGG and BioCyc you have to check only KEGG and BioCyc.
 
 Another way of filtering is the XLogP slider. If you have information
 about retention times and expected logP values of your measured compound
 you can use this slider to filter the candidate list by certain XLogP
 values. The slider allows you to define min and max values. XLogP is
-calculated using the Chemical Development Kit CDK .
+calculated using the [Chemistry Development Kit (CDK)](https://cdk.github.io/).
 
 The blue and red squares are some visualization of the CSI:FingerID
 predictions and scoring. All blue squares represent molecular structures
@@ -309,25 +308,55 @@ If the substructure matches several times in the molecule, it is once
 highlighted in dark blue while all other matches are highlighted in a
 translucent blue.
 
-Even if the correct structure is not found by CSI:FingerID — in
-particular if the correct structure is not contained in any database —
-you can get information about the structure by looking at the predicted
-structures: When clicking on the large light green squares you see which
-molecular substructures are expected in the measured compound.
+You can enable filtering by the selected substructure (button with the structure),
+to only show candidates that contain the selected substructure.
+Further, you can filter the candidate list using a SMARTS pattern or full-text search.
 
 You can open a context menu by right click on the compound. It offers
 you to open the compound in PubChem or copy the InChI or InChI key in
 your clipboard.
 
-If the compound is contained in any biomolecule database, a blue label
+If the compound is contained in any database, a blue or grey label
 with the name of this database is displayed below the compound. You can
-click on most of these labels to open the database entry in your browser
-window.
+click on blue labels to open the database entry in your browser
+window. Yellow labels indicate that the candidate is contained in the corresponding
+custom database. A red label indicates that this candidate is flagged with an unknown database.
+This can for example happen when loading results that have been computed with a custom database that 
+is not available on the current system. Black labels are just additional information such as if the candidate 
+is part of the CSI:FingerID training data.
 
-You can export a single candidate list by clicking on the *export list*
-button.
+
+### Fingerprint tab
+Even if the correct structure is not found by CSI:FingerID — in
+particular if the correct structure is not contained in any database —
+you can get information about the structure by looking at the predicted
+fingerprint. The *"Fingerprint"* tab shows a list of all molecular properties 
+the predicted fingerprint consists of. 
+For each molecular property its definition and posterior propability is shown
+as well as some information about the predictor for this property.
+When selecting a molecular property, examples for this property are shown below the list.
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/fingerprint.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Fingerprint view.</figcaption>
+</figure>
+
+
 
 ## Settings
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/proxySetting.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Proxy Settings.</figcaption>
+</figure>
 
   - *General settings*
     
@@ -353,15 +382,6 @@ button.
         configuration will be tested if you hit the save button (see
         Figure below).
 
-{% capture fig_img %}
-![Foo]({{ "/assets/images/proxySetting.png" | relative_url }})
-{% endcapture %}
-
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Proxy Settings.</figcaption>
-</figure>
-
   - *Error report settings*
     
       - Add an email address which will be sent with a bug report. This
@@ -370,3 +390,14 @@ button.
     
       - Decide whether specific hardware and operating system
         information is send with your bug report.
+
+## Webservice
+<span>**<span style="color: red">\[TODO: description of connection check dialog.\]</span>**</span>
+{% capture fig_img %}
+![Foo]({{ "/assets/images/connectionCheck.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Webservice status dialog.</figcaption>
+</figure>
