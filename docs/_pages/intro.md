@@ -58,11 +58,14 @@ SIRIUS can be used within an analysis pipeline. For example, you can
 identify the molecular formula of the ion and the fragment peaks, and
 use this information as input for other tools such as FingerID or MAGMa
 to identify the structure of the measured compound. For this purpose,
-you can also use the SIRIUS library directly, instead of the command
-line interface. See .
+you can also use the SIRIUS libraries directly, instead of the command
+line interface. See [boecker-lab/sirius-libs](https://github.com/boecker-lab/sirius-libs) 
+for the sources. The pre-build jars are available via our
+[maven repository](https://bio.informatik.uni-jena.de/repository/webapp/#/artifacts/browse/tree/General/libs-release/de/unijena/bioinf/ms).
+See ["Developer information"]({{ "/developers/" | relative_url }}) for details.
 
 Since version 3.1, our software ships with a **Graphical User
-Interface** (GUI). The GUI version also includes the commanline tool. A
+Interface** (GUI). The GUI version also includes the commandline tool. A
 slim version without GUI is available as separate download. Since
 version 4.4.0 the GUI and CLI share the same persistence layer, so
 **all** results and intermediate steps can be exported/imported between
@@ -70,17 +73,17 @@ GUI and CLI
 
 ## Literature
 
-The *scientific development* behind SIRIUS and CSI:FingerID required
+The *scientific development* behind SIRIUS, ZODIAC, CSI:FingerID and CANOPUS required
 numerous man-years of PhD students, postdocs and principal
 investigators; an educated guess would be roughly 35 man-years. This
 estimate does not include building the shiny Graphical User Interface
 that was introduced in version 3.1. But it is not the user interface or
 software development that does the work here; it is our scientific
-research that made SIRIUS and CSI:FingerID possible. It is understood
-that the work of 15 years cannot be described in a single paper.
+research that made SIRIUS, ZODIAC, CSI:FingerID and CANOPUS possible. 
+It is understood that the work of 15 years cannot be described in a single paper.
 
 Please cite all papers that you feel relevant for your work. Please do
-not cite this manual or the SIRIUS or CSI:FingerID website, but rather
+**not** cite this manual or the SIRIUS or CSI:FingerID website, but rather
 our scientific papers.
 
 ### SIRIUS 4
@@ -103,75 +106,71 @@ our scientific papers.
 ### Searching in molecular structure databases
 
   - Kai Dührkop, Huibin Shen, Marvin Meusel, Juho Rousu and Sebastian
-    Böcker. **Searching molecular structure databases with tandem mass
-    spectra using CSI:FingerID.** *Proc Natl Acad Sci U S A*,
-    112(41):12580–12585, 2015.
+    Böcker. [**Searching molecular structure databases with tandem mass
+    spectra using CSI:FingerID.**](https://doi.org/10.1073/pnas.1509788112) *Proc Natl Acad Sci U S A*, 2015.
 
   - Huibin Shen, Kai Dührkop, Sebastian Böcker and Juho Rousu.
-    **Metabolite Identification through Multiple Kernel Learning on
-    Fragmentation Trees.** *Bioinformatics*, 30(12):i157–i164, 2014.
+    [**Metabolite Identification through Multiple Kernel Learning on
+    Fragmentation Trees.**](https://doi.org/10.1093/bioinformatics/btu275) *Bioinformatics*, 2014.
     Proc. of *Intelligent Systems for Molecular Biology* (ISMB 2014).
 
 ### Fragmentation Tree Computation
 
-  - Sebastian Böcker and Kai Dührkop. **Fragmentation trees reloaded.**
-    *J Cheminform*, 8:5, 2016.
+  - Sebastian Böcker and Kai Dührkop. [**Fragmentation trees reloaded.**](https://doi.org/10.1007/978-3-319-16706-0_10)
+    *J Cheminform*, 2016.
 
   - W. Timothy J. White, Stephan Beyer, Kai Dührkop, Markus Chimani and
-    Sebastian Böcker. **Speedy Colorful Subtrees.** In *Proc. of
+    Sebastian Böcker. [**Speedy Colorful Subtrees.**](https://doi.org/10.1007/978-3-319-21398-9_25) In *Proc. of
     Computing and Combinatorics Conference* (COCOON 2015), volume 9198
-    of *Lect Notes Comput Sci*, pages 310–322. Springer, Berlin, 2015.
+    of *Lect Notes Comput Sci*, 2015.
 
   - Imran Rauf, Florian Rasche, François Nicolas and Sebastian Böcker.
-    **Finding Maximum Colorful Subtrees in practice.** *J Comput Biol*,
-    20(4):1–11, 2013.
+    [**Finding Maximum Colorful Subtrees in practice.**](https://doi.org/10.1089/cmb.2012.0083) *J Comput Biol*, 2013.
 
   - Florian Rasche, Aleš Svatoš, Ravi Kumar Maddula, Christoph Böttcher
-    and Sebastian Böcker. **Computing fragmentation trees from tandem
-    mass spectrometry data.** *Anal Chem* 83(4):1243–1251, 2011.
+    and Sebastian Böcker. [**Computing fragmentation trees from tandem
+    mass spectrometry data.**](https://doi.org/10.1021/ac101825k) *Anal Chem*, 2011.
 
-  - Sebastian Böcker and Florian Rasche. **Towards de novo
-    identification of metabolites by analyzing tandem mass spectra.**
-    *Bioinformatics* 24(16):i49–i55, 2008.
+  - Sebastian Böcker and Florian Rasche. [**Towards de novo
+    identification of metabolites by analyzing tandem mass spectra.**](https://doi.org/10.1093/bioinformatics/btn270)
+    *Bioinformatics*, 2008.
 
 ### Isotope pattern analysis
 
   - Sebastian Böcker, Matthias C. Letzel, Zsuzsanna Lipták and Anton
-    Pervukhin. **SIRIUS: decomposing isotope patterns for metabolite
-    identification.** *Bioinformatics* 25(2): 218–224, 2009.
+    Pervukhin. [**SIRIUS: decomposing isotope patterns for metabolite
+    identification.**](https://doi.org/10.1093/bioinformatics/btn603) *Bioinformatics*, 2009.
 
   - Sebastian Böcker, Matthias Letzel, Zsuzsanna Lipták and Anton
-    Pervukhin. **Decomposing metabolomic isotope patterns.** In *Proc.
+    Pervukhin. [**Decomposing metabolomic isotope patterns.**](https://doi.org/10.1007/11851561_2) In *Proc.
     of Workshop on Algorithms in Bioinformatics* (WABI 2006), volume
-    4175 of *Lect Notes Comput Sci*, pages 12–23. Springer, Berlin,
-    2006.
+    4175 of *Lect Notes Comput Sci*, 2006.
 
 ### Passatutto – Fragmentation tree based decoy spectra
 
   - Kerstin Scheubert, Franziska Hufsky, Daniel Petras, Mingxun Wang,
     Louis-Felix Nothias, Kai Dührkop, Nuno Bandeira, Pieter C.
-    Dorrestein, Sebastian Böcker. **Significance estimation for large
-    scale metabolomics annotations by spectral matching.** *Nat Commun*
-    8, 1494 (2017) <https://doi.org/10.1038/s41467-017-01318-5>
+    Dorrestein, Sebastian Böcker. [**Significance estimation for large
+    scale metabolomics annotations by spectral matching.**](https://doi.org/10.1038/s41467-017-01318-5) 
+    *Nat Commun*, 2017
 
 ### Auto-detection of elements
 
   - Marvin Meusel, Franziska Hufsky, Fabian Panter, Daniel Krug, Rolf
-    Müller and Sebastian Böcker. **Predicting the presence of uncommon
-    elements in unknown biomolecules from isotope patterns.** *Anal
-    Chem*, 88(15):7556–7566, 2016.
+    Müller and Sebastian Böcker. [**Predicting the presence of uncommon
+    elements in unknown biomolecules from isotope patterns.**](https://doi.org/10.1021/acs.analchem.6b01015) *Anal
+    Chem*, 2016.
 
 ### Mass decomposition
 
   - Kai Dührkop, Marcus Ludwig, Marvin Meusel and Sebastian Böcker.
-    **Faster mass decomposition.** In *Proc. of Workshop on Algorithms
+    [**Faster mass decomposition.**](https://doi.org/10.1007/978-3-642-40453-5_5) In *Proc. of Workshop on Algorithms
     in Bioinformatics* (WABI 2013), volume 8126 of *Lect Notes Comput
-    Sci*, pages 45–58. Springer, Berlin, 2013.
+    Sci*, 2013.
 
-  - Sebastian Böcker and Zsuzsanna Lipták. **A fast and simple algorithm
-    for the Money Changing Problem.** *Algorithmica* 48(4):413–432,
-    2007.
+  - Sebastian Böcker and Zsuzsanna Lipták. [**A fast and simple algorithm
+    for the Money Changing Problem.**](https://doi.org/10.1007/s00453-007-0162-8) *Algorithmica*, 2007.
 
-  - Sebastian Böcker and Zsuzsanna Lipták. **Efficient Mass
-    Decomposition.** In *Proc. of ACM Symposium on Applied Computing*
-    (ACM SAC 2005), pages 151-157. ACM press, New York, 2005.
+  - Sebastian Böcker and Zsuzsanna Lipták. [**Efficient Mass
+    Decomposition.**](https://doi.org/10.1145/1066677.1066715) In *Proc. of ACM Symposium on Applied Computing*
+    (ACM SAC 2005), 2005.
