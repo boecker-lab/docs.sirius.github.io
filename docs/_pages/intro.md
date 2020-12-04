@@ -7,7 +7,7 @@ SIRIUS is a *Java* software for analyzing metabolites from tandem mass
 spectrometry data. It combines the analysis of isotope patterns in MS
 spectra with the analysis of fragmentation patterns in MS/MS spectra,
 and uses CSI:FingerID as a web service to search in molecular structure
-databases.
+databases. Further it integrates CANOPUS for de novo compound class prediction.  
 
 SIRIUS requires **high mass accuracy** data. The mass deviation of your
 MS and MS/MS spectra should be within 20 ppm. Mass Spectrometry
@@ -40,27 +40,35 @@ to help you getting started quickly. **See how to use
 to convert your vendor formats to mzml for SIRIUS in this 
 [video tutorial](https://www.youtube.com/watch?v=xnjvZlSlp40)**. 
 
-SIRIUS will identify the molecular formula of the measured precursor
+**SIRIUS** will identify the molecular formula of the measured precursor
 ion, and will also annotates the spectrum by providing a molecular
 formula for each fragment peak. Peaks that receive no annotation are
 assumed to be noise peaks. Furthermore, a **fragmentation tree** is
 predicted; this tree contains the predicted fragmentation reaction
 leading to the fragment peaks.
 
-SIRIUS uses CSI:FingerID to identify the structure of a compound by
+**ZODIAC** improves the ranking of the formula candidates provided by SIRIUS. It 
+re-ranks the candidates by considering joint fragments 
+and losses between fragmentation trees of different compounds in a data set.
+
+**CSI:FingerID** identifies the structure of a compound by
 searching in a molecular structure database. Here and in the following,
 "structure" refers to the identity and connectivity (with bond
 multiplicities) of the atoms, but no stereochemistry information.
 Elucidation of stereochemistry is currently beyond the power of
 automated search engines.
 
-SIRIUS can be used within an analysis pipeline. For example, you can
+**CANOPUS** predicts compound classes from the molecular fingerprint predicted by CSI:FingerID 
+without any database search involved. Hence, it provides structural information for compounds 
+for which neither spectral nor structural reference data are available.
+
+The SIRIUS software can also be used within an analysis pipeline. For example, you can
 identify the molecular formula of the ion and the fragment peaks, and
 use this information as input for other tools such as FingerID or MAGMa
 to identify the structure of the measured compound. For this purpose,
-you can also use the SIRIUS libraries directly, instead of the command
-line interface. See [boecker-lab/sirius-libs](https://github.com/boecker-lab/sirius-libs) 
-for the sources. The pre-build jars are available via our
+you can either use the command line interface or the SIRIUS libraries directly. 
+See [boecker-lab/sirius-libs](https://github.com/boecker-lab/sirius-libs) 
+for the sources. The pre-built jars are available via our
 [maven repository](https://bio.informatik.uni-jena.de/repository/webapp/#/artifacts/browse/tree/General/libs-release/de/unijena/bioinf/ms).
 See ["Developer information"]({{ "/developers/" | relative_url }}) for details.
 
