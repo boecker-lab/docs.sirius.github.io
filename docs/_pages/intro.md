@@ -16,8 +16,7 @@ MS and MS/MS spectra should be within 20 ppm. Mass Spectrometry
 instruments such as TOF, Orbitrap and FT-ICR usually provide high mass
 accuracy data, as well as coupled instruments like Q-TOF, IT-TOF or
 IT-Orbitrap. Spectra measured with a quadrupole or linear trap do not
-provide the high mass accuracy that is required for our method. See
-Section ["Mass deviations"]({{ "/prerequisites/#mass-deviations" | relative_url }}) on what "mass accuracy" means in
+provide the high mass accuracy that is required for our method. See [Mass deviations]({{ "/prerequisites/#mass-deviations" | relative_url }}) on what "mass accuracy" means in
 detail for SIRIUS.
 
 SIRIUS expects **MS and MS/MS** spectra as input. It is possible to omit
@@ -26,8 +25,7 @@ give you worse results. In this case, you should consider limiting the
 candidate molecular formulas to those found in PubChem.
 
 SIRIUS expects **processed peak lists** (centroided spectra). It does
-not contain routines for peak picking from profiled spectra, nor
-routines for merging spectra in an LC/MS run. This is a deliberate
+not contain routines for peak picking from profiled spectra. This is a deliberate
 design decision: We want you to use the best peak picking software out
 there — or alternatively, your favorite software. There are several
 tools specialized for this task, such as [OpenMS](https://www.openms.de/), 
@@ -39,11 +37,11 @@ However, since version 4.4.0 SIRIUS contains a zero parameter
 preprocessing tool to directly import LCMS-Runs from `.mzml` (or `mzxml`) format 
 to help you getting started quickly. **See how to use 
 [MSconvert/ProteoWizard](http://proteowizard.sourceforge.net/index.html)
-to convert your vendor formats to mzml for SIRIUS in this 
+to convert your vendor formats to `mzml` for SIRIUS in this 
 [video tutorial](https://www.youtube.com/watch?v=xnjvZlSlp40)**. 
 
 **SIRIUS** will identify the molecular formula of the measured precursor
-ion, and will also annotates the spectrum by providing a molecular
+ion, and will also annotate the spectrum by providing a molecular
 formula for each fragment peak. Peaks that receive no annotation are
 assumed to be noise peaks. Furthermore, a **fragmentation tree** is
 predicted; this tree contains the predicted fragmentation reaction
@@ -55,8 +53,8 @@ and losses between fragmentation trees of different compounds in a data set.
 
 **CSI:FingerID** identifies the structure of a compound by
 searching in a molecular structure database. Here and in the following,
-"structure" refers to the identity and connectivity (with bond
-multiplicities) of the atoms, but no stereochemistry information.
+"*structure*" refers to the identity and connectivity (with bond
+multiplicities) of the atoms, but **no** stereochemistry information.
 Elucidation of stereochemistry is currently beyond the power of
 automated search engines.
 
@@ -65,7 +63,7 @@ without any database search involved. Hence, it provides structural information 
 for which neither spectral nor structural reference data are available.
 
 The SIRIUS software can also be used within an analysis pipeline. For example, you can
-identify the molecular formula of the ion and the fragment peaks, and
+identify the molecular formula of the ion and fragment peaks, and
 use this information as input for other tools such as FingerID or MAGMa
 to identify the structure of the measured compound. For this purpose,
 you can either use the command line interface or the SIRIUS libraries directly. 
