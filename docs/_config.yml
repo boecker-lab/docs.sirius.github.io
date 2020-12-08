@@ -301,7 +301,7 @@ defaults:
         actions:
           - label: "Docu GitHub"
             url: "https://github.com/boecker-lab/docs.sirius.github.io"
-          - label: "SIRIUS"
+          - label: "SIRIUS Website"
             url: "https://bio.informatik.uni-jena.de/software/sirius/"
           - label: "SIRIUS GitHub"
             url: "https://github.com/boecker-lab/sirius"
