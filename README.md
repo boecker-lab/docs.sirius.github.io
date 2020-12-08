@@ -6,7 +6,7 @@ This repo contains the sources of the SIRIUS online documentation at
 <https://boecker-lab.github.io/docs.sirius.github.io/>. 
 We try to keep this documentation as uptodate as possible. 
 Contributions from the community are very welcome. The content of this documentation is written 
-[Markdown]([markdown syntax](https://guides.github.com/features/mastering-markdown/)), so no programming skills 
+[Markdown](https://guides.github.com/features/mastering-markdown/), so no programming skills 
 needed to create content.
 
 If your are looking for the sources of the SIRIUS Software see  [*boecker-lab/sirius*](https://github.com/boecker-lab/sirius). 
