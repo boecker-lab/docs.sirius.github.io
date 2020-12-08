@@ -36,7 +36,7 @@ tools specialized for this task, such as [OpenMS](https://www.openms.de/),
 with [OpenMS](https://www.youtube.com/watch?v=ZTEY8_fnuZE) or 
 [MZmine](https://www.youtube.com/watch?v=Q0D6q9xQLSE)**.
 However, since version 4.4.0 SIRIUS contains a zero parameter
-preprocessing tool to directly import LCMS-Runs from format 
+preprocessing tool to directly import LCMS-Runs from `.mzml` (or `mzxml`) format 
 to help you getting started quickly. **See how to use 
 [MSconvert/ProteoWizard](http://proteowizard.sourceforge.net/index.html)
 to convert your vendor formats to mzml for SIRIUS in this 
