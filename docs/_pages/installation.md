@@ -5,17 +5,18 @@ title: "Installation"
 
 In principle, installing SIRIUS just means extracting the archive you have
 downloaded to an arbitrary directory where you have write permissions. 
-The Java (JRE) needed to run SIRIUS is already included.
+The *Java Runtime Environment* (JRE) needed to run SIRIUS is already included.
 
 **For Windows/MacOS** we also provide **installer packages** (msi/pkg) which **should be preferred** 
 but might require admin permissions. Since we do not pay Microsoft/Apple for certification 
 you might have to confirm that you want to trust software from an unknown source on Windows/MacOS.
 
-If you have trouble installing SIRIUS, please let us 
-[know](mailto:sirius@uni-jena.de) and we will see if we can help.
+If you have trouble installing SIRIUS, please [let us 
+know](mailto:sirius@uni-jena.de) and we will see if we can help.
 If you find that our installation guide is incomplete, or if you have
 some tricks that you want to share with your fellow scientists, please
-let us know, so we can include them in this manual, or even better, contribute them yourself.
+let us know, so we can include them in this manual, or even better, 
+[contribute them yourself](https://github.com/boecker-lab/docs.sirius.github.io#contributing-to-the-sirius-documentation).
 
 **Warning** All advice given here on how to get SIRIUS running on your
 system, is given without any warranty! If you are not sure what you are
@@ -106,11 +107,11 @@ members. You can find installation instruction on their websites. Using
 *Gurobi* or *CPLEX* will improve the speed of fragmentation tree
 computations, which is the most time-intense step of the computational
 analysis. Beside this, there will be no differences in using *Gurobi*,
-*CPLEX* or *GLPK*. To use Gurobi set the environment variable `GUROBI_HOME`
+*CPLEX*. To use Gurobi set the environment variable `GUROBI_HOME`
 to a valid Gurobi installation location e.g. `/opt/ibm/ILOG/CPLEX_Studio1271/cplex`. 
-Similarly, to use *CPLEX* set `CPLEX_HOME` e.g. `/opt/ibm/ILOG/CPLEX_Studio1271/cplex`. 
+Similarly, to use *CPLEX* set `CPLEX_HOME` to e.g. `/opt/ibm/ILOG/CPLEX_Studio1271/cplex`. 
 SIRIUS will automatically use Gurobi or CPLEX as its solver if corresponding environment 
-variables are specified. You can manually set the preferred ILP solvers in the settings 
+variables are specified. You can specify the preferred ILP solvers in the settings 
 dialog (GUI) or via the command line `--ilp-solver`.
 
 ## Proxy servers
@@ -122,7 +123,7 @@ security software on your computer.
 If you have to use a proxy server to connect to the Internet, SIRIUS
 automatically uses the system wide Java proxy configuration if
 available. Alternatively you can specify the proxy configuration in the
-Sirius user interface setting (see Section [6.6](#sec:settings)).
+Sirius user interface setting (see [Settings]({{ "//gui/#settings" | relative_url }})).
 
-If SIRIUS cannot connect to the Internet, it will report on which stage
+If SIRIUS cannot connect to the Internet, it will [report]({{ "//gui/#webservice" | relative_url }}) on which stage
 the error occurred.
