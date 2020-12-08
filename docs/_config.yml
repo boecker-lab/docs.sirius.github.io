@@ -305,6 +305,8 @@ defaults:
             url: "https://bio.informatik.uni-jena.de/software/sirius/"
           - label: "SIRIUS GitHub"
             url: "https://github.com/boecker-lab/sirius"
+          - label: "AlgoMS Textbook"
+            url: "https://bio.informatik.uni-jena.de/wp/wp-content/uploads/2019/09/Boecker_AlgorithmicMassSpectrometry_v083_2019.pdf"
           - label: "YouTube"
             url: "https://www.youtube.com/channel/UCIbW_ZFSADRUQ-T5nmgU4VA"
       layout: single
