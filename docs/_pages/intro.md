@@ -8,7 +8,7 @@ spectrometry data. It combines the analysis of isotope patterns in MS
 spectra with the analysis of fragmentation patterns in MS/MS spectra,
 and uses CSI:FingerID as a web service to search in molecular structure
 databases. Further it integrates CANOPUS for de novo compound class prediction.
-For getting started quickly see our ["qiuck-start guide"]({{ "/quick-start/" | relative_url }}) or have a look at
+For getting started quickly see our [qiuck-start guide]({{ "/quick-start/" | relative_url }}) or have a look at
 our book chapter on ["**De Novo Molecular Formula Annotation and Structure Elucidation Using SIRIUS 4**"](https://link.springer.com/protocol/10.1007%2F978-1-0716-0239-3_11)
 
 SIRIUS requires **high mass accuracy** data. The mass deviation of your
