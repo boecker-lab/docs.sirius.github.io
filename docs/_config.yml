@@ -126,13 +126,13 @@ footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url:
+      url: https://twitter.com/boeckerlab
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: https://github.com/boecker-lab
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
@@ -224,8 +224,6 @@ plugins:
   - jekyll-include-cache
   - jekyll-algolia
   - jekyll-relative-links
-#  - jekyll-spaceship
-#  - jekyll-pdf
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -293,7 +291,6 @@ defaults:
     values:
       # site header
       header:
-#        overlay_image: /assets/images/sirius-screener.png
         overlay_image: /assets/images/sirius_header.jpg
         teaser: /assets/images/sirius.png
 #        overlay_filter: 0.5 # same as adding an opacity of 0.5 to a black background
