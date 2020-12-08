@@ -20,7 +20,7 @@ title                    : "SIRIUS Documentation"
 title_separator          : "-"
 subtitle                 : "Official online documentation for the SIRIUS MS/MS Software" # site tagline that appears below site title in masthead
 name                     : "Chair of Bioinformatics, FSU Jena"
-description              : "This is the official online documentation for the SIRIUS MS/MS Software"
+description              : "Official online documentation for the SIRIUS MS/MS Software"
 url                      : "https://boecker-lab.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "/docs.sirius.github.io" # the subpath of your site, e.g. "/blog"
 repository               : "boecker-lab/docs.sirius.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
