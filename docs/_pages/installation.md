@@ -108,7 +108,7 @@ members. You can find installation instruction on their websites. Using
 computations, which is the most time-intense step of the computational
 analysis. Beside this, there will be no differences in using *Gurobi*,
 *CPLEX*. To use Gurobi set the environment variable `GUROBI_HOME`
-to a valid Gurobi installation location e.g. `/opt/ibm/ILOG/CPLEX_Studio1271/cplex`. 
+to a valid Gurobi installation location e.g. `/opt/gurobi702/linux64`. 
 Similarly, to use *CPLEX* set `CPLEX_HOME` to e.g. `/opt/ibm/ILOG/CPLEX_Studio1271/cplex`. 
 SIRIUS will automatically use Gurobi or CPLEX as its solver if corresponding environment 
 variables are specified. You can specify the preferred ILP solvers in the settings 
