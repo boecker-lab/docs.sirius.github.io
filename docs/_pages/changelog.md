@@ -8,6 +8,10 @@ title: "Changelog"
 - GUI: More detailed Visualisation of what has already been computed
 - more bugfixes ;-)
 
+##### 4.5.2
+- fix: invalid project-space (not importable) due to empty detected adducts
+- fix: uncatched exception during adduct resolution (GitHub issue [#9](https://github.com/boecker-lab/sirius/issues/19))  
+- Merry X-Mas
 ##### 4.5.1
 - improvement: CLP native libs are now compatible with glibc 2.12+ (instead of 2.18+) 
 - fix: project-space with outdated fingeprint versions (e.g. from SIRIUS 4.4) are now handled correctly and can be converted. 
