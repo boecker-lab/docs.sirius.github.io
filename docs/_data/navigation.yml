@@ -71,6 +71,19 @@ global:
         url: /cli/#canopus-predicting-compound-classes-without-identification
       - title: "PASSATUTTO"
         url: /cli/#passatutto-decoy-spectra-from-fragmentation-trees
+  - title: "Standalone CLI tools"
+    url: /cli-standalone
+    children:
+      - title: "Custom database"
+        url: /cli-standalone/#custom-database-tool
+      - title: "Similarity"
+        url: /cli-standalone/#similarity-tool
+      - title: "Mass decomposition"
+        url: /cli-standalone/#mass-decomposition-tool
+      - title: "MGF export"
+        url: /cli-standalone/#mgf-export-tool
+      - title: "Project-Space"
+        url: /cli-standalone/#project-space-tool
   - title: "FAQ"
     url: /faq/
   - title: "Bug Reports"

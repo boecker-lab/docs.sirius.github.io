@@ -22,7 +22,7 @@ the following categories:
     toolchain or standalone tool to set all configurations available in
     SIRIUS from the command line.
 
-  - **STANDALONE:** Tools that run Standalone and cannot be concatenated
+  - [**STANDALONE:**]({{ "/cli-standalone/" | relative_url }}) Tools that run Standalone and cannot be concatenated
     with other subtools. These are usually tools for configuration
     purposes.
 
