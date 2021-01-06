@@ -76,6 +76,9 @@ sirius --input <project-space> --merge-ms2 --quant-table <tale.csv> --output <sp
 ```
 Note, quantification information are only available if the source of the project-space was in `mzml`(`mzxml`).
 
+## Fragmentation tree export tool
+The `ftree-export` tool exports the fragmentation trees of a given project-space (`sirius -i <INPUT>`) in
+various formats (`json`, `dot`) to a given output directory (`--output <DIR>`).
 
 ## Project-space tool
 The `project-space` tool Modifies a given project-space (e.g. merging, splitting, filtering, version conversion). 

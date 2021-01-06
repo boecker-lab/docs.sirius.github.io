@@ -8,6 +8,12 @@ title: "Changelog"
 - GUI: More detailed Visualisation of what has already been computed
 - more bugfixes ;-)
 
+##### 4.6.
+- feature: standalone subtool (`ftree-export`) to export fragmentation trees from CLI
+- feature: `--noCite` command to disable bibliography print in CLI
+- improvement: bibliography is not printed when showing help message or command parsing error
+##### 4.5.3
+- fix: ZODIAC crash caused by empty spectra
 ##### 4.5.2
 - fix: invalid project-space (not importable) due to empty detected adducts
 - fix: uncatched exception during adduct resolution (GitHub issue [#9](https://github.com/boecker-lab/sirius/issues/19))  
