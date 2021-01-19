@@ -8,10 +8,11 @@ title: "Changelog"
 - GUI: More detailed Visualisation of what has already been computed
 - more bugfixes ;-)
 
-##### 4.6.
+##### 4.6.0
 - feature: standalone subtool (`ftree-export`) to export fragmentation trees from CLI
 - feature: `--noCite` command to disable bibliography print in CLI
 - improvement: bibliography is not printed when showing help message or command parsing error
+- fix: another problem with un-importable projects due to detected adducts
 ##### 4.5.3
 - fix: ZODIAC crash caused by empty spectra
 ##### 4.5.2
