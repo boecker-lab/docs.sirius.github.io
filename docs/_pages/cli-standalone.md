@@ -62,6 +62,39 @@ $F$ and $F'$ of length $n$ is computed as follows:
 
 $$\frac{ \sum_{i=1}^{n} F_i \cdot F'_i } { \sum_{i=1}^{n} 1 - (1 - F_i) \cdot (1 - F'_i) }$$
 
+##### Example 1
+Let's say we want to compute  `--cosine`, `--ftalign`  and `--tanimoto` similarities. For that we need a proeject-space
+that contains spectra, fragmetations trees and fingerprints. So we start computing them with the following command:
+```shell
+sirius -i <input-data.mgf> -o <my-project> formula structure
+```
+
+We can now use the resulting project-space (`my-project`) as input for the similarity computation:
+```shell
+sirius -i <my-project> similarity --cosine --ftalign --tanimoto --d <output-dir>
+```
+
+##### Example 2
+Let's say we want to compute `--ftblast` similarities. For that we need one project-space (my-project)
+that contains fragmentation trees and another project-space that contains fragmentation trees for our spectral library 
+(library-project). Assuming we use `.mgf` format for both, our input spectra and the library spectra, we have to execute 
+the following commands.
+
+Compute fragmentation trees for input data:
+```shell
+sirius -i <input-data.mgf> -o <my-project> sirius
+```
+
+Compute fragmentation trees for the library spectra:
+```shell
+sirius -i <library-data.mgf> -o <library-project> sirius
+```
+
+No we have the input we need for the `--ftblast` similarity computation
+```shell
+sirius -i <my-project> similarity --ftblast <library-project> -d <output-dir>
+```
+
 
 ## Mass Decomposition tool
 The `decomp` tool provides the SIRIUS internal ["*Efficient mass decomposition*"](https://doi.org/10.1145/1066677.1066715) 
