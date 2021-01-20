@@ -32,7 +32,7 @@ It takes a SIRIUS project-space (or any input format SIRIUS can convert into a p
 as input (`sirius -i <INPUT>`) and calculates all against all similarity matrices for the compounds
 in the project-space and stores them in the given output directory given by `-d`.
 
-```
+```shell
 sirius -i <project-space> similarity --cosine --ftalign --ftblast <SPECTRA_LIB> --tanimoto -d <OUTPUT>
 ```
 
@@ -71,14 +71,39 @@ algorithm as standalone tool to decompose masses with given deviation, ionizatio
 The `mgf-export` tool exports the spectra of a given input project-space as `.mgf` for use with other tools like [GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp).
 The `--quant-table` option allows to export an additional feature quantification table (`csv`),
 e.g. to export a SIRIUS project-space for [GNPS Feature Based Molecular Networking](https://ccms-ucsd.github.io/GNPSDocumentation/featurebasedmolecularnetworking/):
-```
+```shell
 sirius --input <project-space> --merge-ms2 --quant-table <tale.csv> --output <spectra.mgf>
 ```
 Note, quantification information are only available if the source of the project-space was in `mzml`(`mzxml`).
 
 ## Fragmentation tree export tool
 The `ftree-export` tool exports the fragmentation trees of a given project-space (`sirius -i <INPUT>`) in
-various formats (`json`, `dot`) to a given output directory (`--output <DIR>`).
+various formats (`--json`, `--dot`) to a given output directory (`--output <DIR>`). The `--all` option specifies whether
+ fragmentation trees of *all* formula candidates (of a compound) or only of the top formula candidate will be exported.
+
+The following example will export the top ranked fragmentation tree of all compounds in the project space in `dot` format.
+```shell
+sirius --input <project-space> ftree-export --dot --output <output-dir>
+```
+
+The commandline tool [Graphviz](https://www.graphviz.org/) can transform `.dot` files into image formats (PDF, SVG, PNG etc.). 
+After [installing Graphviz](https://graphviz.org/download/) you can create a `.pdf` files as follows:
+
+```shell
+dot -Tpdf <tree-file.dot> > <tree-file.pdf>
+```
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/bicculine_frag_tree.svg" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Fragmentation Tree exported as .dot and converted to svg.</figcaption>
+</figure>
+
+Note: The [SIRIUS GUI]({{ "/gui/#export-tree-visualization" | relative_url }}) allows to directly export the rendered 
+tree as vector or pixel graphics. 
 
 ## Project-space tool
 The `project-space` tool Modifies a given project-space (e.g. merging, splitting, filtering, version conversion). 

@@ -82,6 +82,8 @@ global:
         url: /cli-standalone/#mass-decomposition-tool
       - title: "MGF export"
         url: /cli-standalone/#mgf-export-tool
+      - title: "Fragmentation tree export"
+        url: /cli-standalone/#fragmentation-tree-export-tool
       - title: "Project-Space"
         url: /cli-standalone/#project-space-tool
   - title: "FAQ"

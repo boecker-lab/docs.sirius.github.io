@@ -117,7 +117,7 @@ instrument. SIRIUS recognizes that these MS/MS spectra belong to the
 same compound because they have the same parent mass. To analyze this
 compound, run:
 
-```
+```shell
 sirius --input demo-data/mgf/laudanosine.mgf --output <outputdir> formula -p orbitrap
 ```
 
@@ -156,7 +156,7 @@ The directory contains two examples of the format. Each file contains a
 single compound measured with an Orbitrap instrument. To analyze this
 compound run:
 
-```
+```shell
 sirius -o <outputdir> -i demo-data/ms/Bicuculline.ms formula -p orbitrap
 ```
 
@@ -169,7 +169,7 @@ If you want to enforce a molecular formula analysis and ranking
 the `--ignore-formula` option to ignore molecular the formula in the file. 
 The number of  formula candidates can be specified via the `-c` option.
 
-```
+```shell
 sirius -o <outputdir> -i demo-data/ms/Bicuculline.ms --ignore-formula formula -p orbitrap -c 5
 ```
 
@@ -181,7 +181,7 @@ easily extracted from Excel spreadsheets. However, they do not contain
 meta information like the MS level and the parent mass. So you have to
 specify this information via commandline options:
 
-```
+```shell
 sirius -1 demo-data/txt/chelidonine_ms.txt -2 demo-data/txt/chelidonine_msms1.txt demo-data/txt/chelidonine_msms2.txt formula -p orbitrap -z 354.134704589844
 ```
 

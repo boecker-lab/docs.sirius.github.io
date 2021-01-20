@@ -240,12 +240,14 @@ in this tree assigns a molecular formula to a peak in the (merged) MS/MS
 spectrum. Each edge is a hypothetical fragmentation reaction. The user
 has the choice between different node styles and color schemes.
 
+#### Export tree visualization
 The displayed fragmentation tree can be exported as `svg` or `pdf` vector graphics.
-Alternatively, the `Dot` file format contains a text description of the
+Alternatively, the `dot` file format contains a text description of the
 tree. It can be used to render the tree externally. The command-line
-tool Graphviz can transform dot files into image formats (PDF, SVG, PNG
-etc). The `JSON` format yields a machine-readable representation of the
-tree.
+tool Graphviz can transform dot files into image formats (`pdf`, `svg`, `png`
+etc). The `json` format yields a machine-readable representation of the
+tree. See the [`ftree-export`]({{ "/cli-standalone/#fragmentation-tree-export-tool" | relative_url }}) cli tool for how to export fragmentation trees from 
+the command line.
 
 ### Spectrum view tab
 

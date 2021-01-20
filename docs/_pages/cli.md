@@ -5,7 +5,7 @@ title: "Commandline Interface"
 
 The SIRIUS commandline tool can be called via the "binary/startscript" by
 simply running the command in your commandline:
-```
+```shell
 sirius --help
 ```
 
@@ -39,7 +39,7 @@ Each subtool can also be called with the `--help` option to get a documentation
 about the available options and possible follow up commands in a
 toolchain. For the `formula` tool the command would be:
 
-```
+```shell
 sirius formula --help
 ```
 
@@ -49,7 +49,7 @@ One main purpose of SIRIUS is identifying the molecular formula of a
 measured ion. For this task SIRIUS provides the `formula` tool. The most basic way
 to use the `formula` tool is with the generic text/CSV input:
 
-```
+```shell
 sirius [OPTIONS] -1 <MS FILE> -2 <MS/MS FILE> -z <PARENTMASS> --adduct <adduct> formula
 ```
 
@@ -66,7 +66,7 @@ all spectra for a compound together with their meta data. They can also
 contain multiple compounds per file. Further SIRIUS is able to crawl an
 input directory for supported files:
 
-```
+```shell
 sirius [OPTIONS] --input demo-data/ms formula [OPTIONS]
 ```
 
@@ -100,7 +100,7 @@ already specified within the file. If a molecular formula is specified,
 the parent mass can be omitted. However, you still have to specify the
 ionization (except for default value `[M+H]+`):
 
-```
+```shell
 sirius -f C20H19NO5 -2 demo-data/txt/chelidonine/_msms1.txt demo-data/txt/chelidonine_msms2.txt formula
 ```
 
@@ -132,7 +132,7 @@ improvements can be much more dramatic.
 The `zodiac` tool can be executed after the `formula` tool without the need of many
 parameters:
 
-```
+```shell
 sirius -i <input> -o <output> formula -c 50 zodiac
 ```
 
@@ -168,7 +168,7 @@ This will allow ZODIAC to filter low weight edges on the fly when creating the n
 **Use this setting with care, since it can result in a badly connected
 network that may decrease performance:**
 
-```
+```shell
 sirius -i <input> -o <output> formula -c 50 zodiac --minLocalConnections 0 --edge-threshold 0.99
 ```
 
@@ -187,13 +187,13 @@ candidate list of structures with the CSI:FingerID score. Furthermore, a `compou
 file will be generated containing the top candidates from all compounds
 ordered by their confidence.
 
-```
+```shell
 sirius -i demo-data/ms/Bicuculline.ms -o <output>formula -c 10 structure --database pubchem
 ```
 
 When running `structure` together with `zodiac` the command could look like this:
 
-```
+```shell
 sirius -i <input> -o <output> formula -c 50 zodiac structure --database bio
 ```
 
@@ -204,7 +204,7 @@ molecular fingerprint predicted by CSI:FingerID. So `canopus` can even provide
 compound class information for unidentified compound with no hit in a
 structure database:
 
-```
+```shell
 sirius -i <input> -o <output> formula -c 10 structure --database pubchem canopus
 ```
 
@@ -215,7 +215,7 @@ fragmentation trees provided by the `formula` tool. Assume your are using a
 spectral library as input you can easily create a decoy database based
 on this spectra:
 
-```
+```shell
 sirius -i <spectral-lib> -o <output> formula passatutto
 ```
 
@@ -229,7 +229,7 @@ feature detection and feature alignment based on the MS/MS spectra and
 creates a SIRIUS project-space which is then used to execute followup
 analysis steps:
 
-```
+```shell
 sirius -i <mzml(s)> -o <output> lcms-run formula
 ```
 
