@@ -8,6 +8,10 @@ title: "Changelog"
 - GUI: More detailed Visualisation of what has already been computed
 - more bugfixes ;-)
 
+##### 4.6.1
+- fix: CSI:FingerID results were not refreshed correctly after recomputing with different parameters in the GUI
+- fix: Parameters were not always handled correctly when recomputing with the GUI
+- fix: Index bug in fragmentation tree scoring 
 ##### 4.6.0
 - feature: standalone subtool (`ftree-export`) to export fragmentation trees from CLI
 - feature: `--noCite` command to disable bibliography print in CLI
