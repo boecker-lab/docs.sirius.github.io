@@ -68,7 +68,7 @@ we recommend using the installer version.
 To run the SIRIUS GUI just go to you app directory an double click the `sirius-gui` app.
 You can also add SIRIUS to your dock if you like.  
 
-To start the SIRIUS command line tool open a terminal and execute execute 
+To start the SIRIUS command line tool open a terminal and execute 
 the `sirius` launcher in your Application directory (usually `/Applications/sirius.app/Contents/MacOS/sirius`).
 
 To execute SIRIUS from every location you have to add the sirius binary directory `<SIRIUS_DIR>/Contents/MacOS` to your PATH
