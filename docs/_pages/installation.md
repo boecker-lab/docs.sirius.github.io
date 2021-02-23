@@ -81,7 +81,7 @@ variable. To do so, open `/etc/paths` in a text editor and add the following lin
 In case you have changed it, replace the line with the appropriate sirius installation dir.
 Note that the SIRIUS GUI versio also contains the command line runner, but uses a slieghly different location er default:
 ```
-/Applications/sirius.app/Contents/MacOS/
+/Applications/sirius-gui.app/Contents/MacOS/
 ```
 
 ## Linux
