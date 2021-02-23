@@ -68,9 +68,21 @@ we recommend using the installer version.
 To run the SIRIUS GUI just go to you app directory an double click the `sirius-gui` app.
 You can also add SIRIUS to your dock if you like.  
 
-To start the SIRIUS command line tool go to the sirius app directory and execute 
-the `sirius` launcher.
+To start the SIRIUS command line tool open a terminal and execute execute 
+the `sirius` launcher in your Application directory (usually `/Applications/sirius.app/Contents/MacOS/sirius`).
 
+To execute SIRIUS from every location you have to add the sirius binary directory `<SIRIUS_DIR>/Contents/MacOS` to your PATH
+variable. To do so, open `/etc/paths` in a text editor and add the following line:
+
+```
+/Applications/sirius.app/Contents/MacOS/
+```
+
+In case you have changed it, replace the line with the appropriate sirius installation dir.
+Note that the SIRIUS GUI versio also contains the command line runner, but uses a slieghly different location er default:
+```
+/Applications/sirius.app/Contents/MacOS/
+```
 
 ## Linux
 ##### Zip version
@@ -94,25 +106,46 @@ export PATH=PATH:<SIRIUS_DIR>/bin/
 Note that you have to reopen your "bash" shell to make the changes
 effective.
 
-## Installing Gurobi and CPLEX
+## Installing Gurobi and/or CPLEX
 
 SIRIUS ships with the *COIN-OR* Integer Linear
 Program solver which allows us to swiftly compute fragmentation trees in
 most cases. However, if you want to analyze large molecules and/or
-spectra with many peaks and/or a large number of spectra, you can
+spectra with many peaks and/or many spectra, you can
 improve running time by using a faster solver. SIRIUS also
-supports Integer Linear Program solvers *Gurobi* and *CPLEX* . These are
+supports Integer Linear Program solvers *Gurobi* and *CPLEX*. These are
 commercial solvers which offer a free academic license for university
 members. You can find installation instruction on their websites. Using
 *Gurobi* or *CPLEX* will improve the speed of fragmentation tree
 computations, which is the most time-intense step of the computational
-analysis. Beside this, there will be no differences in using *Gurobi*,
+analysis. Besides, there will be no differences in using *Gurobi*,
 *CPLEX*. To use Gurobi set the environment variable `GUROBI_HOME`
-to a valid Gurobi installation location e.g. `/opt/gurobi702/linux64`. 
-Similarly, to use *CPLEX* set `CPLEX_HOME` to e.g. `/opt/ibm/ILOG/CPLEX_Studio1271/cplex`. 
-SIRIUS will automatically use Gurobi or CPLEX as its solver if corresponding environment 
-variables are specified. You can specify the preferred ILP solvers in the settings 
-dialog (GUI) or via the command line `--ilp-solver`.
+to a valid Gurobi installation location. 
+Similarly, to use *CPLEX* set `CPLEX_HOME` to a valid Gurobi installation location.
+
+#### CPLEX
+On Windows the CPLEX installer usually sets the system variable automatically, and you should be good to go.
+* Windows: set `CPLEX_HOME` to e.g. `C:\Program Files\IBM\ILOG\CPLEX_Studio1271\cplex`.
+* Linux: Set `CPLEX_HOME` to the CPLEX install directory e.g. `/opt/ibm/ILOG/CPLEX_Studio1271/cplex`.
+* MacOS: Set `CPLEX_HOME` to the CPLEX install directory e.g. `/Library/ibm/ILOG/CPLEX_Studio1271/cplex`.
+
+#### Gurobi
+* Windows: Set `GUROBI_HOME` to the Gurobi lib directory e.g. `C:\gurobi702\win64`.
+* Linux: Set `GUROBI_HOME` to the Gurobi lib directory e.g. `/opt/gurobi702/linux64`.
+* MacOS: Set `GUROBI_HOME` to the Gurobi lib directory e.g. `/Library/gurobi702/mac64`.
+
+
+SIRIUS will automatically detect Gurobi or CPLEX as possible solver if corresponding environment 
+variables are specified. You can specify the preferred solvers in the settings 
+dialog (GUI) or when running the command line with the `--ilp-solver` parameter.
+To permanently change the setting (e.g. for SIRIUS version 4.6.x) open: 
+`<USER_HOME>/.sirius-4.6/sirius.properties`  and modify the following line to your needs:
+
+```properties
+de.unijena.bioinf.sirius.treebuilder.solvers = cplex,gurobi,clp
+```
+The order of the solvers specifies the priority in which SIRIUS uses them.
+
 
 ## Proxy servers
 
