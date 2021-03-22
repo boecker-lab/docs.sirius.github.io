@@ -178,7 +178,10 @@ compute confidence measures or merge results with customs dbs anyways.
 
 
 ### Predicting Compound classes with the CANOPUS tool  (4)
-<span>**<span style="color: red">\[TODO: CANOPUS description\]</span>**</span>
+
+CANOPUS predicts [ClassyFire](http://classyfire.wishartlab.com/) compound classes from the molecular fingerprint. Class prediction is done without using any structure database. Thus, classes are predicted for all compounds for which the fragmentation tree contains at least three fragments, including compounds that have no structure candidate in the database. There are no parameters to set. Similar to molecular fingerprints, compound classes are predicted for each molecular formula separately. 
+ 
+In the [ClassyFire](http://classyfire.wishartlab.com/) ontology, every compound belongs to multiple compound classes. A compound class describes a structural pattern. For example, a *dipeptide* is also an *amino acid* (because it **contains** an amino acid substructure), as well as a *carboxylic acid* (for the same reason). A glycosylated amino acid might belong to both compound classes: *amino acids* and *hexoses*. Different from how compound classes are often described in chemistry textbooks, ClassyFire compound classes do **not** describe the biosynthetic origin. For example, a *phytosteroid might* be classified as *bile acids* in Classyfire, because both class of compounds share the same backbone, although they are involved in different biochemical pathways.
 
 ## Visualization of the results
 For each compound different tabs can be shown in the result panel.
@@ -347,7 +350,11 @@ When selecting a molecular property, examples for this property are shown below 
   <figcaption>Fingerprint view.</figcaption>
 </figure>
 
+### CANOPUS tab
 
+Compound class predictions are visualized as table similar to molecular fingerprints: Each row in the table describes one class. The *posterior probability* is the probability that the measured spectrum (given the chosen molecular formula) belongs to this compound class. The other columns contain all related information from the [ClassyFire](http://classyfire.wishartlab.com/) ontology. 
+
+Above the table are two lists: **main classes** and **alternative classes**. The main class of a measurement is the *most specific* compound class from all compound classes with posterior probability above 50%. The **main classes** list contains the main class, as well as its ancestors in the Classyfire ontology. The **alternative classes** list contains all over classes with posterior probability above 50%.   
 
 ## Settings
 
