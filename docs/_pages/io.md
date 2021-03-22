@@ -176,6 +176,8 @@ executing further analysis steps. Project-spaces can be read and written
 as an uncompressed directory or a compressed zip archive when using the
 `.sirius` file extension.
 
+### Summary files
+
 In addition to the *method level* results, the project-space contains
 summaries of these results on the *project level* and the *compound
 level*. These summaries are in *csv* format (`summary_<NAME>.csv`) to
@@ -183,6 +185,30 @@ provide easy access to the results for further downstream analysis, data
 sharing and data visualization. The summaries are not imported into
 SIRIUS but are (re-)created based on the actual results every time a
 project-space is exported.
+
+#### Molecular formula results summary
+
+`formula_identifications.tsv` contains the top-ranked formula result of each compound as 
+determined by the SIRIUS score, or the ZODIAC if available.
+However, different adduct candidates with the same precursor ion molecular formula
+will have identical score (e.g. `[C20H14O6 + NH4]+` and `[C20H19NO7 - H2O + H]+`).
+In such cases, the the top-ranked candidate in `formula_identifications.tsv` is resolved
+to `[C20H17NO6 + H]+` only considering the ion type but ignoring adduct types.
+`formula_identifications_adducts.tsv` contains all top-ranked adducts (in this case 
+`[C20H14O6 + NH4]+` and `[C20H19NO7 - H2O + H]+`).
+
+#### Molecular structure results summary
+
+`compound_identifications.tsv` contains the top-ranked structure result of each compound 
+as determined using the CSI:FingerID score; the molecular formula of the top structure
+does not have to be the top-ranked molecular formula of this compound.
+`compound_identifications_adducts.tsv` contains the top structure for each considered 
+adduct of the top molecular formula.
+
+#### CANOPUS results summary
+
+`canopus_summary.tsv` contains compound classes predicted to be present by CANOPUS for
+the top-ranked molecular formula of each compound.
 
 ### Standardized project-space summary with mzTab-M
 
