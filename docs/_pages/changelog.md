@@ -4,9 +4,33 @@ title: "Changelog"
 ---
 
 ##### Coming soon...
-- GUI: Progress information for running jobs
-- GUI: More detailed Visualisation of what has already been computed
+- COSMIC - confidence score
+- GUI: Better progress information for running jobs
 - more bugfixes ;-)
+
+##### 4.6.2
+- feature: Heuristic computation for fragmentation trees to improve running times for high mass compounds (no ILP has to be computed)
+- improvement: more information about running jobs (compound information), improved log panel
+- improvement: All SIRIUS distros ship with start scripts that should handle env variables properly
+- improvement: rounded values for similarity matrix output
+- improvement: better progress information during import
+- improvement: CSI:FingerID adn CANOPUS summaries with multiple adducts (like the formula summary)
+- improvement/fix: Multithreading and performance issues of integrated CLP ILP solver
+- improvement/fix: GUI Job cancelling now works properly, even under high load
+- improvement/fix: improved caching and update mechanisms prevents GUI freezes and  reduces GUI memory consumption
+  when compute large data sets
+- fix: memory leak in jjob job manager lib - dramatically improves performance on large datasets.
+- fix: correct handling of `CHARGE=-0` in mgf
+- fix: corrupted project-space caused by empty adduct detection results after mgf import
+- fix: empty project dir after wrong command
+- fix: wrong compound name in compound edit panel
+- fix: invalid valence filter error when computing positive and negative ion mode together
+- fix: Commercial ILP solver not detected correctly even if the correct env variable was set
+- fix: CEF format import - "No proper interval given" error
+- fix: multiOS build architecture now OpenMS compatible
+- several minor bug fixes
+
+- upgrade: SIRIUS ships now with JRE-15 which should fix jvm crashes during heavy multi threading on linux 
 
 ##### 4.6.1
 - fix: CSI:FingerID results were not refreshed correctly after recomputing with different parameters in the GUI
