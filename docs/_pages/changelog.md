@@ -5,11 +5,17 @@ title: "Changelog"
 
 ##### Coming soon...
 - COSMIC - confidence score
+- Standalone sub-tool for MS1 isotope pattern analysis
 - GUI: Better progress information for running jobs
 - more bugfixes ;-)
 
-##### 4.6.2
+##### 4.7.0
 - feature: Heuristic computation for fragmentation trees to improve running times for high mass compounds (no ILP has to be computed)
+- feature/improvement: Summaries
+    - new `formula_identifications_adducts.tsv` summary file
+    - new `canopus_summary_adducts.tsv` summary file
+    - added `fromulaRank` to `compound_identifications.tsv` and `compound_identifications_adducts.tsv`
+    - fix: inconsistent ranking in `compound_identifications.tsv` and `compound_identifications_adducts.tsv`
 - improvement: more information about running jobs (compound information), improved log panel
 - improvement: All SIRIUS distros ship with start scripts that should handle env variables properly
 - improvement: rounded values for similarity matrix output
@@ -18,7 +24,10 @@ title: "Changelog"
 - improvement/fix: Multithreading and performance issues of integrated CLP ILP solver
 - improvement/fix: GUI Job cancelling now works properly, even under high load
 - improvement/fix: improved caching and update mechanisms prevents GUI freezes and  reduces GUI memory consumption
+- improvement/fix: much lower memory consumption when writing summaries
   when compute large data sets
+ 
+
 - fix: memory leak in jjob job manager lib - dramatically improves performance on large datasets.
 - fix: correct handling of `CHARGE=-0` in mgf
 - fix: corrupted project-space caused by empty adduct detection results after mgf import
@@ -29,6 +38,7 @@ title: "Changelog"
 - fix: CEF format import - "No proper interval given" error
 - fix: multiOS build architecture now OpenMS compatible
 - several minor bug fixes
+
 
 - upgrade: SIRIUS ships now with JRE-15 which should fix jvm crashes during heavy multi threading on linux 
 
