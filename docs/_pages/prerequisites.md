@@ -444,9 +444,9 @@ An up-to-date list of all structures that are part of the training
 data of CSI:FingerID can be downloaded from the webservice:
 
 ##### Training structures for positive ion mode:
-<https://www.csi-fingerid.uni-jena.de/v1.4.5/api/fingerid/trainingstructures?predictor=1>
+<https://www.csi-fingerid.uni-jena.de/v1.4.8/api/fingerid/trainingstructures?predictor=1>
 ##### Training structures for negative ion mode:
-<https://www.csi-fingerid.uni-jena.de/v1.4.5/api/fingerid/trainingstructures?predictor=2>
+<https://www.csi-fingerid.uni-jena.de/v1.4.8/api/fingerid/trainingstructures?predictor=2>
 
 **We would like to explicitly and emphatically thank everyone who made
 their spectra publically available.** With that, you have done a huge

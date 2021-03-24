@@ -34,6 +34,7 @@ title: "Changelog"
 - fix: empty project dir after wrong command
 - fix: wrong compound name in compound edit panel
 - fix: invalid valence filter error when computing positive and negative ion mode together
+  fix: compound timeout not working reliable
 - fix: Commercial ILP solver not detected correctly even if the correct env variable was set
 - fix: CEF format import - "No proper interval given" error
 - fix: multiOS build architecture now OpenMS compatible
