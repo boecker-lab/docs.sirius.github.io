@@ -180,7 +180,7 @@ as an uncompressed directory or a compressed zip archive when using the
 
 In addition to the *method level* results, the project-space contains
 summaries of these results on the *project level* and the *compound
-level*. These summaries are in *csv* format (`summary_<NAME>.csv`) to
+level*. These summaries are in *tsv* (tab-separated-values) format (`summary_<NAME>.tsv`) to
 provide easy access to the results for further downstream analysis, data
 sharing and data visualization. The summaries are not imported into
 SIRIUS but are (re-)created based on the actual results every time a
@@ -208,7 +208,16 @@ adduct of the top molecular formula.
 #### CANOPUS results summary
 
 `canopus_summary.tsv` contains compound classes predicted to be present by CANOPUS for
-the top-ranked molecular formula of each compound.
+the top-ranked molecular formula of each compound. *most specific class* denotes the most specific compound class for this compound. The columns
+*level 5*, *subclass*, *class*, and *superclass* refer to the ancestors of this most specific class. The column *all classifications* contains
+all classes predicted for this compound with probability above 50%.
+
+If there are multiple molecular formulas with
+same score (which should happen only for adducts, see the molecular formula results summary) then the
+`canopus_summary.tsv` will decide for one molecular formula for each compound. We always choose the molecular formula
+for which the CANOPUS probability of the *most specific class* is maximal.
+
+`compound_identifications_adducts.tsv` contains the classifications for the other top-scoring adduct formulas, too.
 
 ### Standardized project-space summary with mzTab-M
 
