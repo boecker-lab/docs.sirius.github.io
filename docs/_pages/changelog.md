@@ -9,6 +9,10 @@ title: "Changelog"
 - GUI: Better progress information for running jobs
 - more bugfixes ;-)
 
+##### 4.7.1
+- fix: fixed missing jar/zip provider in bundled jre -> **Zipped project-spaces are now working again**
+- fix: fixed ignored `custom.config` and config inheritance
+
 ##### 4.7.0
 - feature: Heuristic computation for fragmentation trees to improve running times for high mass compounds (no ILP has to be computed)
 - feature/improvement: Summaries
@@ -23,10 +27,9 @@ title: "Changelog"
 - improvement: CSI:FingerID adn CANOPUS summaries with multiple adducts (like the formula summary)
 - improvement/fix: Multithreading and performance issues of integrated CLP ILP solver
 - improvement/fix: GUI Job cancelling now works properly, even under high load
-- improvement/fix: improved caching and update mechanisms prevents GUI freezes and  reduces GUI memory consumption
+- improvement/fix: improved caching and update mechanisms prevents GUI freezes and  reduces GUI memory consumption when computing large data sets
 - improvement/fix: much lower memory consumption when writing summaries
-  when compute large data sets
- 
+
 
 - fix: memory leak in jjob job manager lib - dramatically improves performance on large datasets.
 - fix: correct handling of `CHARGE=-0` in mgf
