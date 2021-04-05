@@ -9,6 +9,9 @@ title: "Changelog"
 - GUI: Better progress information for running jobs
 - more bugfixes ;-)
 
+##### 4.7.2
+- fix: `java.util.ConcurrentModificationException` when computing subtooll separately with the CLI
+
 ##### 4.7.1
 - fix: fixed missing jar/zip provider in bundled jre -> **Zipped project-spaces are now working again**
 - fix: fixed ignored `custom.config` and config inheritance
