@@ -4,7 +4,7 @@ pages are still work in progress\]</span>**</span>
 
 This repo contains the sources of the SIRIUS online documentation at 
 <https://boecker-lab.github.io/docs.sirius.github.io/>. 
-We try to keep this documentation as uptodate as possible. 
+We try to keep this documentation as up-to-date as possible.
 Contributions from the community are very welcome. The content of this documentation is written 
 [Markdown](https://guides.github.com/features/mastering-markdown/), so no programming skills 
 needed to create content.
