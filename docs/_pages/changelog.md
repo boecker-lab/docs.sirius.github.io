@@ -9,8 +9,14 @@ title: "Changelog"
 - GUI: Better progress information for running jobs
 - more bugfixes ;-)
 
+##### 4.7.4
+- fix: intensity bug in FBMN export
+##### 4.7.3
+- fix: CONFIG already exists error during background computations (FBMN export, custom-db import) 
+- fix: `.cef` file extension missing in file import dialog 
+
 ##### 4.7.2
-- fix: `java.util.ConcurrentModificationException` when computing subtooll separately with the CLI
+- fix: `java.util.ConcurrentModificationException` when computing subtool separately with the CLI
 
 ##### 4.7.1
 - fix: fixed missing jar/zip provider in bundled jre -> **Zipped project-spaces are now working again**
