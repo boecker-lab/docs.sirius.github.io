@@ -105,7 +105,7 @@ The `mgf-export` tool exports the spectra of a given input project-space as `.mg
 The `--quant-table` option allows to export an additional feature quantification table (`csv`),
 e.g. to export a SIRIUS project-space for [GNPS Feature Based Molecular Networking](https://ccms-ucsd.github.io/GNPSDocumentation/featurebasedmolecularnetworking/):
 ```shell
-sirius --input <project-space> --merge-ms2 --quant-table <tale.csv> --output <spectra.mgf>
+sirius --input <project-space> MGF --merge-ms2 --quant-table <table.csv> --output <spectra.mgf>
 ```
 Note, quantification information are only available if the source of the project-space was in `mzml`(`mzxml`).
 
