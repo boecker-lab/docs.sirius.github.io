@@ -24,6 +24,7 @@ doing, you might want to contact someone who does. (Remember, last
 Friday in July is System Administrator Appreciation Day!)
 
 ## Windows
+Built and tested on Windows 10 x64
 ##### MSI installer (preferred)
 Execute the installer, trust the unknown source and follow the instructions.
 You will have the option to choose an installation location and need to 
@@ -50,6 +51,7 @@ of SIRIUS, press RETURN. Close the Command Prompt, open a new one, type
 `sirius`.
 
 ## Mac OSX
+Built and tested on macOS Catalina 10.15 x64
 ##### pkg installer (preferred)
 Execute the installer, trust the unknown source and follow the instructions.
 You will have the option to choose an installation disk and need to 
@@ -85,6 +87,7 @@ Note that the SIRIUS GUI versio also contains the command line runner, but uses 
 ```
 
 ## Linux
+Built and tested on Ubuntu 18.04+ x64
 ##### Zip version
 Extract the archive to an arbitrary directory where you have write
 permissions, e.g. `/home/opt/sirius`.
