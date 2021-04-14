@@ -159,7 +159,15 @@ pass this filter if they are composed solely of CHNOPSBBrClIF.
     lists.
 
 ### Improve molecular formula ranking with the ZODIAC tool (2)
-<span>**<span style="color: red">\[TODO: ZODIAC description\]</span>**</span>
+
+ZODIAC performs de novo molecular formula annotation on complete biological datasets (high-resolution, high mass
+accuracy LC-MS/MS runs). ZODIAC takes fragmentation trees as input and reranks the molecular formula candidates by
+taking similarities of compounds in the dataset into account.
+
+To run Zodiac, select SIRIUS and ZODIAC in the batch compute panel. Increase the number of reported candidates for SIRIUS, to
+increase the chance that the correct molecular formula candidate is contained in the result list. Click “compute”.
+
+Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Zodiac release page.
 
 ### Identifying molecular structure with the CSI:FingerID tool  (3)
 
@@ -176,14 +184,35 @@ compute confidence measures or merge results with customs dbs anyways.
 
 <span>**<span style="color: red">\[TODO: description of filter options etc.\]</span>**</span>
 
+#### COSMIC - confidence values for CSI:FingerID searches
+Calculating COSMIC confidence scores is parameter free and will be executed automatically every time a CSI:FingerID 
+search is performed. COSMIC scores for a compound are shown in the compound list on the left.
+
+Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the Zodiac release page.
 
 ### Predicting Compound classes with the CANOPUS tool  (4)
 
-CANOPUS predicts [ClassyFire](http://classyfire.wishartlab.com/) compound classes from the molecular fingerprint. Class prediction is done without using any structure database. Thus, classes are predicted for all compounds for which the fragmentation tree contains at least three fragments, including compounds that have no structure candidate in the database. There are no parameters to set. Similar to molecular fingerprints, compound classes are predicted for each molecular formula separately. 
- 
-In the [ClassyFire](http://classyfire.wishartlab.com/) ontology, every compound belongs to multiple compound classes. A compound class describes a structural pattern. For example, a *dipeptide* is also an *amino acid* (because it **contains** an amino acid substructure), as well as a *carboxylic acid* (for the same reason). A glycosylated amino acid might belong to both compound classes: *amino acids* and *hexoses*. Different from how compound classes are often described in chemistry textbooks, ClassyFire compound classes do **not** describe the biosynthetic origin. For example, a *phytosteroid might* be classified as *bile acids* in Classyfire, because both class of compounds share the same backbone, although they are involved in different biochemical pathways.
+CANOPUS predicts [ClassyFire](http://classyfire.wishartlab.com/) compound classes from the molecular fingerprint. Class
+prediction is done without using any structure database. Thus, classes are predicted for all compounds for which the
+fragmentation tree contains at least three fragments, including compounds that have no structure candidate in the
+database. There are no parameters to set. Similar to molecular fingerprints, compound classes are predicted for each
+molecular formula separately.
+
+In the [ClassyFire](http://classyfire.wishartlab.com/) ontology, every compound belongs to multiple compound classes. A
+compound class describes a structural pattern. For example, a *dipeptide* is also an *amino acid* (because it **
+contains** an amino acid substructure), as well as a *carboxylic acid* (for the same reason). A glycosylated amino acid
+might belong to both compound classes: *amino acids* and *hexoses*. Different from how compound classes are often
+described in chemistry textbooks, ClassyFire compound classes do **not** describe the biosynthetic origin. For example,
+a *phytosteroid might* be classified as *bile acids* in Classyfire, because both class of compounds share the same
+backbone, although they are involved in different biochemical pathways.
+
+Click [here](https://bio.informatik.uni-jena.de/software/canopus/) to visit the CANOPUS release page.
+
 
 ## Visualization of the results
+The compound list shows not only information about the input and compute state, it further shows the COSMIC
+confidence score for the top CSI:FingerID hit.
+
 For each compound different tabs can be shown in the result panel.
 The *"SIRIUS Overview"* panel displays the most important
 information of the molecular formula identification. The candidate list contains the best candidate molecular
@@ -352,9 +381,28 @@ When selecting a molecular property, examples for this property are shown below 
 
 ### CANOPUS tab
 
-Compound class predictions are visualized as table similar to molecular fingerprints: Each row in the table describes one class. The *posterior probability* is the probability that the measured spectrum (given the chosen molecular formula) belongs to this compound class. The other columns contain all related information from the [ClassyFire](http://classyfire.wishartlab.com/) ontology. 
+Compound class predictions are visualized as table similar to molecular fingerprints: Each row in the table describes 
+one class. The *posterior probability* is the probability that the measured spectrum (given the chosen molecular formula)
+belongs to this compound class. The other columns contain all related information from the 
+[ClassyFire](http://classyfire.wishartlab.com/) ontology. 
 
-Above the table are two lists: **main classes** and **alternative classes**. The main class of a measurement is the *most specific* compound class from all compound classes with posterior probability above 50%. The **main classes** list contains the main class, as well as its ancestors in the Classyfire ontology. The **alternative classes** list contains all over classes with posterior probability above 50%.   
+Above the table are two lists: **main classes** and **alternative classes**. The main class of a measurement is the 
+*most specific* compound class from all compound classes with posterior probability above 50%. The **main classes** list
+contains the main class, as well as its ancestors in the Classyfire ontology. The **alternative classes** list contains 
+all over classes with posterior probability above 50%.
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/canopus.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>CANOPUS view.</figcaption>
+</figure>
+
+* (1) The most informative class (light green), and its ancestor classes (light blue).
+* (2) Alternative classes. In the ClassyFire chemontology, every compound is assigned to multiple classes. In this example, the compound kaempferol is a flavonoid, but also a benzenoid.
+* (3) The table lists all ClassyFire classes, with description parent class and so on. The colored bar denotes the predicted probability for this class. Only classes with probability above 0.5 are listed in (1) and (2).
 
 ## Settings
 
