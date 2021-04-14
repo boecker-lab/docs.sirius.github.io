@@ -11,6 +11,8 @@ The *Java Runtime Environment* (JRE) needed to run SIRIUS is already included.
 but might require admin permissions. Since we do not pay Microsoft/Apple for certification 
 you might have to confirm that you want to trust software from an unknown source on Windows/MacOS.
 
+Completing the installation should take you not more than **10 minutes**.
+
 If you have trouble installing SIRIUS, please [let us 
 know](mailto:sirius@uni-jena.de) and we will see if we can help.
 If you find that our installation guide is incomplete, or if you have
@@ -22,6 +24,7 @@ let us know, so we can include them in this manual, or even better,
 system, is given without any warranty! If you are not sure what you are
 doing, you might want to contact someone who does. (Remember, last
 Friday in July is System Administrator Appreciation Day!)
+
 
 ## Windows
 Built and tested on Windows 10 x64
