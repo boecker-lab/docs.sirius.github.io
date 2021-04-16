@@ -13,8 +13,9 @@ The `custom-db` tool allows you to import custom structure databases from a `csv
 structures given in `SMILES` format. Optionally a database `id` and a `name` can be given. 
 
 ```
-CN1CCCC1C2=C[N+](=CC=C2)[O-]	id-01	Caffein
-CN1C=NC2=C1C(=O)N(C(=O)N2C)C	id-03	Nicotin
+CN1CCCC1C2=C[N+](=CC=C2)[O-]	id-01	Nicotin
+CN1C=NC2=C1C(=O)N(C(=O)N2C)C	id-03	Caffein
+CN1CCC2=CC3=C(C=C2C1C4C5=C(C6=C(C=C5)OCO6)C(=O)O4)OCO3 id-05 Bicculine
 ```
 
 You can import multiple files with compounds as SMILES into one DB. If a given structure can be found in
