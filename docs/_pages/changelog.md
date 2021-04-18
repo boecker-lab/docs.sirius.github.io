@@ -4,13 +4,18 @@ title: "Changelog"
 ---
 
 ##### Coming soon...
-- COSMIC - confidence score
 - Standalone sub-tool for MS1 isotope pattern analysis
 - GUI: Better progress information for running jobs
 - more bugfixes ;-)
 
+##### 4.8.0
+- feature: **COSMIC - confidence score**
+- improvement: new Object storage baackend
+- fix: new CLP dll should improve compatibility on windows (NO Solver found problem)
+
 ##### 4.7.4
 - fix: intensity bug in FBMN export
+- 
 ##### 4.7.3
 - fix: CONFIG already exists error during background computations (FBMN export, custom-db import) 
 - fix: `.cef` file extension missing in file import dialog 
