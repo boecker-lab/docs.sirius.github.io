@@ -8,6 +8,11 @@ title: "Changelog"
 - GUI: Better progress information for running jobs
 - more bugfixes ;-)
 
+
+##### 4.8.1
+- fix: problems with the deletion and creation of custom databases (GUI)
+- improvement: local database cached can be cleare from the settings panel (GUI)
+
 ##### 4.8.0
 - feature: **COSMIC - confidence score**
 - improvement: new Object storage baackend
