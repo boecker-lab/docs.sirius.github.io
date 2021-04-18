@@ -25,4 +25,4 @@ In this example, the spectrum of Campherol from the SIRIUS demo data receives th
 {% capture fig_img %} ![Foo]({{ "/assets/images/camph-1.png" | relative_url }}) {% endcapture %}
 {{ fig_img | markdownify | remove: "
 " | remove: "
-" }} Overview tab. 
+" }} COSMIC Campherol. 
