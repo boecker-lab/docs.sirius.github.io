@@ -11,6 +11,8 @@ title: "Changelog"
 ##### 4.8.0
 - feature: **COSMIC - confidence score**
 - improvement: new Object storage baackend
+- improvement: resizeable compound list (GUI)
+- improvement: CSI:FingerID and SIRIUS/ZODIAC scores in formula selector (GUI)
 - fix: new CLP dll should improve compatibility on windows (NO Solver found problem)
 
 ##### 4.7.4
