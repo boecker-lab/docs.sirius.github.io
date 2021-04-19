@@ -8,7 +8,8 @@ title: "Changelog"
 - GUI: Better progress information for running jobs
 - more bugfixes ;-)
 
-
+##### 4.8.2
+- critical-fix: custom database importer wrote cache files to working directory instead to the usual casche dir
 ##### 4.8.1
 - fix: problems with the deletion and creation of custom databases (GUI)
 - improvement: local database cached can be cleare from the settings panel (GUI)
