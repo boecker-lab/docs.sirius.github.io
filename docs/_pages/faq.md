@@ -31,7 +31,7 @@ In this example, the spectrum of Campherol from the SIRIUS demo data receives th
 ## Feature Requests
 ### Could SIRIUS support for multiple charged ions?
 Not in the short term since there is a plenty of algorithmic work that has to be done. 
-Further, we do not have enough trainig data of multiple charged ions. If you can provide such data this would help a lot to get such project started.
+Further, we do not have enough training data of multiple charged ions. If you can provide such data this would help a lot to get such project started.
 
 ### Could SIRIUS support for Multimeres?
 Yes it possible in principle but it needs some adaptions of the fragmentation tree computation that are not implemented yet.
