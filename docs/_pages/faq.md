@@ -2,6 +2,7 @@
 permalink: /faq/
 title: "Frequently asked questions (FAQ)"
 ---
+## Using SIRIUS
 
 ### How can I export result in SIRIUS 4.4 GUI?
 SIRIUS 4.4 saves all results and data immediately to disk. This output is a well organized folder structure (project-space). 
@@ -26,3 +27,12 @@ In this example, the spectrum of Campherol from the SIRIUS demo data receives th
 {{ fig_img | markdownify | remove: "
 " | remove: "
 " }} COSMIC Campherol. 
+
+## Feature Requests
+### Could SIRIUS support for multiple charged ions?
+Not in the short term since there is a plenty of algorithmic work that has to be done. 
+Further, we do not have enough trainig data of multiple charged ions. If you can provide such data this would help a lot to get such project started.
+
+### Could SIRIUS support for Multimeres?
+Yes it possible in principle but it needs some adaptions of the fragmentation tree computation that are not implemented yet.
+It is on our list for future features.
