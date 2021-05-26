@@ -58,6 +58,13 @@ multiplicities) of the atoms, but **no** stereochemistry information.
 Elucidation of stereochemistry is currently beyond the power of
 automated search engines.
 
+**COSMIC confidence score** assigns a confidence to CSI:FingerID structure identifications.
+The idea is similar to False Discovery Rates: It allows to run CSI:FingerID in high-throughput 
+on thousands of compounds and select the most confident identifications. The workflow of generating 
+a structure database, searching with CSI:FingerID and ranking hits by confidence score is termed the COSMIC workflow.
+Make your data interpretation workflow easier by first identifying the most confident compounds in your sample, then use them 
+to generate knowledge or hypotheses.
+
 **CANOPUS** predicts compound classes from the molecular fingerprint predicted by CSI:FingerID 
 without any database search involved. Hence, it provides structural information for compounds 
 for which neither spectral nor structural reference data are available.
@@ -121,6 +128,11 @@ our scientific papers.
     [**Metabolite Identification through Multiple Kernel Learning on
     Fragmentation Trees.**](https://doi.org/10.1093/bioinformatics/btu275) *Bioinformatics*, 2014.
     Proc. of *Intelligent Systems for Molecular Biology* (ISMB 2014).
+
+### COSMIC confidence score
+
+- **PREPRINT:** Martin A. Hoffmann, Louis-Félix Nothias, Marcus Ludwig, Markus Fleischauer, Emily C. Gentry, Michael Witting, Pieter C. Dorrestein, Kai Dührkop and Sebastian Böcker. 
+  [**Assigning confidence to structural annotations from mass spectra with COSMIC**](https://doi.org/10.1101/2021.03.18.435634) *bioRxiv*, 2021.
 
 ### Fragmentation Tree Computation
 
