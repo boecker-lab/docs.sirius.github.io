@@ -11,7 +11,7 @@ One common .dll seems to be `CLPModelWrapper_JNI.dll` in our SIRIUS installation
 If you verified this issue, please configure your Windows Defender properly (maybe ask your administrator) and re-download SIRIUS.
 
 In case you are encountering a different issues, please contact us. However, an anonymous bug report will likely not help much in such cases.
-For more information on ILP solvers see the [installation instructions](installation.md#Installing Gurobi and/or CPLEX).
+For more information on ILP solvers see the [installation instructions](installation.md#Installing-Gurobi-and/or-CPLEX).
 
 ## Using SIRIUS
 
