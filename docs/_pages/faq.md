@@ -6,11 +6,11 @@ title: "Frequently asked questions (FAQ)"
 
 ## Common Issues
 ### I am getting the error message: "Could not load a valid TreeBuilder (ILP solvers), tried '[GUROBI, CPLEX, CLP, GLPK]'. Please read the installation instructions."
-SIRIUS uses an ILP solver to calculate fragmentation trees. It ships with the non-commercial CLP solver and should work out-of-the box. If you are using Windows and are nevertheless encountering this issues, chances are that Windows Defender deleted some .dll files.
-One common .dll seems to be `CLPModelWrapper_JNI.dll` in our SIRIUS installation folder. Alternatively, you can have a look at your log file for some `UnsatisfiedLinkError`. The log file should be located at `C:\Users\<your-username>\.sirius-<version-number>`.
-If you verified this issue, please configure your Windows Defender properly (maybe ask your administrator) and re-download SIRIUS.
+SIRIUS uses an ILP solver to calculate fragmentation trees. It ships with the non-commercial CLP solver and should work out-of-the box. If you are using Windows and are nevertheless encountering this issues, chances are that Windows Defender deletes or blocks some .dll files, e.g. `CLPModelWrapper_JNI.dll` in the SIRIUS installation folder. 
+You can have a look at your log file if you find an `UnsatisfiedLinkError`. The log file should be located at `C:\Users\<your-username>\.sirius-<version-number>`.
+We are having troubles reproducing these errors. If you verified this issue, please try to configure your Windows Defender to allow all SIRIUS-related files (maybe ask your administrator) and contact us to help resolve this issue for other users. Thanks.
 
-In case you are encountering a different issues, please contact us. However, an anonymous bug report will likely not help much in such cases.
+In case you are encountering a different issues, again, please contact us. However, an anonymous bug report will likely not help much in such cases.
 For more information on ILP solvers see the [installation instructions](installation.md#Installing-Gurobi-and/or-CPLEX).
 
 ## Using SIRIUS
