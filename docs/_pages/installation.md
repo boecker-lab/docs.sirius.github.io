@@ -112,6 +112,18 @@ export PATH=PATH:<SIRIUS_DIR>/bin/
 Note that you have to reopen your "bash" shell to make the changes
 effective.
 
+## Creating a user account (since v4.10)
+
+Certain features of SIRIUS require access to our webservices; this includes structure elucidation with CSI:FingerID and CANOPUS.
+From version 4.10 on, use of these features requires to create a user account. The easiest way is via the GUI. Open `Webservice -> Account settings`. 
+Click on `Create Account` and enter an email address and password. Verify your email address. 
+Finally, click on `Log in` and log in with your credentials. 
+In order to connect to a different web server, change the `Web service URL`.
+
+To log in via the CLI, see `sirius login --help`.
+ 
+
+
 ## Installing Gurobi and/or CPLEX
 
 SIRIUS ships with the *COIN-OR* Integer Linear
