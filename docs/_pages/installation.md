@@ -123,13 +123,10 @@ To login from the CLI use the following command:
 ```
 sirius login -u <email> -p
 ```
+See `sirius login --help` for details.
 
-NOTE: When logging in, SIRIUS will retrieve a long lived refresh_token that will be stored until it is invalidated by logging out.
+**NOTE:** When logging in, SIRIUS will retrieve a long lived refresh_token that will be stored until it is invalidated by logging out.
 You username and password will never be stored locally. 
-
-
-To log in via the CLI, see `sirius login --help`.
- 
 
 
 ## Installing Gurobi and/or CPLEX
