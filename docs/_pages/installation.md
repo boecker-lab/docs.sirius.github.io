@@ -112,13 +112,21 @@ export PATH=PATH:<SIRIUS_DIR>/bin/
 Note that you have to reopen your "bash" shell to make the changes
 effective.
 
-## Creating a user account (since v4.10)
+## Creating a user account (since `v4.10`)
 
 Certain features of SIRIUS require access to our webservices; this includes structure elucidation with CSI:FingerID and CANOPUS.
-From version 4.10 on, use of these features requires to create a user account. The easiest way is via the GUI. Open `Webservice -> Account settings`. 
+From version `4.10` on, use of these features requires to create a user account. The easiest way is via the GUI. Open `Webservice -> Account settings`. 
 Click on `Create Account` and enter an email address and password. Verify your email address. 
 Finally, click on `Log in` and log in with your credentials. 
-In order to connect to a different web server, change the `Web service URL`.
+
+To login from the CLI use the following command:
+```
+sirius login -u <email> -p
+```
+
+NOTE: When logging in, SIRIUS will retrieve a long lived refresh_token that will be stored until it is invalidated by logging out.
+You username and password will never be stored locally. 
+
 
 To log in via the CLI, see `sirius login --help`.
  
