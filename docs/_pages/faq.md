@@ -11,6 +11,19 @@ It is almost impossible to reproduce and fix such issues without additional info
 
 For more information on ILP solvers see the [installation instructions](installation.md#Installing-Gurobi-and/or-CPLEX).
 
+
+### How to configure SIRIUS to compute large data sets that contain high mass compounds?
+
+When computing molecular formulas with SIRIUS a few high mass compounds usually need most of the computing time, and some 
+of them might not finish computing in reasonable time at all and block your whole analysis.
+
+The most straightforward solution is to exclude high mass compounds from the analysis,
+by setting a mass threshold. This will usually allow you to annotate the vast majority of your data. However, many of 
+the higher mass compounds will work just fine, and it would be a pity to not annotate them. **Therefore, the recommended 
+solution is to set a *per-compound timeout* (`--compound-timeout`) so that a few *hard cases* cannot block your analysis**.
+
+[[Read more](how-to-large-comp.md)]
+
 ## Using SIRIUS
 
 ### How can I export result in SIRIUS 4.4 GUI?
