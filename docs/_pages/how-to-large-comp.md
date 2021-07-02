@@ -1,7 +1,10 @@
 ---
 permalink: /faq/how-to-large-comp
-title: "How to configure SIRIUS to compute large data sets that contain high mass compounds?"
+title: "How to deal with high mass compounds?"
 ---
+
+# How to configure SIRIUS to compute large data sets that contain high mass compounds?
+
 When computing molecular formulas with SIRIUS a few high mass compounds usually need most of the computing time, and some
 of them might not finish computing in reasonable time at all and block your whole analysis.
 
