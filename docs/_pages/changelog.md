@@ -10,8 +10,8 @@ title: "Changelog"
 ##### 4.9.0
 - feature: improved filtering options for the compound list in the GUI
 - feature: MS1 only data can now be imported using the CLI (`--allow-ms1-only`) to perform isotope pattern based molecular formula identification [#28](https://github.com/boecker-lab/sirius/issues/25). 
-- change: changed tanimoto algorithm form probabilistic to rounded to dramatically reduce running time for large structure candidate lists, see [43](https://github.com/boecker-lab/sirius/issues/43)
-- change: `--db=BIO` is now the default in the CLI, see [43](https://github.com/boecker-lab/sirius/issues/43)
+- change: changed tanimoto algorithm form probabilistic to rounded to dramatically reduce running time for large structure candidate lists, see [#43](https://github.com/boecker-lab/sirius/issues/43)
+- change: `--db=BIO` is now the default in the CLI, see [#43](https://github.com/boecker-lab/sirius/issues/43)
 - fix: wrong adduct for adduct switch annotated spectra in project-space output.
 
 - dev feature: hidden parameter to skip project validation for testing purposes see, [#42](https://github.com/boecker-lab/sirius/issues/42)
