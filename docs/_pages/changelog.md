@@ -7,6 +7,12 @@ title: "Changelog"
 - GUI: Better progress information for running jobs
 - more bugfixes ;-)
 
+##### 4.9.2
+- fix: error when using external path for custom dbs in the CLI ([#4](https://github.com/boecker-lab/sirius/issues/44))
+
+##### 4.9.1
+- fix: wrong log directory that might prevent SIRIUS from starting.
+
 ##### 4.9.0
 - feature: improved filtering options for the compound list in the GUI
 - feature: MS1 only data can now be imported using the CLI (`--allow-ms1-only`) to perform isotope pattern based molecular formula identification [#28](https://github.com/boecker-lab/sirius/issues/25). 
