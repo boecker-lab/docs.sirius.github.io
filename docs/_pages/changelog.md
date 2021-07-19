@@ -7,6 +7,10 @@ title: "Changelog"
 - GUI: Better progress information for running jobs
 - more bugfixes ;-)
 
+##### 4.9.3
+- fix: prevent Nullpointer in CANOPUS View filter box
+- improvement: allow to store projectspace copy as directory (not compressed)
+
 ##### 4.9.2
 - fix: error when using external path for custom dbs in the CLI ([#4](https://github.com/boecker-lab/sirius/issues/44))
 
