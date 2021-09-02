@@ -115,8 +115,8 @@ effective.
 ## Creating a user account (since `v4.10`)
 
 Certain features of SIRIUS require access to our webservices; this includes structure elucidation with CSI:FingerID and CANOPUS.
-From version `4.10` on, use of these features requires to create a user account. The easiest way is via the GUI. Open `Webservice -> Account settings`. 
-Click on `Create Account` and enter an email address and password. Verify your email address. 
+From version `4.10` on, use of these features requires to create a user account. The easiest way is via the GUI. Open `Webservice -> Account`. 
+Click on `Create Account` and enter an email address and password. Verify your email address with the link that will be sent to your inbox. 
 Finally, click on `Log in` and log in with your credentials. 
 
 To login from the CLI use the following command:
