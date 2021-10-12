@@ -427,14 +427,13 @@ all over classes with posterior probability above 50%.
 
   - *Proxy settings*
     
-      - Sirius support three different kinds of proxy configuration
-        SYSTEM, SIRIUS and NONE. If SYSTEM (default) is select Sirius
-        uses the system wide Java proxy settings. If SIRIUS is selected
+      - Sirius supports proxy configuration. It can be enabled by changing
+        the proxy configuration from NONE to SIRIUS. If SIRIUS is selected
         it uses the configuration you have specified int the Settings
-        -\> Proxy panel. If NONE is selected Sirius ignores all proxy
+        -\> Network panel. If NONE is selected Sirius ignores all proxy
         settings.
     
-      - Edit the information in the Settings -\> Proxy panel if you want
+      - Edit the information in the Settings -\> Network panel if you want
         to address CSI:FingerID via a proxy server. Your specified
         configuration will be tested if you hit the save button (see
         Figure below).

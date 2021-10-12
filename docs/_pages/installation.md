@@ -172,14 +172,18 @@ The order of the solvers specifies the priority in which SIRIUS uses them.
 
 ## Proxy servers
 
-To use database related functionality of SIRIUS, it needs an Internet
+To use web service functionality of SIRIUS, it needs an internet
 connection. You have to ensure that SIRIUS is not blocked by any
 security software on your computer.
 
-If you have to use a proxy server to connect to the Internet, SIRIUS
-automatically uses the system wide Java proxy configuration if
-available. Alternatively you can specify the proxy configuration in the
+If you have to use a proxy server to connect to the Internet, you can specify the proxy configuration in the
 Sirius user interface setting (see [Settings]({{ "//gui/#settings" | relative_url }})).
 
 If SIRIUS cannot connect to the Internet, it will [report]({{ "//gui/#webservice" | relative_url }}) on which stage
 the error occurred.
+
+## System Requirements
+* OS: Windows 10+, MacOS, Linux
+* CPU: Dual Core x86-64 (Quad Core x86-64 is recommended)
+* RAM: 4GB (2GB per CPU core is recommended)
+* Internet: 1Mbit/s is recommended
