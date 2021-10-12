@@ -160,10 +160,11 @@ Development (`x.y.z-SNAPSHOT`) builds are usually not publicly available.
 * Might not be backward compatible with results from previous versions
 
 **`y`:** Minor change or Major backend changes:
-* Major change in the backend (web service) so that it gets incompatible with the client (see, m)
-* New tools methods or functionality has been introduces
-* New CLI command added (backwards compatible)
-* Additional inputs or output (backwards compatible)
+* Major change in the backend (web service) so that it gets incompatible with the client 
+(see, [below]({{ "/admins/#major-web-service-changes-and-end-of-life" | relative_url }}))
+* New tools, methods or functionality have been introduced
+* New CLI command(s) added (backwards compatible)
+* Additional inputs or outputs (backwards compatible)
 * Backward compatible with results from previous versions
 * Update of the included JRE or native libs
 
