@@ -183,11 +183,11 @@ the relevant information.
 configs, logs and caches which can cause unexpected behaviour.
 
   
-### Major web service changes and end of life
+### Major web service changes and end-of-life
 When a **Major** web service update is released, this also causes an update of the SIRIUS client to a new **Minor** 
 version (`x.y+1.0`). The previous version (`x.y.z`) will become a legacy version that will only be fully functional for a 
 limited amount of time (usually at least 3 Month). In the past, sometimes even longer due to user requests to keep them 
 alive a bit longer. However, unless we just have a **Minor** version change for the SIRIUS client, upgrading is not 
-different from other **Minor** version changes. Just keep in mind that previous version might reach its end of life.
+different from other **Minor** version changes. Just keep in mind that previous version might reach its end-of-life.
 
 
