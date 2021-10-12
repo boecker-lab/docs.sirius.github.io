@@ -93,6 +93,8 @@ global:
   - title: "Bug Reports"
     url: /bugs/
   - title: "Developer information"
+    url: /admins/
+  - title: "Developer information"
     url: /developers/
   - title: "Changelog"
     url: /changelog/
