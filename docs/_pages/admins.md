@@ -41,8 +41,8 @@ need to install an update on the user's computer.
 * Most of the little standalone helper sub-tools in the CLI
 
 ### Online features
-* Chemical Structure database based feature such as CSI:FingerID structure database search 
-and the restriction of formula candidate to a database during SIRIUS molecular formula estimation.
+* Chemical Structure database based features such as CSI:FingerID structure database search 
+and the restriction of formula candidates to a database during SIRIUS molecular formula estimation.
 * CSI:FingerID fingerprint prediction
 * COSMIC confidence score computation
 * CANOPUS compound class prediction
