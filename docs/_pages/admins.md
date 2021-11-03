@@ -64,12 +64,14 @@ messages regarding connection issues might be misleading if the optional URLs ar
 * Check Internet: `https://www.google.com`
 * Check Domain Provider: `https://www.uni-jena.de`
 * Check Hosting: `https://bio.informatik.uni-jena.de`
+
 ### Commercial Version (Bright Giant GmbH)
 #### Mandatory:
 * Login Server: `https://auth0.bright-giant.com`
 * Web Services: `https://shared.csi.bright-giant.com:8443`    
 
-**Note:** Users with a private hosting subscription need to replace the web service URL with their custom one.  
+**Note:** Users with a deticated hosting subscription need to replace the web service URL with their custom one.  
+
 #### Optional:
 * Check Internet: `https://www.google.com`
 * Check Domain Provider: `https://alfahosting.de`
