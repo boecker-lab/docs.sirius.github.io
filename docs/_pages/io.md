@@ -112,15 +112,15 @@ by SIRIUS:
 
 An example for a .ms file:
 ```
-compound Gentiobiose
-formula C12H22O11 
-ionization \[M+Na\]+ 
-parentmass 365.10544
+>compound Gentiobiose
+>formula C12H22O11 
+>ionization \[M+Na\]+ 
+>parentmass 365.10544
 
-ms1 
+>ms1 
 365.10543 85.63 366.10887 11.69 367.11041 2.67
 
-collision 20 
+>collision 20 
 185.041199 4034.674316 
 203.052597 12382.624023 
 245.063171 50792.085938 
