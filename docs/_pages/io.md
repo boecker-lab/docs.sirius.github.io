@@ -246,6 +246,8 @@ following format:
 [M+ADDUCT]- for negative ions
 [M-ADDUCT]+/[M-ADDUCT]- for losses 
 [M]+/[M]- for instrinsically charged compounds
+[M+?]+ for positive ions with unknown adduct
+[M+?]- for negative ions with unknown adduct
 ```
 
 *ADDUCT* is the molecular formula of the adduct. The most common
