@@ -18,6 +18,10 @@ CN1C=NC2=C1C(=O)N(C(=O)N2C)C	id-03	Caffein
 CN1CCC2=CC3=C(C=C2C1C4C5=C(C6=C(C=C5)OCO6)C(=O)O4)OCO3 id-05 Bicculine
 ```
 
+```shell
+sirius -i <structure.tsv> cistom-db --name myDB --output /some/dir
+```
+
 You can import multiple files with compounds as SMILES into one DB. If a given structure can be found in
 SIRIUS' internal structure DB then fingerprint is downloaded from there, otherwise it is computed locally on your computer 
 which might take some time for many structures.
