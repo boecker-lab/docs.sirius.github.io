@@ -19,6 +19,8 @@ global:
         url: /install/#installing-gurobi-and-cplex
 #      - title: "Proxy Setting"
 #        url: /install/#proxy-servers
+  - title: "Account and License"
+    url: /account-and-license
   - title: "Quick Start"
     url: /quick-start
   - title: "Prerequisites"
