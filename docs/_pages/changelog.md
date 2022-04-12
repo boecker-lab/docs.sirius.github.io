@@ -3,21 +3,46 @@ permalink: /changelog/
 title: "Changelog"
 ---
 
-##### Coming soon...
-- GUI: Better progress information for running jobs
-- more bugfixes ;-)
 
-##### 4.9.3
-- fix: prevent Nullpointer in CANOPUS View filter box
-- improvement: allow to store projectspace copy as directory (not compressed)
+### SIRIUS 5
 
-##### 4.9.2
+#### 5.4.1
+- **breaking**: User Authentication. A user account and license is now needed to user the online features of SIRIUS. 
+The license is free and automatically available for non-commercial use, details [here]({{ "/install/#creating-a-user-account-since-v410" | relative_url }}). 
+- **breaking**: New [project-space]({{ "/io/#output" | relative_url }}) compression. Method level directories are now compressed archives to reduce number of files and save storage. 
+- **breaking**: Summary writing has been mode to a separate sub-tool (`write-summaries`). Summary files may have slightly changed. Usually just additional columns if at all.
+- **breaking**: The `fingerid`/`structure` sub-tool has been split into a  `fingerprint` (fingerprint prediction)
+and a `structure` (structure db search) sub-tool. This allows the user to recompute the database search 
+without having to recompute the fingerprint and compound class predictions. It further allows to compute `canopus`
+compound class prediction without having to perform structure db search.
+- **breaking**: Updated Fingerprint vector. Fingerprint related results of SIRIUS 4 projects might have to be recomputed 
+to perform some modification (e.g. recompute db-search). Reading the projects is still possible and formula results do not affected.  
+- **breaking**: Custom database format has changed. Custom databases need to be re-imported
+
+- feature: **Tool** - **El Gordo** lipid class annotation. 
+- feature: **GUI Tool** - **Epimetheus** sub-structure annotation. Combinatorial fragmentation of CSI:FingerID candidates to assign fragment peaks to sub-structures of the candidate.
+- feature: **GUI View** - New feature rich **spectrum viewer**. Mirror-plot to compare Isotope pattern and Simulated isotope pattern (e.g. ). 
+- feature: **GUI View** - **LC-MS** view to review chromatographic peak and data quality report for a given feature/compound
+- feature: CANOPUS now fully supports **NPC** classes (prediction, GUI and output)
+- feature: **GUI** advanced filtering options
+- feature: **GUI** scaling factor can be defined by the user (setting panel)
+- feature: Additional file formats for spectrum import supported (`.msp`, massbank, `.mat`)
+
+more changes are coming soo...
+
+### SIRIUS 4
+
+#### 4.9.3
+- fix: prevent Null-pointer in CANOPUS View filter box
+- improvement: allow storing project-space copy as directory (not compressed)
+
+#### 4.9.2
 - fix: error when using external path for custom dbs in the CLI ([#4](https://github.com/boecker-lab/sirius/issues/44))
 
-##### 4.9.1
+#### 4.9.1
 - fix: wrong log directory that might prevent SIRIUS from starting.
 
-##### 4.9.0
+#### 4.9.0
 - feature: improved filtering options for the compound list in the GUI
 - feature: MS1 only data can now be imported using the CLI (`--allow-ms1-only`) to perform isotope pattern based molecular formula identification [#28](https://github.com/boecker-lab/sirius/issues/25). 
 - change: changed tanimoto algorithm form probabilistic to rounded to dramatically reduce running time for large structure candidate lists, see [#43](https://github.com/boecker-lab/sirius/issues/43)
@@ -28,35 +53,35 @@ title: "Changelog"
 
 - minor bug fixes and improvementss
 
-##### 4.8.2
+#### 4.8.2
 - critical-fix: custom database importer wrote cache files to working directory instead to the usual casche dir
 
-##### 4.8.1
+#### 4.8.1
 - fix: problems with the deletion and creation of custom databases (GUI)
 - improvement: local database cached can be cleare from the settings panel (GUI)
 
-##### 4.8.0
+#### 4.8.0
 - feature: **COSMIC - confidence score**
 - improvement: new Object storage baackend
 - improvement: resizeable compound list (GUI)
 - improvement: CSI:FingerID and SIRIUS/ZODIAC scores in formula selector (GUI)
 - fix: new CLP dll should improve compatibility on windows (NO Solver found problem)
 
-##### 4.7.4
+#### 4.7.4
 - fix: intensity bug in FBMN export
  
 ##### 4.7.3
 - fix: CONFIG already exists error during background computations (FBMN export, custom-db import) 
 - fix: `.cef` file extension missing in file import dialog 
 
-##### 4.7.2
+#### 4.7.2
 - fix: `java.util.ConcurrentModificationException` when computing subtool separately with the CLI
 
-##### 4.7.1
+#### 4.7.1
 - fix: fixed missing jar/zip provider in bundled jre -> **Zipped project-spaces are now working again**
 - fix: fixed ignored `custom.config` and config inheritance
 
-##### 4.7.0
+#### 4.7.0
 - feature: Heuristic computation for fragmentation trees to improve running times for high mass compounds (no ILP has to be computed)
 - feature/improvement: Summaries
     - new `formula_identifications_adducts.tsv` summary file
@@ -88,32 +113,32 @@ title: "Changelog"
 
 - upgrade: SIRIUS ships now with JRE-15 which should fix jvm crashes during heavy multi threading on linux 
 
-##### 4.6.1
+#### 4.6.1
 - fix: CSI:FingerID results were not refreshed correctly after recomputing with different parameters in the GUI
 - fix: Parameters were not always handled correctly when recomputing with the GUI
 - fix: Index bug in fragmentation tree scoring 
 
-##### 4.6.0
+#### 4.6.0
 - feature: standalone subtool (`ftree-export`) to export fragmentation trees from CLI
 - feature: `--noCite` command to disable bibliography print in CLI
 - improvement: bibliography is not printed when showing help message or command parsing error
 - fix: another problem with un-importable projects due to detected adducts
 
-##### 4.5.3
+#### 4.5.3
 - fix: ZODIAC crash caused by empty spectra
 
-##### 4.5.2
+#### 4.5.2
 - fix: invalid project-space (not importable) due to empty detected adducts
 - fix: uncatched exception during adduct resolution (GitHub issue [#9](https://github.com/boecker-lab/sirius/issues/19))  
 - Merry X-Mas
 
-##### 4.5.1
+#### 4.5.1
 - improvement: CLP native libs are now compatible with glibc 2.12+ (instead of 2.18+) 
 - fix: project-space with outdated fingeprint versions (e.g. from SIRIUS 4.4) are now handled correctly and can be converted. 
 - fix: database formulas could be used if candidates even if they were incompatible with the adduct 
 - fix: mzml/mzxml files are now shown in input file selector
 
-##### 4.5.0
+#### 4.5.0
 - **feature: [CANOPUS:](https://www.biorxiv.org/content/10.1101/2020.04.17.046672v1) for negative ion mode data**
 - feature: [Bayesian (individual tree)](https://doi.org/10.1093/bioinformatics/bty245) scoring is now the default for ranking structure candidates
 - **update: Structure DB update due to major changes in PubChem standardization since the last one.**
@@ -139,11 +164,11 @@ such as `formula_identifications.tsv`, `compound_identifications.tsv` and `compo
 **NOTE: SIRIUS versions will now follow semantic versioning (all upcoming releases)** 
 regarding the command line interface and project-space output.  
 
-##### 4.4.29
+#### 4.4.29
 - fix: Error when parsing FragTree json with non numeric double values
 - fix: layout of screener progress bar on Mac  
 
-##### 4.4.28
+#### 4.4.28
 - feature: Retention time will now be imported by SIRIUS 
   - RT is shown in the Compound list in the SIRUS GUI and the list can be sorted by RT
   - RT is part of the compound.info file in the project-space 
@@ -152,7 +177,7 @@ regarding the command line interface and project-space output.
   - Improvement: Better progress reporting when Summary writing summaries (GUI)  
 - fix: Agilent CEF files without CE can now be imported
 
-##### 4.4.27
+#### 4.4.27
 - feature: coin-or ilp solver (CLP) is now included. This allows parallel computation of FragTrees without the need for a commercial solver.
 - improvement: Compounds without given charge are can now be imported. SIRIUS tries to guess the charge from the name (keyword: pos/neg) or falls back to positive.
 - improvement: additional parameters in compute dialog
@@ -164,13 +189,13 @@ regarding the command line interface and project-space output.
 - fix: crash when aborting recompute dialog
 - upgrade (GUI): included JRE to `zulu11.41.23-ca-fx-jre11.0.8`
 
-##### 4.4.26
+#### 4.4.26
 - fix: deadlock and waiting time due to webservice connections
 - fix/improvement: Adduct Settings and Adduct detection
 - fix: memory leak in third party json lib -> Zodiac memory consumption has been reduced dramatically 
 - fix: several minor bug fixes in the sirius libs
 
-##### 4.4.25
+#### 4.4.25
 - fix: removed spring boot packaging to
   - solve several class not found issues, 
   - solve github issue [#7](https://github.com/boecker-lab/sirius/issues/7)
@@ -180,44 +205,44 @@ regarding the command line interface and project-space output.
 - fix: mgf-export tool skips invalid instances if possible (failed before)
 - instance validation after lcms-align tool
 
-##### 4.4.24
+#### 4.4.24
 - feature: ms2 istotope scorer now available in cli and gui
 
-##### 4.4.23
+#### 4.4.23
 - fix: wrong missing value handling in xlogp filter (some candidates were invisible)
 - improvement: less cores for computations if gui is running to have mor cpu time for GUI tasks
 - improvement:  show deviation to target ion in FragTree root if precursor is missing in MS/MS 
 
-##### 4.4.22
+#### 4.4.22
 - fix: Classloader exceptions when using CLI from the GUI version
 - fix: Wrong mass deviation for trees with adducts
 - fix: misplaced labels when exporting svg/pdf fragtrees
 - fix: some minor GUI bugs
 
-##### 4.4.21
+#### 4.4.21
 - fix: incompatibilities with existing configs from previous versions (.sirius)
 - fix: CANOPUS detail view has size zero
 - fix: failing CSI:FingerID computation with Zodiac re-ranking and existing Adducts
 - improvement: errors that occur before GUI is started are now reported
 - improvement: minor GUI improvements
 
-##### 4.4.20
+#### 4.4.20
 - fix: some more fixes on MacOS GUI freezes 
 
-##### 4.4.18
+#### 4.4.18
 - fix: GUI Deadlock on MacOS X fixed. **Mac version is now available**.
 - improvement: Character separated files in project-space have now .tsv extension for better excel compatibility.
 - feature: Windows headless executable respects `%JAVA_HOME%` as JRE location.
 - improvement: Improved packaging and startup of the GUI version
 - fixes GitHub issues: [4](https://github.com/boecker-lab/sirius/issues/4) and [6](https://github.com/boecker-lab/sirius/issues/6)
 
-##### 4.4.16
+#### 4.4.16
 - feature: **CSI:FingerID for negative ion mode is available**
   - NOTE: CANOPUS for negative mode data is not ready yet and will still take some time.
 - fix: Too small Heapsize on Windows
 - improvement: better GUI performance 
 
-##### 4.4.15
+#### 4.4.15
 - feature: CLI Sub-Tool to export projects to mgf.
 - feature: multiple candidate number for Zodiac.
 - fix: zodiac score rendering.
@@ -226,7 +251,7 @@ regarding the command line interface and project-space output.
 - improvement: import and deletion performance
 - improvement: import progress now shown
 
-##### 4.4.14
+#### 4.4.14
 - fix: MacOS included JRE not found.
 - fix: ignored parameters.
 - fix: recompute does not correctly invalidate and delete previous results.
@@ -305,7 +330,7 @@ subtools that may be combined to ToolChains based on the project-space.
 -   Error Reporter bug fixed (GUI)
 -   Logging bugs fixed
 -   Many minor bug fixes
-
+### SIRIUS 3
 #### 3.5
 -   **Custom databases** can be imported by hand or via csv file. You
     can manage multiple databases within Sirius.
