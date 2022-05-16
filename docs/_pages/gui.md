@@ -188,7 +188,7 @@ compute confidence measures or merge results with customs dbs anyways.
 Calculating COSMIC confidence scores is parameter free and will be executed automatically every time a CSI:FingerID 
 search is performed. COSMIC scores for a compound are shown in the compound list on the left.
 
-Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the Zodiac release page.
+Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the COSMIC release page.
 
 ### Predicting Compound classes with the CANOPUS tool  (4)
 
