@@ -214,20 +214,30 @@ The compound list shows not only information about the input and compute state, 
 confidence score for the top CSI:FingerID hit.
 
 For each compound different tabs can be shown in the result panel.
-The *"SIRIUS Overview"* panel displays the most important
+The *"LC-MS"* tab displays the chromatogram of a compound for it monoisotopic- and further isotope peaks, as well as possibly detected adducts.
+It includes a basic quality assessment of the spectrum.
+The *"Formulas"* panel displays the most important
 information of the molecular formula identification. The candidate list contains the best candidate molecular
 formulas ordered by score. Molecular formulas are always written
 in neutral form. For the selected molecular formula candidates the *Spectra view* visualizes
 which peak is assigned to a fragment. The corresponding fragmentation
 tree is visualized in the *Tree view*. Both views can be displayed in a
-separate panel to have a more detailed look. The *"CSI:FingerID Overview"* and *"CSI:FingerID Details"* panel
-displays results from the CSI:FingerID structure search. The *"Fingerprint"* panel shows information about
-the molecular properties of the molecular fingerprint predicted by CSI:FingerID. The *"CANOPUS"* panel
+separate panel to have a more detailed look. The *"Fingerprint"* panel shows information about
+the molecular properties of the molecular fingerprint predicted by CSI:FingerID. The *"Structures"* panel displays 
+results from the CSI:FingerID structure search, while the *"Substructure Annotation"* panel shows possible substructures connected to
+the peaks of the MS/MS spectrumfor each candidate. The *"CANOPUS"* panel
 shows the [Classyfire](http://classyfire.wishartlab.com/) classes predicted by CANOPUS. 
 
-### Overview tab
+### LC-MS tab
 
-The *"SIRIUS Overview"* tab displays the candidate list, spectrum and
+displays the chromatogram of a compound for it monoisotopic- and further isotope peaks, as well as possibly detected adducts.
+It includes a basic quality assessment of the spectrum, that can be used to preemptively get an idea on overall dataset quality. The chromatograms
+are hoverable and show which isotope- or adduct peak they represent. 
+
+
+### Formulas tab ("SIRIUS overview" in SIRIUS4)
+
+The *"Formulas"* tab displays the candidate list, spectrum and
 fragmentation tree of the selected candidate. Candidates are ordered by
 total score, but can be sorted by any other column. A green row
 highlights the molecular formula of the best candidate structure found
@@ -297,7 +307,26 @@ fragmentation tree are colored in green. Peaks that are annotated as
 noise are colored black. Hovering with the mouse over a peak shows its
 detailed annotation.
 
-### CSI:FingerID Detail view
+### Fingerprint tab
+Even if the correct structure is not found by CSI:FingerID — in
+particular if the correct structure is not contained in any database —
+you can get information about the structure by looking at the predicted
+fingerprint. The *"Fingerprint"* tab shows a list of all molecular properties 
+the predicted fingerprint consists of. 
+For each molecular property its definition and posterior propability is shown
+as well as some information about the predictor for this property.
+When selecting a molecular property, examples for this property are shown below the list.
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/fingerprint.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Fingerprint view.</figcaption>
+</figure>
+
+### Structure annotation tab ("CSI:FingerID Detail" tab in SIRIUS4)
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/fingerid_details.png" | relative_url }})
 {% endcapture %}
@@ -359,25 +388,21 @@ This can for example happen when loading results that have been computed with a 
 is not available on the current system. Black labels are just additional information such as if the candidate 
 is part of the CSI:FingerID training data.
 
+This tab also includes visualization for the "El Gordo" lipid class annotation functionality. Lipid structures are often extremely similar to each other,
+often only differing in the position of the double bonds. These extremely similar structures are often not even differentiable by mass spectrometry at all, which is why the overarching lipid class is shown above the structure candidates. 
 
-### Fingerprint tab
-Even if the correct structure is not found by CSI:FingerID — in
-particular if the correct structure is not contained in any database —
-you can get information about the structure by looking at the predicted
-fingerprint. The *"Fingerprint"* tab shows a list of all molecular properties 
-the predicted fingerprint consists of. 
-For each molecular property its definition and posterior propability is shown
-as well as some information about the predictor for this property.
-When selecting a molecular property, examples for this property are shown below the list.
+### Substructure Annotation tab
 
-{% capture fig_img %}
-![Foo]({{ "/assets/images/fingerprint.png" | relative_url }})
-{% endcapture %}
+In this tab, a direct connection between the input MS/MS spectrum and the CSI:FingerID structure candidates is visualized. The table in the top part of the view shows all structure candidates for a given query that were also present in the "Structures" tab. By selecting them, the bottom part of the view shows the fragmentation spectrum on the left, as well as the given structure candidate on the right. Peaks in the fragmentation spectrum are color coded as follows:
 
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Fingerprint view.</figcaption>
-</figure>
+-Black peaks:  Peaks that are not used to explain the molecular formula of the candidate, and are as such not part of the fragmentation tree (just like in the "Formulas" tab)
+
+-Green peaks: Peaks that are used to explain the molecular formula of the candidate, and are as such part of the fragmentation tree (just like in the "Formulas" tab), but do not have a substructure associated to them (see below)
+
+-Purple peaks: Peaks that are used to explain the molecular formula of the candidate, AND can be associated to a specific substrucure of the candidate's structure. Possible substructures are combinatorially generated and then scored against the peaks in the spectrum, with the highest scoring substructure for each peak being displayed on the right. Blue atoms and bonds make the substructure, while red bonds denote the fragmentation that would have needed to occur for that fragment to be formed.
+
+Peaks can be navigated by left-clicking on them, or using the arrow keys.
+
 
 ### CANOPUS tab
 
@@ -403,6 +428,8 @@ all over classes with posterior probability above 50%.
 * (1) The most informative class (light green), and its ancestor classes (light blue).
 * (2) Alternative classes. In the ClassyFire chemontology, every compound is assigned to multiple classes. In this example, the compound kaempferol is a flavonoid, but also a benzenoid.
 * (3) The table lists all ClassyFire classes, with description parent class and so on. The colored bar denotes the predicted probability for this class. Only classes with probability above 0.5 are listed in (1) and (2).
+
+Starting from SIRIUS 5, this tab also contains the predicted Natural Product classes.
 
 ## Settings
 
