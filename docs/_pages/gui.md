@@ -393,7 +393,18 @@ often only differing in the position of the double bonds. These extremely simila
 
 ### Substructure Annotation tab
 
-In this tab, a direct connection between the input MS/MS spectrum and the CSI:FingerID structure candidates is visualized. The table in the top part of the view shows all structure candidates for a given query that were also present in the "Structures" tab. By selecting them, the bottom part of the view shows the fragmentation spectrum on the left, as well as the given structure candidate on the right. Peaks in the fragmentation spectrum are color coded as follows:
+In this tab, a direct connection between the input MS/MS spectrum and the CSI:FingerID structure candidates is visualized. The table in the top part of the view shows all structure candidates for a given query that were also present in the "Structures" tab. By selecting them, the bottom part of the view shows the fragmentation spectrum on the left, as well as the given structure candidate on the right. 
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/substructure_annotation.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Substructure annotation view.</figcaption>
+</figure>
+
+Peaks in the fragmentation spectrum are color coded as follows:
 
 -Black peaks:  Peaks that are not used to explain the molecular formula of the candidate, and are as such not part of the fragmentation tree (just like in the "Formulas" tab)
 
