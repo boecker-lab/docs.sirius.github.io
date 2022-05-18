@@ -230,9 +230,11 @@ shows the [Classyfire](http://classyfire.wishartlab.com/) classes predicted by C
 
 ### LC-MS tab
 
-displays the chromatogram of a compound for it monoisotopic- and further isotope peaks, as well as possibly detected adducts.
-It includes a basic quality assessment of the spectrum, that can be used to preemptively get an idea on overall dataset quality. The chromatograms
-are hoverable and show which isotope- or adduct peak they represent. 
+The LC-MS tab is only visible when LC-MS data (mzML or mzXML) was used for import. When the data came from MGF, ms or similar file formats, the LC-MS information is not available. This is also the case when LC-MS data was processed with OpenMS or MZMine and the results were imported to SIRIUS.
+
+The LC-MS tab displays the ion chromatogram of a compound (in blue), including its isotope peaks, possible in-source fragments (in brown), as well as detected adducts (in green) for each input file in which the compound was detected. Retention times are always given in minutes. The *extended ion chromatogram* (gray, dashed) is the mass trace that is not part of the detected peak (e.g., a second ion with same mass or just background noise with same mass). In case MS/MS data of the compound was extracted from the selected LC-MS input file, a black arrow marks the retention time at which the MS/MS was shot. A gray dashed line marks the *noise level*; its exact computation may varies from version to version, but it is related to the median intensity of all peaks in the MS scan. Two gray vertical dashed lines mark the median and weighted average retention time of the compound across all input LC-MS data files.
+
+On the right, there is a basic quality assessment panel. It can be used to preemptively get an idea on overall quality of the MS and MS/MS of the compound.
 
 
 ### Formulas tab ("SIRIUS overview" in SIRIUS4)
@@ -326,7 +328,7 @@ When selecting a molecular property, examples for this property are shown below 
   <figcaption>Fingerprint view.</figcaption>
 </figure>
 
-### Structure annotation tab ("CSI:FingerID Detail" tab in SIRIUS4)
+### Structures tab ("CSI:FingerID Detail" tab in SIRIUS4)
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/fingerid_details.png" | relative_url }})
 {% endcapture %}
@@ -406,9 +408,9 @@ In this tab, a direct connection between the input MS/MS spectrum and the CSI:Fi
 
 Peaks in the fragmentation spectrum are color coded as follows:
 
--Black peaks:  Peaks that are not used to explain the molecular formula of the candidate, and are as such not part of the fragmentation tree (just like in the "Formulas" tab)
+-Black peaks:  Peaks that are not used to explain the molecular formula of the candidate, and are as such not part of the fragmentation tree (just like in the "Formulas" tab). Usually, these peaks can be considered as noise or not explainable by the precursor ions molecular formula.
 
--Green peaks: Peaks that are used to explain the molecular formula of the candidate, and are as such part of the fragmentation tree (just like in the "Formulas" tab), but do not have a substructure associated to them (see below)
+-Green peaks: Peaks that are used to explain the molecular formula of the candidate, and as such are part of the fragmentation tree (just like in the "Formulas" tab), but do not have a substructure associated to them (see below)
 
 -Purple peaks: Peaks that are used to explain the molecular formula of the candidate, AND can be associated to a specific substrucure of the candidate's structure. Possible substructures are combinatorially generated and then scored against the peaks in the spectrum, with the highest scoring substructure for each peak being displayed on the right. Blue atoms and bonds make the substructure, while red bonds denote the fragmentation that would have needed to occur for that fragment to be formed.
 
