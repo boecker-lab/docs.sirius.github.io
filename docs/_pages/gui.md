@@ -48,8 +48,8 @@ the number of computed compounds and compound limits.
 SIRIUS offers two modes for data import: *Single compound import* and *Batch
 import*. The single compound import is triggered when clicking on the *"Import Compound"*
 button in the toolbar. It allows you to import **one** compound. (We
-will use the term "compound" as a description of MS and MS/MS spectra
-belonging to a single compound.) The single import mode is recommended
+will use the term "compound" to refer to MS and MS/MS spectra
+belonging to exactly one adduct of a single compound - hence to one precursor.) The single import mode is recommended
 if your data consists of several CSV (comma separated values) files,
 such as the data from the CASMI challenges. First press on *"Import Compound"* to
 start the import dialog.
@@ -70,7 +70,7 @@ collision energy is an optional attribute as it does not affect the
 computation.
 
 You can import `.ms`, `.mgf`, Agilent's `.cef` and `.mzml` (or `.mzxml`) files using the *"Import"* button or Drag'n'Drop. 
-In this mode SIRIUS will read all attributes (MS level, ionization, parent mass) directly
+In this mode SIRIUS will read all attributes (MS level, ionization, precursor mass) directly
 from the file. You can, however, change these attributes afterward by
 selecting the imported compound and clicking on the *Edit* button.
 When importing multiple `.mzml` (or `.mzxml`) at once, SIRIUS will ask you if it should align them. 
@@ -235,6 +235,15 @@ shows the [Classyfire](http://classyfire.wishartlab.com/) classes predicted by C
 
 The LC-MS tab is only visible when LC-MS data (mzML or mzXML) was used for import. When the data came from MGF, ms or similar file formats, the LC-MS information is not available. This is also the case when LC-MS data was processed with OpenMS or MZMine and the results were imported to SIRIUS.
 
+{% capture fig_img %}
+![Foo]({{ "/assets/images/lcms.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Overview tab.</figcaption>
+</figure>
+
 The LC-MS tab displays the ion chromatogram of a compound (in blue), including its isotope peaks, possible in-source fragments (in brown), as well as detected adducts (in green) for each input file in which the compound was detected. Retention times are always given in minutes. The *extended ion chromatogram* (gray, dashed) is the mass trace that is not part of the detected peak (e.g., a second ion with same mass or just background noise with same mass). In case MS/MS data of the compound was extracted from the selected LC-MS input file, a black arrow marks the retention time at which the MS/MS was shot. A gray dashed line marks the *noise level*; its exact computation may varies from version to version, but it is related to the median intensity of all peaks in the MS scan. Two gray vertical dashed lines mark the median and weighted average retention time of the compound across all input LC-MS data files.
 
 On the right, there is a basic quality assessment panel. It can be used to preemptively get an idea on overall quality of the MS and MS/MS of the compound.
@@ -333,7 +342,7 @@ When selecting a molecular property, examples for this property are shown below 
 
 ### Structures tab ("CSI:FingerID Detail" tab in SIRIUS4)
 {% capture fig_img %}
-![Foo]({{ "/assets/images/fingerid_details.png" | relative_url }})
+![Foo]({{ "/assets/images/structures.png" | relative_url }})
 {% endcapture %}
 
 <figure>
