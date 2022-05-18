@@ -5,8 +5,7 @@ title: "Graphical User Interface"
 
 ## Overview
 
-Starting with version 3.1, our software ships with a Graphical User
-Interface. 
+SIRIUS 5 ships with a Graphical User Interface. 
 
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/gui_marked.png" | relative_url }})
@@ -23,7 +22,8 @@ The second one (2) is for [importing](#data-import) either a single compound or 
 the project-space. The third button group (3) is for exporting data, e.g. for [GNPS FBMN](https://doi.org/10.1038/s41592-020-0933-6) 
 or writing [project-space summaries]({{ "/io/#sirius-project-space/" | relative_url }}). 
 The fourth button group (4) is for computations, containing "compute button", "job view" and "custom database importer".  
-The right most button group (5) contains "log", "settings", "webservice info" and "bug report" dialogs (8)
+The right most button group (5) contains "log", "settings", "webservice info" and "account info" dialogs. 
+"Help" links to this online documentation. "About" gives information on software licence and related publications.
 
 On the left side is the compound list (6) displaying all imported compounds. 
 Each *compound* lists MS and MS/MS spectra corresponding to a single measured
@@ -38,7 +38,10 @@ After selecting a compound (dark blue background in the compound list) the resul
 It shows a list of molecular formula candidates, sorted by score the corresponding spectrum (9)
 and the fragmentation tree (10) of the selected candidate molecular formula. 
 Explained peaks are highlighted (green) in the spectrum. Nodes in
-the fragmentation tree are colored according to their rel intensity.
+the fragmentation tree are colored according to their relative intensity.
+
+On the bottom (11), you find your license information for the webservice-based structure elucidation tools, 
+the number of computed compounds and compound limits.  
 
 ## Data import
 
