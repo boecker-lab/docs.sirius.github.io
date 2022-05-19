@@ -89,6 +89,15 @@ Right-clicking **multiple** selected compounds and choosing *Compute* will trigg
 the selected compounds.
 Clicking the *"Compute All"* button (toolbar) will compute all compounds in the project-space.
 
+Both dialogs are very similar. In *Single Computations* element prediction can be performed by clicking the respective button. 
+In *Batch Computations* check boxes indicate the elements that are automatically predicted for each compound. Also, you
+can select if results for compounds that already have been analyzed should be recomputed and overridden.
+
+The *Show Command* button shows the respective CLI command for the specified parameters. Hence, you can copy/paste this command
+and run analysis using the CLI.
+
+In the following, the *Batch Computation* dialog is shown.
+
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/compute_marked.png" | relative_url }})
 {% endcapture %}
@@ -172,12 +181,20 @@ increase the chance that the correct molecular formula candidate is contained in
 
 Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Zodiac release page.
 
-### Identifying molecular structure with the CSI:FingerID tool  (3)
 
-After computing the fragmentation trees you can search these in a
-structure database. 
+### Predicting the molecular fingerprint with the CSI:FingerID tool  (3)
 
-When selecting the CSI:FingerID search (3) you can again select
+After computing the fragmentation trees you can predict [molecular fingerprints]({{ "/prerequisites/#molecular-fingerprints" | relative_url }}). 
+These can be used to either search in a structure database or predict compound classes with CANOPUS.
+
+Specified fallback adducts are used in case no adduct has been detected for the compound. If "score threshold" is activated, 
+fingerprints are only calculated for the top scoring fragmentation trees (molecular formulas). 
+
+### Identifying the molecular structure with the CSI:FingerID tool  (4)
+
+Predicted molecular fingerprints can be searched in a structure database. 
+
+When selecting the CSI:FingerID search you can again select
 multiple structure databases. When searching in biomolecule databases you might never see if there are structures
 with possibly much better score from PubChem. Therefore, we recommend to
 search in PubChem and filter the result list if you expect the result to
@@ -193,7 +210,7 @@ search is performed. COSMIC scores for a compound are shown in the compound list
 
 Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the COSMIC release page.
 
-### Predicting Compound classes with the CANOPUS tool  (4)
+### Predicting Compound classes with the CANOPUS tool  (5)
 
 CANOPUS predicts [ClassyFire](http://classyfire.wishartlab.com/) compound classes from the molecular fingerprint. Class
 prediction is done without using any structure database. Thus, classes are predicted for all compounds for which the
