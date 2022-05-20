@@ -9,12 +9,20 @@ simply running the command in your commandline:
 sirius --help
 ```
 
-You can always use the `--help` option to get a documentation about the available
-commands and options.
+***
+
+**NOTE: It is usually a good idea to use the `--help` option to get an overview and 
+documentation about the available commands and options. This will guarantee that you will get the description 
+of commands that directly matches your SIRIUS version.**
+
+In the following, the most important commands and options are described shortly.
+
+***
+
 
 Since version 4.4.0 the SIRIUS commandline program is designed as a
 toolbox that provides different tools (subcommands) for metabolite
-identification. This tools can be concatenated to *toolchains* to
+identification. These tools can be concatenated to *toolchains* to
 compute multiple analysis steps at once. We distinguish subcommands of
 the following categories:
 
@@ -43,6 +51,8 @@ toolchain. For the `formula` tool the command would be:
 sirius formula --help
 ```
 
+Results of all tools that produce a project space as output (`--output` option), can be later viewed via the [GUI]({{ "/gui/" | relative_url }}).
+
 ## SIRIUS: Identifying Molecular Formulas
 
 One main purpose of SIRIUS is identifying the molecular formula of a
@@ -50,7 +60,7 @@ measured ion. For this task SIRIUS provides the `formula` tool. The most basic w
 to use the `formula` tool is with the generic text/CSV input:
 
 ```shell
-sirius [OPTIONS] -1 <MS FILE> -2 <MS/MS FILE> -z <PARENTMASS> --adduct <adduct> formula
+sirius [OPTIONS] -1 <MS FILE> -2 <MS/MS FILE> -z <PARENTMASS> --adduct <adduct> --output <projectspace> formula
 ```
 
 Where *MS FILE* and *MS/MS FILE* are either CSV or MGF files. If MGF
@@ -67,7 +77,7 @@ contain multiple compounds per file. Further SIRIUS is able to crawl an
 input directory for supported files:
 
 ```shell
-sirius [OPTIONS] --input demo-data/ms formula [OPTIONS]
+sirius [OPTIONS] --input demo-data/ms --output <projectspace> formula [OPTIONS]
 ```
 
 SIRIUS will pick the meta information (parentmass, ionization etc.) from
@@ -75,12 +85,12 @@ the `.ms` files in the given directory. This allows SIRIUS to run in batch
 mode (analyzing multiple compounds without starting a new jvm process
 every time).
 
-Besides the raw results like the fragmentation trees in `json` format, SIRIUS
-will output a summary containing the `rank`, `molecularFormula`, `adduct`,
-`precursorFormula`, `rankingScore`, `SiriusScore`, `TreeScore`,
-`IsotopeScore`, `numExplainedPeaks`, `explainedIntensity`, `medianMassErrorFragmentPeaks(ppm)`,	
-medianAbsoluteMassErrorFragmentPeaks(ppm),	massErrorPrecursor(ppm) on compound
-level and a summary containing the top hits for all compounds on project
+Results such as scored molecular formula candidates and corresponding fragmentation trees in `.json` format are written in the `<projectspace>`.
+If the command `write-summaries` is used, SIRIUS
+will output a summary file on compound level containing among others the 'rank', 'molecularFormula', 'adduct',
+'precursorFormula', 'rankingScore', 'SiriusScore', 'TreeScore',
+'IsotopeScore', 'numExplainedPeaks', 'explainedIntensity', 'medianMassErrorFragmentPeaks(ppm)',	
+'medianAbsoluteMassErrorFragmentPeaks(ppm)', 'massErrorPrecursor(ppm)' and a summary containing the top hits for all compounds on project
 level.
 
 The `SiriusScore` is the sum of the `TreeScore` and the
@@ -95,27 +105,32 @@ scores are selected for further fragmentation pattern analysis.
 If you already know the correct molecular formula and just want to
 compute a fragmentation tree, you can specify a single molecular formula
 with the option. SIRIUS will then only compute a tree for this molecular
-formula. If your input data is in format, the molecular formula might be
-already specified within the file. If a molecular formula is specified,
-the parent mass can be omitted. However, you still have to specify the
-ionization (except for default value `[M+H]+`):
+formula. If your input data is in `.ms` format, the molecular formula might be
+already specified within the file.
 
 ```shell
-sirius -f C20H19NO5 -2 demo-data/txt/chelidonine/_msms1.txt demo-data/txt/chelidonine_msms2.txt formula
+sirius -f C20H19NO5 -2 demo-data/txt/chelidonine/_msms1.txt,demo-data/txt/chelidonine_msms2.txt -z 354.134704589844 --output <projectspace> formula
 ```
 
-### Analysis Profiles
+### Instrument-specific parameters
 
-If you want to analyze spectra measured with `Orbitrap` or `FT-ICR`, you
-should specify the appropriate analysis profile. A profile is a set of
-configuration options and scoring functions SIRIUS will use for its
-analysis. For example, the and profiles having tighter constraints for
-the allowed mass deviation but do not rely so much on the intensity of
-isotope peaks. You can set the profile with the `-p <name>` option. By default, `qtof` is
-used.
+Datasets have different mass errors, level of noise and accuracy of isotope pattern intensities, depending, among others, on instrument type and setup.
+By default, SIRIUS uses a profile for `Q-TOF` data with 10 ppm mass deviation. This should not be interpreted as a Q-TOF-only profile, but is often a good default profile even for data from other instruments.
+However, if you are certain that your data has mass errors much below 10 ppm - because if was measured on Orbitrap or FT-ICR - you should probably specify more stringent parameters. 
+Adjustments are also necessary if the data is expected to have even higher mass errors.
+Both can be accomplished by specifying a different profile and mass deviations. 
 
-See the following examples for running the `formula` sub-tool of the SIRIUS commandline
-tool:
+
+You may be familiar with the profile option from the GUI. Using the CLI, you can specify `-p <name>` to either select `qtof` (default) or `orbitrap`.
+`orbitrap` will mainly use a different mass deviation of 5 ppm and slightly different settings for isotope scoring. 
+For FT-ICR data, we recommend to use the `orbitrap` profile and additionally specify a lower mass deviation, as explained in the following.
+
+You can specify the maximum allowed mass deviations for MS1 and MS2 and separately:
+
+```shell
+sirius -i demo-data/ms/Bicuculline.ms --output <projectspace> formula -p orbitrap --ppm-max 2 --ppm-max-ms2 5
+```
+
 
 ## ZODIAC: Improve Molecular Formula Identifications
 
