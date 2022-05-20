@@ -23,6 +23,11 @@ global:
     url: /account-and-license
   - title: "Quick Start"
     url: /quick-start
+    children:
+      - title: "Quick start GUI"
+        url: /quick-start/#graphical-user-interface
+      - title: "Quick start CLI"
+        url: /quick-start/#command-line-interface
   - title: "Prerequisites"
     url: /prerequisites
     children:
