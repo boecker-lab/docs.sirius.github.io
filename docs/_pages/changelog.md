@@ -5,6 +5,12 @@ title: "Changelog"
 
 
 ### SIRIUS 5
+#### 5.5.2
+- fix: collsion energy parsing bug
+- feature update checker 
+
+#### 5.5.1
+more changes are coming soo...
 
 #### 5.4.1
 - **breaking**: User Authentication. A user account and license is now needed to user the online features of SIRIUS. 
