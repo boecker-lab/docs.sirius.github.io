@@ -6,8 +6,8 @@ title: "Changelog"
 
 ### SIRIUS 5
 #### 5.5.2
-- fix: collsion energy parsing bug
-- feature update checker 
+- fix: Collsion energy parsing bug
+- feature: Update checker 
 
 #### 5.5.1
 more changes are coming soo...
