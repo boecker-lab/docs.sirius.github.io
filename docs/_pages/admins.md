@@ -70,7 +70,7 @@ messages regarding connection issues might be misleading if the optional URLs ar
 * Login Server: `https://auth0.bright-giant.com`
 * Web Services: `https://csi.bright-giant.com`    
 
-**Note:** Users with a deticated hosting subscription need to replace the web service URL with the URL of their custom subscriction (`<companyname>.csi.bright-giant.com`).
+**Note:** Users with a deticated hosting subscription need to replace the web service URL with the URL of their custom subscriction (usually `<companyname>.csi.bright-giant.com`).
 
 #### Optional:
 * Check Internet: `https://www.google.com`
