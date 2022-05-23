@@ -58,24 +58,22 @@ messages regarding connection issues might be misleading if the optional URLs ar
 
 ### Non-Commercial Version (FSU Jena)
 #### Mandatory:
+* License Server: `https://gate.bright-giant.com`
 * Login Server: `https://auth0.bright-giant.com`
 * Web Services: `https://www.csi-fingerid.uni-jena.de`
 #### Optional:
 * Check Internet: `https://www.google.com`
-* Check Domain Provider: `https://www.uni-jena.de`
-* Check Hosting: `https://bio.informatik.uni-jena.de`
 
 ### Commercial Version (Bright Giant GmbH)
 #### Mandatory:
+* License Server: `https://gate.bright-giant.com`
 * Login Server: `https://auth0.bright-giant.com`
-* Web Services: `https://shared.csi.bright-giant.com:8443`    
+* Web Services: `https://csi.bright-giant.com`    
 
-**Note:** Users with a deticated hosting subscription need to replace the web service URL with their custom one.  
+**Note:** Users with a deticated hosting subscription need to replace the web service URL with the URL of their custom subscriction (`<companyname>.csi.bright-giant.com`).
 
 #### Optional:
 * Check Internet: `https://www.google.com`
-* Check Domain Provider: `https://alfahosting.de`
-* Check Domain: `https://bright-giant.com`
 
 ### Change internet connection check URL
 If you are using SIRIUS from somewhere where Google is not reachable you can replace it by some other URL 
