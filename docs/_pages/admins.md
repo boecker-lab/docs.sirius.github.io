@@ -48,34 +48,32 @@ and the restriction of formula candidates to a database during SIRIUS molecular 
 * CANOPUS compound class prediction
 
 ## Connections needed to run online features
-Two servers need to be reachable for SIRIUS to work properly; 
-the login server (`https://auth0.bright-giant.com`) and the web service itself.
-Whereas the login server is the same for the commercial and the non-commercial (provided by FSU Jena) versions of the 
-web service, the URL of the web service itself might vary for different subscriptions. Further, there are a few additional 
+Three servers need to be reachable for SIRIUS to work properly; 
+the login server (`https://auth0.bright-giant.com`), the license server (`https://gate.bright-giant.com`) and the web service itself.
+Whereas the login server and the license server are the same for the commercial and the non-commercial (provided by FSU Jena) users/subscriptions, 
+the URL of the web service itself might vary for different subscriptions. Further, there is an additional 
 URLs that might be requested for debugging and error reporting purposes, e.g. if the web service or the login server 
-are not reachable. These URLs are **optional** and are **not** needed for SIRIUS to work properly. However, error 
-messages regarding connection issues might be misleading if the optional URLs are blocked.
+are not reachable. This URL is **optional** and are **not** needed for SIRIUS to work properly. However, error 
+messages regarding connection issues might be lest informative if the optional URL is blocked. The URL needed for the web service will be provided via the authetication servive as part of your access token. The URL of the web service will be displayed in the connection check panel when a valid license was found/selected after logging in.
 
-### Non-Commercial Version (FSU Jena)
+### Non-Commercial subscription (FSU Jena)
 #### Mandatory:
+* License Server: `https://gate.bright-giant.com`
 * Login Server: `https://auth0.bright-giant.com`
 * Web Services: `https://www.csi-fingerid.uni-jena.de`
 #### Optional:
 * Check Internet: `https://www.google.com`
-* Check Domain Provider: `https://www.uni-jena.de`
-* Check Hosting: `https://bio.informatik.uni-jena.de`
 
-### Commercial Version (Bright Giant GmbH)
+### Commercial subscriptions (Bright Giant GmbH)
 #### Mandatory:
+* License Server: `https://gate.bright-giant.com`
 * Login Server: `https://auth0.bright-giant.com`
-* Web Services: `https://shared.csi.bright-giant.com:8443`    
+* Web Services: `https://csi.bright-giant.com`    
 
-**Note:** Users with a deticated hosting subscription need to replace the web service URL with their custom one.  
+**Note:** Users with a deticated hosting subscription need to replace the web service URL with the URL of their custom subscriction (usually `<companyname>.csi.bright-giant.com`).
 
 #### Optional:
 * Check Internet: `https://www.google.com`
-* Check Domain Provider: `https://alfahosting.de`
-* Check Domain: `https://bright-giant.com`
 
 ### Change internet connection check URL
 If you are using SIRIUS from somewhere where Google is not reachable you can replace it by some other URL 
@@ -84,7 +82,7 @@ To do so, add or replace the following entry in `<USER_HOME>/.sirius-<X.Y>/siriu
 ```
 de.unijena.bioinf.fingerid.web.external=https://my.custom.url/
 ```
-The connection check expects an HTTP response value `OK` (e.g. 200) to be successful
+The connection check expects an HTTP head response value `OK` (e.g. 200) to be successful
 
 ## Proxy Settings
 If your institution uses a proxy server to connect to the internet you need to configure the proxy server within SIRIUS. 
