@@ -11,16 +11,15 @@ sirius --help
 
 ***
 
-**NOTE: It is usually a good idea to use the `--help` option to get an overview and 
-documentation about the available commands and options. This will guarantee that you will get the description 
-of commands that directly matches your SIRIUS version.**
+**NOTE: It is usually a good idea to use the `--help` option to obtain an overview of the available commands and options. 
+This will guarantee that you will have a description of the commands that directly matches your SIRIUS version.**
 
 In the following, the most important commands and options are described shortly.
 
 ***
 
 
-Since version 4.4.0 the SIRIUS commandline program is designed as a
+The SIRIUS commandline program is designed as a
 toolbox that provides different tools (subcommands) for metabolite
 identification. These tools can be concatenated to *toolchains* to
 compute multiple analysis steps at once. We distinguish subcommands of
@@ -32,16 +31,16 @@ the following categories:
 
   - [**STANDALONE:**]({{ "/cli-standalone/" | relative_url }}) Tools that run Standalone and cannot be concatenated
     with other subtools. These are usually tools for configuration
-    purposes.
+    purposes. E.g. modifying `project-space` or exporting `MGF` files. 
 
   - **PREPROCESSING:** Tools that prepare input data to be compatible
-    with SIRIUS.
+    with SIRIUS. E.g. `lcms-align` feature detection and feature grouping.
 
   - **COMPOUND TOOL:** Tools that analyze each compound (instance) of
-    the dataset individually and can be concatenated with other tools.
+    the dataset individually and can be concatenated with other tools. E.g. `formula` annotation, `structure` database search or `canopus` compound class prediction.
 
   - **DATASET TOOL:** Tools that analyze all compounds (instances) of
-    the dataset simultaneously and can be concatenated with other tools.
+    the dataset simultaneously and can be concatenated with other tools. E.g. dataset-wide molecular formula annotatio with `zodiac`.
 
 Each subtool can also be called with the `--help` option to get a documentation
 about the available options and possible follow up commands in a
@@ -53,14 +52,27 @@ sirius formula --help
 
 Results of all tools that produce a project space as output (`--output` option), can be later viewed via the [GUI]({{ "/gui/" | relative_url }}).
 
-## SIRIUS: Identifying Molecular Formulas
+
+## LCMS-align: Feature detection and feature alignment [Preprocessing]
+
+The `lcms-align` tool allows you to import mzML/mzXML files into SIRIUS. It performs
+feature detection and feature alignment based on the MS/MS spectra and
+creates a SIRIUS project-space which is then used to execute followup
+analysis steps:
+
+```shell
+sirius -i <mzml(s)> -o <projectspace> lcms-run formula
+```
+
+
+## SIRIUS: Identifying Molecular Formulas [Compound Tool]
 
 One main purpose of SIRIUS is identifying the molecular formula of a
 measured ion. For this task SIRIUS provides the `formula` tool. The most basic way
 to use the `formula` tool is with the generic text/CSV input:
 
 ```shell
-sirius [OPTIONS] -1 <MS FILE> -2 <MS/MS FILE> -z <PARENTMASS> --adduct <adduct> --output <projectspace> formula
+sirius [OPTIONS] -1 <MS FILE> -2 <MS/MS FILES comma separated> -z <PARENTMASS> --adduct <adduct> --output <projectspace> formula
 ```
 
 Where *MS FILE* and *MS/MS FILE* are either CSV or MGF files. If MGF
@@ -77,7 +89,7 @@ contain multiple compounds per file. Further SIRIUS is able to crawl an
 input directory for supported files:
 
 ```shell
-sirius [OPTIONS] --input demo-data/ms --output <projectspace> formula [OPTIONS]
+sirius [OPTIONS] --input <inputFile> --output <projectspace> formula [OPTIONS]
 ```
 
 SIRIUS will pick the meta information (parentmass, ionization etc.) from
@@ -103,13 +115,12 @@ scores are selected for further fragmentation pattern analysis.
 ### Computing fragmentation trees
 
 If you already know the correct molecular formula and just want to
-compute a fragmentation tree, you can specify a single molecular formula
-with the option. SIRIUS will then only compute a tree for this molecular
-formula. If your input data is in `.ms` format, the molecular formula might be
-already specified within the file.
+compute a fragmentation tree, you can specify the formula using `--formulas`. SIRIUS will then only compute a tree for this molecular
+formula. If your input data is in `.ms` format, the molecular formula might be already specified within the file. Note: the `--formulas` options
+can also be used to specify a comma-separated list of candidate molecular formulas.
 
 ```shell
-sirius -f C20H19NO5 -2 demo-data/txt/chelidonine/_msms1.txt,demo-data/txt/chelidonine_msms2.txt -z 354.134704589844 --output <projectspace> formula
+sirius -i <input> --output <projectspace> formula --formulas <formula>
 ```
 
 ### Instrument-specific parameters
@@ -128,11 +139,11 @@ For FT-ICR data, we recommend to use the `orbitrap` profile and additionally spe
 You can specify the maximum allowed mass deviations for MS1 and MS2 and separately:
 
 ```shell
-sirius -i demo-data/ms/Bicuculline.ms --output <projectspace> formula -p orbitrap --ppm-max 2 --ppm-max-ms2 5
+sirius -i <input> --output <projectspace> formula -p orbitrap --ppm-max 2 --ppm-max-ms2 5
 ```
 
 
-## ZODIAC: Improve Molecular Formula Identifications
+## ZODIAC: Improve Molecular Formula Identifications [Dataset Tool]
 
 If your input data is derived from a biological sample or any other set
 of derivatives, similarities between different compounds can be
@@ -148,25 +159,26 @@ The `zodiac` tool can be executed after the `formula` tool without the need of m
 parameters:
 
 ```shell
-sirius -i <input> -o <output> formula -c 50 zodiac
+sirius -i <input> -o <projectspace> formula -c 50 zodiac
 ```
 
 When using ZODIAC, it is reasonable to increase the maximum number of
-formula candidates (`-c`) that are stored after running . These candidates
+formula candidates (`-c`) that are stored after running `formula`. These candidates
 are input to ZODIAC. If the correct candidate is missing, ZODIAC cannot
 recover it. In order to reduce memory consumption and running time,
 ZODIAC uses a dynamic number of candidates per compound based on the m/z
 — the idea is, for low-mass compounds the correct molecular formula is
 much more likely to be in the, say, top 10. By default, ZODIAC uses 10
 candidates for compounds with m/z lower equal to 300 (`--considered-candidates-at-300 10`) and 50
-candidates for compounds with m/z greater equal to 800 (`--considered-candidates-at-800 50`).
+candidates for compounds with m/z greater equal to 800 (`--considered-candidates-at-800 50`). 
+In between these threshold the number of candidates is calculated by interpolation. 
 
 The density of the ZODIAC network mainly depends on two parameters: `--edge-threshold`
 (default:0.95) and `--minLocalConnections` (default:10). The edge threshold defines the ratio of
 all possible edges between candidates that are discarded. Because most
 formula candidates are incorrect (there is only one correct candidate
 per compound) we assume most edges are spurious and we throw away the
-95% with lowest score. However, to prevent compounds being
+95% edges with lowest score. However, to prevent compounds being
 disconnected completely from the rest of the network, we discard edges
 in such a way that one candidate per compound is connected to at least
 `--minLocalConnections` other compounds. This introduces an individual edge score threshold for
@@ -184,67 +196,69 @@ This will allow ZODIAC to filter low weight edges on the fly when creating the n
 network that may decrease performance:**
 
 ```shell
-sirius -i <input> -o <output> formula -c 50 zodiac --minLocalConnections 0 --edge-threshold 0.99
+sirius -i <input> -o <projectspace> formula -c 50 zodiac --minLocalConnections 0 --edge-threshold 0.99
 ```
 
-## CSI:FingerID: Identifying Molecular Structures
+## CSI:FingerID: Predicting molecular fingerprints [Compound Tool]
 
-With the `structure` tool you can search for molecular structures with CSI:FingerID.
-To run CSI:FingerID you need to execute the `formula` tool first. You might also
+Molecular fingerprints can be predicted via `fingerprints` command after molecular formula candidates
+have been calculated running `formula`. Fingerprint prediction is part of CSI:FingerID.
+A fingerprint is predicted based on a specific molecular formula candidate
+(with corresponding fragmentation tree). By default, fingerprints are predicted for multiple good scoring formula candidates by applying a soft score-threshold on the SIRIUS score.
+
+```shell
+sirius -i <input> -o <projectspace> formula fingerprint
+```
+
+
+## CSI:FingerID: Identifying Molecular Structures [Compound Tool]
+
+Using the `structure` tool you can search with CSI:FingerID for molecular structures in a structure database.
+To run structure database search, molecular fingerprints need to be predicted in advance by running the `fingerprint` tool first. You might also
 want to run the `zodiac` tool for improved formula ranking if your data is derived
 from a biological sample or any other set of derivatives.
 
-With `--databases` you can specify the database SIRIUS should search in. Available are, among other
+With `--databases` you can specify the database CSI:FingerID should search in. Available are, among other
 `pubchem` and `bio`.
 
-The `structure` tool will generate a `structure_candidates.csv` for each compound containing an ordered
-candidate list of structures with the CSI:FingerID score. Furthermore, a `compound_identification.csv`
-file will be generated containing the top candidates from all compounds
-ordered by their confidence.
+When structure search was performed, the `write-summaries` tool will generate a `structure_candidates.csv` for each compound containing an ordered
+candidate list of structures with the CSI:FingerID score. Furthermore, a projectspace-wide `compound_identification.csv`
+file will be generated containing the top candidate structure for each compound
+ordered by their confidence score.
 
 ```shell
-sirius -i demo-data/ms/Bicuculline.ms -o <output>formula -c 10 structure --database pubchem
+sirius -i <input> -o <projectspace> formula structure --database pubchem
 ```
 
 When running `structure` together with `zodiac` the command could look like this:
 
 ```shell
-sirius -i <input> -o <output> formula -c 50 zodiac structure --database bio
+sirius -i <input> -o <projectspace> formula -c 50 zodiac structure --database bio
 ```
 
-## CANOPUS: Predicting Compound Classes without Identification
+## CANOPUS: Database-free Compound Classes Prediction [Compound Tool]
 
-The `canopus` tool allows you the predict compound classes from the probabilistic
-molecular fingerprint predicted by CSI:FingerID. So `canopus` can even provide
-compound class information for unidentified compound with no hit in a
-structure database:
+The `canopus` tool allows you to directly predict compound classes based on the probabilistic
+molecular fingerprint that was predicted by CSI:FingerID (`fingerprint` command). Notably, `canopus` can even provide
+compound class information for unidentified compounds with no hit in a structure database:
 
 ```shell
-sirius -i <input> -o <output> formula -c 10 structure --database pubchem canopus
+sirius -i <input> -o <projectspace> formula fingerprint canopus
 ```
 
-## PASSATUTTO: Decoy Spectra from Fragmentation Trees
+
+## PASSATUTTO: Decoy Spectra from Fragmentation Trees [Compound Tool]
 
 The `passattuto` tool allows you to compute high quality decoy spectra from
 fragmentation trees provided by the `formula` tool. Assume your are using a
 spectral library as input you can easily create a decoy database based
-on this spectra:
+on these spectra:
 
 ```shell
-sirius -i <spectral-lib> -o <output> formula passatutto
+sirius -i <spectral-lib> -o <projectspace> formula passatutto
 ```
 
 If no molecular formulas are annotated to the input spectra the best
 scoring candidate will be used for decoy computation instead.
 
-## LCMS-align: Feature detection and feature alignment
-
-The `lcms-align` tool allows you to import mzML/mzXML files into SIRIUS. It performs
-feature detection and feature alignment based on the MS/MS spectra and
-creates a SIRIUS project-space which is then used to execute followup
-analysis steps:
-
-```shell
-sirius -i <mzml(s)> -o <output> lcms-run formula
-```
 
