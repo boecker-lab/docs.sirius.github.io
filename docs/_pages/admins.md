@@ -56,7 +56,7 @@ URLs that might be requested for debugging and error reporting purposes, e.g. if
 are not reachable. This URL is **optional** and are **not** needed for SIRIUS to work properly. However, error 
 messages regarding connection issues might be lest informative if the optional URL is blocked. The URL needed for the web service will be provided via the authetication servive as part of your access token. The URL of the web service will be displayed in the connection check panel when a valid license was found/selected after logging in.
 
-### Non-Commercial Version (FSU Jena)
+### Non-Commercial subscription (FSU Jena)
 #### Mandatory:
 * License Server: `https://gate.bright-giant.com`
 * Login Server: `https://auth0.bright-giant.com`
@@ -64,7 +64,7 @@ messages regarding connection issues might be lest informative if the optional U
 #### Optional:
 * Check Internet: `https://www.google.com`
 
-### Commercial Version (Bright Giant GmbH)
+### Commercial subscriptions (Bright Giant GmbH)
 #### Mandatory:
 * License Server: `https://gate.bright-giant.com`
 * Login Server: `https://auth0.bright-giant.com`
