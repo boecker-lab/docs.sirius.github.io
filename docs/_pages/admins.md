@@ -48,13 +48,13 @@ and the restriction of formula candidates to a database during SIRIUS molecular 
 * CANOPUS compound class prediction
 
 ## Connections needed to run online features
-Two servers need to be reachable for SIRIUS to work properly; 
-the login server (`https://auth0.bright-giant.com`) and the web service itself.
-Whereas the login server is the same for the commercial and the non-commercial (provided by FSU Jena) versions of the 
-web service, the URL of the web service itself might vary for different subscriptions. Further, there are a few additional 
+Three servers need to be reachable for SIRIUS to work properly; 
+the login server (`https://auth0.bright-giant.com`), the license server (`https://gate.bright-giant.com`) and the web service itself.
+Whereas the login server and the license server are the same for the commercial and the non-commercial (provided by FSU Jena) users/subscriptions, 
+the URL of the web service itself might vary for different subscriptions. Further, there is an additional 
 URLs that might be requested for debugging and error reporting purposes, e.g. if the web service or the login server 
-are not reachable. These URLs are **optional** and are **not** needed for SIRIUS to work properly. However, error 
-messages regarding connection issues might be misleading if the optional URLs are blocked.
+are not reachable. This URL is **optional** and are **not** needed for SIRIUS to work properly. However, error 
+messages regarding connection issues might be lest informative if the optional URL is blocked. The URL needed for the web service will be provided via the authetication servive as part of your access token. The URL of the web service will be displayed in the connection check panel when a valid license was found/selected after logging in.
 
 ### Non-Commercial Version (FSU Jena)
 #### Mandatory:
@@ -82,7 +82,7 @@ To do so, add or replace the following entry in `<USER_HOME>/.sirius-<X.Y>/siriu
 ```
 de.unijena.bioinf.fingerid.web.external=https://my.custom.url/
 ```
-The connection check expects an HTTP response value `OK` (e.g. 200) to be successful
+The connection check expects an HTTP head response value `OK` (e.g. 200) to be successful
 
 ## Proxy Settings
 If your institution uses a proxy server to connect to the internet you need to configure the proxy server within SIRIUS. 
