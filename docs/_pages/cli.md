@@ -34,7 +34,7 @@ the following categories:
     purposes. E.g. modifying `project-space` or exporting `MGF` files. 
 
   - **PREPROCESSING:** Tools that prepare input data to be compatible
-    with SIRIUS. E.g. `lcms-align` feature detection and feature grouping.
+    with SIRIUS. E.g. `lcms-align` for feature detection and alignment.
 
   - **COMPOUND TOOL:** Tools that analyze each compound (instance) of
     the dataset individually and can be concatenated with other tools. E.g. `formula` annotation, `structure` database search or `canopus` compound class prediction.
@@ -55,7 +55,7 @@ Results of all tools that produce a project space as output (`--output` option),
 
 ## LCMS-align: Feature detection and feature alignment [Preprocessing]
 
-The `lcms-align` tool allows you to import mzML/mzXML files into SIRIUS. It performs
+The `lcms-align` tool allows you to import multipe mzML/mzXML files into SIRIUS. It performs
 feature detection and feature alignment based on the MS/MS spectra and
 creates a SIRIUS project-space which is then used to execute followup
 analysis steps:
