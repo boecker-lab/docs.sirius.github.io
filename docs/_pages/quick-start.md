@@ -98,8 +98,8 @@ This is usually not the recommended format as it misses relevant information tha
     quite large score. Furthermore, the second molecular formula has a
     much lower score. This is a good indication that the identification
     is correct. However, you can take a look at the fragmentation tree:
-    Do the peak annotation look correct? Take a look at the spectrum
-    view: Are all high intensive peaks are explained?
+    Do the peak annotations look correct? Take a look at the spectrum
+    view: Are all high intensive peaks explained?
 
 1.  To write the results into a summary file press the *Summaries* button.
     You can find the result list `formula_candidates.tsv` at the compound level
@@ -128,11 +128,11 @@ This is usually not the recommended format as it misses relevant information tha
 
 ## Command Line Interface
 
-The demo-data contain examples for three different data formats readable
+The demo-data contains examples for three different data formats readable
 by SIRIUS. 
 
 ### Example 1: MGF file
-The MGF folder contain an example for a MGF file containing a
+The MGF folder contains an example for a MGF file containing a
 single compound with several MS/MS spectra measured on an Orbitrap
 instrument. SIRIUS recognizes that these MS/MS spectra belong to the
 same compound because they have the same parent mass. To analyze this
@@ -248,5 +248,5 @@ The demo data contain a clean MS spectrum (e.g. there is only one
 isotope pattern contained in the MS spectrum). In such cases, SIRIUS can
 infer the correct parent mass from the MS data (by simply using the
 monoisotopic mass of the isotope pattern as parent mass). So you can
-omit the `-z` option in this cases.
+omit the `-z` option in these cases.
 
