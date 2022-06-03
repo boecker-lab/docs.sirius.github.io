@@ -3,9 +3,13 @@ permalink: /account-and-license/
 title: "Account and License"
 ---
 
-Since SIRIUS 5, a user account and a license is required to use the webservice based
-features of SIRIUS. 
-No worries CSI:FingerID, CANOPUS and all upcoming tools will stay free for academic/non-commercial use
+Since SIRIUS 5, a user account and a license is required to use the webservice-based
+features of SIRIUS.
+**Non**-webservice-based features include molecular formula annotation using fragmentation trees and isotope pattern analysis -
+this is performed on your local computer.
+Webservice-based features are essentially advanced structure elucidation features including structure database search with CSI:FingerID
+and CANOPUS compound class prediction.  
+No worries these and upcoming features will stay free for academic/non-commercial use
 and will be provided/hosted by the FSU Jena. On the other hand the [Bright Giant GmbH](https://bright-giant.com/) 
 offers SIRIUS webservice hostings for commercial users. 
 
