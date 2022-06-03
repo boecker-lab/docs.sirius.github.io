@@ -28,4 +28,5 @@ and we will grant you access.
 Please contact Bright Giant (https://bright-giant.com/) for offerings and pricing.  
 
 
+### Account creation
 Information about how to create an account can be found in the [installation instructions]({{ "/install/#creating-a-user-account-since-v410" | relative_url }})
