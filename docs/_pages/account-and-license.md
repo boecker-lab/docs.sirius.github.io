@@ -5,6 +5,7 @@ title: "Account and License"
 
 Since SIRIUS 5, a user account and a license is required to use the webservice-based
 features of SIRIUS.
+
 **Non**-webservice-based features include molecular formula annotation using fragmentation trees and isotope pattern analysis -
 this is performed on your local computer.
 Webservice-based features are essentially advanced structure elucidation features including structure database search with CSI:FingerID
