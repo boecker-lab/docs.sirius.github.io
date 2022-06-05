@@ -2,6 +2,8 @@
 permalink: /
 title: "Welcome"
 ---
+**SIRIUS 5 is out!** Click [here](https://www.youtube.com/watch?v=Bj0hIrwx9ks&t=5s&ab_channel=BoeckerLab) 
+to view our video about new features and changes.    
 
 SIRIUS is a *Java* software for analyzing metabolites from tandem mass
 spectrometry data. It combines the analysis of isotope patterns in MS
