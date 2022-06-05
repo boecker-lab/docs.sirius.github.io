@@ -4,7 +4,7 @@ title: "Commandline Interface"
 ---
 
 The SIRIUS commandline tool can be called via the "binary/startscript" by
-simply running the command in your commandline:
+simply running the command in the commandline:
 ```shell
 sirius --help
 ```
@@ -14,23 +14,23 @@ sirius --help
 **NOTE: It is usually a good idea to use the `--help` option to obtain an overview of the available commands and options. 
 This will guarantee that you will have a description of the commands that directly matches your SIRIUS version.**
 
-In the following, the most important commands and options are described shortly.
-
 ***
 
+## Introduction
 
 The SIRIUS commandline program is designed as a
 toolbox that provides different tools (subcommands) for metabolite
 identification. These tools can be concatenated to *toolchains* to
-compute multiple analysis steps at once. We distinguish subcommands of
-the following categories:
+compute multiple analysis steps at once. We distinguish the following types of subcommands:
+
+### Subtool types
 
   - **CONFIGURATION:** The config tool can be executed before every
     toolchain or standalone tool to set all configurations available in
     SIRIUS from the command line.
 
   - [**STANDALONE:**]({{ "/cli-standalone/" | relative_url }}) Tools that run Standalone and cannot be concatenated
-    with other subtools. These are usually tools for configuration
+    with other subtools. These are usually tools for configuration or data management
     purposes. E.g. modifying `project-space` or exporting `MGF` files. 
 
   - **PREPROCESSING:** Tools that prepare input data to be compatible
@@ -43,19 +43,59 @@ the following categories:
     the dataset simultaneously and can be concatenated with other tools. E.g. dataset-wide molecular formula annotatio with `zodiac`.
 
 Each subtool can also be called with the `--help` option to get a documentation
-about the available options and possible follow up commands in a
+about the available options and possible follow-up commands in a
 toolchain. For the `formula` tool the command would be:
 
 ```shell
 sirius formula --help
 ```
 
-Results of all tools that produce a project space as output (`--output` option), can be later viewed via the [GUI]({{ "/gui/" | relative_url }}).
+### Basic principles
+The SIRIUS CLI toolbox can also be considered as a rudimentary workflow engine (toolchains) that works according the 
+following principles:
+
+* It only executes subtools that are specified in the command.
+* It skips computation of a compound if a mandatory input from a previous step (subtool) is missing. 
+* Without an additional parameter it does **not** override existing results. 
+Compounds where the result to be computed already exist will be skipped.
+* If `--recompute` is specified, existing results will be replaced with new ones for **all** subtools that are specified in 
+the command.
+* If a subtool is recomputed (`--recompute`), the results of subtools that depend on the results of the recomputed 
+subtool will be lost too. This is necessary because they would not be consistent with the newly computed results anymore.
 
 
-## LCMS-align: Feature detection and feature alignment [Preprocessing]
+### Exemplary scenarios
 
-The `lcms-align` tool allows you to import multipe mzML/mzXML files into SIRIUS. It performs
+1. **Compute missing results without recompute:** Assume we have computed (`formula`, `structure`) results for compounds
+<600Da. We can now run the workflow (`formula`, `structure`, `canopus`) on the same 
+[project-space]({{ "/io/#sirius-project-space" | relative_url }}) without restricting the precursor mass to <600Da. 
+Since for the <600Da compounds results of the `formula` and `structure` tools already exist, they will be skipped and 
+not recomputed. However, `canopus` will be executed for all compounds.
+2. **Recompute all results:** If we do the same with `--recompute`, all results will be recomputed. 
+3. **Recompute only one subtool:** Assume we have a [project-space]({{ "/io/#sirius-project-space" | relative_url }}) 
+with complete results for `formula`, `fingerprint`, `structure`, `canopus` and want recompute the `structure` results 
+because we have used the wrong parameters. We can now execute ```sirius -i <projekt> --recompute structure -db mydb```.
+This will result in recomputing all `structure` results but without recomputing the `formula` results. Even the 
+`canopus` results will not be lost since they only depend on the `fingerprint` results but not on the `strucure` tool results.
+Note: If we would do the same with the `fingerprint` tool, both, the `structure` and the `canopus` results would be lost.
+4. **Proceed interrupted computations:** Let's say we have an interrupted computation. We can just rerun the same 
+command to proceed the computation. SIRIUS will skip computation for existing results  and compute only the missing ones.
+5. **Special Case `zodiac`:** Since the `zodiac` tool is not calculated on a per compound basis but on the whole 
+dataset, it will always be recomputed completely as soon as not all compounds contain `zodiac` results. 
+6. **Visualize results in the GUI:** Results of all subtools that produce a 
+[project-space]({{ "/io/#sirius-project-space" | relative_url }}) as output (`--output` option), can also be opened in 
+the [GUI]({{ "/gui/" | relative_url }}) for visualization, modification or even computation.
+
+   
+<br />
+<br />
+
+## Commands
+In the following, the most important (sub)commands and options are described shortly.
+
+### LCMS-align: Feature detection and feature alignment [Preprocessing]
+
+The `lcms-align` tool allows us to import multipe mzML/mzXML files into SIRIUS. It performs
 feature detection and feature alignment based on the MS/MS spectra and
 creates a SIRIUS project-space which is then used to execute followup
 analysis steps:
@@ -65,7 +105,7 @@ sirius -i <mzml(s)> -o <projectspace> lcms-run formula
 ```
 
 
-## SIRIUS: Identifying Molecular Formulas [Compound Tool]
+### SIRIUS: Identifying Molecular Formulas [Compound Tool]
 
 One main purpose of SIRIUS is identifying the molecular formula of a
 measured ion. For this task SIRIUS provides the `formula` tool. The most basic way
@@ -112,7 +152,7 @@ the `IsotopeScore` is negative, it is set to zero. If at least one
 to have *good quality* and only the candidates with best isotope pattern
 scores are selected for further fragmentation pattern analysis.
 
-### Computing fragmentation trees
+#### Computing fragmentation trees
 
 If you already know the correct molecular formula and just want to
 compute a fragmentation tree, you can specify the formula using `--formulas`. SIRIUS will then only compute a tree for this molecular
@@ -123,7 +163,7 @@ can also be used to specify a comma-separated list of candidate molecular formul
 sirius -i <input> --output <projectspace> formula --formulas <formula>
 ```
 
-### Instrument-specific parameters
+#### Instrument-specific parameters
 
 Datasets have different mass errors, level of noise and accuracy of isotope pattern intensities, depending, among others, on instrument type and setup.
 By default, SIRIUS uses a profile for `Q-TOF` data with 10 ppm mass deviation. This should not be interpreted as a Q-TOF-only profile, but is often a good default profile even for data from other instruments.
@@ -143,7 +183,7 @@ sirius -i <input> --output <projectspace> formula -p orbitrap --ppm-max 2 --ppm-
 ```
 
 
-## ZODIAC: Improve Molecular Formula Identifications [Dataset Tool]
+### ZODIAC: Improve Molecular Formula Identifications [Dataset Tool]
 
 If your input data is derived from a biological sample or any other set
 of derivatives, similarities between different compounds can be
@@ -171,7 +211,7 @@ ZODIAC uses a dynamic number of candidates per compound based on the m/z
 much more likely to be in the, say, top 10. By default, ZODIAC uses 10
 candidates for compounds with m/z lower equal to 300 (`--considered-candidates-at-300 10`) and 50
 candidates for compounds with m/z greater equal to 800 (`--considered-candidates-at-800 50`). 
-In between these threshold the number of candidates is calculated by interpolation. 
+In between these thresholds the number of candidates is calculated by interpolation. 
 
 The density of the ZODIAC network mainly depends on two parameters: `--edge-threshold`
 (default:0.95) and `--minLocalConnections` (default:10). The edge threshold defines the ratio of
@@ -187,7 +227,7 @@ complete network and filter edges afterwards. Thus, ZODIAC may consume a
 large amount of system memory.
 
 For very large datasets, the ZODIAC network may not fit in 1TB system
-memory and more. Please, perform a feature alignment between your
+memory and more. Please, perform a feature alignment between our
 LC-MS/MS runs to reduce the number of compounds and thus reduce the size
 of the ZODIAC network. If this is still not sufficient, memory
 consumption can be dramatically decreased by setting `--minLocalConnections=0`. 
@@ -199,7 +239,7 @@ network that may decrease performance:**
 sirius -i <input> -o <projectspace> formula -c 50 zodiac --minLocalConnections 0 --edge-threshold 0.99
 ```
 
-## CSI:FingerID: Predicting molecular fingerprints [Compound Tool]
+### CSI:FingerID: Predicting molecular fingerprints [Compound Tool]
 
 Molecular fingerprints can be predicted via `fingerprints` command after molecular formula candidates
 have been calculated running `formula`. Fingerprint prediction is part of CSI:FingerID.
@@ -211,14 +251,14 @@ sirius -i <input> -o <projectspace> formula fingerprint
 ```
 
 
-## CSI:FingerID: Identifying Molecular Structures [Compound Tool]
+### CSI:FingerID: Identifying Molecular Structures [Compound Tool]
 
-Using the `structure` tool you can search with CSI:FingerID for molecular structures in a structure database.
+Using the `structure` tool we can search with CSI:FingerID for molecular structures in a structure database.
 To run structure database search, molecular fingerprints need to be predicted in advance by running the `fingerprint` tool first. You might also
 want to run the `zodiac` tool for improved formula ranking if your data is derived
 from a biological sample or any other set of derivatives.
 
-With `--databases` you can specify the database CSI:FingerID should search in. Available are, among other
+With `--databases` we can specify the database CSI:FingerID should search in. Available are, among other
 `pubchem` and `bio`.
 
 When structure search was performed, the `write-summaries` tool will generate a `structure_candidates.csv` for each compound containing an ordered
@@ -236,9 +276,9 @@ When running `structure` together with `zodiac` the command could look like this
 sirius -i <input> -o <projectspace> formula -c 50 zodiac structure --database bio
 ```
 
-## CANOPUS: Database-free Compound Classes Prediction [Compound Tool]
+### CANOPUS: Database-free Compound Classes Prediction [Compound Tool]
 
-The `canopus` tool allows you to directly predict compound classes based on the probabilistic
+The `canopus` tool allows us to directly predict compound classes based on the probabilistic
 molecular fingerprint that was predicted by CSI:FingerID (`fingerprint` command). Notably, `canopus` can even provide
 compound class information for unidentified compounds with no hit in a structure database:
 
@@ -247,11 +287,11 @@ sirius -i <input> -o <projectspace> formula fingerprint canopus
 ```
 
 
-## PASSATUTTO: Decoy Spectra from Fragmentation Trees [Compound Tool]
+### PASSATUTTO: Decoy Spectra from Fragmentation Trees [Compound Tool]
 
-The `passattuto` tool allows you to compute high quality decoy spectra from
-fragmentation trees provided by the `formula` tool. Assume your are using a
-spectral library as input you can easily create a decoy database based
+The `passattuto` tool allows us to compute high quality decoy spectra from
+fragmentation trees provided by the `formula` tool. Assume we are using a
+spectral library as input us can easily create a decoy database based
 on these spectra:
 
 ```shell
@@ -260,5 +300,3 @@ sirius -i <spectral-lib> -o <projectspace> formula passatutto
 
 If no molecular formulas are annotated to the input spectra the best
 scoring candidate will be used for decoy computation instead.
-
-

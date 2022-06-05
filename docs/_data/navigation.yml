@@ -70,6 +70,10 @@ global:
   - title: "Commandline interface"
     url: /cli
     children:
+      - title: "Basic principles"
+        url: /cli/#basic-principles
+      - title: "Exemplary scenarios"
+        url: /cli/#exemplary-scenarios
       - title: "SIRIUS"
         url: /cli/#sirius-identifying-molecular-formulas
       - title: "ZODIAC"
