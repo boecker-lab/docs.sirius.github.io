@@ -3,7 +3,7 @@ permalink: /account-and-license/
 title: "Account and License"
 ---
 
-Since SIRIUS 5, a user account and a license is required to use the web-service-based
+Since SIRIUS 5, a user account and a license is required to use the webservice-based
 features of SIRIUS.
 
 **Non-webservice-based features** include molecular formula annotation using fragmentation trees and isotope pattern analysis -
