@@ -70,7 +70,8 @@ messages regarding connection issues might be lest informative if the optional U
 * Login Server: `https://auth0.bright-giant.com`
 * Web Services: `https://csi.bright-giant.com`    
 
-**Note:** Users with a deticated hosting subscription need to replace the web service URL with the URL of their custom subscriction (usually `<companyname>.csi.bright-giant.com`).
+**Note:** Users with a dedicated hosting subscription need to ensure that their custom web service URL 
+(usually `<companyname>.csi.bright-giant.com`) is reachable from the system SIRIUS is running on.
 
 #### Optional:
 * Check Internet: `https://www.google.com`
@@ -190,5 +191,3 @@ version (`x.y+1.0`). The previous version (`x.y.z`) will become a legacy version
 limited amount of time (usually at least 3 Month). In the past, sometimes even longer due to user requests to keep them 
 alive a bit longer. However, unless we just have a **Minor** version change for the SIRIUS client, upgrading is not 
 different from other **Minor** version changes. Just keep in mind that previous version might reach its end-of-life.
-
-
