@@ -13,8 +13,8 @@ global:
         url: /install/#mac-osx
       - title: "Linux"
         url: /install/#linux
-      - title: "User account"
-        url: /install/#creating-a-user-account-since-v410
+      - title: "User account and License"
+        url: /install/#user-account-and-license-since-v500
       - title: "ILP Solver"
         url: /install/#installing-gurobi-and-cplex
 #      - title: "Proxy Setting"

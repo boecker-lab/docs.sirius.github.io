@@ -112,21 +112,15 @@ export PATH=PATH:<SIRIUS_DIR>/bin/
 Note that you have to reopen your "bash" shell to make the changes
 effective.
 
-## Creating a user account (since `v4.10`)
+## User account and License (since `v5.0.0`)
 
-Certain features of SIRIUS require access to our webservices; this includes structure elucidation with CSI:FingerID and CANOPUS.
-From version `4.10` on, use of these features requires to create a user account. The easiest way is via the GUI. Open `Webservice -> Account`. 
-Click on `Create Account` and enter an email address and password. Verify your email address with the link that will be sent to your inbox. 
-Finally, click on `Log in` and log in with your credentials. 
+Certain features of SIRIUS require access to the SIRIUS web services; this includes structure elucidation with CSI:FingerID 
+and CANOPUS. From version `5` on, using these features requires a license and a user account.
+The **SIRIUS web services are free for academic/non-commercial use.** Usually academic institutions are identified by their
+email domain and access will be granted automatically. In some cases, further validation might be required. 
 
-To login from the CLI use the following command:
-```
-sirius login -u <email> -p
-```
-See `sirius login --help` for details.
-
-**NOTE:** When logging in, SIRIUS will retrieve a long lived refresh_token that will be stored until it is invalidated by logging out.
-You username and password will never be stored locally. 
+See [Account and License]({{ "/account-and-license" | relative_url }})  for further information about licensing and 
+account creation.
 
 
 ## Installing Gurobi and/or CPLEX
@@ -177,9 +171,9 @@ connection. You have to ensure that SIRIUS is not blocked by any
 security software on your computer.
 
 If you have to use a proxy server to connect to the Internet, you can specify the proxy configuration in the
-Sirius user interface setting (see [Settings]({{ "//gui/#settings" | relative_url }})).
+Sirius user interface setting (see [Settings]({{ "/gui/#settings" | relative_url }})).
 
-If SIRIUS cannot connect to the Internet, it will [report]({{ "//gui/#webservice" | relative_url }}) on which stage
+If SIRIUS cannot connect to the Internet, it will [report]({{ "/gui/#webservice" | relative_url }}) on which stage
 the error occurred.
 
 ## System Requirements
