@@ -176,3 +176,5 @@ Configuration file: ~/docs.sirius.github.io/docs/_config.yml
 repository. It may take a few minutes until the page is build by GitHub.
 
 
+## Rebuild Algolia Search index
+https://github.com/algolia/jekyll-algolia#run-it
