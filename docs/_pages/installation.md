@@ -11,6 +11,11 @@ The *Java Runtime Environment* (JRE) needed to run SIRIUS is already included.
 but might require admin permissions. Since we do not pay Microsoft/Apple for certification 
 you might have to confirm that you want to trust software from an unknown source on Windows/MacOS.
 
+**Further, [Bright Giant](https://bright-giant.com/) is offering 
+[signed installers](https://github.com/bright-giant/sirius/releases) free of charge. 
+These installers ease installation process a lot by triggering no (or less) security issues of the respective OS.**
+
+
 Completing the installation should take you not more than **10 minutes**.
 
 If you have trouble installing SIRIUS, please [let us 
@@ -29,7 +34,7 @@ Friday in July is System Administrator Appreciation Day!)
 ## Windows
 Built and tested on Windows 10 x64
 ##### MSI installer (preferred)
-Execute the installer, trust the unknown source and follow the instructions.
+Execute the installer, trust the unknown source (if asked) and follow the instructions.
 You will have the option to choose an installation location and need to 
 accept the SIRIUS license agreement. The installer should also create a start menu entry for SIRIUS.
 
@@ -46,7 +51,7 @@ your desktop as you like. You start SIRIUS by double-clicking this link.
 
 Run `sirius.exe` for the SIRIUS command line tool. To execute the SIRIUS command line
 tool from every location on your system, you have to add the location of
-the to your PATH environment variable: Open the Windows Setting, type
+the `sirius.exe` to your PATH environment variable: Open the Windows Setting, type
 "advanced" in the search window, say "yes" if Windows asks you. Press
 the "Environment Variables" button, select the "Path" variable in the
 lower panel, press "Edit", press "New", enter the full directory path
@@ -56,11 +61,13 @@ of SIRIUS, press RETURN. Close the Command Prompt, open a new one, type
 ## Mac OSX
 Built and tested on macOS Catalina 10.15 x64
 ##### pkg installer (preferred)
-Execute the installer, trust the unknown source and follow the instructions.
-You will have the option to choose an installation disk and need to 
+Execute the installer, trust the unknown source (if blocked by Gatekeeper). The option to confirm the execution of 
+an installer from an unknown source might be "hidden" under `"System Settings" -> "Security & Privacy"`. 
+**This should not occur with the signed installer**  
+
+Follow the instructions of the installer. You will have the option to choose an installation disk and need to 
 accept the SIRIUS license agreement.
-The option to confirm the execution an installer form an unknown might be "hidden" under 
-`"System Settings" -> "Security & Privacy"`.
+
 
 ##### Zip package
 Extract the archive to an arbitrary directory where you have write
