@@ -146,7 +146,8 @@ to structure database caching. It is also the default location for custom databa
 For SIRIUS as well as for the backend (web service) we use a "rolling release" alike  strategy and semantic versioning. 
 This means updates and fixes are rolled out as soon as they are declared to be stable. Sometimes even a single bug fix. 
 New releases of *vanilla* SIRIUS are available [here](https://github.com/boecker-lab/sirius/releases). 
-SIRIUS versions preconfigured by Bright Giant can be found [here](https://github.com/bright-giant/sirius/releases).
+Signed SIRIUS installers provided by Bright Giant can be found [here](https://github.com/bright-giant/sirius/releases).
+Unless stated otherwise, both version are interchangable, no matter whether a commercial or non-commercial license/subscription is used.
 
 ## Versioning
 Following the Apache Maven convention we distinguish between *stable* (`x.y.z`) and  *SNAPSHOT* (`x.y.z-SNAPSHOT`) builds.
