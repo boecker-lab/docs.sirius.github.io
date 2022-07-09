@@ -52,7 +52,7 @@ each having one or more mass spectra. Obviously, you can also use this workflow 
     
 13. Sometimes a computation might take a long time (e.g. for compounds
      with a lot of elements or very high masses). You can cancel running
-     computations by selecting *Cancel All* int the toolbar.
+     computations by selecting *Cancel All* in the toolbar.
 
 14. Inspect results with the help of the *Formulas*, *Structure* and *Compound Classes* views. 
     Structure and compound class annotations are always based on a selected molecular formula candidate of the compound. 
@@ -76,7 +76,7 @@ This is usually not the recommended format as it misses relevant information tha
     intensity values. Just press *Ok* as the default values are already
     correct.
 
-1.  You see the load dialog with three spectra. The first spectra is
+1.  You see the load dialog with three spectra. The first spectrum is
     wrongly annotated as *MS/MS* spectrum but should be an *MS1*
     spectrum instead. Just select *MS 1* in the drop down list labeled
     with *ms level*.
@@ -92,7 +92,7 @@ This is usually not the recommended format as it misses relevant information tha
 1.  Select SIRIUS. All other options should be fine. Just check that
     the correct parent mass is chosen. You might want to add Chlorine or
     Fluorine to the set of considered elements. Furthermore, you can
-    change the instrument type to *Orbitrap*
+    change the instrument type to *Orbitrap*. Then click *Compute*.
 
 1.  Just look into the candidate list: The first molecular formula has a
     quite large score. Furthermore, the second molecular formula has a
@@ -171,7 +171,7 @@ low you either have strange high intensive noise in your spectrum, or
 the allowed mass deviation might be too low to explain all the peaks.
 
 
-The `structure_candidates.tsv` in `<summary-files-dir>/0_laudanosine_FEATURE1` should similarly to this (trunctated version):
+The `structure_candidates.tsv` in `<summary-files-dir>/0_laudanosine_FEATURE1` should be similar to this (trunctated version):
 
 ```
 rank	formulaRank	ConfidenceScore	CSI:FingerIDScore	molecularFormula	adduct	InChIkey2D	InChI	name	smiles
