@@ -17,11 +17,11 @@ offers SIRIUS web service hostings for commercial users.
 
 ### Academic users
 Non-commercial licenses will be granted (automatically) based on the domain of your 
-**institutional email address**. You need to use your institutional email address for SIRIUS your account
+**institutional email address**. You need to use your institutional email address for your SIRIUS account
 to benefit from free academic licenses.
 
 The FSU Jena maintains an allow-list of academic/non-profit intuitions/organizations. However, such a 
-list will never be complete. If your Institution does not have access but you think it should be, please 
+list will never be complete. If your Institution does not have access but you think it should, please 
 [email](mailto:sirius@uni-jena.de) us with some information about your institution (e.g. official website). 
 We will perform manual validation and grant access to your institution if it meets the requirements for the 
 academic/non-commercial license. 
