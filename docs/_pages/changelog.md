@@ -5,12 +5,25 @@ title: "Changelog"
 
 
 ### SIRIUS 5
+#### 5.6.0 (coming soon)
+- feature: improved progress information for background computations.
+- feature: improved scheduling of remote jobs that reduces computation time and improves local cpu utilization.
+- **feature: A Beta version of the new SIRIUS background service is now included in the respective build (service suffix).**
+- feature: support for MS1 only data in GUI (Isotope Pattern analysis).
+  - MS1 only data from Agilent CEF format can now be imported
+- feature: command line autocompletion support for Linux and MacOS. See `sirius --help` for details. 
+- feature: allow to write uncompressed (legacy) project-spaces via `--no-compression` pearameter
+- improvement: improvements on feature finding and feature alignment
+- fix: fixed bug in feature finding that changed negative ion mode data to positive ion mode
+- fix: fixed inconsistent indexing of aligned and not aligned mzml/mzxml data that caused an invalid FBMN output.
+   - **possibly breaking**: SIRIUS internal compound index does not start at 1 instead of 0
+- fix: several smaller fixes
 #### 5.5.2
 - fix: Collsion energy parsing bug
 - feature: Update checker 
 
 #### 5.5.1
-more changes are coming soo...
+more changes are coming soon...
 
 #### 5.4.1
 - **breaking**: User Authentication. A user account and license is now needed to user the online features of SIRIUS. 
@@ -33,8 +46,6 @@ to perform some modification (e.g. recompute db-search). Reading the projects is
 - feature: **GUI** advanced filtering options
 - feature: **GUI** scaling factor can be defined by the user (setting panel)
 - feature: Additional file formats for spectrum import supported (`.msp`, massbank, `.mat`)
-
-more changes are coming soo...
 
 ### SIRIUS 4
 
