@@ -267,13 +267,13 @@ file will be generated containing the top candidate structure for each compound
 ordered by their confidence score.
 
 ```shell
-sirius -i <input> -o <projectspace> formula structure --database pubchem
+sirius -i <input> -o <projectspace> formula fingerprint structure --database pubchem
 ```
 
 When running `structure` together with `zodiac` the command could look like this:
 
 ```shell
-sirius -i <input> -o <projectspace> formula -c 50 zodiac structure --database bio
+sirius -i <input> -o <projectspace> formula -c 50 zodiac fingerprint structure --database bio
 ```
 
 ### CANOPUS: Database-free Compound Classes Prediction [Compound Tool]
