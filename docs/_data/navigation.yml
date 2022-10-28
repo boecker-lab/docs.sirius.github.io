@@ -28,7 +28,7 @@ global:
         url: /quick-start/#graphical-user-interface
       - title: "Quick start CLI"
         url: /quick-start/#command-line-interface
-      - title: "Quick start CLI"
+      - title: "Quick start API"
         url: /quick-start/#background-service---generic-sirius-api
   - title: "Prerequisites"
     url: /prerequisites
