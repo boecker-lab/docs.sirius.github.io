@@ -250,3 +250,6 @@ infer the correct parent mass from the MS data (by simply using the
 monoisotopic mass of the isotope pattern as parent mass). So you can
 omit the `-z` option in these cases.
 
+
+## Background Service - Generic SIRIUS API
+coming soon...
