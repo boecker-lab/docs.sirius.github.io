@@ -5,7 +5,7 @@ title: "Changelog"
 
 
 ### SIRIUS 5
-#### 5.6.1
+#### 5.6.1 (2022-10-28)
 - feature: improved progress information for background computations.
 - feature: new scheduling of remote jobs that reduces computation time and improves local cpu utilization.
 - **feature: A Beta version of the new SIRIUS background service is now included in the respective build (_service_ suffix).**
