@@ -28,7 +28,7 @@ title: "Changelog"
 - **breaking**: User Authentication. A user account and license is now needed to user the online features of SIRIUS. 
 The license is free and automatically available for non-commercial use, details [here]({{ "/install/#creating-a-user-account-since-v410" | relative_url }}). 
 - **breaking**: New [project-space]({{ "/io/#output" | relative_url }}) compression. Method level directories are now compressed archives to reduce number of files and save storage. 
-- **breaking**: Summary writing has been mode to a separate sub-tool (`write-summaries`). Summary files may have slightly changed. Usually just additional columns if at all.
+- **breaking**: Summary writing has been moved to a separate sub-tool (`write-summaries`). Som summary files have slightly changed. Usually just additional columns if at all.
 - **breaking**: The `fingerid`/`structure` sub-tool has been split into a  `fingerprint` (fingerprint prediction)
 and a `structure` (structure db search) sub-tool. This allows the user to recompute the database search 
 without having to recompute the fingerprint and compound class predictions. It further allows to compute `canopus`
