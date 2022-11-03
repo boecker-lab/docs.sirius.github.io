@@ -5,6 +5,8 @@ title: "Changelog"
 
 
 ### SIRIUS 5
+#### 5.6.2 (2022-11-03)
+- fix: bug that prevents accepting license terms caused by mising content-length header in the request. 
 #### 5.6.1 (2022-10-28)
 - feature: improved progress information for background computations.
 - feature: new scheduling of remote jobs that reduces computation time and improves local cpu utilization.
