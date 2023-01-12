@@ -3,8 +3,17 @@ permalink: /changelog/
 title: "Changelog"
 ---
 
-
 ### SIRIUS 5
+#### 5.6.3 (2023-01-12)
+- improvement: compounds can now be filtered by cosmic/confidence score (GUI)
+- improvement: added `.version` file to project-space that contains SIRIUS version information.
+- fix: unreachable availability check url for authentication server which prevented the login request message from occurring.
+- fix: fixed  bug when selecting `all` database flag in cli. I behaves now like selecting all databases in the GUI.
+- fix: fixed some missing default values in the GUI.
+- fix: fixed handling of preset molecular formulas. `.ms` and `.mgf` inputs should now behave equally.
+- fix: fixed custom db handling in sirius/formula step. custom database can now be used as formula candidate list instead of denovo.
+- fix: fixed custom database import which did crash in 5.6.2
+- fix: fixed some typos
 #### 5.6.2 (2022-11-03)
 - fix: bug that prevents accepting license terms caused by mising content-length header in the request. 
 #### 5.6.1 (2022-10-28)
