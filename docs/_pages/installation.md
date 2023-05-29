@@ -185,6 +185,6 @@ the error occurred.
 
 ## System Requirements
 * OS: Windows 10+, MacOS, Linux
-* CPU: Dual Core x86-64 (Quad Core x86-64 is recommended)
-* RAM: 4GB (2GB per CPU core is recommended)
+* CPU: Quad Core CPU (x86-64) is recommended (native Apple Silicon support only via conda package)
+* RAM: 8GB (2GB per CPU core is recommended)
 * Internet: 1Mbit/s is recommended
