@@ -5,7 +5,7 @@ title: Administrator/Technical information
 
 SIRIUS is a software framework for MS/MS data analysis of small molecules. For more details on the 
 included tools and methods please have a look into the [user documentation]({{ "/" | relative_url }}).
-SIRIUS is written in JAVA, but **no** separate JRE is needed. A compatible JRE is included in each SIRIUS release.
+SIRIUS is written in JAVA, but **no** separate JRE is needed. A compatible JRE is usually included in a SIRIUS release.
 For further information on the installation process and hardware requirements, see [Installation]({{ "/install/" | relative_url }}).
 
 ## Offline vs Online features
@@ -13,8 +13,7 @@ SIRIUS is both, a classical Desktop application that performs computations on th
 it is also a client for web services such as 
 [CSI:FingerID]({{ "/cli/#csifingerid-identifying-molecular-structures" | relative_url }}) and 
 [CANOPUS]({{ "/cli/#canopus-predicting-compound-classes-without-identification" | relative_url }}) 
-which are seamlessly integrated so that they feel like classical desktop applications from a user perspective. 
-This is true for both, the CLI and GUI.
+which are seamlessly integrated so that they feel like classical desktop (or command line) applications from a user perspective.
 
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/sirius-infrastructure.svg" | relative_url }})
@@ -32,7 +31,7 @@ infrastructure. This means the web service is about computations in the cloud an
 data in the cloud. Further, this allows us to improve the methods and fix bugs silently in the background without the 
 need to install an update on the user's computer.
 
-### Offline features
+### Offline features (Open Source)
 * Data import, result export and result storage. 
 * Result visualization (GUI), even for Webservice based results. Once results are successfully stored they are available offline. 
 * SIRIUS molecular formula estimation (fragmentation tree computation and Isotope pattern analysis)
@@ -40,7 +39,7 @@ need to install an update on the user's computer.
 * Passatutto decoy spectra generation
 * Most of the little standalone helper sub-tools in the CLI
 
-### Online features
+### Online features (Proprietary)
 * Chemical Structure database based features such as CSI:FingerID structure database search 
 and the restriction of formula candidates to a database during SIRIUS molecular formula estimation.
 * CSI:FingerID fingerprint prediction
@@ -48,13 +47,13 @@ and the restriction of formula candidates to a database during SIRIUS molecular 
 * CANOPUS compound class prediction
 
 ## Connections needed to run online features
-Three servers need to be reachable for SIRIUS to work properly; 
-the login server (`https://auth0.bright-giant.com`), the license server (`https://gate.bright-giant.com`) and the web service itself.
-Whereas the login server and the license server are the same for the commercial and the non-commercial (provided by FSU Jena) users/subscriptions, 
-the URL of the web service itself might vary for different subscriptions. Further, there is an additional 
-URLs that might be requested for debugging and error reporting purposes, e.g. if the web service or the login server 
-are not reachable. This URL is **optional** and are **not** needed for SIRIUS to work properly. However, error 
-messages regarding connection issues might be lest informative if the optional URL is blocked. The URL needed for the web service will be provided via the authetication servive as part of your access token. The URL of the web service will be displayed in the connection check panel when a valid license was found/selected after logging in.
+Three servers must be reachable for SIRIUS to work properly; 
+the login server (`https://auth0.bright-giant.com`), the licence server (`https://gate.bright-giant.com`) and the web service itself.
+While the login server and the licence server are the same for commercial  (service provided by Bright Giant) and academic (service provided by FSU Jena) users/subscriptions, 
+the URL of the web service itself may vary for different subscriptions. There is also an additional 
+URL, which may be requested for debugging and error reporting purposes (see below), e.g. if the web service or the login server 
+is not available. This URL is **optional** and **not** required for SIRIUS to work properly. However, error 
+messages about connection problems may be less informative if the optional URL is blocked. The URL required for the web service is provided by the authentication service as part of your access token. The URL of the web service will be displayed in the connection check panel if a valid licence is found/selected after login.
 
 ### Non-Commercial subscription (FSU Jena)
 #### Mandatory:
@@ -74,11 +73,11 @@ messages regarding connection issues might be lest informative if the optional U
 (usually `<companyname>.csi.bright-giant.com`) is reachable from the system SIRIUS is running on.
 
 #### Optional:
-* Check Internet: `https://www.google.com`
+* Check connection to the Internet: `https://www.google.com`
 
 ### Change internet connection check URL
 If you are using SIRIUS from somewhere where Google is not reachable you can replace it by some other URL 
-outside your institution that is reliable enough to act as an internet connection check.
+outside your institutions network that is reliable enough to act as an internet connection check.
 To do so, add or replace the following entry in `<USER_HOME>/.sirius-<X.Y>/sirius.properties`:
 ```
 de.unijena.bioinf.fingerid.web.external=https://my.custom.url/
@@ -124,12 +123,13 @@ We only count the number, time and type of computation jobs to be able to scale 
 SIRIUS stores its configuration files, logs and caches in the SIRIUS workspace directory at `<USER_HOME>/.sirius-<X.Y>` 
 where `X.Y` is are **Major** and **Minor** numbers of the SIRIUS version string. When using SIRIUS in VMs or containers it might 
 be worth storing this directory persistently to preserve configuration and benefit from performance improvements due 
-to structure database caching. It is also the default location for custom databases.
+to structure database caching. In SIRIUS versions **before 5.7** this is also the default location for custom databases.
+Since SIRIUS **5.7** custom databases are stored in an arbritary directory on the system.
 
 **Directory structure:**
 * **csi_fingerid_cache**
   * **rest-cache** - structure database cache default location (changeable)
-  * **custom** - custom database default location  (changeable)
+  * **custom** - custom database default location  (changeable, **pre v5.7**)
   * **version** - db version file
 * **custom.config** - Config file to override default parameters of tools in CLI and GUI
 (see, [config tool](https://boecker-lab.github.io/docs.sirius.github.io/cli/))
@@ -143,16 +143,16 @@ to structure database caching. It is also the default location for custom databa
 
 
 ## Release Policy
-For SIRIUS as well as for the backend (web service) we use a "rolling release" alike  strategy and semantic versioning. 
+For SIRIUS as well as for the backend (web service) we use a "rolling release" strategy and semantic versioning. 
 This means updates and fixes are rolled out as soon as they are declared to be stable. Sometimes even a single bug fix. 
 New releases of *vanilla* SIRIUS are available [here](https://github.com/boecker-lab/sirius/releases). 
 Signed SIRIUS installers provided by Bright Giant can be found [here](https://github.com/bright-giant/sirius/releases).
 Unless stated otherwise, both version are interchangable, no matter whether a commercial or non-commercial license/subscription is used.
 
 ## Versioning
-Following the Apache Maven convention we distinguish between *stable* (`x.y.z`) and  *SNAPSHOT* (`x.y.z-SNAPSHOT`) builds.
-The `x.y.z-SNAPSHOT` build can be seen as a development version until `x.y.z` is released, so that `x.y.z.SNAPSHOT` < `x.y.z` holds.
-Development (`x.y.z-SNAPSHOT`) builds are usually not publicly available.
+Following the Apache Maven convention, we distinguish between *stable* (`x.y.z`) and *SNAPSHOT* (`x.y.z-SNAPSHOT`) builds.
+The `x.y.z-SNAPSHOT` build can be considered the development version until `x.y.z` is released, so `x.y.z.SNAPSHOT` < `x.y.z`.
+Development (`x.y.z-SNAPSHOT`) builds are declared as pre-release if they are publicly available.
 
 ### What does the SIRIUS Version numbers mean?
 **`x`:** Major change in the application:
@@ -171,7 +171,7 @@ Development (`x.y.z-SNAPSHOT`) builds are usually not publicly available.
 * Update of the included JRE or native libs
 
 **`z`:** Build number that will be increase with every new build:
-* Bug fixes, corrections of typos,...
+* Bug fixes, corrections of typos, etc...
 * Minor improvements without the risk to break anything e.g. new or corrected tooltips, additional documentation,... 
 
 ### Upgrade Recommendations
