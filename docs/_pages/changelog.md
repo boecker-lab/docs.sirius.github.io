@@ -4,6 +4,35 @@ title: "Changelog"
 ---
 
 ### SIRIUS 5
+
+#### 5.8.0 (2023-07-01)
+- improvement: added feature id support from several input formats. 
+- improvement: added feature id sd separate fields to project wide summary files
+- improvement: change display name of ConfidenceScore from COSMIC to Confidence
+- improvement: added support for .mat PEAKID field
+- improvement: added support of 1-/1+ charge notation in mgf parser
+
+
+- fix: missing adducts in CanopusSummaryWriter
+- fix: missing adducts in FormulaSummaryWriter
+- fix: bug with wrong NPC classes in Canopus summary files
+- fix: null value problem with MS-Dial msp/mat files
+
+#### 5.7.3 (2023-06-14)
+- improvement: Buffered parallelization for Fingerprinter subtool 
+
+#### 5.7.2 (2023-05-26)
+- build: SIRIUS docker Image not on dockerhub
+- fix: Fixed maxRetentionError getting too small, introduced minError
+
+#### 5.7.1 (2023-05-20)
+- feature: Added compound quality flags to Scripting API
+- improvement: db import dialog, error handling and description
+- Fix: Fixed MS1<->MS2 switch bug
+
+#### 5.7.0 (2023-05-19)
+//todo coming soon
+
 #### 5.6.3 (2023-01-12)
 - improvement: compounds can now be filtered by cosmic/confidence score (GUI)
 - improvement: added `.version` file to project-space that contains SIRIUS version information.
