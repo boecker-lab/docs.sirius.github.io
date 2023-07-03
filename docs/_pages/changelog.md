@@ -19,7 +19,9 @@ title: "Changelog"
 - fix: null value problem with MS-Dial msp/mat files
 
 #### 5.7.3 (2023-06-14)
-- improvement: Buffered parallelization for Fingerprinter subtool 
+- improvement: Buffered parallelization for Fingerprinter subtool
+- improvement: use internal browser as fallback for User Portal if system browser not available.
+  - fix: fixes bug where account creation and management not possible with conda version of SIRIUS  
 
 #### 5.7.2 (2023-05-26)
 - build: SIRIUS docker Image not on dockerhub
