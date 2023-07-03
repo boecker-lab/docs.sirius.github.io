@@ -6,13 +6,14 @@ title: "Changelog"
 ### SIRIUS 5
 
 #### 5.8.0 (2023-07-01)
+- breaking: rankings and ranking cloumn names of summary files have changed
 - improvement: added feature id support from several input formats. 
-- improvement: added feature id sd separate fields to project wide summary files
+- improvement: added feature id as separate fields to project wide summary files
 - improvement: change display name of ConfidenceScore from COSMIC to Confidence
 - improvement: added support for .mat PEAKID field
 - improvement: added support of 1-/1+ charge notation in mgf parser
 
-
+- fix wrong ranks in summary files
 - fix: missing adducts in CanopusSummaryWriter
 - fix: missing adducts in FormulaSummaryWriter
 - fix: bug with wrong NPC classes in Canopus summary files
