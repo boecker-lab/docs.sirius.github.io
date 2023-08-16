@@ -16,7 +16,7 @@ and provided/hosted by the FSU Jena. On the other hand the [Bright Giant GmbH](h
 offers SIRIUS web service hostings for commercial users. 
 
 ### Academic users
-Non-commercial licenses will be granted (automatically) based on the domain of your 
+Access to the academic license will be granted (automatically) based on the domain of your 
 **institutional email address**. You need to use your institutional email address for your SIRIUS account
 to benefit from free academic licenses.
 
@@ -26,7 +26,7 @@ list will never be complete. If your Institution does not have access but you th
 We will perform manual validation and grant access to your institution if it meets the requirements for the 
 academic/non-commercial license. 
 
-### Commercial users
+### Non-academic users
 Please contact [Bright Giant](https://bright-giant.com/) via [email](mailto:info@bright-giant.com) for offerings and pricing.  
 
 ### Account creation
