@@ -5,8 +5,8 @@ title: "Changelog"
 
 ### SIRIUS 5
 #### 5.8.4 (2023-11-04)
-- fix problem with summary files writing of CANOPUS predictions
-- fix problem when using multiple adducts together with fomrula data bases in sirius step
+- fixed problem with summary files writing of CANOPUS predictions
+- fixed bug where filtering of features would result in omitting features with no available confidence score
 - added option to ignore molecular formulas during file import in the GUI
 
 #### 5.8.0 (2023-07-01)
