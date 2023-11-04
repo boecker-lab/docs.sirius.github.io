@@ -4,6 +4,10 @@ title: "Changelog"
 ---
 
 ### SIRIUS 5
+#### 5.8.4 (2023-11-04)
+- fix problem with summary files writing of CANOPUS predictions
+- fix problem when using multiple adducts together with fomrula data bases in sirius step
+- added option to ignore molecular formulas during file import in the GUI
 
 #### 5.8.0 (2023-07-01)
 - breaking: rankings and ranking cloumn names of summary files have changed
