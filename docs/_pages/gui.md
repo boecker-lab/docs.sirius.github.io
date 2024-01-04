@@ -204,6 +204,23 @@ compute confidence measures or merge results with customs dbs anyways.
 
 <span>**<span style="color: red">\[TODO: description of filter options etc.\]</span>**</span>
 
+#### Import of custom structure databases
+
+Custom structure databases can be added via the "Databases" interface (4) located at the top center of the GUI ribbon. 
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/customdbWithAnno.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Custom structure database dialogue.</figcaption>
+</figure>
+
+The database location (1) needs to be any valid, writeable path including a name for the newly created custom database (see above image for an example). During import, users can choose to "inherit" an existing structure database (2). Inheriting an existing database will add all structures of the inherited database to the custom database. Custom structures in SMILES format to be imported into the new custom database can be imported in (3) as shown in above image, or be supplied via a csv/tsv (tab separated) file with structures given in SMILES format. See [here](https://boecker-lab.github.io/docs.sirius.github.io/cli-standalone/#custom-database-tool) for more details regarding custom structure database import and for the CLI subtool.
+
+
+
 #### COSMIC - confidence values for CSI:FingerID searches
 Calculating COSMIC confidence scores is parameter free and will be executed automatically every time a CSI:FingerID 
 search is performed. COSMIC scores for a compound are shown in the compound list on the left.
