@@ -175,38 +175,36 @@ relative error.
 
 ## Molecular formula annotation concepts
 
-SIRIUS supports three different approaches (de novo, database search, bottom up) concerning molecular formula annotation. 
-Understanding them is vital to being able to apply the annotation strategy that best fits your research question.
+SIRIUS supports three different approaches (de novo, database search, bottom up) to generate the set of molecular formula candidates considered for annotation of a feature. 
+Understanding them is vital to being able to apply the annotation strategy that best fits your task or research question.
 It is also important to understand the implications of the molecular formula annotation step for structure annotation and compound class prediction:
 Only those molecular formula candidates that are considered by the molecular formula annotation strategy are used to annotate structures via database search
 and compound classes later on. 
 
-<span>**<span style="color: red">**If a molecular formula is not part of the candidate set in this step, it will not be considered for all subsequent steps**
-</span>**</span>
-### De Novo
+**IMPORTANT: If a molecular formula is not part of the candidate set in this step, it will not be considered for all subsequent steps!**
+
+### De novo annotation
 
 SIRIUS will consider all molecular formulas
-that are chemically feasible and explain the precursor mass of the
-molecule/ion: For example, if your query compound is pinensin A 
+that are chemically feasible (based on valencies) and explain the precursor mass of the
+molecule / ion: For example, if your query compound is pinensin A 
 (C<sub>96</sub>H<sub>139</sub>N<sub>27</sub>O<sub>30</sub>S<sub>2</sub>,
-monoisotopic mass (2213.962) Da) then SIRIUS will consider all
+monoisotopic mass of 2213.962 Da) then SIRIUS will consider all
 19,746,670 candidate molecular formulas that explain this
-monoisotopic mass (assuming set of elements , see below, and 10 ppm mass
+monoisotopic mass (assuming a set of elements , see below, and 10 ppm mass
 accuracy). SIRIUS penalizes candidate molecular formulas that deviate
 too strongly of what we assume a molecular formula of a biomolecule to look like 
 (for example, C<sub>2</sub>H<sub>2</sub>N<sub>12</sub>O<sub>12</sub> will receive a penalty), 
 but this penalty is used cautiously: Only 2.6% of the molecular formulas of all PubChem
 compounds — and, hence, only a tiny fraction of molecular formulas from
 compounds not marked as biomolecules — are penalized. Molecular formulas
-are never rewarded by SIRIUS.
+are never rewarded by SIRIUS. These penalties apply to the following approaches as well. 
 
 SIRIUS uses a short list of outlier molecular formulas which would be
 penalized by the above method, as they are not "biomolecule-like"; these
 molecular formulas are not penalized, as they have been observed in
 metabolomics experiments (for example, as solvents), but are also not
-rewarded. These outlier molecular formulas will be considered as
-candidates by SIRIUS even if they violate elemental constrains such as
-"at most 2 fluorine".
+rewarded. <span>**<span style="color: red">\[TODO: check\]</span>**</span>
 
 Considering all molecular formulas implies that a set of elements has to
 be provided from which these molecular formulas are generated. SIRIUS
@@ -215,7 +213,7 @@ from the isotope and fragmentation pattern of the query compound.
 The element set should only be manually altered, if the user has a good reason to do so (e.g. prior knowledge about the 
 feature of interest). Expanding the element set too much will result in extreme computation times and increased bogus annotations. 
 The standard element set considered is C,H,N,O,P, while presence and abundance of Cl,B,Se,S,Br will
-be autodetected from the input MS1 spectrum.
+be autodetected from the input isotope pattern in the MS1 spectrum.
 
 ### Formula database search
 
@@ -223,17 +221,20 @@ Instead of considering the complete space of molecular formulas possible for a g
 to a database. In that case, SIRIUS will only consider molecular formulas that are part of the selected databases and it is possible to further apply
 element set restrictions to that. Naturally, this approach is unable to annotate novel molecular formulas ("novel" meaning not part of the selected database) and will harshly restrict the
 space of molecular formulas candidates. Since the space of possible formula candidates is so much smaller then with de novo, this approach does not require a 
-predefined element set.
+predefined element set. In contrast to de novo, this approach may annotate formulas with uncommon elements that cannot be detected from the MS1 (since considering a large set of uncommon element for de novo is usually no good practice, see above).
 
 ### Bottom up search
 
-The "bottom up" approach is somewhat of a middle ground between the vast molecular formula space of de novo annotation and the very limited space of formula database search. It is inspired by <paper link 
-here>.
-For each fragment mass and neutral loss mass observed in the MS/MS spectrum, a database of potential subformulas is queried. In SIRIUS, this database contains the "bio" database formulas
-as well as a list of commonly appearing losses. Subformula result lists are then merged pairwise,
-creating a precursor formula database that is informed by the input spectrum. This resulting space of precursor formula candidates is not limited to exactly those
-precursor formulas already present in databases, but can contain some amount of novel formulas. Since the space of formulas generated this way is still limited by databases,
-it is still much smaller than de novo, which leads to a substantial speed up in computation time. Since the space of possible formula candidates is small, it is not necessary to apply restrictions on the considered element set.
+The "bottom up" approach is somewhat of a middle ground between the vast molecular formula space of de novo annotation and the very limited space of formula database search.
+It is inspired by [*Xing, S. et al.*](https://doi.org/10.1038/s41592-023-01850-x).
+For each fragment observed in the MS/MS spectrum, its mass and corresponding root loss mass are used to query a database of potential subformulas.
+The resulting subformula candidates for fragment and root loss are added pairwise to create formula candidates for the precursor.
+Thus, this resulting space of precursor formula candidates depends on the fragments present in the spectrum. The space is not limited to exactly those
+precursor formulas already present in databases, but can also contain novel formulas that are combinations of two known molecular formulas. 
+However, due to the dependence on a database, the approach produces a much smaller number of formulas compared to de novo annotation, which leads to a substantial speed up in computation time.
+Since the space of possible formula candidates is limited, it is not strictly necessary to apply restrictions on the considered element set.
+The formula database used for bottom up search contains the "bio" database formulas as well as a list of commonly appearing losses.
+In contrast to de novo, this approach may annotate formulas with uncommon elements that cannot be detected from the MS1 (since considering a large set of uncommon element for de novo is usually no good practice, see above).
 
 
 
@@ -245,7 +246,7 @@ strategy is integral for a successful analysis.  Below are some standard strateg
 ### De novo + bottom up (recommended for generic applications)
 
 In the recommended combined approach, features are divided into "low" (m/z<400) and "high"(m/z>=400) mass features. Bottom up search is performed in both cases, but for low mass features SIRIUS
-additionally performs de novo molecular formula annotation as a means to ensure no formula is missed. Due to de novo only being performed for lower masses, computation times are only minorly impacted compared to only
+additionally performs de novo molecular formula annotation as a means to ensure no formula is missed. Due to de novo only being performed for lower masses, computation times are only minorly impacted compared to solely
 performing bottom up search.
 The m/z threshold can be adjusted based on running time constraints and capabilities of your local machine.
 Element set constraints have to be set for de novo annotation and can additionally be set to apply to bottom up search as well. This approach can produce molecular
@@ -255,7 +256,7 @@ formula annotations with no corresponding structure database hit.
 
 The "de novo only" strategy should be employed when specifically expecting molecular formulas that cannot be generated by bottom up search (meaning that the precursor
 formula in question is not a combination of database subformulas). This may especially be the case when looking for "unknown unknowns".
-Additionally, the expected element set needs to be well defined and should not contain many "rare" elements (see <ref to de novo>).
+Additionally, the expected element set needs to be well-defined and should not contain many "uncommon" elements due to the combinatorial explosion of possible candidates for large masses (see example in [de novo](#de-novo-annotation)).
 The local machine running the SIRIUS client should be powerful enough to handle de novo annotation of higher mass compounds. This approach can produce molecular
 formula annotations with no corresponding structure database hit.
 
@@ -268,7 +269,7 @@ of the selected databases.
 
 ### Bottom up only
 
-"Bottom up only" should be employed for a minor speed up over the recommended combined approach. It does not hold any significant advantages over the recommended
+"Bottom up only" can be employed for a minor speed up over the recommended combined approach. In general, it does not hold any significant advantages over the recommended
 strategy.
 
 
