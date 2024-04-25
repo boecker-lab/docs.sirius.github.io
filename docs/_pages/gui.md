@@ -5,7 +5,7 @@ title: "Graphical User Interface"
 
 ## Overview
 
-SIRIUS 5 ships with a Graphical User Interface. 
+SIRIUS 6 ships with a Graphical User Interface. 
 
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/gui_marked.png" | relative_url }})
@@ -18,16 +18,16 @@ SIRIUS 5 ships with a Graphical User Interface.
 
 On top of the screen you find the toolbar (1-5). 
 The left most button group (1) is for creating, opening and saving project-spaces.
-The second one (2) is for [importing](#data-import) either a single compound or data containing multiple compounds into
+The second one (2) is for [importing](#data-import) either a single feature or data containing multiple features into
 the project-space. The third button group (3) is for exporting data, e.g. for [GNPS FBMN](https://doi.org/10.1038/s41592-020-0933-6) 
 or writing [project-space summaries]({{ "/io/#sirius-project-space/" | relative_url }}). 
 The fourth button group (4) is for computations, containing "compute button", "job view" and "custom database importer".  
 The right most button group (5) contains "log", "settings", "webservice info" and "account info" dialogs. 
 "Help" links to this online documentation. "About" gives information on software licence and related publications.
 
-On the left side is the compound list (6) displaying all imported compounds. 
-Each *compound* lists MS and MS/MS spectra corresponding to a single measured
-compound. For each compound adduct type, precursor mass and retention time ist shown. 
+On the left side is the feature list (6) displaying all imported features. 
+Each *feature* lists MS and MS/MS spectra corresponding to a single measured
+feature. For each feature, adduct type, precursor mass, retention time and confidence score (if computed) is shown. 
 On the right side is the active result view (7). You can choose between different result
 views with the tab selector (8). 
 
@@ -96,7 +96,13 @@ can select if results for compounds that already have been analyzed should be re
 The *Show Command* button shows the respective CLI command for the specified parameters. Hence, you can copy/paste this command
 and run analysis using the CLI.
 
-In the following, the *Batch Computation* dialog is shown.
+In the following, the *Batch Computation* dialogue is shown.
+
+#### Compute panel modes (Basic and advanced)
+
+Starting from SIRIUS 6, the compute dialogue offers two difference modes: "basic" and "advanced". The basic mode offers improved clarity and
+contains only those settings which are integral for any kind of analysis. In contrast, the advanced mode only settings only need to be
+considered for specific use cases and/or for setting limits to computation times.
 
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/compute_marked.png" | relative_url }})

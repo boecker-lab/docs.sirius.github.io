@@ -35,7 +35,7 @@ global:
     children:
       - title: "Spectral quality"
         url: /prerequisites/#spectral-quality
-      - title: "Monoisotopic massesPermalink"
+      - title: "Monoisotopic masses"
         url: /prerequisites/#monoisotopic-masses
       - title: "Theoretical masses of ions"
         url: /prerequisites/#theoretical-masses-of-ions

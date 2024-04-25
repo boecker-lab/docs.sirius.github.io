@@ -10,7 +10,7 @@ features of SIRIUS.
 this is performed on your local computer and no license is needed.
 
 **Webservice-based features** are essentially advanced structure elucidation features including structure database search 
-with CSI:FingerID and CANOPUS compound class prediction.  
+with CSI:FingerID, CANOPUS compound class prediction and MSNovelist.  
 No worries, these and upcoming features **will stay free for academic/non-commercial use**
 and provided/hosted by the FSU Jena. On the other hand the [Bright Giant GmbH](https://bright-giant.com/) 
 offers SIRIUS web service hostings for commercial users. 

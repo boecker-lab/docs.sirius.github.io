@@ -173,9 +173,19 @@ masses below 200 Da, we use the absolute mass deviation at 200 Da, as we
 found that small masses vary according to an absolute rather than a
 relative error.
 
-## Molecular formulas
+## Molecular formula annotation concepts
 
-Unless instructed otherwise, SIRIUS will consider all molecular formulas
+SIRIUS supports three different approaches (de novo, database search, bottom up) concerning molecular formula annotation. 
+Understanding them is vital to being able to apply the annotation strategy that best fits your research question.
+It is also important to understand the implications of the molecular formula annotation step for structure annotation and compound class prediction:
+Only those molecular formula candidates that are considered by the molecular formula annotation strategy are used to annotate structures via database search
+and compound classes later on. 
+
+**If a molecular formula is not part of the candidate set in this step, it will not be considered for all subsequent steps**
+
+### De Novo
+
+SIRIUS will consider all molecular formulas
 that are chemically feasible and explain the precursor mass of the
 molecule/ion: For example, if your query compound is pinensin A 
 (C<sub>96</sub>H<sub>139</sub>N<sub>27</sub>O<sub>30</sub>S<sub>2</sub>,
@@ -201,38 +211,69 @@ candidates by SIRIUS even if they violate elemental constrains such as
 Considering all molecular formulas implies that a set of elements has to
 be provided from which these molecular formulas are generated. SIRIUS
 includes methods for the [auto-detection of elements](https://doi.org/10.1021/acs.analchem.6b01015) 
-from the isotope and fragmentation pattern of the query compound .
+from the isotope and fragmentation pattern of the query compound.
+The element set should only be manually altered, if the user has a good reason to do so (e.g. prior knowledge about the 
+feature of interest). Expanding the element set too much will result in extreme computation times and increased bogus annotations. 
+The standard element set considered is C,H,N,O,P, while presence and abundance of Cl,B,Se,S,Br will
+be autodetected from the input MS1 spectrum.
 
-In case you compound is large (above 600 Da) or you have incomplete
-information (no isotope pattern), you can restrict SIRIUS to only
-consider molecular formulas found in PubChem. Doing so, it is not
-possible to ever detect molecules with a novel molecular formula,
-though.
+### Formula database search
 
-Recent evaluations (for example, as part of the 
-[CASMI contest](http://www.casmi-contest.org))
-indicated that one can determine molecular formulas by searching in a
-structure database using tool such as MAGMa, CFM-ID or CSI:FingerID.
-(Somewhat consequently, the [CASMI 2016](http://www.casmi-contest.org/2016/index.shtml) 
-contest did no longer have a category for molecular formula identification.) **We strongly advice
-against doing so, as this is apparently a wrong prior problem.**
-Molecular formulas in a structure database are far from being uniformly
-distributed: For a certain precursor mass plus mass inaccuracy, you may
-find 90% molecular structures with only one molecular formulas. Assuming
-that the molecular structures in our evaluation set are uniformly chosen
-at random, even a method that uniformly draws a molecular structure,
-then reports its molecular formula will get 81% correct identifications
-for the molecular formula identification task. A method that still
-ignores the mass spectrometry data beyond the monoisotopic mass, but
-reports the majority vote in the structure database would even reach 90%
-correct identifications. (This is comparable to an app for bird
-identification that allways outputs "It is a house sparrow!" for
-Britain, because the house sparrow is the most common bird in Britain.
-This app will get a lot of correct identifications.) Clearly,
-computational methods such as MAGMa, CFM-ID or CSI:FingerID are not
-random, but they will fall for this pit, too. To this end, we advice for
-the "classical chemical identification pipeline" where **molecular
-formulas are identified first, then molecular structure.**
+Instead of considering the complete space of molecular formulas possible for a given mass and element set, one can also restrict that space
+to a database. In that case, SIRIUS will only consider molecular formulas that are part of the selected databases and it is possible to further apply
+element set restrictions to that. Naturally, this approach is unable to annotate novel molecular formulas ("novel" meaning not part of the selected database) and will harshly restrict the
+space of molecular formulas candidates. Since the space of possible formula candidates is so much smaller then with de novo, this approach does not require a 
+predefined element set.
+
+### Bottom up search
+
+The "bottom up" approach is somewhat of a middle ground between the vast molecular formula space of de novo annotation and the very limited space of formula database search. It is inspired by <paper link 
+here>.
+For each fragment mass and neutral loss mass observed in the MS/MS spectrum, a database of potential subformulas is queried. In SIRIUS, this database contains the "bio" database formulas
+as well as a list of commonly appearing losses. Subformula result lists are then merged pairwise,
+creating a precursor formula database that is informed by the input spectrum. This resulting space of precursor formula candidates is not limited to exactly those
+precursor formulas already present in databases, but can contain some amount of novel formulas. Since the space of formulas generated this way is still limited by databases,
+it is still much smaller than de novo, which leads to a substantial speed up in computation time. Since the space of possible formula candidates is small, it is not necessary to apply restrictions on the considered element set.
+
+
+
+## Molecular formula annotation strategies
+
+The molecular formula annotations shown above can either be used individually or combined. Choosing the correct molecular formula annotation
+strategy is integral for a successful analysis.  Below are some standard strategies that cover most applications and can serve as examples:
+
+### De novo + bottom up (recommended for annotation of unknowns)
+
+In the recommended combined approach, features are divided into "low" (m/z<400) and "high"(m/z>=400) mass features. Bottom up search is performed in both cases, but for low mass features SIRIUS
+additionally performs de novo molecular formula annotation as a means to ensure no formula is missed. Due to de novo only being performed for lower masses, computation times are only minorly impacted compared to only
+performing bottom up search.
+The m/z threshold can be adjusted based on running time constraints and capabilities of your local machine.
+Element set constraints have to be set for de novo annotation and can additionally be set to apply to bottom up search as well. This approach can produce molecular
+formula annotations with no corresponding structure database hit.
+
+### De novo only
+
+The "de novo only" strategy should be employed when specifically expecting molecular formulas that cannot be generated by bottom up search (meaning that the precursor
+formula in question is not a combination of database subformulas). This may especially be the case when looking for "unknown unknowns".
+Additionally, the expected element set needs to be well defined and should not contain many "rare" elements (see <ref to de novo>).
+The local machine running the SIRIUS client should be powerful enough to handle de novo annotation of higher mass compounds. This approach can produce molecular
+formula annotations with no corresponding structure database hit.
+
+
+### Database search only
+
+"Database search only" should be employed when the user is only interested in features with a structure database hit and additionally requires extremely fast
+computation times. This approach cannot produce formula annotations with no structure database hit and will only consider molecular formulas that are part
+of the selected databases.
+
+### Bottom up only
+
+"Bottom up only" should be employed for a minor speed up over the recommended combined approach. It does not hold any significant advantages over the recommended
+strategy.
+
+
+
+
 
 ## Fragmentation trees
 
