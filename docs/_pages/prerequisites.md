@@ -181,8 +181,8 @@ It is also important to understand the implications of the molecular formula ann
 Only those molecular formula candidates that are considered by the molecular formula annotation strategy are used to annotate structures via database search
 and compound classes later on. 
 
-**If a molecular formula is not part of the candidate set in this step, it will not be considered for all subsequent steps**
-
+<span>**<span style="color: red">**If a molecular formula is not part of the candidate set in this step, it will not be considered for all subsequent steps**
+</span>**</span>
 ### De Novo
 
 SIRIUS will consider all molecular formulas
@@ -242,7 +242,7 @@ it is still much smaller than de novo, which leads to a substantial speed up in 
 The molecular formula annotations shown above can either be used individually or combined. Choosing the correct molecular formula annotation
 strategy is integral for a successful analysis.  Below are some standard strategies that cover most applications and can serve as examples:
 
-### De novo + bottom up (recommended for annotation of unknowns)
+### De novo + bottom up (recommended for generic applications)
 
 In the recommended combined approach, features are divided into "low" (m/z<400) and "high"(m/z>=400) mass features. Bottom up search is performed in both cases, but for low mass features SIRIUS
 additionally performs de novo molecular formula annotation as a means to ensure no formula is missed. Due to de novo only being performed for lower masses, computation times are only minorly impacted compared to only
@@ -270,8 +270,6 @@ of the selected databases.
 
 "Bottom up only" should be employed for a minor speed up over the recommended combined approach. It does not hold any significant advantages over the recommended
 strategy.
-
-
 
 
 
