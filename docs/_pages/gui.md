@@ -112,16 +112,18 @@ SIRIUS will only consider molecular formulas which mass deviations below
 the chosen ppm; for masses below 200 Da, the allowed mass deviation is
 $(200 \cdot \frac{ppm_{max}}{10^6})$.
 
+If SIRIUS predicts that the query spectrum is a lipid, TODO: finish
+
 #### Fallback Adducts (B)
 
-At this 
+At this TODO: finish
 
 #### Molecular Formula Generation (C)
 
 The [molecular formula annotation strategy]({{ "/prerequisites/#Molecular-formula-annotation-strategies" | relative_url }}) to be employed.
 Choosing a suitable strategy here is imperative for a successful SIRIUS analysis and will impact most subsequent steps.
 
-##### De novo + bottom up (recommended)
+**De novo + bottom up search (recommended)**
 
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/formula_combined_marked.png" | relative_url }})
@@ -139,38 +141,80 @@ for which SIRIUS will detect presence/absence and quantity from the input data (
 be changed via the (a) button. Before majorly changing the element set, please be aware of the potential impact on running time and quality
 (see [here]({{ "/prerequisites/#De-novo-annotation" | relative_url }}))
 
+**De novo only**
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/formula_denovo_marked.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Settings for de novo only annotation.</figcaption>
+</figure>
+
+(1) Element filter settings. An element filter has to be applied for de novo molecular formula annotation.
+"Allowed elements" denotes elements that are part of the element set, upper and lower limits are shown if present. "Autodetect" denotes those elements
+for which SIRIUS will detect presence/absence and quantity from the input data (requires MS1 spectra to be present). The element set can
+be changed via the (a) button. Before majorly changing the element set, please be aware of the potential impact on running time and quality
+(see [here]({{ "/prerequisites/#De-novo-annotation" | relative_url }}))
+
+**Database search**
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/formula_dbsearch_marked.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Settings for formula database search.</figcaption>
+</figure>
+
+(1) Selection of databases that should be used for molecular formula annotation. Per default, those databases that constitute the "bio" database are selected <TODO: reference to that in prereqs>.
+The default selection can be restored by pressing the "bio" button.
+(2)  Element filter settings. Applying an element filter is not mandatory for formula database search, but can be optionally applied to filter molecular formula candidates.
+"Allowed elements" denotes elements that are part of the element set, upper and lower limits are shown if present. "Autodetect" denotes those elements
+for which SIRIUS will detect presence/absence and quantity from the input data (requires MS1 spectra to be present). The element set can
+be changed via the (a) button.
+
+**Bottom up search**
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/formula_bottomup_marked.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Settings for bottom up search only.</figcaption>
+</figure>
+
+(1) Element filter settings. Applying an element filter is not mandatory for bottom up search, but can be optionally applied to filter molecular formula candidates.
+"Allowed elements" denotes elements that are part of the element set, upper and lower limits are shown if present. "Autodetect" denotes those elements
+for which SIRIUS will detect presence/absence and quantity from the input data (requires MS1 spectra to be present). The element set can
+be changed via the (a) button. Before majorly changing the element set, please be aware of the potential impact on running time and quality
+(see [here]({{ "/prerequisites/#De-novo-annotation" | relative_url }}))
 
 
-#### Other
-<span>**<span style="color: red">\[TODO: description of ionization and adducts.\]</span>**</span>
+#### Advanced mode parameters
 
+{% capture fig_img %}
+![Foo]({{ "/assets/images/formula_advanced_marked.png" | relative_url }})
+{% endcapture %}
 
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Advanced parameters for molecular formula annotation.</figcaption>
+</figure>
 
-
-You can select the number of molecular formula candidates that
-should be reported in the output, and what molecular formulas are
-considered as candidates: If you do **not** select any database
-then SIRIUS will enumerate over all molecular formulas that
-match the ion mass, filtering out only molecular formulas with negative
-ring double bond equivalent (default). If you select a database for fomrula
-search, SIRIUS will select/score all molecular formulas from the selected databases.
-The Option *organic formulas* ignores molecular formulas containing elements
-untypical for organic compounds such as Si or Mg; molecular formulas
-pass this filter if they are composed solely of CHNOPSBBrClIF.
-
-  - We never search in these databases directly, but rather in our local
-    database copies. Although we regularly update our database, it may
-    happen that some new compound in, say, ChEBI is not already
-    contained in our local copy.
-
-  - When selecting databases, SIRIUS will ignore your element restrictions and instead allow all
-    elements.
-
-  - We do not recommend restricting molecular formula search to
-    (biomolecule) databases, but doing so significantly speeds up
-    computations, as SIRIUS has to consider significantly less molecular
-    formulas and download significantly smaller candidate structure
-    lists.
+(1) By default molecular formula candidates which theoretical isotope pattern does deviate too much from the measured isotope pattern are discarded. This setting can be turned off
+if you suspect bad quality isotope patterns in the input data.
+(2) TODO
+(3) Select the number of molecular formula candidates that should be saved
+(4) Select the minimum number of molecular formula candidates stored for each ionization, even if it is not part of the top n candidates.
+(5) Set a time limit for computing the fragmentation tree for a singular molecular formula candidate (in seconds). Set to 0 to disable the limit.
+(6) Set a total time limit for computing the fragmentation trees of all molecular formula candidates of a feature (in seconds). Set to 0 to disable the limit.
+(7)+(8) For higher mass compounds, SIRIUS can compute fragmentation trees heuristically instead of exact. The heuristic can be used to pre-rank molecular formula candidates
+and then only compute exact trees for the top candidates. (7) controls the m/z value above which this approach will be used. For even higher masses, it might be necessary
+to forego exact solutions altogether and use heuristic trees only. (8) controls the m/z value above which trees will exclusively be computed using the heuristic. 
 
 ### Improve molecular formula ranking with the ZODIAC tool (2)
 
@@ -183,14 +227,37 @@ increase the chance that the correct molecular formula candidate is contained in
 
 Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Zodiac release page.
 
+#### Advanced mode parameters
 
-### Predicting the molecular fingerprint with the CSI:FingerID tool  (3)
+(1)
+(2)
+(3)
+(4)
+(5)
 
-After computing the fragmentation trees you can predict [molecular fingerprints]({{ "/prerequisites/#molecular-fingerprints" | relative_url }}). 
-These can be used to either search in a structure database or predict compound classes with CANOPUS.
 
-Specified fallback adducts are used in case no adduct has been detected for the feature. If "score threshold" is activated, 
-fingerprints are only calculated for the top scoring fragmentation trees (molecular formulas). 
+### Predicting the molecular fingerprint with CSI:FingerID and predicting compound classes with CANOPUS  (3)
+
+After computing the fragmentation trees you can predict [molecular fingerprints]({{ "/prerequisites/#molecular-fingerprints" | relative_url }}) and CANOPUS compound classes <TODO ref>. 
+These can be used to either search in a structure databases or predict novel structures with MSNovelist.
+If "score threshold" is activated, fingerprints are only predicted for the top scoring fragmentation trees (molecular formulas). This is recommended and should only be changed if you are interested
+in the fingerprint of a molecular formula that has a lower score.
+
+CANOPUS predicts [ClassyFire](http://classyfire.wishartlab.com/) compound classes from the molecular fingerprint. Class
+prediction is done without using any structure database. Thus, classes are predicted for all features for which the
+fragmentation tree contains at least three fragments, including features that have no structure candidate in the
+database. There are no parameters to set. Similar to molecular fingerprints, compound classes are predicted for each
+molecular formula separately.
+
+In the [ClassyFire](http://classyfire.wishartlab.com/) ontology, every compound belongs to multiple compound classes. A
+compound class describes a structural pattern. For example, a *dipeptide* is also an *amino acid* (because it **
+contains** an amino acid substructure), as well as a *carboxylic acid* (for the same reason). A glycosylated amino acid
+might belong to both compound classes: *amino acids* and *hexoses*. Different from how compound classes are often
+described in chemistry textbooks, ClassyFire compound classes do **not** describe the biosynthetic origin. For example,
+a *phytosteroid might* be classified as *bile acids* in Classyfire, because both class of compounds share the same
+backbone, although they are involved in different biochemical pathways.
+
+Click [here](https://bio.informatik.uni-jena.de/software/canopus/) to visit the CANOPUS release page.
 
 ### Identifying the molecular structure with the CSI:FingerID tool  (4)
 
@@ -228,24 +295,6 @@ Calculating COSMIC confidence scores is parameter free and will be executed auto
 search is performed. COSMIC scores for a feature are shown in the feature list on the left.
 
 Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the COSMIC release page.
-
-### Predicting Compound classes with the CANOPUS tool  (5)
-
-CANOPUS predicts [ClassyFire](http://classyfire.wishartlab.com/) compound classes from the molecular fingerprint. Class
-prediction is done without using any structure database. Thus, classes are predicted for all features for which the
-fragmentation tree contains at least three fragments, including features that have no structure candidate in the
-database. There are no parameters to set. Similar to molecular fingerprints, compound classes are predicted for each
-molecular formula separately.
-
-In the [ClassyFire](http://classyfire.wishartlab.com/) ontology, every compound belongs to multiple compound classes. A
-compound class describes a structural pattern. For example, a *dipeptide* is also an *amino acid* (because it **
-contains** an amino acid substructure), as well as a *carboxylic acid* (for the same reason). A glycosylated amino acid
-might belong to both compound classes: *amino acids* and *hexoses*. Different from how compound classes are often
-described in chemistry textbooks, ClassyFire compound classes do **not** describe the biosynthetic origin. For example,
-a *phytosteroid might* be classified as *bile acids* in Classyfire, because both class of compounds share the same
-backbone, although they are involved in different biochemical pathways.
-
-Click [here](https://bio.informatik.uni-jena.de/software/canopus/) to visit the CANOPUS release page.
 
 
 ## Visualization of the results
