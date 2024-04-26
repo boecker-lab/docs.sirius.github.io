@@ -25,54 +25,21 @@ The fourth button group (4) is for computations, containing "compute button", "j
 The right most button group (5) contains "log", "settings", "webservice info" and "account info" dialogs. 
 "Help" links to this online documentation. "About" gives information on software licence and related publications.
 
-On the left side is the feature list (6) displaying all imported features. 
-Each *feature* lists MS and MS/MS spectra corresponding to a single measured
-feature. For each feature, adduct type, precursor mass, retention time and confidence score (if computed) is shown. 
-On the right side is the active result view (7). You can choose between different result
-views with the tab selector (8). 
+On the left side is the feature list (6) displaying all imported (aligned) features. 
+Each *feature* lists MS and MS/MS spectra corresponding to a measured aligned
+feature. For each feature, adduct type, precursor mass, retention time and confidence score (if computed) are shown. 
+On the right side is the active result view (8). You can choose between different result
+views with the tab selector (7).
 
-Here, the "Sirius Overview" is selected. 
-The output of a Sirius computation (de novo formula identification) is an
-ordered list of suggested molecular formula candidates.
-After selecting a compound (dark blue background in the compound list) the results are displayed in the result pane. 
-It shows a list of molecular formula candidates, sorted by score the corresponding spectrum (9)
-and the fragmentation tree (10) of the selected candidate molecular formula. 
-Explained peaks are highlighted (green) in the spectrum. Nodes in
-the fragmentation tree are colored according to their relative intensity.
-
-On the bottom (11), you find your license information for the webservice-based structure elucidation tools, 
-the number of computed compounds and compound limits.  
+On the bottom (9), you find your license information for the webservice-based structure elucidation tools, 
+the number of computed features and feature limits.  
 
 ## Data import
 
-SIRIUS offers two modes for data import: *Single compound import* and *Batch
-import*. The single compound import is triggered when clicking on the *"Import Compound"*
-button in the toolbar. It allows you to import **one** compound. (We
-will use the term "compound" to refer to MS and MS/MS spectra
-belonging to exactly one adduct of a single compound - hence to one precursor.) The single import mode is recommended
-if your data consists of several CSV (comma separated values) files,
-such as the data from the CASMI challenges. First press on *"Import Compound"* to
-start the import dialog.
-
-{% capture fig_img %}
-![Foo]({{ "/assets/images/load.png" | relative_url }})
-{% endcapture %}
-
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Single compound import dialog.</figcaption>
-</figure>
-
-For each spectrum you have to select the MS level (either MS1 or MS/MS).
-If you have MSn spectra you can just import them as MS/MS spectra. You
-can select a name for the compound as well as an ionization mode. The
-collision energy is an optional attribute as it does not affect the
-computation.
-
-You can import `.ms`, `.mgf`, Agilent's `.cef` and `.mzml` (or `.mzxml`) files using the *"Import"* button or Drag'n'Drop. 
-In this mode SIRIUS will read all attributes (MS level, ionization, precursor mass) directly
+You can import `.ms`, `.mgf`, Agilent's `.cef`, `.mzml` and `.mzxml` files using the *"Import"* button or Drag'n'Drop. 
+SIRIUS will read all attributes (MS level, ionization, precursor mass) directly
 from the file. You can, however, change these attributes afterward by
-selecting the imported compound and clicking on the *Edit* button.
+selecting the imported feature and clicking on the *Edit* button.
 When importing multiple `.mzml` (or `.mzxml`) at once, SIRIUS will ask you if it should align them. 
 
 See [Input Formats]({{ "/io/#input/" | relative_url }}) for descriptions of file
@@ -82,30 +49,30 @@ formats and further details.
 ## Computing results
 As for importing data SIRIUS offers two computation modes: *Single
 Computation* and *Batch Computation*. The Single Computation allows you
-to setup different parameters for each compound. You can trigger it by
-right-clicking on a **single** compound and choosing *Compute* in the context menu or by double clicking a compound.
+to setup different parameters for each feature. You can trigger it by
+right-clicking on a **single** feature and choosing *Compute* in the context menu or by double clicking a feature.
 
-Right-clicking **multiple** selected compounds and choosing *Compute* will trigger batch computation for
-the selected compounds.
-Clicking the *"Compute All"* button (toolbar) will compute all compounds in the project-space.
+Right-clicking **multiple** selected features and choosing *Compute* will trigger batch computation for
+the selected features.
+Clicking the *"Compute All"* button (toolbar) will compute all features in the project-space.
 
 Both dialogs are very similar. In *Single Computations* element prediction can be performed by clicking the respective button. 
-In *Batch Computations* check boxes indicate the elements that are automatically predicted for each compound. Also, you
-can select if results for compounds that already have been analyzed should be recomputed and overridden.
+In *Batch Computations* check boxes indicate the elements that are automatically predicted for each feature. Also, you
+can select if results for features that already have been analyzed should be recomputed and overridden.
 
 The *Show Command* button shows the respective CLI command for the specified parameters. Hence, you can copy/paste this command
 and run analysis using the CLI.
 
 In the following, the *Batch Computation* dialogue is shown.
 
-#### Compute panel modes (Basic and advanced)
+### Compute panel (Basic and advanced)
 
 Starting from SIRIUS 6, the compute dialogue offers two difference modes: "basic" and "advanced". The basic mode offers improved clarity and
 contains only those settings which are integral for any kind of analysis. In contrast, the advanced mode only settings only need to be
 considered for specific use cases and/or for setting limits to computation times.
 
 {% capture fig_img %}
-![Foo]({{ "/assets/images/compute_marked.png" | relative_url }})
+![Foo]({{ "/assets/images/compute_basic_marked.png" | relative_url }})
 {% endcapture %}
 
 <figure>
@@ -113,32 +80,27 @@ considered for specific use cases and/or for setting limits to computation times
   <figcaption>Batch compute dialog.</figcaption>
 </figure>
 
-### Identifying molecular formulas with the SIRIUS tool (1)
+The compute panel is split into five subtools: SIRIUS molecular formula annotation (1), ZODIAC (2), CSI:FingerID fingerprint prediction with CANOPUS (3), CSI:FingerID structure
+database search (4) and MSNovelist (5). Starting from SIRIUS 6, CANOPUS (3) is automatically performed whenever a fingerprint is predicted and does not need to be enabled 
+separately anymore. Subtools can be selected individually or combined, please note that the selection together with potentially existing results needs to constitute a valid SIRIUS workflow.
+As an example, one cannot perform structure database search without predicting fingerprints first. Please see <TODO: Make and link prerequisite for sirius workflows> for a more
+detailed explanation on SIRIUS workflows.
+(6) If the "Recompute already computed tasks" checkbox is ticked, all previously existing results for selected features in the current project space will be invalidated and overwritten as necessary
+for executing the currently selected workflow. Additional parameters for specific subtools can be brought up via the appropriate button (7). 
+To easily transition the current workflow selections to a CLI, one can use the "Show Command" (8) button on the bottom right.
 
-#### Parent mass (single compound mode)
+### Identifying molecular formulas with SIRIUS (1)
 
-The exact m/z of the parent peak. If MS1 data is present, the m/z of the
-monoisotopic peak is presented as default. Otherwise, an autocompletion
-offers a list of high intensive peaks from the MS/MS spectra.
+{% capture fig_img %}
+![Foo]({{ "/assets/images/formula_basic_marked.png" | relative_url }})
+{% endcapture %}
 
-#### Elements allowed in the Formula
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Molecular formula annotation compute dialogue.</figcaption>
+</figure>
 
-SIRIUS will use the elements carbon (C), hydrogen (H), nitrogen (N),
-oxygen (O), phosphorus (P) and sulfur (S) by default. Additional
-elements can be selected within the *Select elements* dialog. Adding
-additional elements will increase running time. Using (too many)
-elements that do not occur in the correct molecular formula of the
-compound might worsen the results.
-
-The automated detection of a set of "uncommon elements" is available if
-the isotope pattern is provided. These elements are sulfur (S), chlorine
-(Cl), bromine (Br), boron (B), and selenium (Se). Using *Auto detect* (single compound mode)
-will clear your element selection and will set new values based on the
-detection. Autodetection is usually quite sensitive and rather
-overpredicts the actual quantity of an element.
-
-#### Other
-<span>**<span style="color: red">\[TODO: description of ionization and adducts.\]</span>**</span>
+#### General settings (A)
 
 Choose either *Q-TOF*, *Orbitrap* or *FT-ICR* in the instrument field.
 The chosen instrument affects only very few parameters of the method
@@ -149,6 +111,40 @@ You can change the maximal allowed mass deviation in the *ppm* field.
 SIRIUS will only consider molecular formulas which mass deviations below
 the chosen ppm; for masses below 200 Da, the allowed mass deviation is
 $(200 \cdot \frac{ppm_{max}}{10^6})$.
+
+#### Fallback Adducts (B)
+
+At this 
+
+#### Molecular Formula Generation (C)
+
+The [molecular formula annotation strategy]({{ "/prerequisites/#Molecular-formula-annotation-strategies" | relative_url }}) to be employed.
+Choosing a suitable strategy here is imperative for a successful SIRIUS analysis and will impact most subsequent steps.
+
+##### De novo + bottom up (recommended)
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/formula_combined_marked.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Settings for bottom up + de novo search.</figcaption>
+</figure>
+
+(1) The m/z threshold below of which de novo molecular formula annotation will be performed in addition to bottom up search.
+(2) Element filter settings. An element filter can either be applied to only the de novo annotations, or to the bottom up search as well.
+"Allowed elements" denotes elements that are part of the element set, upper and lower limits are shown if present. "Autodetect" denotes those elements
+for which SIRIUS will detect presence/absence and quantity from the input data (requires MS1 spectra to be present). The element set can
+be changed via the (a) button. Before majorly changing the element set, please be aware of the potential impact on running time and quality
+(see [here]({{ "/prerequisites/#De-novo-annotation" | relative_url }}))
+
+
+
+#### Other
+<span>**<span style="color: red">\[TODO: description of ionization and adducts.\]</span>**</span>
+
+
 
 
 You can select the number of molecular formula candidates that
@@ -180,7 +176,7 @@ pass this filter if they are composed solely of CHNOPSBBrClIF.
 
 ZODIAC performs de novo molecular formula annotation on complete biological datasets (high-resolution, high mass
 accuracy LC-MS/MS runs). ZODIAC takes fragmentation trees as input and reranks the molecular formula candidates by
-taking similarities of compounds in the dataset into account.
+taking similarities of features in the dataset into account.
 
 To run Zodiac, select SIRIUS and ZODIAC in the batch compute panel. Increase the number of reported candidates for SIRIUS, to
 increase the chance that the correct molecular formula candidate is contained in the result list. Click “compute”.
@@ -193,7 +189,7 @@ Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Z
 After computing the fragmentation trees you can predict [molecular fingerprints]({{ "/prerequisites/#molecular-fingerprints" | relative_url }}). 
 These can be used to either search in a structure database or predict compound classes with CANOPUS.
 
-Specified fallback adducts are used in case no adduct has been detected for the compound. If "score threshold" is activated, 
+Specified fallback adducts are used in case no adduct has been detected for the feature. If "score threshold" is activated, 
 fingerprints are only calculated for the top scoring fragmentation trees (molecular formulas). 
 
 ### Identifying the molecular structure with the CSI:FingerID tool  (4)
@@ -229,15 +225,15 @@ The database location (1) needs to be any valid, writeable path including a name
 
 #### COSMIC - confidence values for CSI:FingerID searches
 Calculating COSMIC confidence scores is parameter free and will be executed automatically every time a CSI:FingerID 
-search is performed. COSMIC scores for a compound are shown in the compound list on the left.
+search is performed. COSMIC scores for a feature are shown in the feature list on the left.
 
 Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the COSMIC release page.
 
 ### Predicting Compound classes with the CANOPUS tool  (5)
 
 CANOPUS predicts [ClassyFire](http://classyfire.wishartlab.com/) compound classes from the molecular fingerprint. Class
-prediction is done without using any structure database. Thus, classes are predicted for all compounds for which the
-fragmentation tree contains at least three fragments, including compounds that have no structure candidate in the
+prediction is done without using any structure database. Thus, classes are predicted for all features for which the
+fragmentation tree contains at least three fragments, including features that have no structure candidate in the
 database. There are no parameters to set. Similar to molecular fingerprints, compound classes are predicted for each
 molecular formula separately.
 
@@ -253,11 +249,11 @@ Click [here](https://bio.informatik.uni-jena.de/software/canopus/) to visit the 
 
 
 ## Visualization of the results
-The compound list shows not only information about the input and compute state, it further shows the COSMIC
+The feature list shows not only information about the input and compute state, it further shows the COSMIC
 confidence score for the top CSI:FingerID hit.
 
-For each compound different tabs can be shown in the result panel.
-The *"LC-MS"* tab displays the chromatogram of a compound for it monoisotopic- and further isotope peaks, as well as possibly detected adducts.
+For each feature different tabs can be shown in the result panel.
+The *"LC-MS"* tab displays the chromatogram of a feature for it monoisotopic- and further isotope peaks, as well as possibly detected adducts.
 It includes a basic quality assessment of the spectrum.
 The *"Formulas"* panel displays the most important
 information of the molecular formula identification. The candidate list contains the best candidate molecular
@@ -284,9 +280,9 @@ The LC-MS tab is only visible when LC-MS data (mzML or mzXML) was used for impor
   <figcaption>Overview tab.</figcaption>
 </figure>
 
-The LC-MS tab displays the ion chromatogram of a compound (in blue), including its isotope peaks, possible in-source fragments (in brown), as well as detected adducts (in green) for each input file in which the compound was detected. Retention times are always given in minutes. The *extended ion chromatogram* (gray, dashed) is the mass trace that is not part of the detected peak (e.g., a second ion with same mass or just background noise with same mass). In case MS/MS data of the compound was extracted from the selected LC-MS input file, a black arrow marks the retention time at which the MS/MS was shot. A gray dashed line marks the *noise level*; its exact computation may varies from version to version, but it is related to the median intensity of all peaks in the MS scan. Two gray vertical dashed lines mark the median and weighted average retention time of the compound across all input LC-MS data files.
+The LC-MS tab displays the ion chromatogram of a feature (in blue), including its isotope peaks, possible in-source fragments (in brown), as well as detected adducts (in green) for each input file in which the feature was detected. Retention times are always given in minutes. The *extended ion chromatogram* (gray, dashed) is the mass trace that is not part of the detected peak (e.g., a second ion with same mass or just background noise with same mass). In case MS/MS data of the feature was extracted from the selected LC-MS input file, a black arrow marks the retention time at which the MS/MS was shot. A gray dashed line marks the *noise level*; its exact computation may varies from version to version, but it is related to the median intensity of all peaks in the MS scan. Two gray vertical dashed lines mark the median and weighted average retention time of the feature across all input LC-MS data files.
 
-On the right, there is a basic quality assessment panel. It can be used to preemptively get an idea on overall quality of the MS and MS/MS of the compound.
+On the right, there is a basic quality assessment panel. It can be used to preemptively get an idea on overall quality of the MS and MS/MS of the feature.
 
 
 ### Formulas tab ("SIRIUS overview" in SIRIUS4)
@@ -399,7 +395,7 @@ enabled in this filter menu. If you want to see
 only compounds from KEGG and BioCyc you have to check only KEGG and BioCyc.
 
 Another way of filtering is the XLogP slider. If you have information
-about retention times and expected logP values of your measured compound
+about retention times and expected logP values of your measured feature
 you can use this slider to filter the candidate list by certain XLogP
 values. The slider allows you to define min and max values. XLogP is
 calculated using the [Chemistry Development Kit (CDK)](https://cdk.github.io/).
@@ -407,7 +403,7 @@ calculated using the [Chemistry Development Kit (CDK)](https://cdk.github.io/).
 The blue and red squares are some visualization of the CSI:FingerID
 predictions and scoring. All blue squares represent molecular structures
 that are found in the candidate structure and are predicted by
-CSI:FingerID to be present in the measured compound. The more intense
+CSI:FingerID to be present in the measured feature. The more intense
 the color of the square the higher is the predicted probability for the
 presence of this substructure. The larger the square the more reliable
 is the predictor. The red squares, however, represent structures that
@@ -429,12 +425,12 @@ You can enable filtering by the selected substructure (button with the structure
 to only show candidates that contain the selected substructure.
 Further, you can filter the candidate list using a SMARTS pattern or full-text search.
 
-You can open a context menu by right click on the compound. It offers
+You can open a context menu by right click on a proposed structure. It offers
 you to open the compound in PubChem or copy the InChI or InChI key in
 your clipboard.
 
-If the compound is contained in any database, a blue or grey label
-with the name of this database is displayed below the compound. You can
+If the structure is contained in any database, a blue or grey label
+with the name of this database is displayed below the structure. You can
 click on blue labels to open the database entry in your browser
 window. Yellow labels indicate that the candidate is contained in the corresponding
 custom database. A red label indicates that this candidate is flagged with an unknown database.
