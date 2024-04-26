@@ -204,7 +204,8 @@ SIRIUS uses a short list of outlier molecular formulas which would be
 penalized by the above method, as they are not "biomolecule-like"; these
 molecular formulas are not penalized, as they have been observed in
 metabolomics experiments (for example, as solvents), but are also not
-rewarded. <span>**<span style="color: red">\[TODO: check\]</span>**</span>
+rewarded. However, fragment annotations in the MS/MS, and hence subformulas of these outlier
+molecular formulas, may be penalized during fragmentation tree computation.
 
 Considering all molecular formulas implies that a set of elements has to
 be provided from which these molecular formulas are generated. SIRIUS
@@ -226,7 +227,7 @@ predefined element set. In contrast to de novo, this approach may annotate formu
 ### Bottom up search
 
 The "bottom up" approach is somewhat of a middle ground between the vast molecular formula space of de novo annotation and the very limited space of formula database search.
-It is inspired by [*Xing, S. et al.*](https://doi.org/10.1038/s41592-023-01850-x).
+It is inspired by [*Xing et al.*](https://doi.org/10.1038/s41592-023-01850-x).
 For each fragment observed in the MS/MS spectrum, its mass and corresponding root loss mass are used to query a database of potential subformulas.
 The resulting subformula candidates for fragment and root loss are added pairwise to create formula candidates for the precursor.
 Thus, this resulting space of precursor formula candidates depends on the fragments present in the spectrum. The space is not limited to exactly those
@@ -270,7 +271,7 @@ of the selected databases.
 ### Bottom up only
 
 "Bottom up only" can be employed for a minor speed up over the recommended combined approach. In general, it does not hold any significant advantages over the recommended
-strategy.
+strategy, since disadvantages of de novo annotation only are mostly relevant for high-mass compounds.
 
 
 
@@ -462,7 +463,17 @@ database".
 [//]: <> (TODO:Coming soon... Describe the new confidence Score!)
 
 ## Compound classes
-<span>**<span style="color: red">\[TODO: Coming soon...\]</span>**</span>
+
+CANOPUS ([*Dührkop et al.*](https://doi.org/10.1038/s41587-020-0740-8)) predicts the presense/absense of over 2500 _compound classes_. 
+This covers a wide range from very general classes such as  "Lipids and lipid-like molecules" to very specific classes such as "Phosphatidylethanolamines", "Thiazolidines", or "7-alpha-hydroxysteroids".
+
+Most of the compound classes are based on the [ClassyFire ontology](https://doi.org/10.1186/s13321-016-0174-y). 
+In contrast to ClassyFire however, CANOPUS predicts these classes solely based on the MS/MS spectrum. 
+It can even predict the class if no molecular structure of this class is present in the molecular structure database searched by CSI:FingerID.
+It is important to note, that these compound classes do not follow the concept of attributing a compound to this  precursor or biosynthetic pathway.
+It categorizes similar compounds based on functional groups and common substructures. Only based on the MS/MS spectrum and without additional knowledge of the measured organism, it is not possible to assign this biochemical concept of a class - the same compound may be derived from different precursors.  
+
+Additionally, CANOPUS predicts compound classes based on the categories from NPClassifier. This classification system is more general, but may align better with the concept of biosynthetic pathway mapping. Note, that this is still not using taxonomic information and suggestions are solely based on the MS/MS data.  
 
 ## Training data
 
