@@ -229,6 +229,15 @@ Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Z
 
 #### Advanced mode parameters
 
+{% capture fig_img %}
+![Foo]({{ "/assets/images/zodiac_advanced_marked.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Advanced parameters for ZODIAC molecular formula annotation.</figcaption>
+</figure>
+
 (1)
 (2)
 (3)
@@ -240,7 +249,7 @@ Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Z
 
 After computing the fragmentation trees you can predict [molecular fingerprints]({{ "/prerequisites/#molecular-fingerprints" | relative_url }}) and CANOPUS compound classes <TODO ref>. 
 These can be used to either search in a structure databases or predict novel structures with MSNovelist.
-If "score threshold" is activated, fingerprints are only predicted for the top scoring fragmentation trees (molecular formulas). This is recommended and should only be changed if you are interested
+If **"score threshold"** is activated, fingerprints are only predicted for the top scoring fragmentation trees (molecular formulas). This is recommended and should only be changed if you are interested
 in the fingerprint of a molecular formula that has a lower score.
 
 CANOPUS predicts [ClassyFire](http://classyfire.wishartlab.com/) compound classes from the molecular fingerprint. Class
@@ -261,17 +270,24 @@ Click [here](https://bio.informatik.uni-jena.de/software/canopus/) to visit the 
 
 ### Identifying the molecular structure with the CSI:FingerID tool  (4)
 
-Predicted molecular fingerprints can be searched in a structure database. 
+{% capture fig_img %}
+![Foo]({{ "/assets/images/structure_marked.png" | relative_url }})
+{% endcapture %}
 
-When selecting the CSI:FingerID search you can again select
-multiple structure databases. When searching in biomolecule databases you might never see if there are structures
-with possibly much better score from PubChem. Therefore, we recommend to
-search in PubChem and filter the result list if you expect the result to
-be contained in biomolecule databases. Note: Searching in a small database will **not**
-longer speedup computations since SIRIUS has to score whole PubChem to
-compute confidence measures or merge results with customs dbs anyways.
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Parameters for structure database search.</figcaption>
+</figure>
 
-<span>**<span style="color: red">\[TODO: description of filter options etc.\]</span>**</span>
+(1) Expansive search fallback settings, please see <TODO: link and create expansive search in prerequ> for a more detailed explanation. 
+You can choose to use PubChem as a fallback database in case it contains a hit of higher confidence than
+the selected databases (2).
+**Confidence mode** controls if approximate or exact confidence mode should be used for the assessment of if a
+hit in PubChem is more confident than a hit in the selected databases.
+
+(2) Structure databases to search in. Per default the structure databases making up the "bio" database are selected. If formula database search
+was selected earlier in the workflow, selected databases will reflect that selection. You can return to default by clicking "bio".
+
 
 #### Import of custom structure databases
 
