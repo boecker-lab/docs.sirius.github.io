@@ -466,8 +466,30 @@ database".
     terms or with one of the classes "bio and metabolites", "drug", "safety and toxic" or "food".
     The exact compositon may vary depending on the SIRIUS (backend) version.
     
-[//]: <> (## COSMIC - Confidence for Small Molecule IdentifiCations)
-[//]: <> (TODO:Coming soon... Describe the new confidence Score!)
+## COSMIC - Confidence for Small Molecule IdentifiCations
+
+The COSMIC confidence score ([*Hoffmann et al.*](https://doi.org/10.1038/s41587-021-01045-9)) assigns a confidence to CSI:FingerID structure annotations.
+The CSI:FingerID score was developed to rank different structure candidates for a single feature. 
+However, it is not well suited to rank the top-hits of different features based on their likelihood of being correct.
+Thus, the COSMIC confidence score was developed for this task.
+The idea is similar to False Discovery Rates and q-values: the higher the confidence, the higher the chance of the hit being correct. 
+This allows high-throughput experiments: All features in a large dataset are analysed
+using CSI:FingerID, the top-ranked hit for each feature will be evaluated by COSMIC and the
+most trustworthy structure annotations can be selected for further analysis. COSMIC does not re-rank
+structure candidates of a particular feature nor does it discard any identifications.
+
+There are two modes of the confidence score: _exact_ and _approximate_.
+The exact mode answers the question "Is this exact molecular structure hit the true structure of my unknown compound?".
+The approximate mode tells you "Is this structure hit correct or highly similar to the true structure?".
+Here, we define _highly similar_ as being one simple chemical reaction away from the true structure. More theoretical, the hit and the true structure shall have a Maximum Common Edge Subgraph ([MCES](https://en.wikipedia.org/wiki/Maximum_common_edge_subgraph)) distance of 2.
+Thus, for example, a bogus hit is interpreted as being "correct" if only a side group is moved compared to the true structure.  
+
+The confidence in exact mode will usually be very low if the top and 2nd best structure candidate are highly similar. This happens for many well studied molecules for which you often find multiple derivatives in the structure database.
+If you consider almost-correct hits to be useful, you should opt for the approximate mode.
+
+The confidence score is predicted using Support Vector Machines with enforced feature directionality (different SVMs are used for different lengths of the structure candidate list). The resulting score is a Platt-probability estimate and thus, is between 0 and 1.0.
+However, it should not be interpreted as a probability of being correct. In evaluation, we found that a score of 0.64 corresponded to roughly a 10% FDR. However, this value can highly depend on your own data.
+
 
 ## Compound classes
 
@@ -480,7 +502,7 @@ It can even predict the class if no molecular structure of this class is present
 It is important to note, that these compound classes do not follow the concept of attributing a compound to this  precursor or biosynthetic pathway.
 It categorizes similar compounds based on functional groups and common substructures. Only based on the MS/MS spectrum and without additional knowledge of the measured organism, it is not possible to assign this biochemical concept of a class - the same compound may be derived from different precursors.  
 
-Additionally, CANOPUS predicts compound classes based on the categories from NPClassifier. This classification system is more general, but may align better with the concept of biosynthetic pathway mapping. Note, that this is still not using taxonomic information and suggestions are solely based on the MS/MS data.  
+Additionally, CANOPUS predicts compound classes based on the categories from [NPClassifier](https://doi.org/10.1021/acs.jnatprod.1c00399). This classification system is more general, but may align better with the concept of biosynthetic pathway mapping. Note, that this is still not using taxonomic information and suggestions are solely based on the MS/MS data.  
 
 ## Training data
 
