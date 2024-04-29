@@ -427,8 +427,8 @@ fingerprint.
 
 ## Molecular structures
 
-By default, SIRIUS searches in either PubChem or a biomolecule structure
-database; in addition, SIRIUS now offers to search in your own "suspect
+By default, SIRIUS searches in a biomolecule structure
+database; it can also search in the (extremely large) PubChem database. In addition, SIRIUS now offers to search in your own custom "suspect
 database".
 
   - When searching *[PubChem](https://pubchem.ncbi.nlm.nih.gov/)*, we use a local copy of the database where
@@ -439,10 +439,10 @@ database".
     dialog.
 
   - The *biomolecule structure database* (bioDB) is an amalgamation of several
-    structure databases that contain biomolecules (metabolites and other
+    structure databases that contain small molecules of biological interest (metabolites and other
     compounds of biological relevance; molecules that are products of
-    nature, or synthetic products with potential bioactivity).
-    Currently, this biomolecule structure database consists of
+    nature, or synthetic products with potential bioactivity; contaminants observed in experiments).
+    This biomolecule structure database consists of roughly the following datbases:
     [HMDB](https://hmdb.ca/),
     [KNApSAcK](http://www.knapsackfamily.com/KNApSAcK/),
     [CHEBI](https://www.ebi.ac.uk/chebi/),
@@ -456,8 +456,15 @@ database".
     [NORMAN](https://www.norman-network.com/nds/),
     [SuperNatural](http://bioinf-applied.charite.de/supernatural_new/index.php),
     [COCONUT](https://coconut.naturalproducts.net/),
-    UNPD and structures from [PubChem](https://pubchem.ncbi.nlm.nih.gov/) annotated with [MeSH](https://www.nlm.nih.gov/mesh/meshhome.html) 
+    [BloodExposome](https://bloodexposome.org/),
+    [TeroMol](http://terokit.qmclab.com/),
+    [LOTUS](https://lotus.naturalproducts.net/),
+    [FooDB](https://foodb.ca/),
+    [MiMeDB](https://mimedb.org/),
+    [LIPIDMAPS](https://www.lipidmaps.org/)
+    and structures from [PubChem](https://pubchem.ncbi.nlm.nih.gov/) annotated with [MeSH](https://www.nlm.nih.gov/mesh/meshhome.html) 
     terms or with one of the classes "bio and metabolites", "drug", "safety and toxic" or "food".
+    The exact compositon may vary depending on the SIRIUS (backend) version.
     
 [//]: <> (## COSMIC - Confidence for Small Molecule IdentifiCations)
 [//]: <> (TODO:Coming soon... Describe the new confidence Score!)
