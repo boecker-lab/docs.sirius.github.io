@@ -89,6 +89,12 @@ detailed explanation on SIRIUS workflows.
 for executing the currently selected workflow. Additional parameters for specific subtools can be brought up via the appropriate button (7). 
 To easily transition the current workflow selections to a CLI, one can use the "Show Command" (8) button on the bottom right.
 
+### Spectral library matching (background)
+
+
+
+
+
 ### Identifying molecular formulas with SIRIUS (1)
 
 {% capture fig_img %}
@@ -270,6 +276,10 @@ Click [here](https://bio.informatik.uni-jena.de/software/canopus/) to visit the 
 
 ### Identifying the molecular structure with the CSI:FingerID tool  (4)
 
+Predicted fingerprints can be matched against database structures for structure elucidation. SIRIUS ships with a multitude of databases
+(see TODO: link to prerequisite). Additionally, structures can be added as a "custom database" (TODO link below) and then searched matched against
+(in addition to existing databases).
+
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/structure_marked.png" | relative_url }})
 {% endcapture %}
@@ -286,23 +296,46 @@ the selected databases (2).
 hit in PubChem is more confident than a hit in the selected databases.
 
 (2) Structure databases to search in. Per default the structure databases making up the "bio" database are selected. If formula database search
-was selected earlier in the workflow, selected databases will reflect that selection. You can return to default by clicking "bio".
+was selected earlier in the workflow, selected databases will reflect that selection. You can return to default by clicking "bio". If any custom
+databases exist, they can be selected here as well.
 
 
-#### Import of custom structure databases
+#### Import of custom structure and spectra databases
 
 Custom structure databases can be added via the "Databases" interface (4) located at the top center of the GUI ribbon. 
+Starting with version 6.0, SIRIUS additionally supports the import of spectral libraries. Supported import formats for spectral
+data are .ms, .mgf, .msp, .mat, .txt (MassBank), .mb, .json (GNPS, MoNA). Spectra need to be annotated with a structure and be centroided.
+Imported custom structures can be used in structure database search, imported spectra will be used for spectral library matching, see TODO: add in prerequ and link.
 
 {% capture fig_img %}
-![Foo]({{ "/assets/images/customdbWithAnno.png" | relative_url }})
+![Foo]({{ "/assets/images/customDbs_marked" | relative_url }})
 {% endcapture %}
 
 <figure>
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Custom structure database dialogue.</figcaption>
+  <figcaption>Custom database dialogue.</figcaption>
 </figure>
 
-The database location (1) needs to be any valid, writeable path including a name for the newly created custom database (see above image for an example). In newer versions of SIRIUS 5, this path can not be empty to default to the SIRIUS home directory anymore. During import, users can choose to "inherit" an existing structure database (2). Inheriting an existing database will add all structures of the inherited database to the custom database. Custom structures in SMILES format to be imported into the new custom database can be imported in (3) as shown in above image, or be supplied via a csv/tsv (tab separated) file with structures given in SMILES format. Clicking the "Create/Open" Button (4) will create the custom structure database. See [here](https://boecker-lab.github.io/docs.sirius.github.io/cli-standalone/#custom-database-tool) for more details regarding custom structure database import and for the CLI subtool.
+Custom databases are stored as files with the ".siriusdb" extension. If such a database already exists on the local machine, it can be added to SIRIUS with the
+"add existing database" button. Imported databases can be deleted or modified using the respective buttons on the bottom right. To create a new custom database,
+use the "create custom database" button on the bottom right.
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/customDbs_import_empty" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Custom database import dialogue.</figcaption>
+</figure>
+
+(1) Name of the database that will be shown in the structure database search dialogue with a maximum length of 15 characters.
+(2) Desired file name of the database, should end with ".siriusdb"
+(3) The database location needs to be any valid, writeable path on your local machine.
+(4) The buffer size controls how many structures/spectra should be kept in memory. Can be increased when importing large files on a faster machine.
+(5) Input space to drag&drop files or directories containing structure/spectra files.
+
+See [here](https://boecker-lab.github.io/docs.sirius.github.io/cli-standalone/#custom-database-tool) for more details regarding custom database import and supported file formats.
 
 
 
@@ -319,7 +352,7 @@ confidence score for the top CSI:FingerID hit.
 
 For each feature different tabs can be shown in the result panel.
 The *"LC-MS"* tab displays the chromatogram of a feature for it monoisotopic- and further isotope peaks, as well as possibly detected adducts.
-It includes a basic quality assessment of the spectrum.
+It includes a basic quality assessment of the spectrum. This tab is only populated for mzML and mzXML inputs.
 The *"Formulas"* panel displays the most important
 information of the molecular formula identification. The candidate list contains the best candidate molecular
 formulas ordered by score. Molecular formulas are always written
