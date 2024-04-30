@@ -175,8 +175,8 @@ relative error.
 
 ## Molecular formula annotation concepts
 
-SIRIUS supports three different approaches (de novo, database search, bottom up) to generate the set of molecular formula candidates considered for annotation of a feature. 
-Understanding them is vital to being able to apply the annotation strategy that best fits your task or research question.
+SIRIUS supports three different approaches to generate the set of molecular formula candidates considered for annotation of a feature: de novo, database search and bottom up. 
+Understanding them is vital to being able to apply the annotation [strategy](#molecular-formula-annotation-strategies) that best fits your task or research question.
 It is also important to understand the implications of the molecular formula annotation step for structure annotation and compound class prediction:
 Only those molecular formula candidates that are considered by the molecular formula annotation strategy are used to annotate structures via database search
 and compound classes later on. 
@@ -186,19 +186,19 @@ and compound classes later on.
 ### De novo annotation
 
 SIRIUS will consider all molecular formulas
-that are chemically feasible (based on valencies) and explain the precursor mass of the
+that are chemically feasible (considering valencies) and explain the precursor mass of the
 molecule / ion: For example, if your query compound is pinensin A 
 (C<sub>96</sub>H<sub>139</sub>N<sub>27</sub>O<sub>30</sub>S<sub>2</sub>,
 monoisotopic mass of 2213.962 Da) then SIRIUS will consider all
 19,746,670 candidate molecular formulas that explain this
-monoisotopic mass (assuming a set of elements , see below, and 10 ppm mass
+monoisotopic mass (assuming a set of elements, see below, and 10 ppm mass
 accuracy). SIRIUS penalizes candidate molecular formulas that deviate
 too strongly of what we assume a molecular formula of a biomolecule to look like 
 (for example, C<sub>2</sub>H<sub>2</sub>N<sub>12</sub>O<sub>12</sub> will receive a penalty), 
 but this penalty is used cautiously: Only 2.6% of the molecular formulas of all PubChem
 compounds — and, hence, only a tiny fraction of molecular formulas from
 compounds not marked as biomolecules — are penalized. Molecular formulas
-are never rewarded by SIRIUS. These penalties apply to the following approaches as well. 
+are never rewarded by SIRIUS. These penalties apply to the other approaches as well. 
 
 SIRIUS uses a short list of outlier molecular formulas which would be
 penalized by the above method, as they are not "biomolecule-like"; these
@@ -219,7 +219,7 @@ be autodetected from the input isotope pattern in the MS1 spectrum.
 ### Formula database search
 
 Instead of considering the complete space of molecular formulas possible for a given mass and element set, one can also restrict that space
-to a database. In that case, SIRIUS will only consider molecular formulas that are part of the selected databases and it is possible to further apply
+to a database. In that case, SIRIUS will only consider molecular formulas that are part of the selected database(s) and it is possible to further apply
 element set restrictions to that. Naturally, this approach is unable to annotate novel molecular formulas ("novel" meaning not part of the selected database) and will harshly restrict the
 space of molecular formulas candidates. Since the space of possible formula candidates is so much smaller then with de novo, this approach does not require a 
 predefined element set. In contrast to de novo, this approach may annotate formulas with uncommon elements that cannot be detected from the MS1 (since considering a large set of uncommon element for de novo is usually no good practice, see above).
@@ -388,6 +388,8 @@ reasonable prediction quality in cross validation (F<sub>1</sub> at least
 (0.25), see below). In total, (3,215) molecular properties are
 predicted by CSI:FingerID 1.1.
 
+[//]: # (Update the exact number of molecular properties and optionally add some explantion on the new selection strategy)
+
 CSI:FingerID does not only predict if some molecular property is zero
 (absent) or one (present); it also provides an **estimate how sure it is
 about this prediction**. Mathematically speaking, we estimate the
@@ -493,14 +495,14 @@ However, it should not be interpreted as a probability of being correct. In eval
 
 ## Compound classes
 
-CANOPUS ([*Dührkop et al.*](https://doi.org/10.1038/s41587-020-0740-8)) predicts the presense/absense of over 2500 _compound classes_. 
+CANOPUS ([*Dührkop et al.*](https://doi.org/10.1038/s41587-020-0740-8)) predicts the presense/absense of more than 2500 _compound classes_. 
 This covers a wide range from very general classes such as  "Lipids and lipid-like molecules" to very specific classes such as "Phosphatidylethanolamines", "Thiazolidines", or "7-alpha-hydroxysteroids".
 
 Most of the compound classes are based on the [ClassyFire ontology](https://doi.org/10.1186/s13321-016-0174-y). 
 In contrast to ClassyFire however, CANOPUS predicts these classes solely based on the MS/MS spectrum. 
 It can even predict the class if no molecular structure of this class is present in the molecular structure database searched by CSI:FingerID.
-It is important to note, that these compound classes do not follow the concept of attributing a compound to this  precursor or biosynthetic pathway.
-It categorizes similar compounds based on functional groups and common substructures. Only based on the MS/MS spectrum and without additional knowledge of the measured organism, it is not possible to assign this biochemical concept of a class - the same compound may be derived from different precursors.  
+It is important to note, that these compound classes do not follow the concept of attributing a compound to its biosynthetic precursor or pathway.
+It categorizes similar compounds based on functional groups and common substructures. Only based on the MS/MS spectrum and without additional knowledge of the measured organism, it is not possible to assign this biochemical concept of a class - the same compound may be derived from different biosynthetic precursors.  
 
 Additionally, CANOPUS predicts compound classes based on the categories from [NPClassifier](https://doi.org/10.1021/acs.jnatprod.1c00399). This classification system is more general, but may align better with the concept of biosynthetic pathway mapping. Note, that this is still not using taxonomic information and suggestions are solely based on the MS/MS data.  
 
