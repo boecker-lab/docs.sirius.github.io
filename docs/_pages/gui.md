@@ -45,6 +45,41 @@ When importing multiple `.mzml` (or `.mzxml`) at once, SIRIUS will ask you if it
 See [Input Formats]({{ "/io/#input/" | relative_url }}) for descriptions of file
 formats and further details.
 
+## Sorting features, filtering features and changing displayed confidence score mode
+
+The feature list can be sorted by right-clicking the feature list to bring up the dialogue below
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/featureList_sort.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Feature list sorting dialogue.</figcaption>
+</figure>
+
+Aligned features can be sorted by retention time (RT), mass, name, ID or confidence score (if present). At the bottom of
+the dialogue, users also have the option of changing which confidence mode (approximate or exact) should be displayed and 
+used for sorting. See TODO link for more information on confidence modes.
+
+
+Furthermore, the feature list can be filtered by clicking the appropriate button (see red mark above). This brings up the filter dialogue:
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/filter_empty.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Feature list filtering dialogue.</figcaption>
+</figure>
+
+Aligned features can be filtered by mass range, retention time range, confidence score range as well as peak shape quality (only available for
+mzMl and mzXML input), minimum number of isotope peaks in the MS1 and detected lipid classes.
+Additionally, users can filter for specific element constraints in either the neutral molecular formula or precursor formula,
+as well as for specific detected adducts. If structure database results are present, one can filter for hits in specific structure databases, where
+"candidates to check" controls how many of the top n candidates should be considered.
+
 
 ## Computing results
 As for importing data SIRIUS offers two computation modes: *Single
@@ -91,7 +126,8 @@ To easily transition the current workflow selections to a CLI, one can use the "
 
 ### Spectral library matching (background)
 
-
+If imported spectral libraries are present, SIRIUS will automatically perform spectral matching against those libraries. Currently, this always happens in the background and no parameters
+need to be set. See TODO link and make in prereq.
 
 
 
@@ -341,9 +377,11 @@ See [here](https://boecker-lab.github.io/docs.sirius.github.io/cli-standalone/#c
 
 #### COSMIC - confidence values for CSI:FingerID searches
 Calculating COSMIC confidence scores is parameter free and will be executed automatically every time a CSI:FingerID 
-search is performed. COSMIC scores for a feature are shown in the feature list on the left.
+search is performed. COSMIC scores for a feature are shown in the feature list on the left. From SIRIUS 6 onwards, confidence scores
+will be computed in "exact" and "approximate" mode. See TODO: link prereq for more details.
 
-Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the COSMIC release page.
+
+Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the COSMIC release page
 
 
 ## Visualization of the results
