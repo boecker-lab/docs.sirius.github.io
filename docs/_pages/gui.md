@@ -630,26 +630,45 @@ Starting from SIRIUS 5, this tab also contains the predicted Natural Product cla
 
 ## Settings
 
+The settings dialogue can be opened by pressing the "Settings" button on the top right.
+
 {% capture fig_img %}
-![Foo]({{ "/assets/images/proxySetting.png" | relative_url }})
+![Foo]({{ "/assets/images/settings_general.png" | relative_url }})
 {% endcapture %}
 
 <figure>
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Proxy Settings.</figcaption>
+  <figcaption>General settings Settings.</figcaption>
 </figure>
 
   - *General settings*
+      - *UI Theme:* Choose your favourite display mode for less eye strain (requires restart).
     
-      - *Allowed solvers:* chose the ILP solver for SIRIUS to use for
+      - *Scaling factor:* Increases the size of the GUI by the chosen factor (requires restart).
+    
+      - *Import data without MS/MS:* If checked, features with no MS/MS data will be imported into SIRIUS. Please note that for
+        features with no MS/MS data, only isotope pattern analysis can be performed.
+      - *Ignore formulas:* If checked, SIRIUS will ignore any molecular formula annotations that may already be present in the input file.
+        This can be useful for evaluation, or in case you don't trust formula annotations added externally.
+      - *Confidence score display mode:* Sets the confidence score display mode (either approximate or exact). 
+    
+      - *Allowed solvers:* Choose the ILP solver for SIRIUS to use for
         fragmentation tree computation. GLPK is free, Gurobi is
-        commericial but offers free academic license.
+        commercial but offers free academic license.
     
       - *Database cache:* location of cache directory. CSI:FingerID
         download candidate structures from our server and caches them
         for faster retrieval.
 
-  - *Proxy settings*
+
+
+   - *Adduct settings*
+
+      - Add or remove custom adducts for positive and negative ion mods
+
+    
+
+  - *Proxy and Network settings*
     
       - Sirius supports proxy configuration. It can be enabled by changing
         the proxy configuration from NONE to SIRIUS. If SIRIUS is selected
@@ -659,17 +678,9 @@ Starting from SIRIUS 5, this tab also contains the predicted Natural Product cla
     
       - Edit the information in the Settings -\> Network panel if you want
         to address CSI:FingerID via a proxy server. Your specified
-        configuration will be tested if you hit the save button (see
-        Figure below).
+        configuration will be tested if you hit the save button.
 
-  - *Error report settings*
-    
-      - Add an email address which will be sent with a bug report. This
-        makes it possible for us to contact you, in case we need
-        additional information to solve your problem.
-    
-      - Decide whether specific hardware and operating system
-        information is send with your bug report.
+ 
 
 ## Webservice
 <span>**<span style="color: red">\[TODO: description of connection check dialog.\]</span>**</span>
