@@ -115,6 +115,8 @@ considered for specific use cases and/or for setting limits to computation times
   <figcaption>Batch compute dialog.</figcaption>
 </figure>
 
+TODO: Fix missing labels in image
+
 The compute panel is split into five subtools: SIRIUS molecular formula annotation (1), ZODIAC (2), CSI:FingerID fingerprint prediction with CANOPUS (3), CSI:FingerID structure
 database search (4) and MSNovelist (5). Starting from SIRIUS 6, CANOPUS (3) is automatically performed whenever a fingerprint is predicted and does not need to be enabled 
 separately anymore. Subtools can be selected individually or combined, please note that the selection together with potentially existing results needs to constitute a valid SIRIUS workflow.
@@ -128,7 +130,6 @@ To easily transition the current workflow selections to a CLI, one can use the "
 
 If imported spectral libraries are present, SIRIUS will automatically perform spectral matching against those libraries. Currently, this always happens in the background and no parameters
 need to be set. See TODO link and make in prereq.
-
 
 
 ### Identifying molecular formulas with SIRIUS (1)
@@ -154,11 +155,13 @@ SIRIUS will only consider molecular formulas which mass deviations below
 the chosen ppm; for masses below 200 Da, the allowed mass deviation is
 $(200 \cdot \frac{ppm_{max}}{10^6})$.
 
-If SIRIUS predicts that the query spectrum is a lipid, TODO: finish
+If SIRIUS predicts that the query spectrum might be a lipid, the molecular formula
+according to that prediction can be added and enforced (default).
 
 #### Fallback Adducts (B)
 
-At this TODO: finish
+If no adducts have been detected in previous steps (either during SIRIUS importing or upstream external annotation), fallback adducts can be 
+set. SIRIUS will consider adducts in this list and additionally enforce them if the "enforce" option is chosen.
 
 #### Molecular Formula Generation (C)
 
@@ -280,7 +283,7 @@ Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Z
   <figcaption>Advanced parameters for ZODIAC molecular formula annotation.</figcaption>
 </figure>
 
-(1)
+(1)TODO
 (2)
 (3)
 (4)
@@ -336,9 +339,19 @@ was selected earlier in the workflow, selected databases will reflect that selec
 databases exist, they can be selected here as well.
 
 
+### Generating de novo structure candidates with MSNovelist (5)
+
+Sometimes it might be necessary to go beyond the limits of structure database search. Together with the predicted fingerprint, compound classes and custom databases,
+SIRIUS 6 offers de novo generation of candidate structures through MSNovelist. See TODO make and link in prerequisites for more details on the underlying science.
+
+Please note that the likelihood of any de novo generation method performing well for actual novel compounds is very low. Results should be seen as suggestions or starting points
+for semi-manual analysis of compounds that cannot be elucidated otherwise. 
+
+**MSNovelist will slow your SIRIUS work flow down significantly, use with caution.**
+
 #### Import of custom structure and spectra databases
 
-Custom structure databases can be added via the "Databases" interface (4) located at the top center of the GUI ribbon. 
+Custom structure databases can be added via the "Databases" interface (4) located at the top center of the GUI ribbon.
 Starting with version 6.0, SIRIUS additionally supports the import of spectral libraries. Supported import formats for spectral
 data are .ms, .mgf, .msp, .mat, .txt (MassBank), .mb, .json (GNPS, MoNA). Spectra need to be annotated with a structure and be centroided.
 Imported custom structures can be used in structure database search, imported spectra will be used for spectral library matching, see TODO: add in prerequ and link.
@@ -373,7 +386,7 @@ use the "create custom database" button on the bottom right.
 
 See [here](https://boecker-lab.github.io/docs.sirius.github.io/cli-standalone/#custom-database-tool) for more details regarding custom database import and supported file formats.
 
-
+**Please note that you have to be logged in to your SIRIUS account to import custom databases**
 
 #### COSMIC - confidence values for CSI:FingerID searches
 Calculating COSMIC confidence scores is parameter free and will be executed automatically every time a CSI:FingerID 
@@ -385,7 +398,7 @@ Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the C
 
 
 ## Visualization of the results
-The feature list shows not only information about the input and compute state, it further shows the COSMIC
+The feature list not only shows information about the input and compute state, it further shows the COSMIC
 confidence score for the top CSI:FingerID hit.
 
 For each feature different tabs can be shown in the result panel.
@@ -635,7 +648,7 @@ The settings dialogue can be opened by pressing the "Settings" button on the top
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/settings_general.png" | relative_url }})
 {% endcapture %}
-
+![connectionCheck.png](..%2F..%2F..%2F..%2FPictures%2Fs6_screenshots%2FconnectionCheck.png)
 <figure>
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
   <figcaption>General settings Settings.</figcaption>
@@ -683,7 +696,9 @@ The settings dialogue can be opened by pressing the "Settings" button on the top
  
 
 ## Webservice
-<span>**<span style="color: red">\[TODO: description of connection check dialog.\]</span>**</span>
+
+The connection check dialogue on the top right can help diagnose connection problems.
+
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/connectionCheck.png" | relative_url }})
 {% endcapture %}
@@ -692,3 +707,8 @@ The settings dialogue can be opened by pressing the "Settings" button on the top
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
   <figcaption>Webservice status dialog.</figcaption>
 </figure>
+
+Green checkmarks or red crosses will appear depending on if you have connection to the internet, 
+login server, license server and web service. Additionally, information on if the account you are 
+currently logged in to has a valid subscription attached to it can be found here. Potential connection
+or licensing issues will be given in the description box.
