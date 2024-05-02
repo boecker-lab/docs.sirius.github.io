@@ -648,7 +648,6 @@ The settings dialogue can be opened by pressing the "Settings" button on the top
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/settings_general.png" | relative_url }})
 {% endcapture %}
-![connectionCheck.png](..%2F..%2F..%2F..%2FPictures%2Fs6_screenshots%2FconnectionCheck.png)
 <figure>
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
   <figcaption>General settings Settings.</figcaption>
