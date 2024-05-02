@@ -506,6 +506,17 @@ It categorizes similar compounds based on functional groups and common substruct
 
 Additionally, CANOPUS predicts compound classes based on the categories from [NPClassifier](https://doi.org/10.1021/acs.jnatprod.1c00399). This classification system is more general, but may align better with the concept of biosynthetic pathway mapping. Note, that this is still not using taxonomic information and suggestions are solely based on the MS/MS data.  
 
+## MSNovelist
+
+MSNovelist ([*Stravs et al.*](https://doi.org/10.1038/s41592-022-01486-3)) generates molecular structures de novo from the MS/MS spectrum - without the need of a database.
+It is ideally suited to complement structure database search in the case of poorly represented analyte classes and novel compounds. It is not meant to replace database search in general.
+Structural elucidation of small molecules from MS/MS data remains a challenging task - and identifying a structure without database candidates is even more challenging. 
+MSNovelist proposes structures which can serve as a great starting point for elucidation of specific unknowns. This information may be complemented with [CANOPUS](#compound-classes) compound class predictions.
+
+Candidate structures are generated from the predicted fingerprint. Multiple candidates structures (their SMILES representation) are sampled based on an autoregressive model - generating each SMILES token by token.
+After candidate generation, all candidates are ranked using the CSI:FingerID scoring. 
+
+
 ## Training data
 
 The fragmentation tree computation of SIRIUS **is not trained on any
