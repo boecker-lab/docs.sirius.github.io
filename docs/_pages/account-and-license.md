@@ -7,7 +7,8 @@ Since SIRIUS 5, a user account and a license is required to use the webservice-b
 features of SIRIUS.
 
 **Non-webservice-based features** include molecular formula annotation using fragmentation trees and isotope pattern analysis -
-this is performed on your local computer and no license is needed.
+this is performed on your local computer and no license is needed. Some molecular formula annotation strategies (like formula database search)
+may require a web service connection.
 
 **Webservice-based features** are essentially advanced structure elucidation features including structure database search 
 with CSI:FingerID, CANOPUS compound class prediction and MSNovelist.  

@@ -154,11 +154,13 @@ SIRIUS will only consider molecular formulas which mass deviations below
 the chosen ppm; for masses below 200 Da, the allowed mass deviation is
 $(200 \cdot \frac{ppm_{max}}{10^6})$.
 
-If SIRIUS predicts that the query spectrum is a lipid, TODO: finish
+If SIRIUS predicts that the query spectrum might be a lipid, the molecular formula
+according to that prediction can be added and enforced (default).
 
 #### Fallback Adducts (B)
 
-At this TODO: finish
+If no adducts have been detected in previous steps (either during SIRIUS importing or upstream external annotation), fallback adducts can be 
+set. SIRIUS will consider adducts in this list and additionally enforce them if the "enforce" option is chosen.
 
 #### Molecular Formula Generation (C)
 
@@ -338,7 +340,7 @@ databases exist, they can be selected here as well.
 
 #### Import of custom structure and spectra databases
 
-Custom structure databases can be added via the "Databases" interface (4) located at the top center of the GUI ribbon. 
+Custom structure databases can be added via the "Databases" interface (4) located at the top center of the GUI ribbon.
 Starting with version 6.0, SIRIUS additionally supports the import of spectral libraries. Supported import formats for spectral
 data are .ms, .mgf, .msp, .mat, .txt (MassBank), .mb, .json (GNPS, MoNA). Spectra need to be annotated with a structure and be centroided.
 Imported custom structures can be used in structure database search, imported spectra will be used for spectral library matching, see TODO: add in prerequ and link.
@@ -373,7 +375,7 @@ use the "create custom database" button on the bottom right.
 
 See [here](https://boecker-lab.github.io/docs.sirius.github.io/cli-standalone/#custom-database-tool) for more details regarding custom database import and supported file formats.
 
-
+**Please note that you have to be logged in to your SIRIUS account to import custom databases**
 
 #### COSMIC - confidence values for CSI:FingerID searches
 Calculating COSMIC confidence scores is parameter free and will be executed automatically every time a CSI:FingerID 
@@ -385,7 +387,7 @@ Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the C
 
 
 ## Visualization of the results
-The feature list shows not only information about the input and compute state, it further shows the COSMIC
+The feature list not only shows information about the input and compute state, it further shows the COSMIC
 confidence score for the top CSI:FingerID hit.
 
 For each feature different tabs can be shown in the result panel.
@@ -635,7 +637,7 @@ The settings dialogue can be opened by pressing the "Settings" button on the top
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/settings_general.png" | relative_url }})
 {% endcapture %}
-
+![connectionCheck.png](..%2F..%2F..%2F..%2FPictures%2Fs6_screenshots%2FconnectionCheck.png)
 <figure>
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
   <figcaption>General settings Settings.</figcaption>
@@ -683,7 +685,9 @@ The settings dialogue can be opened by pressing the "Settings" button on the top
  
 
 ## Webservice
-<span>**<span style="color: red">\[TODO: description of connection check dialog.\]</span>**</span>
+
+The connection check dialogue on the top right can help diagnose connection problems.
+
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/connectionCheck.png" | relative_url }})
 {% endcapture %}
@@ -692,3 +696,8 @@ The settings dialogue can be opened by pressing the "Settings" button on the top
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
   <figcaption>Webservice status dialog.</figcaption>
 </figure>
+
+Green checkmarks or red crosses will appear depending on if you have connection to the internet, 
+login server, license server and web service. Additionally, information on if the account you are 
+currently logged in to has a valid subscription attached to it can be found here. Potential connection
+or licensing issues will be given in the description box.
