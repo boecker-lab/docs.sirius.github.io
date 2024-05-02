@@ -3,6 +3,9 @@ permalink: /changelog/
 title: "Changelog"
 ---
 
+### SIRIUS 6
+
+
 ### SIRIUS 5
 #### 5.8.4 (2023-11-04)
 - fixed problem with summary files writing of CANOPUS predictions

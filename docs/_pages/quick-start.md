@@ -29,102 +29,142 @@ each having one or more mass spectra. Obviously, you can also use this workflow 
 
 2. The two compounds are now displayed in the compound list.
 
-3. Just check if the ionization and parent mass is correctly annotated.
-    You can change this values by right-clicking on the compound and then on
-    *Edit*.
+3. Check if the ionization and parent mass is correctly annotated.
 
 4. Click on the *Compute All* button.
 
 5. Select SIRIUS.
 
-6. You can now select the allowed elements, the instrument type as well
-    as the maximal allowed mass deviation. Be aware that this settings
-    will be used for all imported compounds
+6. Change the instrument type as well as the maximal allowed mass deviation. Be aware that this settings
+    will be used for all imported compounds.
+7. Check if the currently selected molecular formula search strategy aligns with your research question (TODO: link).
 
-7. Choose *Orbitrap* in the instrument field and press *OK*
-8. Select *Predict FPs* to predict the compounds' molecular fingerprints with CSI:FingerID.
-9. Select *Search DBs* to search compounds in a structure database with CSI:FingerID.
-10. Select *CANOPUS* to predict compound classes (database-free).
-11. Click *Compute*.
+8. Select *Predict Properties & CANOPUS* to predict the compounds' molecular fingerprints with CSI:FingerID as well as their compound classes with CANOPUS.
+8. Select *CSI:FingerID structure database search* to search compounds in a structure database with CSI:FingerID.
+10. Click *Compute*.
 
-12. A *gear* symbol occurs on the lower right corner of each compound.
+11. A *gear* symbol occurs on the lower right corner of each compound.
      This means that the compound is part of a computation job.
     
-13. Sometimes a computation might take a long time (e.g. for compounds
+12. Sometimes a computation might take a long time (e.g. for compounds
      with a lot of elements or very high masses). You can cancel running
      computations by selecting *Cancel All* in the toolbar.
 
-14. Inspect results with the help of the *Formulas*, *Structure* and *Compound Classes* views. 
-    Structure and compound class annotations are always based on a selected molecular formula candidate of the compound. 
+13. Inspect results with the help of the *Formulas*, *Structure* and *Compound Classes* views.
     Even more details can be found by looking at the  *Substructure Annotation* and *Predicted Fingerprint* views.  
 
-### Working with peak list files (not recommended default)
+[//]: # (### Working with peak list files &#40;not recommended default&#41;)
 
-SIRIUS’s "Single mode" corresponds to analyzing a single compound with
-one or more mass spectra as individual peak list files. 
-This is usually not the recommended format as it misses relevant information that may need to be specified manually.   
+[//]: # ()
+[//]: # (SIRIUS’s "Single mode" corresponds to analyzing a single compound with)
 
-#### Example 1: Chelidonine
+[//]: # (one or more mass spectra as individual peak list files. )
 
-1.  Click the *Import Compound* Button in the Toolbar to open the importer window.
+[//]: # (This is usually not the recommended format as it misses relevant information that may need to be specified manually.   )
 
-1.  Move each of the three files `demo-data/txt/chelidonine_ms.txt`, `demo-data/txt/chelidonine_msms1.txt`
-    and `demo-data/txt/chelidonine_msms2.txt` (one after another) from the demo data via Drag and Drop into
-    the importer window.
+[//]: # ()
+[//]: # (#### Example 1: Chelidonine)
 
-1.  The following dialog offers you to select the columns for mass and
-    intensity values. Just press *Ok* as the default values are already
-    correct.
+[//]: # ()
+[//]: # (1.  Click the *Import Compound* Button in the Toolbar to open the importer window.)
 
-1.  You see the load dialog with three spectra. The first spectrum is
-    wrongly annotated as *MS/MS* spectrum but should be an *MS1*
-    spectrum instead. Just select *MS 1* in the drop down list labeled
-    with *ms level*.
+[//]: # ()
+[//]: # (1.  Move each of the three files `demo-data/txt/chelidonine_ms.txt`, `demo-data/txt/chelidonine_msms1.txt`)
 
-1.  All other options are fine. However, you might want to choose a more
-    memorizable name in the *compound name* field.
+[//]: # (    and `demo-data/txt/chelidonine_msms2.txt` &#40;one after another&#41; from the demo data via Drag and Drop into)
 
-1.  Press the *OK* button. The newly imported compound should now appear
-    in your compound list on the left side.
+[//]: # (    the importer window.)
 
-1.  Choose the compound, right-click on it and press *Compute*.
+[//]: # ()
+[//]: # (1.  The following dialog offers you to select the columns for mass and)
 
-1.  Select SIRIUS. All other options should be fine. Just check that
-    the correct parent mass is chosen. You might want to add Chlorine or
-    Fluorine to the set of considered elements. Furthermore, you can
-    change the instrument type to *Orbitrap*. Then click *Compute*.
+[//]: # (    intensity values. Just press *Ok* as the default values are already)
 
-1.  Just look into the candidate list: The first molecular formula has a
-    quite large score. Furthermore, the second molecular formula has a
-    much lower score. This is a good indication that the identification
-    is correct. However, you can take a look at the fragmentation tree:
-    Do the peak annotations look correct? Take a look at the spectrum
-    view: Are all high intensive peaks explained?
+[//]: # (    correct.)
 
-1.  To write the results into a summary file press the *Summaries* button.
-    You can find the result list `formula_candidates.tsv` at the compound level
-    in the [project-space]({{ "/io/#sirius-project-space" | relative_url }}) directory.
+[//]: # ()
+[//]: # (1.  You see the load dialog with three spectra. The first spectrum is)
 
-#### Example 2: Identifying a CASMI challenge
+[//]: # (    wrongly annotated as *MS/MS* spectrum but should be an *MS1*)
 
-1.  Download the files <http://casmi-contest.org/2014/Challenge2014/Challenge1/1_MS.txt>
-    and <http://casmi-contest.org/2014/Challenge2014/Challenge1/1_MSMS.txt>
+[//]: # (    spectrum instead. Just select *MS 1* in the drop down list labeled)
 
-1.  Click the *Import Compound* Button in the Toolbar to open the importer window.
+[//]: # (    with *ms level*.)
 
-1.  Move these files via Drag and Drop into the importer window (one after another).
+[//]: # ()
+[//]: # (1.  All other options are fine. However, you might want to choose a more)
 
-1.  Change the ms level of the first file into *Ms 1*
+[//]: # (    memorizable name in the *compound name* field.)
 
-1.  Click on *OK*
+[//]: # ()
+[//]: # (1.  Press the *OK* button. The newly imported compound should now appear)
 
-1.  Click on *Compute* in the right-click context menu of the imported
-    compound (or *double click*).
+[//]: # (    in your compound list on the left side.)
 
-1.  Select SIRIUS and choose *Q-TOF* as instrument and press the *OK* button
+[//]: # ()
+[//]: # (1.  Choose the compound, right-click on it and press *Compute*.)
 
-1.  *C23H46NO7P* should be suggested as number one hit in the candidate
-    list
+[//]: # ()
+[//]: # (1.  Select SIRIUS. All other options should be fine. Just check that)
+
+[//]: # (    the correct parent mass is chosen. You might want to add Chlorine or)
+
+[//]: # (    Fluorine to the set of considered elements. Furthermore, you can)
+
+[//]: # (    change the instrument type to *Orbitrap*. Then click *Compute*.)
+
+[//]: # ()
+[//]: # (1.  Just look into the candidate list: The first molecular formula has a)
+
+[//]: # (    quite large score. Furthermore, the second molecular formula has a)
+
+[//]: # (    much lower score. This is a good indication that the identification)
+
+[//]: # (    is correct. However, you can take a look at the fragmentation tree:)
+
+[//]: # (    Do the peak annotations look correct? Take a look at the spectrum)
+
+[//]: # (    view: Are all high intensive peaks explained?)
+
+[//]: # ()
+[//]: # (1.  To write the results into a summary file press the *Summaries* button.)
+
+[//]: # (    You can find the result list `formula_candidates.tsv` at the compound level)
+
+[//]: # (    in the [project-space]&#40;{{ "/io/#sirius-project-space" | relative_url }}&#41; directory.)
+
+[//]: # ()
+[//]: # (#### Example 2: Identifying a CASMI challenge)
+
+[//]: # ()
+[//]: # (1.  Download the files <http://casmi-contest.org/2014/Challenge2014/Challenge1/1_MS.txt>)
+
+[//]: # (    and <http://casmi-contest.org/2014/Challenge2014/Challenge1/1_MSMS.txt>)
+
+[//]: # ()
+[//]: # (1.  Click the *Import Compound* Button in the Toolbar to open the importer window.)
+
+[//]: # ()
+[//]: # (1.  Move these files via Drag and Drop into the importer window &#40;one after another&#41;.)
+
+[//]: # ()
+[//]: # (1.  Change the ms level of the first file into *Ms 1*)
+
+[//]: # ()
+[//]: # (1.  Click on *OK*)
+
+[//]: # ()
+[//]: # (1.  Click on *Compute* in the right-click context menu of the imported)
+
+[//]: # (    compound &#40;or *double click*&#41;.)
+
+[//]: # ()
+[//]: # (1.  Select SIRIUS and choose *Q-TOF* as instrument and press the *OK* button)
+
+[//]: # ()
+[//]: # (1.  *C23H46NO7P* should be suggested as number one hit in the candidate)
+
+[//]: # (    list)
 
 ## Command Line Interface
 

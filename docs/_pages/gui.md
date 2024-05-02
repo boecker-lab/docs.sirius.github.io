@@ -115,6 +115,8 @@ considered for specific use cases and/or for setting limits to computation times
   <figcaption>Batch compute dialog.</figcaption>
 </figure>
 
+TODO: Fix missing labels in image
+
 The compute panel is split into five subtools: SIRIUS molecular formula annotation (1), ZODIAC (2), CSI:FingerID fingerprint prediction with CANOPUS (3), CSI:FingerID structure
 database search (4) and MSNovelist (5). Starting from SIRIUS 6, CANOPUS (3) is automatically performed whenever a fingerprint is predicted and does not need to be enabled 
 separately anymore. Subtools can be selected individually or combined, please note that the selection together with potentially existing results needs to constitute a valid SIRIUS workflow.
@@ -128,7 +130,6 @@ To easily transition the current workflow selections to a CLI, one can use the "
 
 If imported spectral libraries are present, SIRIUS will automatically perform spectral matching against those libraries. Currently, this always happens in the background and no parameters
 need to be set. See TODO link and make in prereq.
-
 
 
 ### Identifying molecular formulas with SIRIUS (1)
@@ -282,7 +283,7 @@ Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Z
   <figcaption>Advanced parameters for ZODIAC molecular formula annotation.</figcaption>
 </figure>
 
-(1)
+(1)TODO
 (2)
 (3)
 (4)
@@ -337,6 +338,16 @@ hit in PubChem is more confident than a hit in the selected databases.
 was selected earlier in the workflow, selected databases will reflect that selection. You can return to default by clicking "bio". If any custom
 databases exist, they can be selected here as well.
 
+
+### Generating de novo structure candidates with MSNovelist (5)
+
+Sometimes it might be necessary to go beyond the limits of structure database search. Together with the predicted fingerprint, compound classes and custom databases,
+SIRIUS 6 offers de novo generation of candidate structures through MSNovelist. See TODO make and link in prerequisites for more details on the underlying science.
+
+Please note that the likelihood of any de novo generation method performing well for actual novel compounds is very low. Results should be seen as suggestions or starting points
+for semi-manual analysis of compounds that cannot be elucidated otherwise. 
+
+**MSNovelist will slow your SIRIUS work flow down significantly, use with caution.**
 
 #### Import of custom structure and spectra databases
 
