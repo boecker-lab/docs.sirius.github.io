@@ -480,17 +480,19 @@ using CSI:FingerID, the top-ranked hit for each feature will be evaluated by COS
 most trustworthy structure annotations can be selected for further analysis. COSMIC does not re-rank
 structure candidates of a particular feature nor does it discard any identifications.
 
+The confidence score is predicted using Support Vector Machines with enforced feature directionality (different SVMs are used for different lengths of the structure candidate list). The resulting score is a Platt-probability estimate and thus, is between 0 and 1.0.
+However, it should not be interpreted as a probability of being correct. In evaluation, we found that a score of 0.64 corresponded to roughly a 10% FDR. However, this value can highly depend on your own data.
+
+### Confidence score modes
+
 There are two modes of the confidence score: _exact_ and _approximate_.
 The exact mode answers the question "Is this exact molecular structure hit the true structure of my unknown compound?".
 The approximate mode tells you "Is this structure hit correct or highly similar to the true structure?".
 Here, we define _highly similar_ as being one simple chemical reaction away from the true structure. More theoretical, the hit and the true structure shall have a Maximum Common Edge Subgraph ([MCES](https://en.wikipedia.org/wiki/Maximum_common_edge_subgraph)) distance of 2.
-Thus, for example, a bogus hit is interpreted as being "correct" if only a side group is moved compared to the true structure.  
+Thus, for example, a bogus hit is interpreted as being "correct" if only a side group is moved compared to the true structure.
 
 The confidence in exact mode will usually be very low if the top and 2nd best structure candidate are highly similar. This happens for many well studied molecules for which you often find multiple derivatives in the structure database.
 If you consider almost-correct hits to be useful, you should opt for the approximate mode.
-
-The confidence score is predicted using Support Vector Machines with enforced feature directionality (different SVMs are used for different lengths of the structure candidate list). The resulting score is a Platt-probability estimate and thus, is between 0 and 1.0.
-However, it should not be interpreted as a probability of being correct. In evaluation, we found that a score of 0.64 corresponded to roughly a 10% FDR. However, this value can highly depend on your own data.
 
 
 ## Compound classes

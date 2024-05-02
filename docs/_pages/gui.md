@@ -60,7 +60,7 @@ The feature list can be sorted by right-clicking the feature list to bring up th
 
 Aligned features can be sorted by retention time (RT), mass, name, ID or confidence score (if present). At the bottom of
 the dialogue, users also have the option of changing which confidence mode (approximate or exact) should be displayed and 
-used for sorting. See TODO link for more information on confidence modes.
+used for sorting. See [confidence modes]({{ "/prerequisites/#confidence-score-modes" | relative_url }}) for more information.
 
 
 Furthermore, the feature list can be filtered by clicking the appropriate button (see red mark above). This brings up the filter dialogue:
