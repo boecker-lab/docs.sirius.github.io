@@ -484,9 +484,9 @@ The *Tree view* displays the computed fragmentation tree. Each node
 in this tree assigns a molecular formula to a peak in the (merged) MS/MS
 spectrum. Each edge is a hypothetical fragmentation reaction. The user
 has the choice between different node styles and color schemes. Pleae see <TODO: link
-to prereq> for a detailled explanation on fragmentation trees.
+to prereq> for a detailed explanation on fragmentation trees.
 
-#### Export tree visualization
+
 The displayed fragmentation tree can be exported as `svg` or `pdf` vector graphics.
 Alternatively, the `dot` file format contains a text description of the
 tree. It can be used to render the tree externally. The command-line
@@ -516,6 +516,33 @@ When selecting a molecular property, examples for this property are shown below 
   <figcaption>Fingerprint view.</figcaption>
 </figure>
 
+### Compound classes (CANOPUS) tab
+
+Compound class predictions are visualized as table similar to molecular fingerprints: Each row in the table describes
+one class. The *posterior probability* is the probability that the measured spectrum (given the chosen molecular formula)
+belongs to this compound class. The other columns contain all related information from the
+[ClassyFire](http://classyfire.wishartlab.com/) ontology.
+
+Above the table are two lists: **main classes** and **alternative classes**. The main class of a measurement is the
+*most specific* compound class from all compound classes with posterior probability above 50%. The **main classes** list
+contains the main class, as well as its ancestors in the Classyfire ontology. The **alternative classes** list contains
+all over classes with posterior probability above 50%.
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/canopus.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>CANOPUS view.</figcaption>
+</figure>
+
+* (1) The most informative class (light green), and its ancestor classes (light blue).
+* (2) Alternative classes. In the ClassyFire chemontology, every compound is assigned to multiple classes. In this example, the compound kaempferol is a flavonoid, but also a benzenoid.
+* (3) The table lists all ClassyFire classes, with description parent class and so on. The colored bar denotes the predicted probability for this class. Only classes with probability above 0.5 are listed in (1) and (2).
+
+Starting from SIRIUS 5, this tab also contains the predicted Natural Product classes.
+
 ### Structures tab ("CSI:FingerID Detail" tab in SIRIUS4)
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/structures.png" | relative_url }})
@@ -534,13 +561,7 @@ all available databases. Only candidates will be displayed that are
 enabled in this filter menu. If you want to see
 only compounds from KEGG and BioCyc you have to check only KEGG and BioCyc.
 
-Another way of filtering is the XLogP slider. If you have information
-about retention times and expected logP values of your measured feature
-you can use this slider to filter the candidate list by certain XLogP
-values. The slider allows you to define min and max values. XLogP is
-calculated using the [Chemistry Development Kit (CDK)](https://cdk.github.io/).
-
-The blue and red squares are some visualization of the CSI:FingerID
+The blue and red squares are a visualization of the CSI:FingerID
 predictions and scoring. All blue squares represent molecular structures
 that are found in the candidate structure and are predicted by
 CSI:FingerID to be present in the measured feature. The more intense
@@ -553,7 +574,7 @@ probability that this structure should be absent. Therefore, a lot of
 large intense blue squares and as few as possible large intense red
 squares are a good indication for a correct prediction.
 
-When hovering with the mouse over these squares the corresponding
+When hovering over these squares the corresponding
 description of the molecular structure (usually a SMART expression) is
 displayed. When clicking on one of these squares, the corresponding
 atoms in the molecule that belong to this substructure are highlighted.
@@ -581,6 +602,8 @@ is part of the CSI:FingerID training data.
 This tab also includes visualization for the "El Gordo" lipid class annotation functionality. Lipid structures are often extremely similar to each other,
 often only differing in the position of the double bonds. These extremely similar structures are often not even differentiable by mass spectrometry at all, which is why the overarching lipid class is shown above the structure candidates. 
 
+### De Novo Structure tab
+
 ### Substructure Annotation tab
 
 In this tab, a direct connection between the input MS/MS spectrum and the CSI:FingerID structure candidates is visualized. The table in the top part of the view shows all structure candidates for a given query that were also present in the "Structures" tab. By selecting them, the bottom part of the view shows the fragmentation spectrum on the left, as well as the given structure candidate on the right. 
@@ -604,33 +627,8 @@ Peaks in the fragmentation spectrum are color coded as follows:
 
 Peaks can be navigated by left-clicking on them, or using the arrow keys.
 
+### Library matches tab
 
-### CANOPUS tab
-
-Compound class predictions are visualized as table similar to molecular fingerprints: Each row in the table describes 
-one class. The *posterior probability* is the probability that the measured spectrum (given the chosen molecular formula)
-belongs to this compound class. The other columns contain all related information from the 
-[ClassyFire](http://classyfire.wishartlab.com/) ontology. 
-
-Above the table are two lists: **main classes** and **alternative classes**. The main class of a measurement is the 
-*most specific* compound class from all compound classes with posterior probability above 50%. The **main classes** list
-contains the main class, as well as its ancestors in the Classyfire ontology. The **alternative classes** list contains 
-all over classes with posterior probability above 50%.
-
-{% capture fig_img %}
-![Foo]({{ "/assets/images/canopus.png" | relative_url }})
-{% endcapture %}
-
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>CANOPUS view.</figcaption>
-</figure>
-
-* (1) The most informative class (light green), and its ancestor classes (light blue).
-* (2) Alternative classes. In the ClassyFire chemontology, every compound is assigned to multiple classes. In this example, the compound kaempferol is a flavonoid, but also a benzenoid.
-* (3) The table lists all ClassyFire classes, with description parent class and so on. The colored bar denotes the predicted probability for this class. Only classes with probability above 0.5 are listed in (1) and (2).
-
-Starting from SIRIUS 5, this tab also contains the predicted Natural Product classes.
 
 ## Settings
 
