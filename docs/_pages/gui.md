@@ -434,25 +434,26 @@ The LC-MS tab displays the ion chromatogram of a feature (in blue), including it
 On the right, there is a basic quality assessment panel. It can be used to preemptively get an idea on overall quality of the MS and MS/MS of the feature.
 
 
-### Formulas tab ("SIRIUS overview" in SIRIUS4)
+### Formulas tab 
 
-The *"Formulas"* tab displays the candidate list, spectrum and
-fragmentation tree of the selected candidate. Candidates are ordered by
+#### Formula annotation overview (1)
+
+The *"Formulas"* tab displays the molecular formula candidate list (1), spectrum (2) and
+fragmentation tree (3) of the selected feature. Candidates are ordered by
 total score, but can be sorted by any other column. A green row
 highlights the molecular formula of the best candidate structure found
 by CSI:FingerID.
 
 {% capture fig_img %}
-![Foo]({{ "/assets/images/overview.png" | relative_url }})
+![Foo]({{ "/assets/images/formula_result_marked.png" | relative_url }})
 {% endcapture %}
 
 <figure>
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Overview tab.</figcaption>
+  <figcaption>Formulas tab.</figcaption>
 </figure>
 
-The length of the bars for the different score columns (isotope pattern,
-fragmentation pattern, Sirius (isotope + tree), zodiac) as well as the displayed numbers for
+The length of the bars for the different score columns (Sirius (isotope + tree) and zodiac) as well as the displayed numbers for
 columns *Isotope Score* and *Tree Score*, correspond to *logarithms* of
 maximum likelihoods (probability that this hypothesis, i.e. molecular
 formula, will generate the observed data). In contrast, the number in
@@ -465,21 +466,25 @@ probability that this molecular formula identification is correct! **
 The displayed probabilities are neither q-values nor Posterior Error
 Probabilities.
 
-### Tree view tab
+#### Spectrum overview (2)
 
-{% capture fig_img %}
-![Foo]({{ "/assets/images/tree_view.png" | relative_url }})
-{% endcapture %}
+In the *Spectrum view* part of the formulas tab, one can switch between MS1,
+MS1 isotope pattern mirror plot and MS2 spectra. Hold right mouse button to area-select,
+scroll while hovering an axis to zoom. In the MS2 view, all peaks that are annotated by the
+fragmentation tree are colored in green. Peaks that are annotated as
+noise are colored black. Hovering with the mouse over a peak shows its
+detailed annotation.
+Clicking on a green peak will highlight the corresponding node in the fragmentation tree.
+Spectra views can be exported using the top right export button.
 
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Tree view tab.</figcaption>
-</figure>
+#### Fragmentation tree overview (3)
 
-The *Tree view* tab displays the estimated fragmentation tree. Each node
+
+The *Tree view* displays the computed fragmentation tree. Each node
 in this tree assigns a molecular formula to a peak in the (merged) MS/MS
 spectrum. Each edge is a hypothetical fragmentation reaction. The user
-has the choice between different node styles and color schemes.
+has the choice between different node styles and color schemes. Pleae see <TODO: link
+to prereq> for a detailled explanation on fragmentation trees.
 
 #### Export tree visualization
 The displayed fragmentation tree can be exported as `svg` or `pdf` vector graphics.
@@ -490,29 +495,15 @@ etc). The `json` format yields a machine-readable representation of the
 tree. See the [`ftree-export`]({{ "/cli-standalone/#fragmentation-tree-export-tool" | relative_url }}) cli tool for how to export fragmentation trees from 
 the command line.
 
-### Spectrum view tab
 
-{% capture fig_img %}
-![Foo]({{ "/assets/images/spectra_view.png" | relative_url }})
-{% endcapture %}
 
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Spectrum view tab.</figcaption>
-</figure>
-
-In the *Spectrum view* tab, all peaks that are annotated by the
-fragmentation tree are colored in green. Peaks that are annotated as
-noise are colored black. Hovering with the mouse over a peak shows its
-detailed annotation.
-
-### Fingerprint tab
+### Predicted fingerprints tab
 Even if the correct structure is not found by CSI:FingerID — in
 particular if the correct structure is not contained in any database —
 you can get information about the structure by looking at the predicted
 fingerprint. The *"Fingerprint"* tab shows a list of all molecular properties 
 the predicted fingerprint consists of. 
-For each molecular property its definition and posterior propability is shown
+For each molecular property its definition and posterior probability is shown
 as well as some information about the predictor for this property.
 When selecting a molecular property, examples for this property are shown below the list.
 
