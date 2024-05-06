@@ -51,12 +51,7 @@ each having one or more mass spectra. Obviously, you can also use this workflow 
      computations by selecting *Cancel All* in the toolbar.
 
 13. Inspect results with the help of the *Formulas*, *Structure* and *Compound Classes* views.
-    Even more details can be found by looking at the  *Substructure Annotation* and *Predicted Fingerprint* views.  
-
-[//]: # (### Working with peak list files &#40;not recommended default&#41;)
-
-[//]: # ()
-[//]: # (SIRIUS’s "Single mode" corresponds to analyzing a single compound with)
+    Even more details can be found by looking at the  *Substructure Annotation* and *Predicted Fingerprint* views.
 
 [//]: # (one or more mass spectra as individual peak list files. )
 

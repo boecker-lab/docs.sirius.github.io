@@ -63,12 +63,26 @@ global:
   - title: "Graphical User Interface"
     url: /gui
     children:
+      - title: "Overview"
+        url: /gui/#overview
       - title: "Data Import"
         url: /gui/#data-import
-      - title: "Computing Results"
-        url: /gui/#computing-results
+      - title: "Compute Panel"
+        url: /gui/#compute-panel-basic-and-advanced
+      - title: "Identifying molecular formulas"
+        url: /gui/#identifying-molecular-formulas-with-sirius-1
+      - title: "Predicting molecular fingerprints & CANOPUS"
+        url: /gui/#predicting-the-molecular-fingerprint-with-csifingerid-and-predicting-compound-classes-with-canopus--3
+      - title: "Structure database search"
+        url: /gui/#identifying-the-molecular-structure-with-the-csifingerid-tool--4
+      - title: "Generating de novo structure candidates"
+        url: /gui/#generating-de-novo-structure-candidates-with-msnovelist-5
+      - title: "Custom database import"
+        url: /gui/#import-of-custom-structure-and-spectra-databases
       - title: "Visualizing Results"
         url: /gui/#visualization-of-the-results
+      - title: "Data export"
+        url: /gui/#data-export-summaries-and-fbmn-export
   - title: "Commandline interface"
     url: /cli
     children:
