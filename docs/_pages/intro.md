@@ -18,7 +18,7 @@ MS and MS/MS spectra should be within 20 ppm. Mass Spectrometry
 instruments such as TOF, Orbitrap and FT-ICR usually provide high mass
 accuracy data, as well as coupled instruments like Q-TOF, IT-TOF or
 IT-Orbitrap. Spectra measured with a quadrupole or linear trap do not
-provide the high mass accuracy that is required for our method. See [Mass deviations]({{ "/prerequisites/#mass-deviations" | relative_url }}) on what "mass accuracy" means in
+provide the high mass accuracy that is required for our method. See [Mass deviations]({{ "/advanced-background-information/#mass-deviations" | relative_url }}) on what "mass accuracy" means in
 detail for SIRIUS.
 
 SIRIUS expects **MS and MS/MS** spectra as input. It is possible to omit

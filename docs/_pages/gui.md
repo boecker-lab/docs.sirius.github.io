@@ -49,18 +49,13 @@ formats and further details.
 
 The feature list can be sorted by right-clicking the feature list to bring up the dialogue below
 
-{% capture fig_img %}
-![Foo]({{ "/assets/images/featureList_sort.png" | relative_url }})
-{% endcapture %}
 
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Feature list sorting dialogue.</figcaption>
-</figure>
+<img src="{{ "/assets/images/featureList_sort.png" | relative_url }}" height="300" width="300">
+
 
 Aligned features can be sorted by retention time (RT), mass, name, ID or confidence score (if present). At the bottom of
 the dialogue, users also have the option of changing which confidence mode (approximate or exact) should be displayed and 
-used for sorting. See [confidence modes]({{ "/prerequisites/#confidence-score-modes" | relative_url }}) for more information.
+used for sorting. See [confidence modes]({{ "/advanced-background-information/#confidence-score-modes" | relative_url }}) for more information.
 
 
 Furthermore, the feature list can be filtered by clicking the appropriate button (see red mark above). This brings up the filter dialogue:
@@ -165,7 +160,7 @@ set. SIRIUS will consider adducts in this list and additionally enforce them if 
 
 #### Molecular Formula Generation (C)
 
-The [molecular formula annotation strategy]({{ "/prerequisites/#Molecular-formula-annotation-strategies" | relative_url }}) to be employed.
+The [molecular formula annotation strategy]({{ "/advanced-background-information/#Molecular-formula-annotation-strategies" | relative_url }}) to be employed.
 Choosing a suitable strategy here is imperative for a successful SIRIUS analysis and will impact most subsequent steps.
 
 **De novo + bottom up search (recommended)**
@@ -184,7 +179,7 @@ Choosing a suitable strategy here is imperative for a successful SIRIUS analysis
 "Allowed elements" denotes elements that are part of the element set, upper and lower limits are shown if present. "Autodetect" denotes those elements
 for which SIRIUS will detect presence/absence and quantity from the input data (requires MS1 spectra to be present). The element set can
 be changed via the (a) button. Before majorly changing the element set, please be aware of the potential impact on running time and quality
-(see [here]({{ "/prerequisites/#De-novo-annotation" | relative_url }}))
+(see [here]({{ "/advanced-background-information/#De-novo-annotation" | relative_url }}))
 
 **De novo only**
 
@@ -201,7 +196,7 @@ be changed via the (a) button. Before majorly changing the element set, please b
 "Allowed elements" denotes elements that are part of the element set, upper and lower limits are shown if present. "Autodetect" denotes those elements
 for which SIRIUS will detect presence/absence and quantity from the input data (requires MS1 spectra to be present). The element set can
 be changed via the (a) button. Before majorly changing the element set, please be aware of the potential impact on running time and quality
-(see [here]({{ "/prerequisites/#De-novo-annotation" | relative_url }}))
+(see [here]({{ "/advanced-background-information/#De-novo-annotation" | relative_url }}))
 
 **Database search**
 
@@ -236,7 +231,7 @@ be changed via the (a) button.
 "Allowed elements" denotes elements that are part of the element set, upper and lower limits are shown if present. "Autodetect" denotes those elements
 for which SIRIUS will detect presence/absence and quantity from the input data (requires MS1 spectra to be present). The element set can
 be changed via the (a) button. Before majorly changing the element set, please be aware of the potential impact on running time and quality
-(see [here]({{ "/prerequisites/#De-novo-annotation" | relative_url }}))
+(see [here]({{ "/advanced-background-information/#De-novo-annotation" | relative_url }}))
 
 
 #### Advanced mode parameters
@@ -292,7 +287,7 @@ Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Z
 
 ### Predicting the molecular fingerprint with CSI:FingerID and predicting compound classes with CANOPUS  (3)
 
-After computing the fragmentation trees you can predict [molecular fingerprints]({{ "/prerequisites/#molecular-fingerprints" | relative_url }}) and CANOPUS compound classes <TODO ref>. 
+After computing the fragmentation trees you can predict [molecular fingerprints]({{ "/advanced-background-information/#molecular-fingerprints" | relative_url }}) and CANOPUS compound classes <TODO ref>. 
 These can be used to either search in a structure databases or predict novel structures with MSNovelist.
 If **"score threshold"** is activated, fingerprints are only predicted for the top scoring fragmentation trees (molecular formulas). This is recommended and should only be changed if you are interested
 in the fingerprint of a molecular formula that has a lower score.

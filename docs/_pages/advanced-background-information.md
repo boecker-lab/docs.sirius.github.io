@@ -1,5 +1,5 @@
 ---
-permalink: /prerequisites/
+permalink: /advanced-background-information/
 title: "Advanced background information"
 ---
 

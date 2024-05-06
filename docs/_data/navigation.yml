@@ -30,29 +30,29 @@ global:
         url: /quick-start/#command-line-interface
       - title: "Quick start API"
         url: /quick-start/#background-service---generic-sirius-api
-  - title: "Prerequisites"
-    url: /prerequisites
+  - title: "Advanced background information"
+    url: /advanced-background-information
     children:
       - title: "Spectral quality"
-        url: /prerequisites/#spectral-quality
+        url: /advanced-background-information/#spectral-quality
       - title: "Monoisotopic masses"
-        url: /prerequisites/#monoisotopic-masses
+        url: /advanced-background-information/#monoisotopic-masses
       - title: "Theoretical masses of ions"
-        url: /prerequisites/#theoretical-masses-of-ions
+        url: /advanced-background-information/#theoretical-masses-of-ions
       - title: "Mass deviations"
-        url: /prerequisites/#mass-deviations
+        url: /advanced-background-information/#mass-deviations
       - title: "Molecular formulas"
-        url: /prerequisites/#molecular-formulas
+        url: /advanced-background-information/#molecular-formulas
       - title: "Fragmentation trees"
-        url: /prerequisites/#fragmentation-trees
+        url: /advanced-background-information/#fragmentation-trees
       - title: "Molecular fingerprints"
-        url: /prerequisites/#molecular-fingerprints
+        url: /advanced-background-information/#molecular-fingerprints
       - title: "Structure Databases"
-        url: /prerequisites/#molecular-structures
+        url: /advanced-background-information/#molecular-structures
       - title: "Compound classes"
-        url: /prerequisites/#compound-classes
+        url: /advanced-background-information/#compound-classes
       - title: "Training data"
-        url: /prerequisites/#training-data
+        url: /advanced-background-information/#training-data
   - title: "Input, Output and Formats"
     url: /io
     children:
