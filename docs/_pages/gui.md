@@ -252,7 +252,7 @@ be changed via the (a) button. Before majorly changing the element set, please b
 
 (1) By default molecular formula candidates which theoretical isotope pattern does deviate too much from the measured isotope pattern are discarded. This setting can be turned off
 if you suspect bad quality isotope patterns in the input data.
-(2) TODO
+(2) If isotopic peaks are present in the input MS2 spectrum, they can either be used to **score** or be **ignored**.
 (3) Select the number of molecular formula candidates that should be saved
 (4) Select the minimum number of molecular formula candidates stored for each ionization, even if it is not part of the top n candidates.
 (5) Set a time limit for computing the fragmentation tree for a singular molecular formula candidate (in seconds). Set to 0 to disable the limit.
@@ -400,7 +400,7 @@ Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the C
 ## Visualization of the results
 The feature list not only shows information about the input and compute state, it further shows the COSMIC
 confidence score for the top CSI:FingerID hit.
-
+TODO: update below
 For each feature different tabs can be shown in the result panel.
 The *"LC-MS"* tab displays the chromatogram of a feature for it monoisotopic- and further isotope peaks, as well as possibly detected adducts.
 It includes a basic quality assessment of the spectrum. This tab is only populated for mzML and mzXML inputs.
@@ -410,7 +410,7 @@ formulas ordered by score. Molecular formulas are always written
 in neutral form. For the selected molecular formula candidates the *Spectra view* visualizes
 which peak is assigned to a fragment. The corresponding fragmentation
 tree is visualized in the *Tree view*. Both views can be displayed in a
-separate panel to have a more detailed look. The *"Fingerprint"* panel shows information about
+separate panel to have a more detailed look. The *"Predicted fingerprints"* panel shows information about
 the molecular properties of the molecular fingerprint predicted by CSI:FingerID. The *"Structures"* panel displays 
 results from the CSI:FingerID structure search, while the *"Substructure Annotation"* panel shows possible substructures connected to
 the peaks of the MS/MS spectrumfor each candidate. The *"CANOPUS"* panel
@@ -543,20 +543,22 @@ all over classes with posterior probability above 50%.
 
 Starting from SIRIUS 5, this tab also contains the predicted Natural Product classes.
 
-### Structures tab ("CSI:FingerID Detail" tab in SIRIUS4)
+### Structures tab
 {% capture fig_img %}
-![Foo]({{ "/assets/images/structures.png" | relative_url }})
+![Foo]({{ "/assets/images/structures_exact.png" | relative_url }})
 {% endcapture %}
 
 <figure>
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>CSI:FingerID tab.</figcaption>
+  <figcaption>structure annotation tab tab.</figcaption>
 </figure>
 
 This tab shows you the candidate structures for the selected molecular
-formula ordered by the CSI:FingerID search score. If you want to filter
-the candidate list by a certain database (e.g. only compounds from KEGG
-and BioCyc) you can press the filter button. A menu will open displaying
+formula ordered by the CSI:FingerID search score. The highest scoring candidate is highlighted
+in green. If you have approximate confidence mode enabled, all candidates that are within MCES distance 2
+will be highlighted (see TODO: link expansive search).
+If you want to filter the candidate list by a certain database (e.g. only compounds from KEGG
+and BioCyc) you can press the filter button (top left). A menu will open displaying
 all available databases. Only candidates will be displayed that are
 enabled in this filter menu. If you want to see
 only compounds from KEGG and BioCyc you have to check only KEGG and BioCyc.
@@ -582,9 +584,9 @@ If the substructure matches several times in the molecule, it is once
 highlighted in dark blue while all other matches are highlighted in a
 translucent blue.
 
-You can enable filtering by the selected substructure (button with the structure),
+You can enable filtering by the selected substructure (button with the structure, top left),
 to only show candidates that contain the selected substructure.
-Further, you can filter the candidate list using a SMARTS pattern or full-text search.
+Further, you can filter the candidate list using a SMARTS pattern or full-text search (top ribbon).
 
 You can open a context menu by right click on a proposed structure. It offers
 you to open the compound in PubChem or copy the InChI or InChI key in
@@ -602,11 +604,47 @@ is part of the CSI:FingerID training data.
 This tab also includes visualization for the "El Gordo" lipid class annotation functionality. Lipid structures are often extremely similar to each other,
 often only differing in the position of the double bonds. These extremely similar structures are often not even differentiable by mass spectrometry at all, which is why the overarching lipid class is shown above the structure candidates. 
 
+If the PubChem fallback was triggered as part of expansive search, a notification will be displayed below the top ribbon. See TODO:link expansive search.
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/structures_specMatch.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>structure annotation with spectral library match.</figcaption>
+</figure>
+
+If a structure candidate shown in this tab also has a reference spectrum imported via a custom database, the spectral match will be shown.
+Clicking on it will show the spectral match tab (TODO: link)
+
+
+
 ### De Novo Structure tab
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/msnovelist.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>De novostructure annotation tab tab.</figcaption>
+</figure>
+
+This tab shows de novo structure generation results produced by MSNovelist and tags them with a "de novo" tag (TODO link). 
+If MSNovelist generated structures that are also contained in regular structure databases, the corresponding tags will be added to that structure. 
+As an example, generated structures 1-4 in the image above are also present in structure databases, while generated structure 5 is de novo only.
+
+By default, structure candidates present in structure databases but NOT generated by MSNovelist will also be shown. This can be turned off using the first button
+on the top right.
+
 
 ### Substructure Annotation tab
 
-In this tab, a direct connection between the input MS/MS spectrum and the CSI:FingerID structure candidates is visualized. The table in the top part of the view shows all structure candidates for a given query that were also present in the "Structures" tab. By selecting them, the bottom part of the view shows the fragmentation spectrum on the left, as well as the given structure candidate on the right. 
+In this tab, a direct connection between the input MS/MS spectrum and the CSI:FingerID structure candidates is visualized.
+The table in the top part of the view shows all structure candidates for a given query that were also present in the "Structures" tab. Structure candidates generated
+by MSNovelist are also shown here. This can be disabled using the first button on the top right.
+By selecting a structure, the bottom part of the view shows the fragmentation spectrum on the left, as well as the given structure candidate on the right. 
 
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/substructure_annotation.png" | relative_url }})
@@ -628,6 +666,29 @@ Peaks in the fragmentation spectrum are color coded as follows:
 Peaks can be navigated by left-clicking on them, or using the arrow keys.
 
 ### Library matches tab
+
+TODO
+
+## Data export (Summaries and FBMN export)
+
+Summary files containing analysis results can be exported via the "Summaries" button on the top left.
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/summaries.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Summaries export dialogue.</figcaption>
+</figure>
+
+Summaries will generally include three types: formula summaries, canopus summaries and structure summaries. By default, only the top hit is exported,
+this can be changed by either selecting "All hits" (can produce very large files) or "top k hits". For formula and canopus summaries, the user can choose
+to additionally export adducts belonging to the top hits. See (TODO) for a breakdown of the generated summary files. TODO: adducts for structures?
+
+### Feature based molecular networking (FBMN) export
+
+TODO
 
 
 ## Settings

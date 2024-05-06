@@ -1,6 +1,6 @@
 ---
 permalink: /prerequisites/
-title: "Prerequisites"
+title: "Advanced background information"
 ---
 
 ## Spectral quality
@@ -172,6 +172,21 @@ ensure that SIRIUS can successfully annotate peaks in the spectrum. For
 masses below 200 Da, we use the absolute mass deviation at 200 Da, as we
 found that small masses vary according to an absolute rather than a
 relative error.
+
+## Spectral library matching via custom databases
+
+SIRIUS 6 offers to import local libraries containing spectral reference data. Supported import formats for spectral
+data are .ms, .mgf, .msp, .mat, .txt (MassBank), .mb, .json (GNPS, MoNA). Spectra need to be annotated with a structure and be centroided.
+SIRIUS will automatically perform spectral library search against all available libraries every time the molecular formula annotation subtool
+is used. Spectral library matching is performed using the cosine score with squared peak intensities and ignored precursor peak.
+
+### Spectral matching influence on SIRIUS and CSI:FingerID results
+
+In SIRIUS 6, spectral library matches are treated as annotations to CSI:FingerID results. A spectral library match will not influence the rank of
+a structure candidate, but annotated to CSI:FingerID results instead. In case where a high quality spectral library hit is found where the corresponding molecular
+formula would not have been considered by SIRIUS, that molecular formula will be forcibly added to the list of molecular formula candidates.
+This done to ensure that no spectral library matches are lost when using CSI:FingerID.
+
 
 ## Molecular formula annotation concepts
 
@@ -494,6 +509,12 @@ Thus, for example, a bogus hit is interpreted as being "correct" if only a side 
 The confidence in exact mode will usually be very low if the top and 2nd best structure candidate are highly similar. This happens for many well studied molecules for which you often find multiple derivatives in the structure database.
 If you consider almost-correct hits to be useful, you should opt for the approximate mode.
 
+
+## Expansive search (structure database search with fallback)
+
+SIRIUS 6 offers the possibility to perform structure database search with a confidence score based fallback (expansive search). Structure database search will be performed for the set of databases
+the user selected ("requested databases"), and then additionally for "PubChem". SIRIUS will then check if the top hit in PubChem has a confidence score that is at least twice as high as the confidence 
+score of the top hit from the requested databases. If that is the case, the search will be "expanded" and the results for database search in PubChem will be shown. 
 
 ## Compound classes
 

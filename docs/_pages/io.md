@@ -3,12 +3,10 @@ permalink: /io/
 title: "Input, Output and Formats"
 ---
 
-With SIRIUS 4.4.0 we finalized and released the SIRIUS project-space,
-the file based persistence layer and output format of SIRIUS. Both, CLI
-and GUI store the computed results as SIRIUS project-space (see the
-Figure below) which in turn can also be an input for the GUI or the CLI.
-This allows the user to review results in the GUI that have been
-computed with an automated workflow using the CLI.
+With SIRIUS 6 we moved away from the file based project space to a Nitrite database.
+This was necessary to improve performance and enable new features. CLI, API and GUI store the computed results as SIRIUS project-space, 
+which in turn can also be an input for the GUI or the CLI.
+This allows the user to review results in the GUI that have been computed with an automated workflow using the CLI or API.
 
 ## Input
 
@@ -72,28 +70,26 @@ See also the GNPS database for other examples of MGF files.
 
 ##### SIRIUS MS-Format
 
-<span>**<span style="color: red">\[ms file needs
-update\]</span>**</span> 
-
 A disadvantage of these data formats is that
 they do not contain all information necessary for SIRIUS to perform the
 computation. Missing meta information have to be provided via the
 commandline. Therefore, SIRIUS supports also an own file format very
 similar to the MGF format above. The file ending of this format is `.ms`.
-Each file contains one measured compound (but arbitrary many spectra).
+Each file contains one measured feature (but arbitrary many spectra).
 Each line may contain a peak (given as m/z and intensity separated by a
 whitespace), meta information (starting with the **\>** symbol followed
 by the information type, a whitespace and the value) or comments
 (starting with the **\#** symbol). The following fields are recognized
 by SIRIUS:
 
+TODO: Is feature/compound already changed here?
 
-  - \>compound: The name of the measured compound (or any placeholder).
+  - \>compound: The name of the measured feature (or any placeholder).
     This field is **mandatory**.
 
   - \>parentmass: the mass of the parent peak
 
-  - \>formula: The molecular formula of the compound. This information
+  - \>formula: The molecular formula of the feature. This information
     is helpful if you already know the correct molecular formula and
     just want to compute a fragmentation tree or recalibrate the
     spectrum
@@ -145,79 +141,66 @@ prepossessing tool .
 
 ### SIRIUS project-space
 
-The SIRIUS project-space is a standardized directory structure that is
-organized in a three hierarchy levels, namely, the *project level*, the
-*compound level* and the *method level* (see Figure below for details).
+In SIRIUS 6, the project space is stored in a singular .sirius file that is no longer human or machine readable.
+This step was necessary to ensure performance for many of the new features and is in no way intended to "close off" results.
+Summaries can be written as usual using the GUI or CLI. Advanced information or intermediate results (e.g. predicted
+fingerprints) can be accessed using the new API.
 
-{% capture fig_img %}
-![Foo]({{ "/assets/images/project-space.svg" | relative_url }})
-{% endcapture %}
-
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Schema of the SIRIUS project-space.</figcaption>
-</figure>
-
-
-On the *project level*, each compound corresponds to one sub-directory
-(*compound level*) storing the input data, parameters and results of the
-different analysis methods. These data is continuously written to the
-project-space, so that it represents the actual progress of a SIRIUS
-analysis. Further, the `.progress` file gives an overview about the
-progress of the ongoing analysis. On the *compound level*, each method
-provided by SIRIUS stores its results in its own sub-directory (*method
-level*). This allows the user to redo one analysis step without having
-to recompute the intermediate results it depends on. Further, SIRIUS is
-able to transfer intermediate results to a new project-space, so
-different parameters can easily be evaluated without having to recompute
-intermediate results. Since a project-space can be imported into the
-GUI, the user is able to judge intermediate results using the GUI before
-executing further analysis steps. Project-spaces can be read and written
-as an uncompressed directory or a compressed zip archive when using the
-`.sirius` file extension.
 
 ### Summary files
 
-In addition to the *method level* results, the project-space contains
-summaries of these results on the *project level* and the *compound
-level*. These summaries are in *tsv* (tab-separated-values) format (`summary_<NAME>.tsv`) to
+The summaries written by CLI or GUI are in *tsv* (tab-separated-values) format and named "formula_identifications.tsv",
+"canopus_formula_summary.tsv", "canopus_structure_summary.tsv" and "structure_identifications.tsv" to
 provide easy access to the results for further downstream analysis, data
 sharing and data visualization. The summaries are not imported into
 SIRIUS but are (re-)created based on the actual results every time a
-project-space is exported.
+project-space is exported. Summaries are created for molecular formula annotation, compound class prediction
+and structure annotation separately.
 
 #### Molecular formula results summary
 
-`formula_identifications.tsv` contains the top-ranked formula result of each compound as 
+`formula_identifications.tsv` contains the top-ranked formula result of each feature as 
 determined by the SIRIUS score, or the ZODIAC if available.
 However, different adduct candidates with the same precursor ion molecular formula
 will have identical score (e.g. `[C20H14O6 + NH4]+` and `[C20H19NO7 - H2O + H]+`).
 In such cases, the the top-ranked candidate in `formula_identifications.tsv` is resolved
 to `[C20H17NO6 + H]+` only considering the ion type but ignoring adduct types.
 `formula_identifications_adducts.tsv` contains all top-ranked adducts (in this case 
-`[C20H14O6 + NH4]+` and `[C20H19NO7 - H2O + H]+`).
+`[C20H14O6 + NH4]+` and `[C20H19NO7 - H2O + H]+`). This summary additionally contains all scores
+shown in the GUI as well as potential lipid class annotations.  
+
 
 #### Molecular structure results summary
 
-`compound_identifications.tsv` contains the top-ranked structure result of each compound 
+`structure_identifications.tsv` contains the top-ranked structure result of each feature 
 as determined using the CSI:FingerID score; the molecular formula of the top structure
-does not have to be the top-ranked molecular formula of this compound.
-`compound_identifications_adducts.tsv` contains the top structure for each considered 
+does not have to be the top-ranked molecular formula of this feature. The formula rank shows the
+original rank of the molecular formula belonging to the top hit.
+`structure_identifications_adducts.tsv` contains the top structure for each considered 
 adduct of the top molecular formula.
+The summary contains confidence scores for exact and approximate mode, CSI:FingerID, ZODIAC and SIRIUS scores.
+Links to structure databases containing the structure hit can be found in the "links" column. 
+
 
 #### CANOPUS results summary
 
-`canopus_summary.tsv` contains compound classes predicted to be present by CANOPUS for
-the top-ranked molecular formula of each compound. *most specific class* denotes the most specific compound class for this compound. The columns
-*level 5*, *subclass*, *class*, and *superclass* refer to the ancestors of this most specific class. The column *all classifications* contains
-all classes predicted for this compound with probability above 50%.
+CANOPUS results are specific to a molecular formula. Since the top molecular formula annotated in the molecular
+formula annotation sub tool can potentially differ from the molecular formula of the top structure hit, both are reported separately.
+
+`canopus_formula_summary.tsv` contains compound classes predicted to be present by CANOPUS for
+the top-ranked molecular formula of each feature. *most specific class* denotes the most specific compound class for this feature. The columns
+*level 5*, *subclass*, *class*, and *superclass* refer to the ancestors of this most specific class.
+
+`canopus_structure_summary.tsv` contains compound classes predicted to be present by CANOPUS for
+the molecular formula belonging to the top-ranked structure of each feature. *most specific class* denotes the most specific compound class for this feature. The columns
+*level 5*, *subclass*, *class*, and *superclass* refer to the ancestors of this most specific class.
+
 
 If there are multiple molecular formulas with
 same score (which should happen only for adducts, see the molecular formula results summary) then the
-`canopus_summary.tsv` will decide for one molecular formula for each compound. We always choose the molecular formula
+`canopus_summary.tsv` will decide for one molecular formula for each feature. We always choose the molecular formula
 for which the CANOPUS probability of the *most specific class* is maximal.
 
-`compound_identifications_adducts.tsv` contains the classifications for the other top-scoring adduct formulas, too.
 
 ### Standardized project-space summary with mzTab-M
 
