@@ -352,7 +352,7 @@ data are .ms, .mgf, .msp, .mat, .txt (MassBank), .mb, .json (GNPS, MoNA). Spectr
 Imported custom structures can be used in structure database search, imported spectra will be used for spectral library matching, see TODO: add in prerequ and link.
 
 {% capture fig_img %}
-![Foo]({{ "/assets/images/customDbs_marked" | relative_url }})
+![Foo]({{ "/assets/images/customDbs_marked.png" | relative_url }})
 {% endcapture %}
 
 <figure>
@@ -365,7 +365,7 @@ Custom databases are stored as files with the ".siriusdb" extension. If such a d
 use the "create custom database" button on the bottom right.
 
 {% capture fig_img %}
-![Foo]({{ "/assets/images/customDbs_import_empty" | relative_url }})
+![Foo]({{ "/assets/images/customDbs_import_empty.png" | relative_url }})
 {% endcapture %}
 
 <figure>
