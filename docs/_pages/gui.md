@@ -387,7 +387,7 @@ See [here](https://boecker-lab.github.io/docs.sirius.github.io/cli-standalone/#c
 #### COSMIC - confidence values for CSI:FingerID searches
 Calculating COSMIC confidence scores is parameter free and will be executed automatically every time a CSI:FingerID 
 search is performed. COSMIC scores for a feature are shown in the feature list on the left. From SIRIUS 6 onwards, confidence scores
-will be computed in "exact" and "approximate" mode. See [COSMIC]({{ "/advanced-background-information/#COSMIC---Confidence-for-Small-Molecule-IdentifiCations" | relative_url }})
+will be computed in "exact" and "approximate" mode. See [COSMIC]({{ "/advanced-background-information/#cosmic---confidence-for-small-molecule-identifications" for details. | relative_url }})
 
 
 Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the COSMIC release page
