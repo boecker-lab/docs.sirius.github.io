@@ -365,7 +365,7 @@ Custom databases are stored as files with the ".siriusdb" extension. If such a d
 use the "create custom database" button on the bottom right.
 
 {% capture fig_img %}
-![Foo]({{ "/assets/images/customDbs_import_empty.png" | relative_url }})
+![Foo]({{ "/assets/images/customDbs_import_marked.png" | relative_url }})
 {% endcapture %}
 
 <figure>
