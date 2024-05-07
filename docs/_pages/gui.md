@@ -268,6 +268,8 @@ Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Z
 
 #### Advanced mode parameters
 
+These parameters are very advanced and require a deep understanding on ZODIAC and the underlying Gibbs sampler.
+
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/zodiac_advanced_marked.png" | relative_url }})
 {% endcapture %}
@@ -277,18 +279,18 @@ Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Z
   <figcaption>Advanced parameters for ZODIAC molecular formula annotation.</figcaption>
 </figure>
 
-(1)TODO
-(2)
-(3)
-(4)
-(5)
+(1) Maximum number of candidate molecular formulas considered for features with m/z lower than 300.
+(2) Maximum number of candidate molecular formulas considered for features with m/z higher than 800.
+(3) Enable/Disable the 2-step approach (running higher quality features first, lower quality features second).
+(4) Threshold for the ratio of edges of the complete network to be ignored.
+(5) Minimum number of connections per candidate.
 
 
 ### Predicting the molecular fingerprint with CSI:FingerID and predicting compound classes with CANOPUS  (3)
 
 After computing the fragmentation trees you can predict [molecular fingerprints]({{ "/advanced-background-information/#molecular-fingerprints" | relative_url }}) 
 and [CANOPUS compound classes]({{ "/advanced-background-information/#Compound-classes" | relative_url }})
-These can be used to either search in a structure databases or predict novel structures with MSNovelist.
+These can be used to either search in a structure databases or predict novel structures with [MSNovelist]({{ "/advanced-background-information/#MSNovelist" | relative_url }}).
 If **"score threshold"** is activated, fingerprints are only predicted for the top scoring fragmentation trees (molecular formulas). This is recommended and should only be changed if you are interested
 in the fingerprint of a molecular formula that has a lower score.
 
@@ -627,7 +629,7 @@ Clicking on it will show the spectral matching tab (TODO: link)
   <figcaption>De novostructure annotation tab tab.</figcaption>
 </figure>
 
-This tab shows de novo structure generation results produced by MSNovelist and tags them with a "de novo" tag (TODO link). 
+This tab shows de novo structure generation results produced by [MSNovelist]({{ "/advanced-background-information/#MSNovelist" | relative_url }}) and tags them with a "de novo" tag. 
 If MSNovelist generated structures that are also contained in regular structure databases, the corresponding tags will be added to that structure. 
 As an example, generated structures 1-4 in the image above are also present in structure databases, while generated structure 5 is de novo only.
 
@@ -663,7 +665,19 @@ Peaks can be navigated by left-clicking on them, or using the arrow keys.
 
 ### Library matches tab
 
-TODO
+{% capture fig_img %}
+![Foo]({{ "/assets/images/library_matches.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Spectral library matches tab.</figcaption>
+</figure>
+
+This tab shows spectral library matches for the measured query spectrum against a spectral library. **Query** denotes which measured spectrum
+produced the match, in case multiple MS2 were measured for the same feature (in this example it was MS2 spectrum #26). The mirror plot view can be
+zoomed by mouse wheel or by holding right click and drag-selecting an area. Please see [Spectral library matching via custom databases]({{ "/advanced-background-information/#Spectral-library-matching-via-custom-databases" | relative_url }}) for background information on
+spectral library search in SIRIUS, as well as [Import of custom structure and spectra databases]({{ "/gui/#Import-of-custom-structure-and-spectra-databases" | relative_url }})
 
 ## Data export (Summaries and FBMN export)
 
@@ -680,7 +694,7 @@ Summary files containing analysis results can be exported via the "Summaries" bu
 
 Summaries will generally include three types: formula summaries, canopus summaries and structure summaries. By default, only the top hit is exported,
 this can be changed by either selecting "All hits" (can produce very large files) or "top k hits". For formula and canopus summaries, the user can choose
-to additionally export adducts belonging to the top hits. See (TODO) for a breakdown of the generated summary files. TODO: adducts for structures?
+to additionally export adducts belonging to the top hits. See [Summary files]({{ "/io/#summary-files" | relative_url }})) for a breakdown of the generated summary files. TODO: adducts for structures?
 
 ### Feature based molecular networking (FBMN) export
 
