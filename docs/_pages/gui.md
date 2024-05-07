@@ -110,8 +110,6 @@ considered for specific use cases and/or for setting limits to computation times
   <figcaption>Batch compute dialog.</figcaption>
 </figure>
 
-TODO: Fix missing labels in image
-
 The compute panel is split into five subtools: SIRIUS molecular formula annotation (1), ZODIAC (2), CSI:FingerID fingerprint prediction with CANOPUS (3), CSI:FingerID structure
 database search (4) and MSNovelist (5). Starting from SIRIUS 6, CANOPUS (3) is automatically performed whenever a fingerprint is predicted and does not need to be enabled 
 separately anymore. Subtools can be selected individually or combined, please note that the selection together with potentially existing results needs to constitute a valid SIRIUS workflow.
@@ -124,7 +122,7 @@ To easily transition the current workflow selections to a CLI, one can use the "
 ### Spectral library matching (background)
 
 If imported spectral libraries are present, SIRIUS will automatically perform spectral matching against those libraries. Currently, this always happens in the background and no parameters
-need to be set. See TODO link and make in prereq.
+need to be set. See [Spectral library matching via custom databases]({{ "/advanced-background-information/#Spectral-library-matching-via-custom-databases" | relative_url }}) for more information
 
 
 ### Identifying molecular formulas with SIRIUS (1)
@@ -209,7 +207,8 @@ be changed via the (a) button. Before majorly changing the element set, please b
   <figcaption>Settings for formula database search.</figcaption>
 </figure>
 
-(1) Selection of databases that should be used for molecular formula annotation. Per default, those databases that constitute the "bio" database are selected <TODO: reference to that in prereqs>.
+(1) Selection of databases that should be used for molecular formula annotation. Per default, those databases that constitute the "bio" database are selected.
+See [Molecular structures]({{ "/advanced-background-information/#Molecular-structures" | relative_url }}) for the list of databases that come with SIRIUS.
 The default selection can be restored by pressing the "bio" button.
 (2)  Element filter settings. Applying an element filter is not mandatory for formula database search, but can be optionally applied to filter molecular formula candidates.
 "Allowed elements" denotes elements that are part of the element set, upper and lower limits are shown if present. "Autodetect" denotes those elements
@@ -287,7 +286,8 @@ Click [here](https://bio.informatik.uni-jena.de/software/zodiac/) to visit the Z
 
 ### Predicting the molecular fingerprint with CSI:FingerID and predicting compound classes with CANOPUS  (3)
 
-After computing the fragmentation trees you can predict [molecular fingerprints]({{ "/advanced-background-information/#molecular-fingerprints" | relative_url }}) and CANOPUS compound classes <TODO ref>. 
+After computing the fragmentation trees you can predict [molecular fingerprints]({{ "/advanced-background-information/#molecular-fingerprints" | relative_url }}) 
+and [CANOPUS compound classes]({{ "/advanced-background-information/#Compound-classes" | relative_url }})
 These can be used to either search in a structure databases or predict novel structures with MSNovelist.
 If **"score threshold"** is activated, fingerprints are only predicted for the top scoring fragmentation trees (molecular formulas). This is recommended and should only be changed if you are interested
 in the fingerprint of a molecular formula that has a lower score.
@@ -311,7 +311,8 @@ Click [here](https://bio.informatik.uni-jena.de/software/canopus/) to visit the 
 ### Identifying the molecular structure with the CSI:FingerID tool  (4)
 
 Predicted fingerprints can be matched against database structures for structure elucidation. SIRIUS ships with a multitude of databases
-(see TODO: link to prerequisite). Additionally, structures can be added as a "custom database" (TODO link below) and then searched matched against
+(see [Molecular structures]({{ "/advanced-background-information/#Molecular-structures" | relative_url }})). 
+Additionally, structures can be added as a "custom database" (see [Import of custom structure and spectra databases]({{ "/gui/#Import-of-custom-structure-and-spectra-databases" | relative_url }})) and then searched matched against
 (in addition to existing databases).
 
 {% capture fig_img %}
@@ -323,7 +324,7 @@ Predicted fingerprints can be matched against database structures for structure 
   <figcaption>Parameters for structure database search.</figcaption>
 </figure>
 
-(1) Expansive search fallback settings, please see <TODO: link and create expansive search in prerequ> for a more detailed explanation. 
+(1) Expansive search fallback settings, please see [Expansive search]({{ "/advanced-background-information/#Expansive-search-(structure-database-search-with-fallback)" | relative_url }}) for a more detailed explanation. 
 You can choose to use PubChem as a fallback database in case it contains a hit of higher confidence than
 the selected databases (2).
 **Confidence mode** controls if approximate or exact confidence mode should be used for the assessment of if a
@@ -337,7 +338,7 @@ databases exist, they can be selected here as well.
 ### Generating de novo structure candidates with MSNovelist (5)
 
 Sometimes it might be necessary to go beyond the limits of structure database search. Together with the predicted fingerprint, compound classes and custom databases,
-SIRIUS 6 offers de novo generation of candidate structures through MSNovelist. See TODO make and link in prerequisites for more details on the underlying science.
+SIRIUS 6 offers de novo generation of candidate structures through MSNovelist. See [MSNovelist]({{ "/advanced-background-information/#MSNovelist" | relative_url }}) for more details on the underlying science.
 
 Please note that the likelihood of any de novo generation method performing well for actual novel compounds is very low. Results should be seen as suggestions or starting points
 for semi-manual analysis of compounds that cannot be elucidated otherwise. 
@@ -349,7 +350,7 @@ for semi-manual analysis of compounds that cannot be elucidated otherwise.
 Custom structure databases can be added via the "Databases" interface (4) located at the top center of the GUI ribbon.
 Starting with version 6.0, SIRIUS additionally supports the import of spectral libraries. Supported import formats for spectral
 data are .ms, .mgf, .msp, .mat, .txt (MassBank), .mb, .json (GNPS, MoNA). Spectra need to be annotated with a structure and be centroided.
-Imported custom structures can be used in structure database search, imported spectra will be used for spectral library matching, see TODO: add in prerequ and link.
+Imported custom structures can be used in structure database search, imported spectra will be used for spectral library matching, see [Spectral library matching via custom databases]({{ "/advanced-background-information/#Spectral-library-matching-via-custom-databases" | relative_url }}).
 
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/customDbs_marked.png" | relative_url }})
@@ -386,7 +387,7 @@ See [here](https://boecker-lab.github.io/docs.sirius.github.io/cli-standalone/#c
 #### COSMIC - confidence values for CSI:FingerID searches
 Calculating COSMIC confidence scores is parameter free and will be executed automatically every time a CSI:FingerID 
 search is performed. COSMIC scores for a feature are shown in the feature list on the left. From SIRIUS 6 onwards, confidence scores
-will be computed in "exact" and "approximate" mode. See TODO: link prereq for more details.
+will be computed in "exact" and "approximate" mode. See [COSMIC]({{ "/advanced-background-information/#COSMIC---Confidence-for-Small-Molecule-IdentifiCations" | relative_url }})
 
 
 Click [here](https://bio.informatik.uni-jena.de/software/cosmic/) to visit the COSMIC release page
@@ -478,8 +479,8 @@ Spectra views can be exported using the top right export button.
 The *Tree view* displays the computed fragmentation tree. Each node
 in this tree assigns a molecular formula to a peak in the (merged) MS/MS
 spectrum. Each edge is a hypothetical fragmentation reaction. The user
-has the choice between different node styles and color schemes. Pleae see <TODO: link
-to prereq> for a detailed explanation on fragmentation trees.
+has the choice between different node styles and color schemes. Please see 
+[Fragmentation trees]({{ "/advanced-background-information/#Fragmentation trees" | relative_url }}) for a detailed explanation on fragmentation trees.
 
 
 The displayed fragmentation tree can be exported as `svg` or `pdf` vector graphics.
@@ -551,7 +552,7 @@ Starting from SIRIUS 5, this tab also contains the predicted Natural Product cla
 This tab shows you the candidate structures for the selected molecular
 formula ordered by the CSI:FingerID search score. The highest scoring candidate is highlighted
 in green. If you have approximate confidence mode enabled, all candidates that are within MCES distance 2
-will be highlighted (see TODO: link expansive search).
+will be highlighted (see [Expansive search]({{ "/advanced-background-information/#Expansive-search-(structure-database-search-with-fallback)" | relative_url }})).
 If you want to filter the candidate list by a certain database (e.g. only compounds from KEGG
 and BioCyc) you can press the filter button (top left). A menu will open displaying
 all available databases. Only candidates will be displayed that are
@@ -599,7 +600,7 @@ is part of the CSI:FingerID training data.
 This tab also includes visualization for the "El Gordo" lipid class annotation functionality. Lipid structures are often extremely similar to each other,
 often only differing in the position of the double bonds. These extremely similar structures are often not even differentiable by mass spectrometry at all, which is why the overarching lipid class is shown above the structure candidates. 
 
-If the PubChem fallback was triggered as part of expansive search, a notification will be displayed below the top ribbon. See TODO:link expansive search.
+If the PubChem fallback was triggered as part of [Expansive search]({{ "/advanced-background-information/#Expansive-search-(structure-database-search-with-fallback)" | relative_url }}), a notification will be displayed below the top ribbon.
 
 {% capture fig_img %}
 ![Foo]({{ "/assets/images/structures_specMatch.png" | relative_url }})
@@ -611,7 +612,7 @@ If the PubChem fallback was triggered as part of expansive search, a notificatio
 </figure>
 
 If a structure candidate shown in this tab also has a reference spectrum imported via a custom database, the spectral match will be shown.
-Clicking on it will show the spectral match tab (TODO: link)
+Clicking on it will show the spectral matching tab (TODO: link)
 
 
 
