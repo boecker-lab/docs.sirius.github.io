@@ -173,6 +173,22 @@ masses below 200 Da, we use the absolute mass deviation at 200 Da, as we
 found that small masses vary according to an absolute rather than a
 relative error.
 
+## SIRIUS workflows
+
+SIRIUS is segmented into sub tools: Formula annotation (SIRIUS + ZODIAC), Fingerprint prediction (CSI:FingerID + CANOPUS), Structure database search (CSI:FingerID) and de novo structure
+generation (MSNovelist). These sub tools follow a certain hierarchy, and can not be combined freely. For example, to predict CANOPUS compound classes the molecular formula annotation sub tool
+has to be run first (or results have to be present from a previous run). See below figure for how the different sub tools depend on each other.
+
+{% capture fig_img %}
+![Foo]({{ "/assets/images/workflow_dependencies.png" | relative_url }})
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>SIRIUS sub tool dependencies.</figcaption>
+</figure>
+
+
 ## Spectral library matching via custom databases
 
 SIRIUS 6 offers to import local libraries containing spectral reference data. Supported import formats for spectral

@@ -113,7 +113,7 @@ considered for specific use cases and/or for setting limits to computation times
 The compute panel is split into five subtools: SIRIUS molecular formula annotation (1), ZODIAC (2), CSI:FingerID fingerprint prediction with CANOPUS (3), CSI:FingerID structure
 database search (4) and MSNovelist (5). Starting from SIRIUS 6, CANOPUS (3) is automatically performed whenever a fingerprint is predicted and does not need to be enabled 
 separately anymore. Subtools can be selected individually or combined, please note that the selection together with potentially existing results needs to constitute a valid SIRIUS workflow.
-As an example, one cannot perform structure database search without predicting fingerprints first. Please see <TODO: Make and link prerequisite for sirius workflows> for a more
+As an example, one cannot perform structure database search without predicting fingerprints first. Please see [Sub tools and workflows]({{ "/advanced-background-information/#sirius-workflows" | relative_url }}) for a more
 detailed explanation on SIRIUS workflows.
 (6) If the "Recompute already computed tasks" checkbox is ticked, all previously existing results for selected features in the current project space will be invalidated and overwritten as necessary
 for executing the currently selected workflow. Additional parameters for specific subtools can be brought up via the appropriate button (7). 
