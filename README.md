@@ -1,6 +1,7 @@
+<span>**<span style="color: red">This repository has been moved to: https://github.com/sirius-ms/sirius-docs.github.io
+It has been archived and exists only to serve the deprecated SIRIUS 5 documentation. </span>**</span>
+
 # SIRIUS Documentation GitHub Repository
-<span>**<span style="color: red">\[We are currently building this documentation, and some 
-pages are still work in progress\]</span>**</span>
 
 This repo contains the sources of the SIRIUS online documentation at 
 <https://boecker-lab.github.io/docs.sirius.github.io/>. 
