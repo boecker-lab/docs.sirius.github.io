@@ -59,7 +59,7 @@ search_full_content      : true # true, false (default)
 search_provider          : algolia # lunr (default), algolia, google
 algolia:
   application_id         : ZU2X2YHUP1 # YOUR_APPLICATION_ID
-  index_name             : sirius_docu # YOUR_INDEX_NAME
+  index_name             : sirius_docu_v5 # YOUR_INDEX_NAME
   search_only_api_key    : e313447ce87cd52cfdb984b4194eb7fb # YOUR_SEARCH_ONLY_API_KEY
   powered_by             : # true (default), false
 google:
