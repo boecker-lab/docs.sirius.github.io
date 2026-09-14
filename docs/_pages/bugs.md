@@ -1,6 +1,7 @@
 ---
 permalink: /bugs/
 title: "Bug Reports"
+canonical_url: "https://v6.docs.sirius-ms.io/bugs/"
 ---
 
 We do our best so that you will not be confronted with errors while

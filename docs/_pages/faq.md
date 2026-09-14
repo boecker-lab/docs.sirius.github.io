@@ -1,6 +1,7 @@
 ---
 permalink: /faq/
 title: "Frequently asked questions (FAQ)"
+canonical_url: "https://v6.docs.sirius-ms.io/faq/"
 ---
 
 

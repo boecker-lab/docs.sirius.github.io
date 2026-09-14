@@ -1,0 +1,18 @@
+{% comment %}
+  Deprecation banner for the archived SIRIUS 5 documentation.
+  Rendered on every page via _layouts/default.html.
+
+  Constraints, so this does not get "tidied up" into breakage:
+  - The wrapper mirrors the centering of the theme's #main (max-width
+    $max-width, 1280px) but must not reuse that id — skip-links.html targets it.
+  - width:100% is required. <body> is a column flexbox, and on a flex item
+    "margin: 0 auto" shrink-wraps to content width instead of centering.
+  - The wording is version-neutral ("current documentation") so it stays correct
+    after a v7 release; only the href would then need updating.
+{% endcomment %}
+<div class="page__deprecation-notice" style="width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1em; box-sizing: border-box;">
+  <p class="notice--warning">
+    <strong>This is the deprecated documentation for SIRIUS 5.</strong>
+    Go to the <a href="https://v6.docs.sirius-ms.io/">current SIRIUS documentation</a>.
+  </p>
+</div>

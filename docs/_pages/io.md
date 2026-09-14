@@ -1,6 +1,7 @@
 ---
 permalink: /io/
 title: "Input, Output and Formats"
+canonical_url: "https://v6.docs.sirius-ms.io/io/"
 ---
 
 With SIRIUS 4.4.0 we finalized and released the SIRIUS project-space,

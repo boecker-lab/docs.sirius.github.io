@@ -1,6 +1,7 @@
 ---
 permalink: /cli/
 title: "Commandline Interface"
+canonical_url: "https://v6.docs.sirius-ms.io/cli/"
 ---
 
 The SIRIUS commandline tool can be called via the "binary/startscript" by

@@ -1,6 +1,7 @@
 ---
 permalink: /prerequisites/
 title: "Prerequisites"
+canonical_url: "https://v6.docs.sirius-ms.io/advanced-background-information/"
 ---
 
 ## Spectral quality

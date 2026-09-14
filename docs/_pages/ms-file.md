@@ -1,6 +1,7 @@
 ---
 permalink: /ms-file/
 title: "My perfect ms File"
+canonical_url: "https://v6.docs.sirius-ms.io/ms-file/"
 ---
 
 <span>**<span style="color: red">\[THIS IS WORK IN PROGRESS\]</span>**</span>

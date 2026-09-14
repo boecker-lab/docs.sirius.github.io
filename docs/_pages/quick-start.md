@@ -1,6 +1,7 @@
 ---
 permalink: /quick-start/
 title: "Quick start"
+canonical_url: "https://v6.docs.sirius-ms.io/quick-start/"
 ---
 
  - You can download some [sample spectra](https://bio.informatik.uni-jena.de/wp/wp-content/uploads/2015/05/demo.zip)

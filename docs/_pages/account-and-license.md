@@ -1,6 +1,7 @@
 ---
 permalink: /account-and-license/
 title: "Account and License"
+canonical_url: "https://v6.docs.sirius-ms.io/account-and-license/"
 ---
 
 Since SIRIUS 5, a user account and a license is required to use the webservice-based

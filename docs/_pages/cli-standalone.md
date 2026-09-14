@@ -1,6 +1,7 @@
 ---
 permalink: /cli-standalone/
 title: "Standalone CLI tools"
+canonical_url: "https://v6.docs.sirius-ms.io/cli-standalone/"
 ---
 Standalone tools provide additional SIRIUS related tasks that do not fit into the SIRIUS identification workflow.
 These can e.g. be configuration tasks, file conversion tasks or features that might be helpful for downstream analysis.

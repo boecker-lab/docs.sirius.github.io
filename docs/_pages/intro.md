@@ -1,9 +1,8 @@
 ---
 permalink: /
 title: "Welcome"
+canonical_url: "https://v6.docs.sirius-ms.io/"
 ---
-<span style="color:red">This is the deprecated documentation for SIRIUS 5.</span> **For the most recent SIRIUS 6 documentation click [here](https://v6.docs.sirius-ms.io/).** 
-
 **SIRIUS 5** Click [here](https://www.youtube.com/watch?v=Bj0hIrwx9ks&t=5s&ab_channel=BoeckerLab) 
 to view our video about whats new.    
 

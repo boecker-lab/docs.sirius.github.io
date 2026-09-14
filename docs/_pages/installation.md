@@ -1,6 +1,7 @@
 ---
 permalink: /install/
 title: "Installation"
+canonical_url: "https://v6.docs.sirius-ms.io/install/"
 ---
 
 In principle, installing SIRIUS just means extracting the archive you have

@@ -1,6 +1,7 @@
 ---
 permalink: /changelog/
 title: "Changelog"
+canonical_url: "https://v6.docs.sirius-ms.io/changelog/"
 ---
 
 ### SIRIUS 5

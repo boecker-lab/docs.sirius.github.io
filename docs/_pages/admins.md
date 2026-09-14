@@ -1,6 +1,7 @@
 ---
 permalink: /admins/
 title: Administrator/Technical information
+canonical_url: "https://v6.docs.sirius-ms.io/admins/"
 ---
 
 SIRIUS is a software framework for MS/MS data analysis of small molecules. For more details on the 

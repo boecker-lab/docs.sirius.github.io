@@ -1,6 +1,7 @@
 ---
 permalink: /developers/
 title: "Developer information"
+canonical_url: "https://v6.docs.sirius-ms.io/developers/"
 ---
 
 You can use the libraries and the client libraries in your Java project,

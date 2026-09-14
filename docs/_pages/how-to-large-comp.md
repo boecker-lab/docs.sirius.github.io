@@ -1,6 +1,7 @@
 ---
 permalink: /faq/how-to-large-comp
 title: "How to deal with high mass compounds?"
+canonical_url: "https://v6.docs.sirius-ms.io/faq/how-to-large-comp"
 ---
 
 # How to configure SIRIUS to compute large data sets that contain high mass compounds?

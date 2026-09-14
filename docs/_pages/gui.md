@@ -1,6 +1,7 @@
 ---
 permalink: /gui/
 title: "Graphical User Interface"
+canonical_url: "https://v6.docs.sirius-ms.io/gui/"
 ---
 
 ## Overview
